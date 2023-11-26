@@ -1,0 +1,52 @@
+set_pixel_size( WINDOW_XSIZE / 480 )
+resize( get_screen(), WINDOW_XSIZE, WINDOW_YSIZE )
+
+start_timer( 0 )
+
+
+start:
+
+//box( -100, -100, 200, 200 )
+
+clear(BLACK);
+
+transp( 2 )
+print( "L", -100, 0 )
+
+transp( 16 )
+print( "L", -90, 0 )
+
+transp( 32 )
+print( "L", -80, 0 )
+
+transp( 48 )
+print( "L", -70, 0 )
+
+transp( 64 )
+print( "L", -60, 0 )
+
+transp( 86 )
+print( "L", -50, 0 )    
+
+transp( 128 )
+print( "L", -40, 0 )
+
+transp( 164 )
+print( "L", -30, 0 )
+
+transp( 192 )
+print( "L", -20, 0 )
+
+transp( 224 )
+print( "L", -10, 0 )
+
+transp( 255 )
+print( "L", 0, 0 )
+
+//required to verify the quit event
+while( get_event() ) { if EVT[ EVT_TYPE ] == EVT_QUIT { halt } }
+
+//required to end the frame
+frame()
+
+go start
