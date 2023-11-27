@@ -1,0 +1,116 @@
+//classes
+//classes
+//classes
+
+fn Vector2($x, $y)
+{
+    $temp = new();
+    clean($temp);
+    $temp.x = $x;
+    $temp.y = $y;
+    ret($temp);
+}
+
+fn Vector3($x, $y, $z)
+{
+    $temp = new();
+    clean($temp);
+    $temp.x = $x;
+    $temp.y = $y;
+    $temp.z = $z;
+    ret($temp);
+}
+
+fn Creature($name,$x,$y,$z)
+{
+    $temp = new();
+    $temp.position = Vector3($x,$y,$z);
+    $temp.name = $name;
+    ret($temp);
+}
+
+fn World()
+{
+    $world = new();
+    $world.creatures = new(64);
+    clean($world.creatures);
+    ret($world);
+}
+
+//functions
+//functions
+//functions
+
+fn quit()
+{
+    while(get_event()) 
+    { 
+        if EVT[ EVT_TYPE ] == EVT_QUIT 
+        { 
+            halt; 
+        } 
+    }
+}
+
+fn refresh_seed()
+{
+    rand_seed( get_timer() + get_ticks() );
+}
+
+fn random($min,$max)
+{
+    //considering that rand() returns a value between 0 and 32767
+    ret((rand() % ($max - $min + 1)) + $min);
+}
+
+fn startup()
+{
+    set_pixel_size( WINDOW_XSIZE / 480 );
+    resize( get_screen(), WINDOW_XSIZE, WINDOW_YSIZE );
+    //declare a vector of creatures
+    world = World();
+    world.creatures[0] = new();
+    $hero = Creature("joao", 78);
+    creatures[0] = $hero;
+    //printf( "%s\n", creatures[0].name );
+    start_timer( 0 );
+    refresh_seed();//required to get a different random number each time
+    for( $i = 0; $i < 10; $i+1 )
+    {
+        //printf( "%d\n", random(99,200) );
+    }
+}
+
+//main loop
+//main loop
+//main loop
+fn main()
+{
+    
+    printf("%d\n", Vector2(8.0,12123.0).x);
+    startup();
+    mainloop:
+        
+        clear(BLACK);
+        
+        $b = 2;
+        
+        for($i = -100; $i < 100; $i+10)
+        {
+            $b+8;
+            transp($b);
+            print( "L", $i, 0 );
+        }
+
+        //required to verify the quit event
+        quit();
+
+        //required to end the frame
+        frame();
+
+    go mainloop;
+    startup();
+    quit();
+}
+
+main();
