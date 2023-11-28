@@ -1,45 +1,15 @@
-//classes
-//classes
-//classes
+//constants
+//constants
+//constants
 
-fn Vector2($x, $y)
-{
-    $temp = new();
-    clean($temp);
-    $temp.x = $x;
-    $temp.y = $y;
-    ret($temp);
-}
+null = 0;
+false = 0;
+true = 1;
+medium_array = 64;
 
-fn Vector3($x, $y, $z)
-{
-    $temp = new();
-    clean($temp);
-    $temp.x = $x;
-    $temp.y = $y;
-    $temp.z = $z;
-    ret($temp);
-}
-
-fn Creature($name,$x,$y,$z)
-{
-    $temp = new();
-    $temp.position = Vector3($x,$y,$z);
-    $temp.name = $name;
-    ret($temp);
-}
-
-fn World()
-{
-    $world = new();
-    $world.creatures = new(64);
-    clean($world.creatures);
-    ret($world);
-}
-
-//functions
-//functions
-//functions
+//primitive functions
+//primitive functions
+//primitive functions
 
 fn quit()
 {
@@ -63,16 +33,121 @@ fn random($min,$max)
     ret((rand() % ($max - $min + 1)) + $min);
 }
 
+//counting ocurrences using strstr
+fn string_ocurrences($str1,$str2)
+{
+    $count = 0;
+    $offset = 0;
+    $len = strlen($str2);
+    while($offset < strlen($str1))
+    {
+        $offset = strstr($str1,$str2,$offset);
+        if($offset == -1)
+        {
+            break;
+        }
+        $count = $count + 1;
+        $offset = $offset + $len;
+    }
+    ret($count);
+}
+
+fn string_split($string,$separator)
+{
+    $ocurrences = string_ocurrences($string,$separator);
+    $result = new($ocurrences + 1);
+    $offset = 0;
+    $i = 0;
+    while($offset < strlen($string))
+    {
+        $offset = strstr($string,$separator,$offset);
+        if($offset == null)
+        {
+            break;
+        }
+        //$result[$i] = substr($string,0,$offset);
+        //$string = substr($string,$offset + strlen($separator));
+        $offset = 0;
+        $i = $i + 1;
+    }
+    $result[$i] = $string;
+    ret($result);
+}
+
+//basic constructors
+//basic constructors
+//basic constructors
+
+fn Vector2($x, $y)
+{
+    $temp = new();
+    $temp.x = $x;
+    $temp.y = $y;
+    ret($temp);
+}
+
+//complex constructors
+//complex constructors
+//complex constructors
+
+fn Creature($name,$position,$current_room)//String, Vector2, INT
+{
+    if($position == null)
+    {
+        $position = Vector2(0,0);
+    }
+    
+    $temp = new();
+    $temp.position = $position;
+    $temp.name = $name;
+    $temp.current_room = $current_room;
+    ret($temp);
+}
+
+fn Room($position,$size)//Vector2, Vector2
+{
+    $temp = new();
+    $temp.position = $position;
+    $temp.size = $size;
+    ret($temp);
+}
+
+fn World($size)//Vector2
+{
+    if($size == null)
+    {
+        $size = Vector2(64,64);
+    }
+    $world = new();
+    $world.map = new($size.x,$size.y);
+    clean($world.map);
+    for($x = 0; $x < $size.x; $x+1)
+    {
+        for($y = 0; $y < $size.y; $y+1)
+        {
+            $world.map[$x][$y] = Room(Vector2($x,$y),Vector2(16,16));
+        }
+    }
+    $world.creatures = new(64);
+    clean($world.creatures);
+    ret($world);
+}
+
+//complex functions
+//complex functions
+//complex functions
+
 fn startup()
 {
     set_pixel_size( WINDOW_XSIZE / 480 );
     resize( get_screen(), WINDOW_XSIZE, WINDOW_YSIZE );
     //declare a vector of creatures
+    printf("antes\n");
     world = World();
     world.creatures[0] = new();
     $hero = Creature("joao", 78);
-    creatures[0] = $hero;
-    //printf( "%s\n", creatures[0].name );
+    world.creatures[0] = $hero;
+    printf( "%s\n", world.creatures[0].name );
     start_timer( 0 );
     refresh_seed();//required to get a different random number each time
     for( $i = 0; $i < 10; $i+1 )
@@ -86,8 +161,10 @@ fn startup()
 //main loop
 fn main()
 {
-    
+    //test string_split
+    printf("%d\n", string_ocurrences("joao,maria,pedro",","));
     printf("%d\n", Vector2(8.0,12123.0).x);
+    //printf("%s\n", Vector2(8.0,12123.0).ID);
     startup();
     mainloop:
         
