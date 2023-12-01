@@ -33,45 +33,98 @@ fn random($min,$max)
     ret((rand() % ($max - $min + 1)) + $min);
 }
 
+fn string_sub($string,$start,$end)
+{
+    $result = "";
+	$temp = "";
+    $offset = 0;
+	$temp = copy($string);
+	sprintf2( $temp, $start, 0, "");
+	logf("sub:%d",$end - $start);
+	resize($temp,($end - $start));
+	ret($temp);
+}
+
 //counting ocurrences using strstr
 fn string_ocurrences($str1,$str2)
 {
     $count = 0;
     $offset = 0;
     $len = strlen($str2);
-    while($offset < strlen($str1))
+    while($offset <= strlen($str1))
     {
-        $offset = strstr($str1,$str2,$offset);
-        if($offset == -1)
+        $offset = strstr($str1,$offset,$str2);
+		if($offset == -1)
         {
             break;
         }
-        $count = $count + 1;
+		$count = $count + 1;
         $offset = $offset + $len;
-    }
+	}
+	logf("occurrences:%d\n", $count);
     ret($count);
+}
+
+fn string_ocurrences_advanced($str1,$str2)
+{
+    $offset = 0;
+    $len = strlen($str2);
+	$ocurrences = string_ocurrences($str1,$str2);
+	$lista = new($ocurrences);
+    while($offset <= strlen($str1))
+    {
+        $offset = strstr($str1,$offset,$str2);
+		if($offset == -1)
+        {
+            break;
+        }
+		$lista[$i] = $offset;
+        $offset = $offset + $len;
+	}
+	$result = new();
+	$result.ocurrences = $ocurrences;
+	$result.indexes = $lista;
+    ret($result);
 }
 
 fn string_split($string,$separator)
 {
     $ocurrences = string_ocurrences($string,$separator);
+	
     $result = new($ocurrences + 1);
     $offset = 0;
     $i = 0;
     while($offset < strlen($string))
     {
         $offset = strstr($string,$separator,$offset);
-        if($offset == null)
+        if($offset == -1)
         {
             break;
         }
-        //$result[$i] = substr($string,0,$offset);
-        //$string = substr($string,$offset + strlen($separator));
-        $offset = 0;
+        $result[$i] = string_sub($string,$offset,$ocurrences[$i+1]);
+		
         $i = $i + 1;
     }
     $result[$i] = $string;
     ret($result);
+}
+
+fn string_replace($string,$oldstr,$newstr)
+{
+	$ocurrences = string_ocurrences($string,$oldstr);
+    $result = "";
+	$offset = 0;
+	while($offset < strlen($string))
+	{
+		$offset = strstr($string,$oldstr,$offset);
+		if($offset == -1)
+        {
+            break;
+        }
+		
+		$offset = 0;
+        $i = $i + 1;
+	}
 }
 
 //basic constructors
@@ -162,7 +215,6 @@ fn startup()
 fn main()
 {
     //test string_split
-    printf("%d\n", string_ocurrences("joao,maria,pedro",","));
     printf("%d\n", Vector2(8.0,12123.0).x);
     //printf("%s\n", Vector2(8.0,12123.0).ID);
     startup();
@@ -178,7 +230,9 @@ fn main()
             transp($b);
             print( "L", $i, 0 );
         }
-
+		
+		print(string_split("joao,maria,pedro",",")[0],10,10);
+		
         //required to verify the quit event
         quit();
 
