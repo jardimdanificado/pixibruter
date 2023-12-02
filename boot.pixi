@@ -35,15 +35,17 @@ fn random($min,$max)
 
 fn string_sub($string,$start,$end)
 {
-    $result = "";
-	$temp = "";
+    $newstr = "";
+    resize($newstr,$end - $start);
     $offset = 0;
-	$temp = copy($string);
-	sprintf2( $temp, $start, 0, "");
-	logf("sub:%d",$end - $start);
-	resize($temp,($end - $start));
-	ret($temp);
+    for($i = $start; $i < $end; $i+1)
+    {
+        $newstr[$offset] = $string[$i];
+        $offset = $offset + 1;
+    }
+    ret($newstr);
 }
+
 
 //counting ocurrences using strstr
 fn string_ocurrences($str1,$str2)
@@ -61,51 +63,43 @@ fn string_ocurrences($str1,$str2)
 		$count = $count + 1;
         $offset = $offset + $len;
 	}
-	logf("occurrences:%d\n", $count);
     ret($count);
 }
 
+//this string returns the amount of ocurrences of $str2 in $str1 and the positions of each ocurrence
 fn string_ocurrences_advanced($str1,$str2)
 {
+    $count = 0;
     $offset = 0;
     $len = strlen($str2);
-	$ocurrences = string_ocurrences($str1,$str2);
-	$lista = new($ocurrences);
+    $result = new(string_ocurrences($str1,$str2));
     while($offset <= strlen($str1))
     {
         $offset = strstr($str1,$offset,$str2);
-		if($offset == -1)
+        if($offset == -1)
         {
             break;
         }
-		$lista[$i] = $offset;
+        $result[$count] = $offset;
+        $count = $count + 1;
         $offset = $offset + $len;
-	}
-	$result = new();
-	$result.ocurrences = $ocurrences;
-	$result.indexes = $lista;
+    }
     ret($result);
 }
 
 fn string_split($string,$separator)
 {
-    $ocurrences = string_ocurrences($string,$separator);
-	
-    $result = new($ocurrences + 1);
-    $offset = 0;
-    $i = 0;
-    while($offset < strlen($string))
+    $lastoffset = 0;
+    $count = 0;
+    $ocurrences = string_ocurrences_advanced($string,$separator);
+    $result = new(get_size(string_ocurrences_advanced($string,$separator)));
+    for($i = 0; $i < get_size($ocurrences); $i+1)
     {
-        $offset = strstr($string,$separator,$offset);
-        if($offset == -1)
-        {
-            break;
-        }
-        $result[$i] = string_sub($string,$offset,$ocurrences[$i+1]);
-		
-        $i = $i + 1;
+        $result[$count] = string_sub($string,$lastoffset,$ocurrences[$i]);
+        $count = $count + 1;
+        $lastoffset = $ocurrences[$i] + strlen($separator);
     }
-    $result[$i] = $string;
+    $result[$count] = string_sub($string,$lastoffset,strlen($string));
     ret($result);
 }
 
@@ -195,18 +189,13 @@ fn startup()
     set_pixel_size( WINDOW_XSIZE / 480 );
     resize( get_screen(), WINDOW_XSIZE, WINDOW_YSIZE );
     //declare a vector of creatures
-    printf("antes\n");
     world = World();
     world.creatures[0] = new();
     $hero = Creature("joao", 78);
     world.creatures[0] = $hero;
-    printf( "%s\n", world.creatures[0].name );
+    //printf( "%s\n", world.creatures[0].name );
     start_timer( 0 );
     refresh_seed();//required to get a different random number each time
-    for( $i = 0; $i < 10; $i+1 )
-    {
-        //printf( "%d\n", random(99,200) );
-    }
 }
 
 //main loop
@@ -216,8 +205,8 @@ fn main()
 {
     //test string_split
     printf("%d\n", Vector2(8.0,12123.0).x);
-    //printf("%s\n", Vector2(8.0,12123.0).ID);
     startup();
+    printf("%s",string_split("joao,maria,pedro",",")[0]);
     mainloop:
         
         clear(BLACK);
@@ -231,7 +220,7 @@ fn main()
             print( "L", $i, 0 );
         }
 		
-		print(string_split("joao,maria,pedro",",")[0],10,10);
+		
 		
         //required to verify the quit event
         quit();
