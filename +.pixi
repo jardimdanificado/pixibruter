@@ -33,12 +33,38 @@ fn random($min,$max)
     ret((rand() % ($max - $min + 1)) + $min);
 }
 
+fn default($obj, $default)
+{
+    if($obj == null)
+    {
+        ret($default);
+    }
+    else
+    {
+        ret($obj);
+    }
+}
+
 //list functions
 //list functions
 //list functions
 
+fn list_push($list,$element)
+{
+    $oldsize = get_size($list);
+    resize($list,$oldsize + 1);
+    $list[$oldsize] = $element;
+}
+
+fn list_pop($list)
+{
+    $oldsize = get_size($list);
+    resize($list,$oldsize - 1);
+}
+
 fn list_insert($list,$element,$position)
 {
+    $position = default($position,get_size($list));
     $oldsize = get_size($list);
     resize($list,$oldsize + 1);
     for($i = $oldsize; $i >= $position; $i-1)
@@ -46,6 +72,16 @@ fn list_insert($list,$element,$position)
         $list[$i+1] = $list[$i];
     }
     $list[$position] = $element;
+}
+
+fn list_remove($list,$position)
+{
+    $oldsize = get_size($list);
+    for($i = $position; $i < $oldsize; $i+1)
+    {
+        $list[$i] = $list[$i+1];
+    }
+    resize($list,$oldsize - 1);
 }
 
 //strings functions
@@ -84,7 +120,7 @@ fn string_ocurrences($str1,$str2)
     ret($count);
 }
 
-//this string returns the amount of ocurrences of $str2 in $str1 and the positions of each ocurrence
+//this string returns the positions of each ocurrence
 fn string_ocurrences_advanced($str1,$str2)
 {
     $count = 0;
