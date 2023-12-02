@@ -11,14 +11,31 @@ medium_array = 64;
 //primitive functions
 //primitive functions
 
-fn quit()
+fn dummy()
+{
+    ret(0);
+}
+
+fn eventor($downkb,$upkb)
 {
     while(get_event()) 
     { 
         if EVT[ EVT_TYPE ] == EVT_QUIT 
         {
             halt; 
-        } 
+        }
+        
+        if (EVT[EVT_TYPE] == EVT_BUTTONDOWN)
+        {
+            key = EVT[ EVT_KEY ];
+            $downkb(key);
+        }
+        
+        if (EVT[EVT_TYPE] == EVT_BUTTONUP)
+        {
+            key = EVT[ EVT_KEY ];
+            $upkb(key);
+        }
     }
 }
 

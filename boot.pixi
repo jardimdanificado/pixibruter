@@ -87,10 +87,8 @@ fn main()
             print( "L", $i, 0 );
         }
 		
-		
-		
-        //required to verify the quit event
-        quit();
+        //handle keyboard and quit event
+        eventor();
 
         //required to end the frame
         frame();
