@@ -1,0 +1,152 @@
+//constants
+//constants
+//constants
+
+null = 0;
+false = 0;
+true = 1;
+medium_array = 64;
+
+//primitive functions
+//primitive functions
+//primitive functions
+
+fn quit()
+{
+    while(get_event()) 
+    { 
+        if EVT[ EVT_TYPE ] == EVT_QUIT 
+        {
+            halt; 
+        } 
+    }
+}
+
+fn refresh_seed()
+{
+    rand_seed( get_timer() + get_ticks() );
+}
+
+fn random($min,$max)
+{
+    //considering that rand() returns a value between 0 and 32767
+    ret((rand() % ($max - $min + 1)) + $min);
+}
+
+//list functions
+//list functions
+//list functions
+
+fn list_insert($list,$element,$position)
+{
+    $oldsize = get_size($list);
+    resize($list,$oldsize + 1);
+    for($i = $oldsize; $i >= $position; $i-1)
+    {
+        $list[$i+1] = $list[$i];
+    }
+    $list[$position] = $element;
+}
+
+//strings functions
+//strings functions
+//strings functions
+
+fn string_sub($string,$start,$end)
+{
+    $newstr = "";
+    resize($newstr,$end - $start);
+    $offset = 0;
+    for($i = $start; $i < $end; $i+1)
+    {
+        $newstr[$offset] = $string[$i];
+        $offset = $offset + 1;
+    }
+    ret($newstr);
+}
+
+//counting ocurrences using strstr
+fn string_ocurrences($str1,$str2)
+{
+    $count = 0;
+    $offset = 0;
+    $len = strlen($str2);
+    while($offset <= strlen($str1))
+    {
+        $offset = strstr($str1,$offset,$str2);
+		if($offset == -1)
+        {
+            break;
+        }
+		$count = $count + 1;
+        $offset = $offset + $len;
+	}
+    ret($count);
+}
+
+//this string returns the amount of ocurrences of $str2 in $str1 and the positions of each ocurrence
+fn string_ocurrences_advanced($str1,$str2)
+{
+    $count = 0;
+    $offset = 0;
+    $len = strlen($str2);
+    $result = new(string_ocurrences($str1,$str2));
+    while($offset <= strlen($str1))
+    {
+        $offset = strstr($str1,$offset,$str2);
+        if($offset == -1)
+        {
+            break;
+        }
+        $result[$count] = $offset;
+        $count = $count + 1;
+        $offset = $offset + $len;
+    }
+    ret($result);
+}
+
+fn string_split($string,$separator)
+{
+    $lastoffset = 0;
+    $count = 0;
+    $ocurrences = string_ocurrences_advanced($string,$separator);
+    $result = new(get_size(string_ocurrences_advanced($string,$separator)));
+    for($i = 0; $i < get_size($ocurrences); $i+1)
+    {
+        $result[$count] = string_sub($string,$lastoffset,$ocurrences[$i]);
+        $count = $count + 1;
+        $lastoffset = $ocurrences[$i] + strlen($separator);
+    }
+    $result[$count] = string_sub($string,$lastoffset,strlen($string));
+    ret($result);
+}
+
+fn string_replace($string,$oldstr,$newstr)
+{
+	$ocurrences = string_ocurrences($string,$oldstr);
+    $result = "";
+	$offset = 0;
+	while($offset < strlen($string))
+	{
+		$offset = strstr($string,$oldstr,$offset);
+		if($offset == -1)
+        {
+            break;
+        }
+		
+		$offset = 0;
+        $i = $i + 1;
+	}
+}
+
+//basic constructors
+//basic constructors
+//basic constructors
+
+fn vector2($x, $y)
+{
+    $temp = new();
+    $temp.x = $x;
+    $temp.y = $y;
+    ret($temp);
+}

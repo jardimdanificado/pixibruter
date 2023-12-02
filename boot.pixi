@@ -1,147 +1,14 @@
-//constants
-//constants
-//constants
-
-null = 0;
-false = 0;
-true = 1;
-medium_array = 64;
-
-//primitive functions
-//primitive functions
-//primitive functions
-
-fn quit()
-{
-    while(get_event()) 
-    { 
-        if EVT[ EVT_TYPE ] == EVT_QUIT 
-        { 
-            halt; 
-        } 
-    }
-}
-
-fn refresh_seed()
-{
-    rand_seed( get_timer() + get_ticks() );
-}
-
-fn random($min,$max)
-{
-    //considering that rand() returns a value between 0 and 32767
-    ret((rand() % ($max - $min + 1)) + $min);
-}
-
-fn string_sub($string,$start,$end)
-{
-    $newstr = "";
-    resize($newstr,$end - $start);
-    $offset = 0;
-    for($i = $start; $i < $end; $i+1)
-    {
-        $newstr[$offset] = $string[$i];
-        $offset = $offset + 1;
-    }
-    ret($newstr);
-}
-
-
-//counting ocurrences using strstr
-fn string_ocurrences($str1,$str2)
-{
-    $count = 0;
-    $offset = 0;
-    $len = strlen($str2);
-    while($offset <= strlen($str1))
-    {
-        $offset = strstr($str1,$offset,$str2);
-		if($offset == -1)
-        {
-            break;
-        }
-		$count = $count + 1;
-        $offset = $offset + $len;
-	}
-    ret($count);
-}
-
-//this string returns the amount of ocurrences of $str2 in $str1 and the positions of each ocurrence
-fn string_ocurrences_advanced($str1,$str2)
-{
-    $count = 0;
-    $offset = 0;
-    $len = strlen($str2);
-    $result = new(string_ocurrences($str1,$str2));
-    while($offset <= strlen($str1))
-    {
-        $offset = strstr($str1,$offset,$str2);
-        if($offset == -1)
-        {
-            break;
-        }
-        $result[$count] = $offset;
-        $count = $count + 1;
-        $offset = $offset + $len;
-    }
-    ret($result);
-}
-
-fn string_split($string,$separator)
-{
-    $lastoffset = 0;
-    $count = 0;
-    $ocurrences = string_ocurrences_advanced($string,$separator);
-    $result = new(get_size(string_ocurrences_advanced($string,$separator)));
-    for($i = 0; $i < get_size($ocurrences); $i+1)
-    {
-        $result[$count] = string_sub($string,$lastoffset,$ocurrences[$i]);
-        $count = $count + 1;
-        $lastoffset = $ocurrences[$i] + strlen($separator);
-    }
-    $result[$count] = string_sub($string,$lastoffset,strlen($string));
-    ret($result);
-}
-
-fn string_replace($string,$oldstr,$newstr)
-{
-	$ocurrences = string_ocurrences($string,$oldstr);
-    $result = "";
-	$offset = 0;
-	while($offset < strlen($string))
-	{
-		$offset = strstr($string,$oldstr,$offset);
-		if($offset == -1)
-        {
-            break;
-        }
-		
-		$offset = 0;
-        $i = $i + 1;
-	}
-}
-
-//basic constructors
-//basic constructors
-//basic constructors
-
-fn Vector2($x, $y)
-{
-    $temp = new();
-    $temp.x = $x;
-    $temp.y = $y;
-    ret($temp);
-}
+include "pixi-.pixi";
 
 //complex constructors
 //complex constructors
 //complex constructors
 
-fn Creature($name,$position,$current_room)//String, Vector2, INT
+fn Creature($name,$position,$current_room)//String, vector2, INT
 {
     if($position == null)
     {
-        $position = Vector2(0,0);
+        $position = vector2(0,0);
     }
     
     $temp = new();
@@ -151,7 +18,7 @@ fn Creature($name,$position,$current_room)//String, Vector2, INT
     ret($temp);
 }
 
-fn Room($position,$size)//Vector2, Vector2
+fn Room($position,$size)//vector2, vector2
 {
     $temp = new();
     $temp.position = $position;
@@ -159,11 +26,11 @@ fn Room($position,$size)//Vector2, Vector2
     ret($temp);
 }
 
-fn World($size)//Vector2
+fn World($size)//vector2
 {
     if($size == null)
     {
-        $size = Vector2(64,64);
+        $size = vector2(64,64);
     }
     $world = new();
     $world.map = new($size.x,$size.y);
@@ -172,7 +39,7 @@ fn World($size)//Vector2
     {
         for($y = 0; $y < $size.y; $y+1)
         {
-            $world.map[$x][$y] = Room(Vector2($x,$y),Vector2(16,16));
+            $world.map[$x][$y] = Room(vector2($x,$y),vector2(16,16));
         }
     }
     $world.creatures = new(64);
@@ -204,7 +71,7 @@ fn startup()
 fn main()
 {
     //test string_split
-    printf("%d\n", Vector2(8.0,12123.0).x);
+    printf("%d\n", vector2(8.0,12123.0).x);
     startup();
     printf("%s",string_split("joao,maria,pedro",",")[0]);
     mainloop:
