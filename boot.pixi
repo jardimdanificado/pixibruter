@@ -65,6 +65,13 @@ fn startup()
     refresh_seed();//required to get a different random number each time
 }
 
+letter = "L"
+
+fn downkb($key)
+{
+    
+}
+
 //main loop
 //main loop
 //main loop
@@ -73,23 +80,18 @@ fn main()
     //test string_split
     printf("%d\n", vector2(8.0,12123.0).x);
     startup();
-    printf("%s",string_split("joao,maria,pedro",",")[0]);
+    printf("%s\n",string_split("joao,maria,pedro",",")[0]);
     mainloop:
-        
         clear(BLACK);
-        
         $b = 2;
-        
         for($i = -100; $i < 100; $i+10)
         {
             $b+8;
             transp($b);
-            print( "L", $i, 0 );
+            print( letter, $i, 0 );
         }
-		
         //handle keyboard and quit event
-        eventor();
-
+        eventor(downkb,upkb);
         //required to end the frame
         frame();
 
