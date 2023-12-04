@@ -20,6 +20,19 @@ fn dummy()
 //memory functions
 //memory functions
 
+fn container_count()
+{
+    $count = new();
+    ret($count);
+}
+
+fn print_container_count()
+{
+    $temp = container_count();
+    printf("Container count: %d\n", $temp);
+    remove($temp);
+}
+
 fn flex($object,$size)
 {
     $newsize = get_size($object) + $size;
@@ -104,6 +117,8 @@ fn list_insert($list,$element,$position)
         $list[$i+1] = $list[$i];
     }
     $list[$position] = $element;
+    remove($oldsize);
+    //remove($position);
 }
 
 fn list_remove($list,$position)
@@ -114,6 +129,8 @@ fn list_remove($list,$position)
         $list[$i] = $list[$i+1];
     }
     resize($list,$oldsize - 1);
+    remove($oldsize);
+    //remove($position);
 }
 
 //strings functions
@@ -130,6 +147,7 @@ fn string_sub($string,$start,$end)
         $newstr[$offset] = $string[$i];
         $offset = $offset + 1;
     }
+    remove($offset);
     ret($newstr);
 }
 
@@ -149,6 +167,7 @@ fn string_ocurrences($str1,$str2)
 		$count = $count + 1;
         $offset = $offset + $len;
 	}
+    remove($offset);
     ret($count);
 }
 
@@ -170,6 +189,9 @@ fn string_ocurrences_advanced($str1,$str2)
         $count = $count + 1;
         $offset = $offset + $len;
     }
+    remove($offset);
+    //remove($count);
+    //remove($len);
     ret($result);
 }
 
@@ -186,6 +208,10 @@ fn string_split($string,$separator)
         $lastoffset = $ocurrences[$i] + strlen($separator);
     }
     $result[$count] = string_sub($string,$lastoffset,strlen($string));
+    remove($lastoffset);
+    //remove($count);
+    remove($ocurrences);
+
     ret($result);
 }
 
@@ -205,6 +231,9 @@ fn string_replace($string,$oldstr,$newstr)
 		$offset = 0;
         $i = $i + 1;
 	}
+    remove($offset);
+    remove($ocurrences);
+    ret($result);
 }
 
 //basic constructors

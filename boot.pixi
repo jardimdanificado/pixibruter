@@ -81,6 +81,7 @@ fn main()
     printf("%d\n", vector2(8.0,12123.0).x);
     startup();
     printf("%s\n",string_split("joao,maria,pedro",",")[0]);
+    print_container_count();
     mainloop:
         clear(BLACK);
         $b = 2;
@@ -97,7 +98,7 @@ fn main()
 
     go mainloop;
     startup();
-    quit();
+    //quit();
 }
 
 main();
