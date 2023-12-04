@@ -16,6 +16,17 @@ fn dummy()
     ret(0);
 }
 
+//memory functions
+//memory functions
+//memory functions
+
+fn flex($object,$size)
+{
+    $newsize = get_size($object) + $size;
+    resize($object,$newsize);
+    ret($newsize);
+}
+
 //complex functions
 //complex functions
 //complex functions
@@ -76,22 +87,18 @@ fn default($obj, $default)
 
 fn list_push($list,$element)
 {
-    $oldsize = get_size($list);
-    resize($list,$oldsize + 1);
-    $list[$oldsize] = $element;
+    $list[flex($list, 1)-1] = $element;
 }
 
 fn list_pop($list)
 {
-    $oldsize = get_size($list);
-    resize($list,$oldsize - 1);
+    flex($list, -1);
 }
 
 fn list_insert($list,$element,$position)
 {
-    $position = default($position,get_size($list));
-    $oldsize = get_size($list);
-    resize($list,$oldsize + 1);
+    $oldsize = flex($list, 1) - 1;
+    $position = default($position,$oldsize);
     for($i = $oldsize; $i >= $position; $i-1)
     {
         $list[$i+1] = $list[$i];
