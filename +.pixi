@@ -167,6 +167,7 @@ fn string_sub($string,$start,$end)
     {
         $newstr[$offset] = $string[$i];
         $offset = $offset + 1;
+        printf("newstr:%s\n",$newstr);
     }
     ret($newstr);
 }
@@ -218,36 +219,58 @@ fn string_split($string,$separator)
     $lastoffset = 0;
     $count = 0;
     $ocurrences = string_ocurrences_advanced($string,$separator);
-    $result = new(get_size(string_ocurrences_advanced($string,$separator)));
-    for($i = 0; $i < get_size($ocurrences); $i+1)
+    $result = new(get_size($ocurrences));
+    //printf("size:%d\n",get_size($ocurrences));
+    for($i = 0; $i < get_size($ocurrences); $i + 1)
     {
+        //printf("ocurrence:%d\n",$ocurrences[$i]);
+        //printf("lastoffset:%d\n",$lastoffset);
+
+        $lastoffset = $ocurrences[$i] + strlen($separator);
         $result[$count] = string_sub($string,$lastoffset,$ocurrences[$i]);
         $count = $count + 1;
-        $lastoffset = $ocurrences[$i] + strlen($separator);
     }
     $result[$count] = string_sub($string,$lastoffset,strlen($string));
+    for($i = 0; $i < get_size($result); $i + 1)
+    {
+        //printf("%s\n",$result[$i]);
+    }
+    //printf("count:%d\n",string_ocurrences($string,$separator));
+    //remove($ocurrences);
+    ret($result);
+}
+
+fn string_replace($string,$oldstr,$newstr)
+{
+    $result = "";
+    $offset = 0;
+    $len = strlen($oldstr);
+    $ocurrences = string_ocurrences_advanced($string,$oldstr);
+    for($i = 0; $i < get_size($ocurrences); $i+1)
+    {
+        $result = string_sub($string,$offset,$ocurrences[$i]);
+        $offset = $ocurrences[$i] + $len;
+    }
+    $result = string_sub($string,$offset,strlen($string));
     remove($ocurrences);
     ret($result);
 }
 
-/*fn string_replace($string,$oldstr,$newstr)
+fn string_replace_char($string,$oldchar,$newchar)
 {
-	$ocurrences = string_ocurrences($string,$oldstr);
-    $result = "";
-	$offset = 0;
-	while($offset < strlen($string))
-	{
-		$offset = strstr($string,$oldstr,$offset);
-		if($offset == -1)
+    for($i = 0; $i < strlen($string); $i+1)
+    {
+        if($string[$i] == $oldchar)
         {
-            break;
+            $string[$i] = $newchar;
         }
-		
-		$offset = 0;
-        $i = $i + 1;
-	}
-    ret($result);
-}*/
+        else
+        {
+            $string[$i] = $string[$i];
+        }
+    }
+    ret($string);
+}
 
 //basic constructors
 //basic constructors
@@ -289,16 +312,20 @@ fn read_file($filename)
 //ini loader without sections
 fn ini_load($file)
 {
-    $lines = string_split($file,";");
+    //$lines = string_split($file," ");
+
+    printf("%s\n",$file);
     $result = new();
-    for($i = 0; $i < get_size($lines); $i+1)
+    $file = string_replace_char($file,'\n',' ');
+    $splited = string_split($file," ");
+
+    printf("tamanho:%d\n",string_ocurrences($file," "));
+    printf("0:%s\n",$splited[1]);
+    for($i = 0; $i < string_ocurrences($splited, " "); $i+2)
     {
-        printf("%s\n",$lines[$i]);
-        $splited = string_split($lines[$i],"=");
-        set_prop($result,$splited[0],$splited[1]);
-        //$result[$i] = string_split($lines[$i],"=");
+        printf("%s = %s\n",$splited[$i],$splited[$i+1]);
+        set_prop($result,$splited[$i],$splited[$i+1]);
     }
-    
-    remove($lines);
+
     ret($result);
 }
