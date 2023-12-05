@@ -80,7 +80,8 @@ fn main()
     //test string_split
     printf("%d\n", vector2(8.0,12123.0).x);
     startup();
-    printf("%s\n",string_split("joao,maria,pedro",",")[0]);
+    printf("teste:%s\n",ini_load(read_file("test.ini")).teste)
+    //printf("%s\n",string_split("joao,maria,pedro",",")[0]);
     print_container_count();
     mainloop:
         clear(BLACK);
@@ -98,7 +99,7 @@ fn main()
 
     go mainloop;
     startup();
-    //quit();
+    eventor();
 }
 
 main();

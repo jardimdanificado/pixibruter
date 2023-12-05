@@ -133,9 +133,30 @@ fn list_remove($list,$position)
     //remove($position);
 }
 
+fn list_find($list,$element)
+{
+    $oldsize = get_size($list);
+    for($i = 0; $i < $oldsize; $i+1)
+    {
+        if($list[$i] == $element)
+        {
+            ret($i);
+        }
+    }
+    remove($oldsize);
+    ret(-1);
+}
+
 //strings functions
 //strings functions
 //strings functions
+
+fn string_new($size)
+{
+    $temp = "";
+    $temp = new($size);
+    ret($temp);
+}
 
 fn string_sub($string,$start,$end)
 {
@@ -147,7 +168,6 @@ fn string_sub($string,$start,$end)
         $newstr[$offset] = $string[$i];
         $offset = $offset + 1;
     }
-    remove($offset);
     ret($newstr);
 }
 
@@ -167,7 +187,7 @@ fn string_ocurrences($str1,$str2)
 		$count = $count + 1;
         $offset = $offset + $len;
 	}
-    remove($offset);
+    //remove($offset);
     ret($count);
 }
 
@@ -189,9 +209,7 @@ fn string_ocurrences_advanced($str1,$str2)
         $count = $count + 1;
         $offset = $offset + $len;
     }
-    remove($offset);
-    //remove($count);
-    //remove($len);
+    //remove($offset);
     ret($result);
 }
 
@@ -208,14 +226,11 @@ fn string_split($string,$separator)
         $lastoffset = $ocurrences[$i] + strlen($separator);
     }
     $result[$count] = string_sub($string,$lastoffset,strlen($string));
-    remove($lastoffset);
-    //remove($count);
     remove($ocurrences);
-
     ret($result);
 }
 
-fn string_replace($string,$oldstr,$newstr)
+/*fn string_replace($string,$oldstr,$newstr)
 {
 	$ocurrences = string_ocurrences($string,$oldstr);
     $result = "";
@@ -231,10 +246,8 @@ fn string_replace($string,$oldstr,$newstr)
 		$offset = 0;
         $i = $i + 1;
 	}
-    remove($offset);
-    remove($ocurrences);
     ret($result);
-}
+}*/
 
 //basic constructors
 //basic constructors
@@ -246,4 +259,46 @@ fn vector2($x, $y)
     $temp.x = $x;
     $temp.y = $y;
     ret($temp);
+}
+
+//file functions
+//file functions
+//file functions
+
+fn read_file($filename)
+{
+    $size = get_file_size($filename);
+    $file = fopen($filename,"rb");
+    if($file == null)
+    {
+        ret(null);
+    }
+    $result = "";
+    resize($result, $size);
+    fread($result,$size,$file);
+    fclose($file);
+    $buff = "";
+    strcat($buff,$result);
+    ret($buff);
+}
+
+//ini functions
+//ini functions
+//ini functions
+
+//ini loader without sections
+fn ini_load($file)
+{
+    $lines = string_split($file,";");
+    $result = new();
+    for($i = 0; $i < get_size($lines); $i+1)
+    {
+        printf("%s\n",$lines[$i]);
+        $splited = string_split($lines[$i],"=");
+        set_prop($result,$splited[0],$splited[1]);
+        //$result[$i] = string_split($lines[$i],"=");
+    }
+    
+    remove($lines);
+    ret($result);
 }
