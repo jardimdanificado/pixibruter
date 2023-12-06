@@ -77,10 +77,9 @@ fn downkb($key)
 //main loop
 fn main()
 {
-    //test string_split
-    printf("%d\n", vector2(8.0,12123.0).x);
     startup();
-    printf("teste:%s\n",get_prop(ini_load(read_file("config.ini")),"teste"))
+    $config = ini_load(read_file("config.ini"));
+    printf("teste:%s\n",$config.teste)
     //printf("%s\n",string_split("joao,maria,pedro",",")[0]);
     print_container_count();
     mainloop:
