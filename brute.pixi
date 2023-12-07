@@ -598,7 +598,7 @@ fn system_loop($system, $callback, $arg)
 
 fn system_new($configpath)
 {
-    $configpath = default($configpath,"config.ini");
+    $configpath = default($configpath,"data/config.ini");
     $system = new();
     $system.config = ini_load(read_file($configpath));
     if($system.config == null)
