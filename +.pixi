@@ -40,32 +40,6 @@ fn flex($object,$size)
     ret($newsize);
 }
 
-//complex functions
-//complex functions
-//complex functions
-
-fn eventor($downkb, $upkb)
-{
-    while(get_event()) 
-    {
-        if EVT[ EVT_TYPE ] == EVT_QUIT 
-        {
-            halt; 
-        }
-        
-        if EVT[EVT_TYPE] == EVT_BUTTONDOWN
-        {
-            key = EVT[ EVT_KEY ];
-            $downkb(key);
-        }
-        
-        if EVT[EVT_TYPE] == EVT_BUTTONUP
-        {
-            key = EVT[ EVT_KEY ];
-            $upkb(key);
-        }
-    }
-}
 
 //util functions
 //util functions
@@ -209,7 +183,7 @@ fn string_ocurrences_advanced($str1,$str2)
         $count = $count + 1;
         $offset = $offset + $len;
     }
-    //remove($offset);
+
     ret($result);
 }
 
@@ -228,6 +202,7 @@ fn string_split($string,$separator)
     }
     $temp = string_sub($string,$offset,strlen($string));
     $result[get_size($result)-1] = clone($temp);
+    remove($ocurrences);
     ret($result);
 }
 
@@ -291,9 +266,7 @@ fn read_file($filename)
     resize($result, $size);
     fread($result,$size,$file);
     fclose($file);
-    $buff = "";
-    strcat($buff,$result);
-    ret($buff);
+    ret($result);
 }
 
 //ini functions
@@ -303,17 +276,93 @@ fn read_file($filename)
 //ini loader without sections
 fn ini_load($file)
 {
-    //$lines = string_split($file," ");
-
-    printf("%s\n",$file);
     $result = new();
     $file = string_replace_char($file,'\n',' ');
     $splited = string_split($file," ");
     for($i = 0; $i < get_size($splited); $i+2)
     {
-        printf("%s = %s\n",$splited[$i],$splited[$i+1]);
         set_prop($result,$splited[$i],$splited[$i+1]);
     }
-
+    remove($splited);
+    remove($file);
     ret($result);
+}
+
+// input functions
+// input functions
+// input functions
+
+fn key_new($keycode,$callback,$down)//down = 1 for down, 0 for up
+{
+    $temp = new();
+    $temp.keycode = $keycode;
+    $temp.callback = $callback;
+    $temp.down = default($down,1);
+    ret($temp);
+}
+
+fn keyboard_new($callback)
+{
+    $temp = new();
+    $temp.keys = new();
+    ret($temp);
+}
+
+fn eventor()
+{
+    while(get_event()) 
+    {
+        if EVT[ EVT_TYPE ] == EVT_QUIT 
+        {
+            halt; 
+        }
+        
+        if EVT[EVT_TYPE] == EVT_BUTTONDOWN
+        {
+            key = EVT[ EVT_KEY ];
+        }
+        
+        if EVT[EVT_TYPE] == EVT_BUTTONUP
+        {
+            key = EVT[ EVT_KEY ];
+        }
+    }
+}
+
+//startup functions
+//startup functions
+//startup functions
+
+fn system_loop($system, $callback)
+{
+    while(true)
+    {
+        eventor($system);
+        $callback();
+        frame();
+    }
+}
+
+fn system_new($configpath)
+{
+    $configpath = default($configpath,"config.ini");
+    $system = new();
+    $system.config = ini_load(read_file($configpath));
+    if($system.config == null)
+    {
+        printf("Error loading config file: %s\n", $configpath);
+        halt;
+    }
+    else
+    {
+        $system.config.width = default($system.config.width,WINDOW_XSIZE);
+        $system.config.height = default($system.config.height,WINDOW_YSIZE);
+        resize( get_screen(), $system.config.width, $system.config.height );
+        set_pixel_size( WINDOW_XSIZE / $system.config.width );
+    }
+
+    $system.keyboard = keyboard_new();
+    start_timer(0);
+    refresh_seed();//required to get a different random number each time  
+    ret($system);
 }

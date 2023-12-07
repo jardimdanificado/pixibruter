@@ -1,104 +1,13 @@
 include "+.pixi";
 
-//complex constructors
-//complex constructors
-//complex constructors
-
-fn Creature($name,$position,$current_room)//String, vector2, INT
-{
-    if($position == null)
-    {
-        $position = vector2(0,0);
-    }
-    
-    $temp = new();
-    $temp.position = $position;
-    $temp.name = $name;
-    $temp.current_room = $current_room;
-    ret($temp);
-}
-
-fn Room($position,$size)//vector2, vector2
-{
-    $temp = new();
-    $temp.position = $position;
-    $temp.size = $size;
-    ret($temp);
-}
-
-fn World($size)//vector2
-{
-    if($size == null)
-    {
-        $size = vector2(64,64);
-    }
-    $world = new();
-    $world.map = new($size.x,$size.y);
-    clean($world.map);
-    for($x = 0; $x < $size.x; $x+1)
-    {
-        for($y = 0; $y < $size.y; $y+1)
-        {
-            $world.map[$x][$y] = Room(vector2($x,$y),vector2(16,16));
-        }
-    }
-    $world.creatures = new(64);
-    clean($world.creatures);
-    ret($world);
-}
-
-//complex functions
-//complex functions
-//complex functions
-
-fn startup()
-{
-    set_pixel_size( WINDOW_XSIZE / 480 );
-    resize( get_screen(), WINDOW_XSIZE, WINDOW_YSIZE );
-    //declare a vector of creatures
-    world = World();
-    world.creatures[0] = new();
-    $hero = Creature("joao", 78);
-    world.creatures[0] = $hero;
-    //printf( "%s\n", world.creatures[0].name );
-    start_timer( 0 );
-    refresh_seed();//required to get a different random number each time
-}
-
-letter = "L"
-
-fn downkb($key)
-{
-    
-}
-
 //main loop
 //main loop
 //main loop
 fn main()
 {
-    startup();
-    $config = ini_load(read_file("config.ini"));
-    printf("teste:%s\n",$config.teste)
-    //printf("%s\n",string_split("joao,maria,pedro",",")[0]);
-    print_container_count();
-    mainloop:
-        clear(BLACK);
-        $b = 2;
-        for($i = -100; $i < 100; $i+10)
-        {
-            $b+8;
-            transp($b);
-            print( letter, $i, 0 );
-        }
-        //handle keyboard and quit event
-        eventor(downkb,upkb);
-        //required to end the frame
-        frame();
-
-    go mainloop;
-    startup();
-    eventor();
+    $system = system_new();
+    printf("system: %s\n",$system.config.width);
+    system_loop($system,dummy);
 }
 
 main();
