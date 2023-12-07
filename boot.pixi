@@ -1,4 +1,4 @@
-include "brute.pixi";
+include "src/brute.pixi";
 
 fn teste()
 {
