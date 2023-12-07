@@ -1,12 +1,19 @@
 include "+.pixi";
 
+fn __draw($ui)
+{
+    ui_draw($ui);
+}
+
 //main loop
 //main loop
 //main loop
 fn main()
 {
+    $ui = ui_new(0,0,240,160);
+    ui_text_new($ui,0,0,"Hello World");
     $system = system_new();
-    system_loop($system,dummy);
+    system_loop($system,__draw,$ui);
 }
 
 main();

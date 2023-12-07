@@ -327,6 +327,62 @@ fn ini_save($file,$ini)
     remove($keys);
 }
 
+//UI functions
+//UI functions
+//UI functions
+
+fn ui_text_new($ui,$x,$y,$text)
+{
+    $temp = new();
+    $temp.x = $x;
+    $temp.y = $y;
+    $temp.text = $text;
+    list_push($ui.text,$temp);
+    ret($temp);
+}
+
+fn ui_button_new($ui,$x,$y,$width,$height,$text,$callback,$arg)
+{
+    $temp = new();
+    $temp.x = $x;
+    $temp.y = $y;
+    $temp.width = $width;
+    $temp.height = $height;
+    $temp.text = $text;
+    $temp.callback = $callback;
+    $temp.arg = $arg;
+    list_push($ui.button,$temp);
+    ret($temp);
+}
+
+fn ui_new($x,$y,$width,$height)
+{
+    $temp = new();
+    $temp.x = $x;
+    $temp.y = $y;
+    $temp.width = $width;
+    $temp.height = $height;
+    $temp.color = get_color(0,15,30);
+    $temp.text = new();
+    $temp.button = new();
+    ret($temp);
+}
+
+fn ui_draw($ui)
+{
+    fbox($ui.x,$ui.y,$ui.width,$ui.height,$ui.color);
+    box($ui.x-1,$ui.y-1,$ui.width+1,$ui.height+1,WHITE);
+    $temp = new();
+    $medx = ($ui.x + $ui.width)/2;
+    $medy = ($ui.y + $ui.height)/2;
+
+    for($i = 0; $i < get_size($ui.text); $i+1)
+    {
+        print($ui.text[$i].text, $medx + $ui.text[$i].x, $medy + $ui.text[$i].y);
+    }
+}
+
+
 // input functions
 // input functions
 // input functions
@@ -372,12 +428,12 @@ fn eventor()
 //startup functions
 //startup functions
 
-fn system_loop($system, $callback)
+fn system_loop($system, $callback, $arg)
 {
     while(true)
     {
         eventor($system);
-        $callback();
+        $callback(default($arg,null));
         frame();
     }
 }
