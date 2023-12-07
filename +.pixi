@@ -269,6 +269,14 @@ fn read_file($filename)
     ret($result);
 }
 
+fn write_file($filename,$content)
+{
+    $file = fopen($filename,"wb");
+    fputs($content,$file);
+    fclose($file);
+    //remove($file);
+}
+
 //ini functions
 //ini functions
 //ini functions
@@ -277,15 +285,46 @@ fn read_file($filename)
 fn ini_load($file)
 {
     $result = new();
-    $file = string_replace_char($file,'\n',' ');
-    $splited = string_split($file," ");
-    for($i = 0; $i < get_size($splited); $i+2)
+    $splited = string_split($file,"\n");
+    $lsplited = new();
+    for($i = 0; $i < get_size($splited); $i+1)
     {
-        set_prop($result,$splited[$i],$splited[$i+1]);
+        $lsplited = string_split($splited[$i]," ");
+        if(strstr($lsplited[1],"\"") != -1)
+        {
+            $lsplited[1] = string_replace_char($lsplited[1],"\"","");
+        }
+        else
+        {
+            $lsplited[1] = str_to_num($lsplited[1]);
+        }
+        set_prop($result,$lsplited[0],$lsplited[1]);
     }
+    remove($lsplited);
     remove($splited);
     remove($file);
     ret($result);
+}
+
+// should avoid using this function for now
+fn ini_save($file,$ini)
+{
+    $result = "";
+    $keys = get_proplist($ini);
+    $strnum = "";
+    for($i = 0; $i < get_size($keys); $i+1)
+    {
+        strcat($result,$keys[$i]);
+        strcat($result," ");
+        num_to_str($strnum,get_prop($ini,$keys[$i]));
+        strcat($result,$strnum);
+        strcat($result,"\n");
+        //$result = $result + $keys[$i] + " " + $ini[$keys[$i]] + "\n";
+    }
+    printf("%s\n", $result);
+    write_file($file,$result);
+    remove($result);
+    remove($keys);
 }
 
 // input functions

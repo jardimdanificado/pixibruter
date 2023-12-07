@@ -6,7 +6,6 @@ include "+.pixi";
 fn main()
 {
     $system = system_new();
-    printf("system: %s\n",$system.config.width);
     system_loop($system,dummy);
 }
 
