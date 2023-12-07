@@ -1,4 +1,4 @@
-include "+.pixi";
+include "brute.pixi";
 
 fn teste()
 {
@@ -16,7 +16,7 @@ fn main()
     window_text_new($window,0,0,"text test");
 
     keyboard_add($system.keyboard,KEY_SPACE,teste,0,true);
-
+    print_container_count();
     system_loop($system,window_draw,$window);
 }
 

@@ -616,6 +616,6 @@ fn system_new($configpath)
     $system.window = new();
     $system.keyboard = keyboard_new();
     start_timer(0);
-    refresh_seed();//reqwindowred to get a different random number each time  
+    refresh_seed();//required to get a different random number each time  
     ret($system);
 }
