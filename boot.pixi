@@ -1,8 +1,8 @@
 include "+.pixi";
 
-fn __draw($ui)
+fn teste()
 {
-    ui_draw($ui);
+    printf("teste\n");
 }
 
 //main loop
@@ -10,10 +10,14 @@ fn __draw($ui)
 //main loop
 fn main()
 {
-    $ui = ui_new(0,0,240,160);
-    ui_text_new($ui,0,0,"Hello World");
     $system = system_new();
-    system_loop($system,__draw,$ui);
+    
+    $window = window_new(0,0,240,160);
+    window_text_new($window,0,0,"text test");
+
+    keyboard_add($system.keyboard,KEY_SPACE,teste,0,true);
+
+    system_loop($system,window_draw,$window);
 }
 
 main();
