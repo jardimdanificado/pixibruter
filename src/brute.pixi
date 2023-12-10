@@ -428,7 +428,8 @@ fn ini_load($file)
         $lsplited = string_split($splited[$i]," ");
         if(strstr($lsplited[1],"\"") != -1)
         {
-            $lsplited[1] = string_replace_char($lsplited[1],"\"","");
+            $lsplited[1] = string_replace($lsplited[1],"\"","");
+            printf("%s\n",$lsplited[1])
         }
         else
         {
@@ -442,7 +443,6 @@ fn ini_load($file)
     ret($result);
 }
 
-// should avoid using this function for now
 fn ini_save($file,$ini)
 {
     $result = "";
@@ -450,14 +450,16 @@ fn ini_save($file,$ini)
     $strnum = "";
     for($i = 0; $i < get_size($keys); $i+1)
     {
-        strcat($result,$keys[$i]);
-        strcat($result," ");
-        num_to_str($strnum,get_prop($ini,$keys[$i]));
-        strcat($result,$strnum);
-        strcat($result,"\n");
-        //$result = $result + $keys[$i] + " " + $ini[$keys[$i]] + "\n";
+        $prop = get_prop($ini,$keys[$i]);
+        if($prop[0] > 0)
+        {
+            sprintf($result,"%s%s \"%s\"\n",$result,$keys[$i],$prop);
+        }
+        else
+        {
+            sprintf($result,"%s%s %d\n",$result,$keys[$i],$prop);
+        }
     }
-    printf("%s\n", $result);
     write_file($file,$result);
     remove($result);
     remove($keys);
