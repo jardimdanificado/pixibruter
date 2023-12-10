@@ -1,10 +1,5 @@
 include "src/brute.pixi";
 
-fn teste()
-{
-    printf("teste\n");
-}
-
 //main loop
 //main loop
 //main loop
@@ -14,10 +9,20 @@ fn main()
     
     $window = window_new(0,0,240,160);
     window_text_new($window,0,0,"text test");
-
-    keyboard_add($system.keyboard,KEY_SPACE,teste,0,true);
+    fn main_callback($agrummit)
+    {
+        window_draw($agrummit.window);
+        $log = get_system_log();
+        print($log,0,-$agrummit.system.config.height/2, WHITE);
+        remove($log);
+        //print_container_count();
+    }
+    $temparg = new();
+    $temparg.window = $window;
+    $temparg.system = $system;
+    keyboard_add($system.keyboard, KEY_F2, true, print_container_count);
     print_container_count();
-    system_loop($system,window_draw,$window);
+    system_loop($system,main_callback, $temparg);
 }
 
 main();

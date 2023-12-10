@@ -153,6 +153,9 @@ fn dummy()
 //memory functions
 //memory functions
 
+//container counter
+container_counter = 0;
+
 fn container_count()
 {
     $count = new();
@@ -161,9 +164,9 @@ fn container_count()
 
 fn print_container_count()
 {
-    $temp = container_count();
-    printf("Container count: %d\n", $temp);
-    remove($temp);
+    container_counter = container_count();
+    printf("Container count: %d\n", container_counter);
+    remove(container_counter);
 }
 
 fn flex($object,$size)
@@ -505,7 +508,6 @@ fn window_draw($window)
 {
     fbox($window.x,$window.y,$window.width,$window.height,$window.color);
     box($window.x-1,$window.y-1,$window.width+1,$window.height+1,WHITE);
-    $temp = new();
     $medx = ($window.x + $window.width)/2;
     $medy = ($window.y + $window.height)/2;
 
@@ -536,7 +538,7 @@ fn keyboard_new()
     ret($temp);
 }
 
-fn keyboard_add($keyboard,$keycode,$callback,$arg,$down)
+fn keyboard_add($keyboard,$keycode,$down,$callback,$arg)
 {
     list_push($keyboard.keys,key_new($keycode,$callback,$arg,$down));
 }
