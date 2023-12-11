@@ -6,15 +6,15 @@ include "src/brute.pixi";
 fn main()
 {
     $system = system_new();
-    fn main_callback($system)
+    fn main_callback($_,$system)
     {
         $log = get_system_log();
-        print($log,-$system.config.width/2,0, WHITE, LEFT);
+        print($log,-$system.config.width/2,-$system.config.height/2, WHITE, LEFT | TOP);
         remove($log);
     }
     keyboard_add($system.keyboard, KEY_F2, true, print_container_count);
-    print_container_count();
-    system_loop($system,main_callback, $system);
+    log_container_count();
+    system_loop($system,main_callback);
 }
 
 main();

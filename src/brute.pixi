@@ -169,6 +169,14 @@ fn print_container_count()
     remove(container_counter);
 }
 
+fn log_container_count()
+{
+    container_counter = container_count();
+    logf("Container count: %d\n", container_counter);
+    remove(container_counter);
+}
+
+
 fn flex($object,$size)
 {
     $newsize = get_size($object) + $size;
@@ -600,7 +608,7 @@ fn system_loop($system, $callback, $arg)
     while(true)
     {
         eventor($system);
-        $callback(default($arg,null));
+        $callback(default($arg,null),$system);
         frame();
     }
 }
@@ -614,7 +622,7 @@ fn system_new($configpath)
     list_push($system.layers,layer(0,0,WINDOW_XSIZE,WINDOW_YSIZE));
     if($system.config == null)
     {
-        printf("Error loading config file: %s\n", $configpath);
+        logf("Error loading config file: %s\n", $configpath);
         halt;
     }
     else
