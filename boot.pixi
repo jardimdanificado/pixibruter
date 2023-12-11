@@ -6,23 +6,15 @@ include "src/brute.pixi";
 fn main()
 {
     $system = system_new();
-    
-    $window = window_new(100,100,240,160);
-    window_text_new($window,0,0,"text test");
-    fn main_callback($agrummit)
+    fn main_callback($system)
     {
-        window_draw($agrummit.window);
         $log = get_system_log();
-        print($log,0,0, WHITE);
+        print($log,-$system.config.width/2,0, WHITE, LEFT);
         remove($log);
-        //print_container_count();
     }
-    $temparg = new();
-    $temparg.window = $window;
-    $temparg.system = $system;
     keyboard_add($system.keyboard, KEY_F2, true, print_container_count);
     print_container_count();
-    system_loop($system,main_callback, $temparg);
+    system_loop($system,main_callback, $system);
 }
 
 main();

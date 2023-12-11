@@ -386,14 +386,6 @@ fn vector2($x, $y)
     ret($temp);
 }
 
-fn layer($x,$y,$width,$height)
-{
-    $temp = new($width, $height, INT8);
-    set_alpha($temp, new($width, $height, INT8));
-    $temp.position = vector2($x,$y);
-    ret($temp);
-}
-
 //file functions
 //file functions
 //file functions
@@ -437,7 +429,6 @@ fn ini_load($file)
         if(strstr($lsplited[1],"\"") != -1)
         {
             $lsplited[1] = string_replace($lsplited[1],"\"","");
-            printf("%s\n",$lsplited[1])
         }
         else
         {
@@ -473,73 +464,28 @@ fn ini_save($file,$ini)
     remove($keys);
 }
 
-//window functions
-//window functions
-//window functions
+// layers functions
+// layers functions
+// layers functions
 
-fn window_text_new($window,$x,$y,$text)
+fn layer($x,$y,$width,$height)
 {
-    $temp = new();
-    $temp.x = $x;
-    $temp.y = $y;
-    $temp.text = $text;
-    list_push($window.text,$temp);
+    $temp = new($width, $height, INT8);
+    set_alpha($temp, new($width, $height, INT8));
+    $temp.position = vector2($x,$y);
     ret($temp);
 }
 
-fn window_button_new($window,$x,$y,$width,$height,$text,$callback,$arg)
-{
-    $temp = new();
-    $temp.x = $x;
-    $temp.y = $y;
-    $temp.width = $width;
-    $temp.height = $height;
-    $temp.text = $text;
-    $temp.callback = $callback;
-    $temp.arg = $arg;
-    list_push($window.button,$temp);
-    ret($temp);
-}
-
-fn window_new($x,$y,$width,$height)
-{
-    $temp = new();
-    $temp.x = $x;
-    $temp.y = $y;
-    $temp.width = $width;
-    $temp.height = $height;
-    $temp.color = get_color(0,15,30);
-    $temp.text = new();
-    $temp.button = new();
-    ret($temp);
-}
-
-fn window_draw($window)
-{
-    fbox($window.x,$window.y,$window.width,$window.height,$window.color);
-    box($window.x-1,$window.y-1,$window.width+1,$window.height+1,WHITE);
-    $medx = ($window.x + $window.width)/2;
-    $medy = ($window.y + $window.height)/2;
-
-    for($i = 0; $i < get_size($window.text); $i+1)
-    {
-        print($window.text[$i].text, $medx + $window.text[$i].x, $medy + $window.text[$i].y);
-    }
-}
-
-// baking functions
-// baking functions
-// baking functions
-
-fn mix_it($layers)
+fn layers_render($layers)
 {
     $temp_size = new();
     $temp_size.x = get_xsize($layers[0].color);
     $temp_size.y = get_ysize($layers[0].color);
 
     $result = new($temp_size.x,$temp_size.y,INT8);
+    clear($result);
     set_alpha($result,new($temp_size.x,$temp_size.y,INT8));
-
+    clear(get_alpha($result));
     $temp_nsize = get_size($layers[0]);
 
     for($i = 0; $i < get_size($layers); $i+1)
