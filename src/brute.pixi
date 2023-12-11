@@ -386,6 +386,14 @@ fn vector2($x, $y)
     ret($temp);
 }
 
+fn layer($x,$y,$width,$height)
+{
+    $temp = new($width, $height, INT8);
+    set_alpha($temp, new($width, $height, INT8));
+    $temp.position = vector2($x,$y);
+    ret($temp);
+}
+
 //file functions
 //file functions
 //file functions
@@ -519,6 +527,32 @@ fn window_draw($window)
     }
 }
 
+// baking functions
+// baking functions
+// baking functions
+
+fn mix_it($layers)
+{
+    $temp_size = new();
+    $temp_size.x = get_xsize($layers[0].color);
+    $temp_size.y = get_ysize($layers[0].color);
+
+    $result = new($temp_size.x,$temp_size.y,INT8);
+    set_alpha($result,new($temp_size.x,$temp_size.y,INT8));
+
+    $temp_nsize = get_size($layers[0]);
+
+    for($i = 0; $i < get_size($layers); $i+1)
+    {
+        for($j = 0; $j < $temp_nsize; $j+1)
+        {
+            pixi($result,$result.position.x,$result.position.y);
+        }
+    }
+
+    remove($temp_size);
+    ret($result);
+}
 
 // input functions
 // input functions
@@ -568,7 +602,6 @@ fn eventor($system)
                 }
             }
         }
-        
         if EVT[EVT_TYPE] == EVT_BUTTONUP
         {
             key = EVT[ EVT_KEY ];
@@ -583,6 +616,32 @@ fn eventor($system)
                 }
             }
         }
+
+        if EVT[ EVT_KEY ] == KEY_MOUSE_LEFT
+        {
+            x = EVT[ EVT_X ]
+            y = EVT[ EVT_Y ]
+            tnum = 0
+            if EVT[ EVT_KEY ] == EVT_MOUSEBUTTONDOWN 
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_MOUSEMOVE 
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_MOUSEBUTTONUP
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_TOUCHBEGIN
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_TOUCHMOVE
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_TOUCHEND
+            {
+            }
+        }
+        
     }
 }
 
@@ -605,6 +664,8 @@ fn system_new($configpath)
     $configpath = default($configpath,"data/config.ini");
     $system = new();
     $system.config = ini_load(read_file($configpath));
+    $system.layers = new();
+    list_push($system.layers,layer(0,0,WINDOW_XSIZE,WINDOW_YSIZE));
     if($system.config == null)
     {
         printf("Error loading config file: %s\n", $configpath);
