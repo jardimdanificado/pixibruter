@@ -14,11 +14,10 @@ fn main()
     {
         $log = get_system_log();
         print($log,-$system.config.width/2,-$system.config.height/2, WHITE, LEFT | TOP);
-        //pixi($system.layers[0])
         remove($log);
     }
-    list_push($system.layers, layer(clone($image0)));
-    list_push($system.layers, layer(clone($image1)));
+    list_push($system.layers, layer($image0));
+    list_push($system.layers, layer($image1));
     $system.layers[2].position = vector2(190,150);
     keyboard_add($system.keyboard, KEY_F2, false, print_container_count);
     log_container_count();
