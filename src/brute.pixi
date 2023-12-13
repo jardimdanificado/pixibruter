@@ -476,48 +476,58 @@ fn ini_save($file,$ini)
 // layers functions
 // layers functions
 
-fn layer($x,$y,$width,$height)
+fn layer($container)
 {
-    $temp = new($width, $height, INT8);
-    set_alpha($temp, new($width, $height, INT8));
-    $temp.position = vector2($x,$y);
+    $temp = new(medium_array, medium_array, INT8);
+    if($container != null)
+    {
+        remove($temp);
+        $temp = $container;
+    }
+    $alpha = new(get_xsize($temp), get_ysize($temp), INT8)
+    clean($alpha,255);
+    set_alpha($temp, $alpha);
     ret($temp);
 }
 
-fn layers_render($layers)
+fn layers_merge($layers)
 {
     $temp_size = new();
     $temp_size.x = get_xsize($layers[0].color);
     $temp_size.y = get_ysize($layers[0].color);
 
     $result = new($temp_size.x,$temp_size.y,INT8);
-    clear($result);
+    clean($result);
     set_alpha($result,new($temp_size.x,$temp_size.y,INT8));
-    clear(get_alpha($result));
+    clean(get_alpha($result));
     $temp_nsize = get_size($layers[0]);
 
-    for($i = 0; $i < get_size($layers); $i+1)
-    {
-        for($j = 0; $j < $temp_nsize; $j+1)
-        {
-            pixi($result,$result.position.x,$result.position.y);
-        }
-    }
+
 
     remove($temp_size);
     ret($result);
+
+}
+
+fn layers_render($layers)
+{
+    clear();
+    for($i = 0; $i < get_size($layers); $i+1)
+    {
+        pixi($layers[$i],$layers[$i].position.x,$layers[$i].position.y);
+    }
 }
 
 // input functions
 // input functions
 // input functions
 
-fn key_new($keycode,$callback,$arg,$down)//down = 1 for down, 0 for up
+fn key_new($keycode,$callback,$arg,$up)//down = 0 for down, 1 for up
 {
     $temp = new();
     $temp.keycode = $keycode;
     $temp.callback = $callback;
-    $temp.down = $down;
+    $temp.up = $up;
     ret($temp);
 }
 
@@ -528,9 +538,9 @@ fn keyboard_new()
     ret($temp);
 }
 
-fn keyboard_add($keyboard,$keycode,$down,$callback,$arg)
+fn keyboard_add($keyboard,$keycode,$up,$callback,$arg)
 {
-    list_push($keyboard.keys,key_new($keycode,$callback,$arg,$down));
+    list_push($keyboard.keys,key_new($keycode,$callback,$arg,$up));
 }
 
 fn eventor($system)
@@ -549,7 +559,7 @@ fn eventor($system)
             {
                 if($system.keyboard.keys[$i].keycode == key)
                 {
-                    if($system.keyboard.keys[$i].down == true)
+                    if($system.keyboard.keys[$i].up == false)
                     {
                         $system.keyboard.keys[$i].callback(default($system.keyboard.keys[$i].arg,null));
                     }
@@ -563,7 +573,7 @@ fn eventor($system)
             {
                 if($system.keyboard.keys[$i].keycode == key)
                 {
-                    if($system.keyboard.keys[$i].down == false)
+                    if($system.keyboard.keys[$i].up == true)
                     {
                         $system.keyboard.keys[$i].callback(default($system.keyboard.keys[$i].arg,null));
                     }
@@ -595,7 +605,6 @@ fn eventor($system)
             {
             }
         }
-        
     }
 }
 
@@ -608,6 +617,7 @@ fn system_loop($system, $callback, $arg)
     while(true)
     {
         eventor($system);
+        layers_render($system.layers);
         $callback(default($arg,null),$system);
         frame();
     }
