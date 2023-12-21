@@ -177,11 +177,11 @@ fn __strcat($dest, $src)
 }
 functions.strcat = __strcat;
 
-fn ___strcat($dest, $dest_offset, $src, $src_offset)
+fn __strcat1($dest, $dest_offset, $src, $src_offset)
 {
     ret strcat($dest, $dest_offset, $src, $src_offset);
 }
-functions.strcat_ = ___strcat;
+functions.strcat1 = __strcat1;
 
 fn __strcmp($str1, $str2)
 {
@@ -189,11 +189,11 @@ fn __strcmp($str1, $str2)
 }
 functions.strcmp = __strcmp;
 
-fn ___strcmp($str1, $str1_offset, $str2, $str2_offset)
+fn __strcmp1($str1, $str1_offset, $str2, $str2_offset)
 {
     ret strcmp($str1, $str1_offset, $str2, $str2_offset);
 }
-functions.strcmp_ = __strcmp;
+functions.strcmp1 = __strcmp1;
 
 fn __strlen($str)
 {
@@ -201,11 +201,11 @@ fn __strlen($str)
 }
 functions.strlen = __strlen;
 
-fn ___strlen($str, $str_offset)
+fn __strlen1($str, $str_offset)
 {
     ret strlen($str, $str_offset);
 }
-functions.strlen_ = __strlen;
+functions.strlen1 = __strlen1;
 
 fn __strstr($str1,$str2)
 {
@@ -213,11 +213,11 @@ fn __strstr($str1,$str2)
 }
 functions.strstr = __strstr;
 
-fn ___strstr($str1,$str1_offset,$str2,$str2_offset)
+fn __strstr1($str1,$str1_offset,$str2,$str2_offset)
 {
     ret strstr($str1,$str1_offset,$str2,$str2_offset);
 }
-functions.strstr_ = __strstr;
+functions.strstr = __strstr1;
 
 //not ready for use
 fn __sprintf($str, $format, $entry1, $entry2, $entry3, $entry4, $entry5, $entry6, $entry7, $entry8)
@@ -1991,24 +1991,50 @@ fn __rand_seed($x)
 functions.rand_seed = __rand_seed;
 
 // Type punning
-fn __reinterpret_type()
+//value, mode, intermediate_value_bits 
+fn __reinterpret_type($value, $mode, $intermediate_value_bits)
 {
-    ret reinterpret_type();
+    ret reinterpret_type($value, $mode, $intermediate_value_bits);
 }
 functions.reinterpret_type = __reinterpret_type;
 
 // Data processing
-fn __op_cn()
+fn __op_cn($opcode, $C1, $N)
 {
-    ret op_cn();
+    ret op_cn($opcode, $C1, $N);
 }
 functions.op_cn = __op_cn;
 
-fn __op_cc()
+fn __op_cn1($opcode, $C1, $N, $x , $xsize)
 {
-    ret op_cc();
+    ret op_cn($opcode, $C1, $N, $x , $xsize);
+}
+functions.op_cn_ = __op_cn1;
+
+
+fn __op_cn2($opcode, $C1, $N, $x, $y, $xsize, $ysize)
+{
+    ret op_cn($opcode, $C1, $N, $x, $y, $xsize, $ysize);
+}
+functions.op_cn2 = __op_cn2;
+
+fn __op_cc($opcode, $C1, $C2)
+{
+    ret op_cc($opcode, $C1, $C2);
 }
 functions.op_cc = __op_cc;
+
+fn __op_cc1($opcode, $C1, $C2, $dest_x, $src_x, $xsize)
+{
+    ret op_cc($opcode, $C1, $C2, $dest_x, $src_x, $xsize);
+}
+functions.op_cc1 = __op_cc1;
+
+fn __op_cc2($opcode, $C1, $C2, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize)
+{
+    ret op_cc($opcode, $C1, $C2, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize);
+}
+functions.op_cc2 = __op_cc2;
 
 fn __op_ccn()
 {
