@@ -1,8 +1,11 @@
+include "ffi.pixi";
+
 //constants
 //constants
 //constants
 
-null = 0;
+undefined = 0;
+null = -1;
 false = 0;
 true = 1;
 medium_array = 64;
@@ -165,7 +168,6 @@ fn container_count()
 fn print_container_count()
 {
     container_counter = container_count();
-    printf("Container count: %d\n", container_counter);
     remove(container_counter);
 }
 
@@ -202,7 +204,7 @@ fn random($min,$max)
 
 fn default($obj, $default)
 {
-    if($obj == null)
+    if($obj == 0)
     {
         ret($default);
     }
@@ -402,7 +404,7 @@ fn read_file($filename)
 {
     $size = get_file_size($filename);
     $file = fopen($filename,"rb");
-    if($file == null)
+    if($file == 0)
     {
         ret(null);
     }
@@ -479,7 +481,7 @@ fn ini_save($file,$ini)
 fn layer($container)
 {
     $temp = new(medium_array, medium_array, INT8);
-    if($container != null)
+    if($container > 0)
     {
         remove($temp);
         $temp = $container;
@@ -630,7 +632,7 @@ fn system_new($configpath)
     $system.config = ini_load(read_file($configpath));
     $system.layers = new();
     list_push($system.layers,layer(0,0,WINDOW_XSIZE,WINDOW_YSIZE));
-    if($system.config == null)
+    if($system.config < 0)
     {
         logf("Error loading config file: %s\n", $configpath);
         halt;
