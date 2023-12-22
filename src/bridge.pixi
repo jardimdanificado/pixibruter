@@ -1,0 +1,40 @@
+include "brute.pixi";
+
+fn parse_type($str)
+{
+    if($str[0] == '"')
+    {
+        $str = string_sub($str, 1, string_length($str) - 2);
+        ret $str;
+    }
+    else 
+    {
+        if($str[0] == "'")
+        {
+            ret $str[1];
+        }
+        else 
+        {
+            ret str_to_num($str);
+        }
+    }
+}
+
+fn interpret($command)
+{
+    if(strstr($command, "=") > 0)
+    {
+        $splited = string_split($command, "=");
+        set_prop(variables, $splited[0], interpret($splited[1]));
+        ret 0;
+    }
+    $splited = string_split($command, " ");
+    $function = $splited[0];
+    $size = get_size($splited);
+    $args = new($size-1);
+    for ($i = 1; $i < $size; $i++)
+    {
+        $args[$i - 1] = parse_type($splited[$i]);
+    }
+    ret $result;
+}

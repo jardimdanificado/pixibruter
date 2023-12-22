@@ -1,5 +1,419 @@
 
 functions = new();
+constants = new();
+variables = new();
+
+// Constants
+// Constants
+// Constants
+
+// Container types
+constants.INT = INT;
+constants.INT8 = INT8;
+constants.INT16 = INT16;
+constants.INT32 = INT32;
+constants.INT64 = INT64;
+constants.FLOAT = FLOAT;
+constants.FLOAT32 = FLOAT32;
+constants.FLOAT64 = FLOAT64;
+constants.PIXEL = PIXEL;
+
+// Compression flags
+constants.Z_NO_COMPRESSION = Z_NO_COMPRESSION;
+constants.Z_BEST_SPEED = Z_BEST_SPEED;
+constants.Z_BEST_COMPRESSION = Z_BEST_COMPRESSION;
+constants.Z_DEFAULT_COMPRESSION = Z_DEFAULT_COMPRESSION;
+
+// Container flags
+constants.CFLAG_INTERP = CFLAG_INTERP;
+constants.GL_MIN_LINEAR = GL_MIN_LINEAR;
+constants.GL_MAG_LINEAR = GL_MAG_LINEAR;
+constants.GL_NICEST = GL_NICEST;
+constants.GL_NO_XREPEAT = GL_NO_XREPEAT;
+constants.GL_NO_YREPEAT = GL_NO_YREPEAT;
+constants.GL_NO_ALPHA = GL_NO_ALPHA;
+constants.GL_NPOT = GL_NPOT;
+
+// Container resizing flags
+constants.RESIZE_INTERP1 = RESIZE_INTERP1;
+constants.RESIZE_INTERP2 = RESIZE_INTERP2;
+constants.RESIZE_UNSIGNED_INTERP2 = RESIZE_UNSIGNED_INTERP2;
+constants.RESIZE_COLOR_INTERP1 = RESIZE_COLOR_INTERP1;
+constants.RESIZE_COLOR_INTERP2 = RESIZE_COLOR_INTERP2;
+
+// Container copying flags
+constants.COPY_NO_AUTOROTATE = COPY_NO_AUTOROTATE;
+constants.COPY_CLIPPING = COPY_CLIPPING;
+
+// File formats
+constants.FORMAT_RAW = FORMAT_RAW;
+constants.FORMAT_WAVE = FORMAT_WAVE;
+constants.FORMAT_AIFF = FORMAT_AIFF;
+constants.FORMAT_OGG = FORMAT_OGG;
+constants.FORMAT_MP3 = FORMAT_MP3;
+constants.FORMAT_FLAC = FORMAT_FLAC;
+constants.FORMAT_MIDI = FORMAT_MIDI;
+constants.FORMAT_SUNVOX = FORMAT_SUNVOX;
+constants.FORMAT_SUNVOXMODULE = FORMAT_SUNVOXMODULE;
+constants.FORMAT_XM = FORMAT_XM;
+constants.FORMAT_MOD = FORMAT_MOD;
+constants.FORMAT_JPEG = FORMAT_JPEG;
+constants.FORMAT_PNG = FORMAT_PNG;
+constants.FORMAT_GIF = FORMAT_GIF;
+constants.FORMAT_AVI = FORMAT_AVI;
+constants.FORMAT_MP4 = FORMAT_MP4;
+constants.FORMAT_ZIP = FORMAT_ZIP;
+constants.FORMAT_PIXICONTAINER = FORMAT_PIXICONTAINER;
+
+// Load/Save options
+constants.LOAD_FIRST_FRAME = LOAD_FIRST_FRAME;
+constants.LOAD_AS_RAW = LOAD_AS_RAW;
+
+// GIF saving options
+constants.GIF_GRAYSCALE = GIF_GRAYSCALE;
+constants.GIF_DITHER = GIF_DITHER;
+
+// JPEG saving options
+constants.JPEG_H1V1 = JPEG_H1V1;
+constants.JPEG_H2V1 = JPEG_H2V1;
+constants.JPEG_H2V2 = JPEG_H2V2;
+constants.JPEG_TWOPASS = JPEG_TWOPASS;
+
+// Colors
+constants.ORANGE = ORANGE;
+constants.BLACK = BLACK;
+constants.WHITE = WHITE;
+constants.YELLOW = YELLOW;
+constants.RED = RED;
+constants.GREEN = GREEN;
+constants.BLUE = BLUE;
+
+// Alignment
+constants.TOP = TOP;
+constants.BOTTOM = BOTTOM;
+constants.LEFT = LEFT;
+constants.RIGHT = RIGHT;
+
+// Effects
+constants.EFF_NOISE = EFF_NOISE;
+constants.EFF_SPREAD_LEFT = EFF_SPREAD_LEFT;
+constants.EFF_SPREAD_RIGHT = EFF_SPREAD_RIGHT;
+constants.EFF_SPREAD_UP = EFF_SPREAD_UP;
+constants.EFF_SPREAD_DOWN = EFF_SPREAD_DOWN;
+constants.EFF_HBLUR = EFF_HBLUR;
+constants.EFF_VBLUR = EFF_VBLUR;
+constants.EFF_COLOR = EFF_COLOR;
+
+// OpenGL constants
+constants.GL_POINTS = GL_POINTS;
+constants.GL_LINE_STRIP = GL_LINE_STRIP;
+constants.GL_LINE_LOOP = GL_LINE_LOOP;
+constants.GL_LINES = GL_LINES;
+constants.GL_TRIANGLE_STRIP = GL_TRIANGLE_STRIP;
+constants.GL_TRIANGLE_FAN = GL_TRIANGLE_FAN;
+constants.GL_TRIANGLES = GL_TRIANGLES;
+
+constants.GL_ZERO = GL_ZERO;
+constants.GL_ONE = GL_ONE;
+constants.GL_SRC_COLOR = GL_SRC_COLOR;
+constants.GL_ONE_MINUS_SRC_COLOR = GL_ONE_MINUS_SRC_COLOR;
+constants.GL_DST_COLOR = GL_DST_COLOR;
+constants.GL_ONE_MINUS_DST_COLOR = GL_ONE_MINUS_DST_COLOR;
+constants.GL_SRC_ALPHA = GL_SRC_ALPHA;
+constants.GL_ONE_MINUS_SRC_ALPHA = GL_ONE_MINUS_SRC_ALPHA;
+constants.GL_DST_ALPHA = GL_DST_ALPHA;
+constants.GL_ONE_MINUS_DST_ALPHA = GL_ONE_MINUS_DST_ALPHA;
+constants.GL_SRC_ALPHA_SATURATE = GL_SRC_ALPHA_SATURATE;
+
+constants.GL_BFB_IDENTITY_MATRIX = GL_BFB_IDENTITY_MATRIX;
+
+constants.GL_MAX_TEXTURE_SIZE = GL_MAX_TEXTURE_SIZE;
+constants.GL_MAX_VERTEX_ATTRIBS = GL_MAX_VERTEX_ATTRIBS;
+constants.GL_MAX_VERTEX_UNIFORM_VECTORS = GL_MAX_VERTEX_UNIFORM_VECTORS;
+constants.GL_MAX_VARYING_VECTORS = GL_MAX_VARYING_VECTORS;
+constants.GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS = GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+constants.GL_MAX_TEXTURE_IMAGE_UNITS = GL_MAX_TEXTURE_IMAGE_UNITS;
+constants.GL_MAX_FRAGMENT_UNIFORM_VECTORS = GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+
+constants.GL_SHADER_SOLID = GL_SHADER_SOLID;
+constants.GL_SHADER_GRAD = GL_SHADER_GRAD;
+constants.GL_SHADER_TEX_ALPHA_SOLID = GL_SHADER_TEX_ALPHA_SOLID;
+constants.GL_SHADER_TEX_ALPHA_GRAD = GL_SHADER_TEX_ALPHA_GRAD;
+constants.GL_SHADER_TEX_RGB_SOLID = GL_SHADER_TEX_RGB_SOLID;
+constants.GL_SHADER_TEX_RGB_GRAD = GL_SHADER_TEX_RGB_GRAD;
+
+constants.GL_SCREEN = GL_SCREEN;
+constants.GL_ZBUF = GL_ZBUF;
+
+// Audio constants
+constants.AUDIO_FLAG_INTERP2 = AUDIO_FLAG_INTERP2;
+
+// MIDI constants
+constants.MIDI_PORT_READ = MIDI_PORT_READ;
+constants.MIDI_PORT_WRITE = MIDI_PORT_WRITE;
+
+// Events constants
+constants.EVT = EVT;
+constants.EVT_TYPE = EVT_TYPE;
+constants.EVT_FLAGS = EVT_FLAGS;
+constants.EVT_TIME = EVT_TIME;
+constants.EVT_X = EVT_X;
+constants.EVT_Y = EVT_Y;
+constants.EVT_KEY = EVT_KEY;
+constants.EVT_SCANCODE = EVT_SCANCODE;
+constants.EVT_PRESSURE = EVT_PRESSURE;
+
+constants.EVT_MOUSEBUTTONDOWN = EVT_MOUSEBUTTONDOWN;
+constants.EVT_MOUSEBUTTONUP = EVT_MOUSEBUTTONUP;
+constants.EVT_MOUSEMOVE = EVT_MOUSEMOVE;
+constants.EVT_TOUCHBEGIN = EVT_TOUCHBEGIN;
+constants.EVT_TOUCHEND = EVT_TOUCHEND;
+constants.EVT_TOUCHMOVE = EVT_TOUCHMOVE;
+constants.EVT_BUTTONDOWN = EVT_BUTTONDOWN;
+constants.EVT_BUTTONUP = EVT_BUTTONUP;
+constants.EVT_SCREENRESIZE = EVT_SCREENRESIZE;
+constants.EVT_QUIT = EVT_QUIT;
+
+constants.EVT_FLAG_SHIFT = EVT_FLAG_SHIFT;
+constants.EVT_FLAG_CTRL = EVT_FLAG_CTRL;
+constants.EVT_FLAG_ALT = EVT_FLAG_ALT;
+constants.EVT_FLAG_MODE = EVT_FLAG_MODE;
+constants.EVT_FLAG_MODS = EVT_FLAG_MODS;
+constants.EVT_FLAG_DOUBLECLICK = EVT_FLAG_DOUBLECLICK;
+
+constants.KEY_MOUSE_LEFT = KEY_MOUSE_LEFT;
+constants.KEY_MOUSE_MIDDLE = KEY_MOUSE_MIDDLE;
+constants.KEY_MOUSE_RIGHT = KEY_MOUSE_RIGHT;
+constants.KEY_MOUSE_SCROLLUP = KEY_MOUSE_SCROLLUP;
+constants.KEY_MOUSE_SCROLLDOWN = KEY_MOUSE_SCROLLDOWN;
+constants.KEY_BACKSPACE = KEY_BACKSPACE;
+constants.KEY_TAB = KEY_TAB;
+constants.KEY_ENTER = KEY_ENTER;
+constants.KEY_ESCAPE = KEY_ESCAPE;
+constants.KEY_SPACE = KEY_SPACE;
+constants.KEY_F1 = KEY_F1;
+constants.KEY_F2 = KEY_F2;
+constants.KEY_F3 = KEY_F3;
+constants.KEY_F4 = KEY_F4;
+constants.KEY_F5 = KEY_F5;
+constants.KEY_F6 = KEY_F6;
+constants.KEY_F7 = KEY_F7;
+constants.KEY_F8 = KEY_F8;
+constants.KEY_F9 = KEY_F9;
+constants.KEY_F10 = KEY_F10;
+constants.KEY_F11 = KEY_F11;
+constants.KEY_F12 = KEY_F12;
+constants.KEY_UP = KEY_UP;
+constants.KEY_DOWN = KEY_DOWN;
+constants.KEY_LEFT = KEY_LEFT;
+constants.KEY_RIGHT = KEY_RIGHT;
+constants.KEY_INSERT = KEY_INSERT;
+constants.KEY_DELETE = KEY_DELETE;
+constants.KEY_HOME = KEY_HOME;
+constants.KEY_END = KEY_END;
+constants.KEY_PAGEUP = KEY_PAGEUP;
+constants.KEY_PAGEDOWN = KEY_PAGEDOWN;
+constants.KEY_CAPS = KEY_CAPS;
+constants.KEY_SHIFT = KEY_SHIFT;
+constants.KEY_CTRL = KEY_CTRL;
+constants.KEY_ALT = KEY_ALT;
+constants.KEY_MENU = KEY_MENU;
+constants.KEY_UNKNOWN = KEY_UNKNOWN;
+
+constants.QA_NONE = QA_NONE;
+constants.QA_CLOSE_VM = QA_CLOSE_VM;
+
+// Threads constants
+constants.THREAD_FLAG_AUTO_DESTROY = THREAD_FLAG_AUTO_DESTROY;
+
+// Mathematical constants
+constants.M_E = M_E;
+constants.M_LOG2E = M_LOG2E;
+constants.M_LOG10E = M_LOG10E;
+constants.M_LN2 = M_LN2;
+constants.M_LN10 = M_LN10;
+constants.M_PI = M_PI;
+constants.M_2_SQRTPI = M_2_SQRTPI;
+constants.M_SQRT2 = M_SQRT2;
+constants.M_SQRT1_2 = M_SQRT1_2;
+
+// Data processing operations for op_cn() function
+constants.OP_MIN = OP_MIN;
+constants.OP_MAX = OP_MAX;
+constants.OP_MAXABS = OP_MAXABS;
+constants.OP_SUM = OP_SUM;
+constants.OP_LIMIT_TOP = OP_LIMIT_TOP;
+constants.OP_LIMIT_BOTTOM = OP_LIMIT_BOTTOM;
+constants.OP_ABS = OP_ABS;
+constants.OP_SUB2 = OP_SUB2;
+constants.OP_COLOR_SUB2 = OP_COLOR_SUB2;
+constants.OP_DIV2 = OP_DIV2;
+constants.OP_H_INTEGRAL = OP_H_INTEGRAL;
+constants.OP_V_INTEGRAL = OP_V_INTEGRAL;
+constants.OP_H_DERIVATIVE = OP_H_DERIVATIVE;
+constants.OP_V_DERIVATIVE = OP_V_DERIVATIVE;
+constants.OP_H_FLIP = OP_H_FLIP;
+constants.OP_V_FLIP = OP_V_FLIP;
+
+// Data processing operations for op_cc() function
+constants.OP_ADD = OP_ADD;
+constants.OP_SADD = OP_SADD;
+constants.OP_COLOR_ADD = OP_COLOR_ADD;
+constants.OP_SUB = OP_SUB;
+constants.OP_SSUB = OP_SSUB;
+constants.OP_COLOR_SUB = OP_COLOR_SUB;
+constants.OP_MUL = OP_MUL;
+constants.OP_SMUL = OP_SMUL;
+constants.OP_MUL_RSHIFT15 = OP_MUL_RSHIFT15;
+constants.OP_COLOR_MUL = OP_COLOR_MUL;
+constants.OP_DIV = OP_DIV;
+constants.OP_COLOR_DIV = OP_COLOR_DIV;
+constants.OP_AND = OP_AND;
+constants.OP_OR = OP_OR;
+constants.OP_XOR = OP_XOR;
+constants.OP_LSHIFT = OP_LSHIFT;
+constants.OP_RSHIFT = OP_RSHIFT;
+constants.OP_EQUAL = OP_EQUAL;
+constants.OP_LESS = OP_LESS;
+constants.OP_GREATER = OP_GREATER;
+constants.OP_COPY = OP_COPY;
+constants.OP_COPY_LESS = OP_COPY_LESS;
+constants.OP_COPY_GREATER = OP_COPY_GREATER;
+
+// Data processing operations for op_ccn() function
+constants.OP_MUL_DIV = OP_MUL_DIV;
+constants.OP_MUL_RSHIFT = OP_MUL_RSHIFT;
+
+// Data processing operations for generator() function
+constants.OP_SIN = OP_SIN;
+constants.OP_SIN8 = OP_SIN8;
+constants.OP_RAND = OP_RAND;
+
+// Sampler constants
+constants.SMP_INFO_SIZE = SMP_INFO_SIZE;
+
+// Sample info field numbers
+constants.SMP_DEST = SMP_DEST;
+constants.SMP_DEST_OFF = SMP_DEST_OFF;
+constants.SMP_DEST_LEN = SMP_DEST_LEN;
+constants.SMP_SRC = SMP_SRC;
+constants.SMP_SRC_OFF_H = SMP_SRC_OFF_H;
+constants.SMP_SRC_OFF_L = SMP_SRC_OFF_L;
+constants.SMP_SRC_SIZE = SMP_SRC_SIZE;
+constants.SMP_LOOP = SMP_LOOP;
+constants.SMP_LOOP_LEN = SMP_LOOP_LEN;
+constants.SMP_VOL1 = SMP_VOL1;
+constants.SMP_VOL2 = SMP_VOL2;
+constants.SMP_DELTA = SMP_DELTA;
+constants.SMP_FLAGS = SMP_FLAGS;
+
+// Sample info flags
+constants.SMP_FLAG_INTERP2 = SMP_FLAG_INTERP2;
+constants.SMP_FLAG_INTERP4 = SMP_FLAG_INTERP4;
+constants.SMP_FLAG_PINGPONG = SMP_FLAG_PINGPONG;
+constants.SMP_FLAG_REVERSE = SMP_FLAG_REVERSE;
+
+// Convolution filter flags
+constants.CONV_FILTER_COLOR = CONV_FILTER_COLOR;
+constants.CONV_FILTER_BORDER_EXTEND = CONV_FILTER_BORDER_EXTEND;
+constants.CONV_FILTER_BORDER_SKIP = CONV_FILTER_BORDER_SKIP;
+constants.CONV_FILTER_UNSIGNED = CONV_FILTER_UNSIGNED;
+
+// File dialog options
+constants.FDIALOG_FLAG_LOAD = FDIALOG_FLAG_LOAD;
+
+// Native code constants
+constants.CCONV_DEFAULT = CCONV_DEFAULT;
+constants.CCONV_CDECL = CCONV_CDECL;
+constants.CCONV_STDCALL = CCONV_STDCALL;
+constants.CCONV_UNIX_AMD64 = CCONV_UNIX_AMD64;
+constants.CCONV_WIN64 = CCONV_WIN64;
+
+// POSIX constants
+constants.FOPEN_MAX = FOPEN_MAX;
+constants.SEEK_CUR = SEEK_CUR;
+constants.SEEK_END = SEEK_END;
+constants.SEEK_SET = SEEK_SET;
+constants.EOF = EOF;
+constants.STDIN = STDIN;
+constants.STDOUT = STDOUT;
+constants.STDERR = STDERR;
+
+// Pixilang info flags
+constants.PIXINFO_MULTITOUCH = PIXINFO_MULTITOUCH;
+constants.PIXINFO_TOUCHCONTROL = PIXINFO_TOUCHCONTROL;
+constants.PIXINFO_NOWINDOW = PIXINFO_NOWINDOW;
+constants.PIXINFO_MIDIIN = PIXINFO_MIDIIN;
+constants.PIXINFO_MIDIOUT = PIXINFO_MIDIOUT;
+
+// Misc constants
+constants.PIXILANG_VERSION = PIXILANG_VERSION;
+constants.OS_NAME = OS_NAME;
+constants.ARCH_NAME = ARCH_NAME;
+constants.LANG_NAME = LANG_NAME;
+constants.CURRENT_PATH = CURRENT_PATH;
+constants.USER_PATH = USER_PATH;
+constants.TEMP_PATH = TEMP_PATH;
+constants.OPENGL = OPENGL;
+constants.INT_SIZE = INT_SIZE;
+constants.FLOAT_SIZE = FLOAT_SIZE;
+constants.INT_MAX = INT_MAX;
+constants.COLORBITS = COLORBITS;
+
+// Built-in global variables
+constants.WINDOW_XSIZE = WINDOW_XSIZE;
+constants.WINDOW_YSIZE = WINDOW_YSIZE;
+constants.WINDOW_ZSIZE = WINDOW_ZSIZE;
+constants.WINDOW_SAFE_AREA_X = WINDOW_SAFE_AREA_X;
+constants.WINDOW_SAFE_AREA_Y = WINDOW_SAFE_AREA_Y;
+constants.WINDOW_SAFE_AREA_W = WINDOW_SAFE_AREA_W;
+constants.WINDOW_SAFE_AREA_H = WINDOW_SAFE_AREA_H;
+constants.FPS = FPS;
+constants.PPI = PPI;
+constants.UI_SCALE = UI_SCALE;
+constants.UI_FONT_SCALE = UI_FONT_SCALE;
+constants.PIXILANG_INFO = PIXILANG_INFO;
+
+// Sunvox constants
+    // Note commands
+    constants.NOTECMD_NOTE_OFF = NOTECMD_NOTE_OFF;
+    constants.NOTECMD_ALL_NOTES_OFF = NOTECMD_ALL_NOTES_OFF;
+    constants.NOTECMD_CLEAN_SYNTHS = NOTECMD_CLEAN_SYNTHS;
+    constants.NOTECMD_STOP = NOTECMD_STOP;
+    constants.NOTECMD_PLAY = NOTECMD_PLAY;
+    constants.NOTECMD_SET_PITCH = NOTECMD_SET_PITCH;
+    constants.NOTECMD_CLEAN_MODULE = NOTECMD_CLEAN_MODULE;
+
+    // Flags for sv_init()
+    constants.SV_INIT_FLAG_NO_DEBUG_OUTPUT = SV_INIT_FLAG_NO_DEBUG_OUTPUT;
+    constants.SV_INIT_FLAG_USER_AUDIO_CALLBACK = SV_INIT_FLAG_USER_AUDIO_CALLBACK;
+    constants.SV_INIT_FLAG_OFFLINE = SV_INIT_FLAG_OFFLINE;
+    constants.SV_INIT_FLAG_AUDIO_INT16 = SV_INIT_FLAG_AUDIO_INT16;
+    constants.SV_INIT_FLAG_AUDIO_FLOAT32 = SV_INIT_FLAG_AUDIO_FLOAT32;
+    constants.SV_INIT_FLAG_ONE_THREAD = SV_INIT_FLAG_ONE_THREAD;
+
+    // Flags for sv_get_time_map()
+    constants.SV_TIME_MAP_SPEED = SV_TIME_MAP_SPEED;
+    constants.SV_TIME_MAP_FRAMECNT = SV_TIME_MAP_FRAMECNT;
+
+    // Flags for sv_get_module_flags()
+    constants.SV_MODULE_FLAG_EXISTS = SV_MODULE_FLAG_EXISTS;
+    constants.SV_MODULE_FLAG_GENERATOR = SV_MODULE_FLAG_GENERATOR;
+    constants.SV_MODULE_FLAG_EFFECT = SV_MODULE_FLAG_EFFECT;
+    constants.SV_MODULE_FLAG_MUTE = SV_MODULE_FLAG_MUTE;
+    constants.SV_MODULE_FLAG_SOLO = SV_MODULE_FLAG_SOLO;
+    constants.SV_MODULE_FLAG_BYPASS = SV_MODULE_FLAG_BYPASS;
+    constants.SV_MODULE_INPUTS_OFF = SV_MODULE_INPUTS_OFF;
+    constants.SV_MODULE_INPUTS_MASK = SV_MODULE_INPUTS_MASK;
+    constants.SV_MODULE_OUTPUTS_OFF = SV_MODULE_OUTPUTS_OFF;
+    constants.SV_MODULE_OUTPUTS_MASK = SV_MODULE_OUTPUTS_MASK;
+
+    // Other
+    constants.NULL = -1;
+
+// Functions
+// Functions
+// Functions
 
 // Containers (memory management)
 fn __new($xsize, $ysize, $type)
