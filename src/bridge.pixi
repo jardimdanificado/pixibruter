@@ -20,6 +20,14 @@ fn parse_type($str)
     }
 }
 
+// $ = variable; set: $variable = value; get: 
+// # = constant;
+// ! = function;
+// OPCODES:
+// 0 = set: set name value
+// 1 = get: get name
+
+
 fn interpret($command)
 {
     if(strstr($command, "=") > 0)
