@@ -1,5 +1,11 @@
 include "brute.pixi";
 
+/*  
+    OPCODES:
+    0 = set: set name value
+    1 = get: get name
+*/
+
 fn parse_type($str)
 {
     if($str[0] == '"')
@@ -19,14 +25,6 @@ fn parse_type($str)
         }
     }
 }
-
-// $ = variable; set: $variable = value; get: 
-// # = constant;
-// ! = function;
-// OPCODES:
-// 0 = set: set name value
-// 1 = get: get name
-
 
 fn interpret($command)
 {
