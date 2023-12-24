@@ -22,7 +22,7 @@ while(1)
     	if($char == '@')
     	{
 			//strcat($command, "\n");
-			printf("%s\n", $command);
+			//printf("%s\n", $command);
     	    interpret($command);
 			sprintf($command, "");
 			sprintf(STDIN, ""); // remove this if commands are incomplete
