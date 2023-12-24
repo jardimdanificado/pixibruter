@@ -16,16 +16,16 @@ while(1)
 {  
     $command = ""
     $char =  'a';
-	print_container_count()
 	while($char != '@')
     {
     	$char = fgetc(STDIN);
     	if($char == '@')
     	{
 			//strcat($command, "\n");
-			//printf("%s\n", $command);
+			printf("%s\n", $command);
     	    interpret($command);
 			sprintf($command, "");
+			sprintf(STDIN, ""); // remove this if commands are incomplete
 		}
     	else
     	{
