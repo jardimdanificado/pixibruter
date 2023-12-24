@@ -216,6 +216,7 @@ fn RUN($func,$args)
 
 fn interpret($command)
 {
+    //printf("command: %s\n", $command);
     $splited = string_split($command, " ");
     $size = get_size($splited);
     $args = new($size-1);
@@ -264,11 +265,12 @@ fn interpret($command)
     remove($args);
 }
 
+
+/*
 while(1)
 {
     //$command = input();
-    printf(">");
-    interpret("clear #WHITE");
+    interpret("clear #WHITE;frame 0");
     //interpret("printf a234\n");
-    interpret("frame 0");
 }
+*/

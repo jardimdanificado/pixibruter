@@ -166,6 +166,7 @@ fn container_count()
 fn print_container_count()
 {
     container_counter = container_count();
+    printf("Container count: %d\n", container_counter);
     remove(container_counter);
 }
 

@@ -1,0 +1,36 @@
+include "bridge.pixi";
+
+char = 'm';
+
+/*
+avaliable = get_proplist(functions)
+_size = get_size(avaliable)
+
+for($i = 0; $i < _size; $i+1)
+{
+    printf("%d = %s\n",$i, avaliable[$i]);
+}
+*/
+
+while(1)
+{  
+    $command = ""
+    $char =  'a';
+	print_container_count()
+	while($char != '@')
+    {
+    	$char = fgetc(STDIN);
+    	if($char == '@')
+    	{
+			//strcat($command, "\n");
+			//printf("%s\n", $command);
+    	    interpret($command);
+			sprintf($command, "");
+		}
+    	else
+    	{
+    	    sprintf($command, "%s%c", $command, $char);
+    	}
+    }
+}
+
