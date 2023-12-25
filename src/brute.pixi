@@ -1,3 +1,5 @@
+include "ffi.pixi";//functions, variables, constants
+
 //constants
 //constants
 //constants
@@ -162,6 +164,13 @@ fn container_count()
     $count = new();
     ret($count);
 }
+fn _container_count($target)
+{
+    $count = get_size($target);
+    $target = $count;
+    ret($target);
+}
+functions.container_count = _container_count;
 
 fn print_container_count()
 {
@@ -169,6 +178,7 @@ fn print_container_count()
     printf("Container count: %d\n", container_counter);
     remove(container_counter);
 }
+functions.print_container_count = print_container_count;
 
 fn log_container_count()
 {
@@ -176,7 +186,7 @@ fn log_container_count()
     logf("Container count: %d\n", container_counter);
     remove(container_counter);
 }
-
+functions.log_container_count = log_container_count;
 
 fn flex($object,$size)
 {
@@ -184,7 +194,7 @@ fn flex($object,$size)
     resize($object,$newsize);
     ret($newsize);
 }
-
+functions.flex = flex;
 
 //util functions
 //util functions
@@ -194,12 +204,20 @@ fn refresh_seed()
 {
     rand_seed( get_timer() + get_ticks() );
 }
+functions.refresh_seed = refresh_seed;
 
 fn random($min,$max)
 {
     //considering that rand() returns a value between 0 and 32767
     ret((rand() % ($max - $min + 1)) + $min);
 }
+fn _random($target,$min,$max)
+{
+    //considering that rand() returns a value between 0 and 32767
+    $target = ((rand() % ($max - $min + 1)) + $min);
+    ret($target);
+}
+functions.random = _random;
 
 fn default($obj, $default)
 {
@@ -212,6 +230,13 @@ fn default($obj, $default)
         ret($obj);
     }
 }
+functions.default = default;
+
+fn create($name, $value)
+{
+    set_prop(variables, $name, $value);
+}
+functions.create = create;
 
 //list functions
 //list functions
@@ -221,11 +246,13 @@ fn list_push($list,$element)
 {
     $list[flex($list, 1)-1] = $element;
 }
+functions.list_push = list_push;
 
 fn list_pop($list)
 {
     flex($list, -1);
 }
+functions.list_pop = list_pop;
 
 fn list_insert($list,$element,$position)
 {
@@ -237,8 +264,8 @@ fn list_insert($list,$element,$position)
     }
     $list[$position] = $element;
     remove($oldsize);
-    //remove($position);
 }
+functions.list_insert = list_insert;
 
 fn list_remove($list,$position)
 {
@@ -249,8 +276,8 @@ fn list_remove($list,$position)
     }
     resize($list,$oldsize - 1);
     remove($oldsize);
-    //remove($position);
 }
+functions.list_remove = list_remove;
 
 fn list_find($list,$element)
 {
@@ -265,6 +292,12 @@ fn list_find($list,$element)
     remove($oldsize);
     ret(-1);
 }
+fn _list_find($list,$element,$target)
+{
+    $target = list_find($list,$element);
+    ret($target);
+}
+functions.list_find = _list_find;
 
 //strings functions
 //strings functions
@@ -276,6 +309,12 @@ fn string_new($size)
     $temp = new($size);
     ret($temp);
 }
+fn _string_new($size,$target)
+{
+    $target = string_new($size);
+    ret($target);
+}
+functions.string_new = _string_new;
 
 fn string_sub($string,$start,$end)
 {
@@ -289,6 +328,12 @@ fn string_sub($string,$start,$end)
     }
     ret($newstr);
 }
+fn _string_sub($string,$start,$end,$target)
+{
+    $target = string_sub($string,$start,$end);
+    ret($target);
+}
+functions.string_sub = _string_sub;
 
 //counting ocurrences using strstr
 fn string_ocurrences($str1,$str2)
@@ -309,6 +354,12 @@ fn string_ocurrences($str1,$str2)
     //remove($offset);
     ret($count);
 }
+fn _string_ocurrences($str1,$str2,$target)
+{
+    $target = string_ocurrences($str1,$str2);
+    ret($target);
+}
+functions.string_ocurrences = _string_ocurrences;
 
 //this string returns the positions of each ocurrence
 fn string_ocurrences_advanced($str1,$str2)
@@ -331,6 +382,12 @@ fn string_ocurrences_advanced($str1,$str2)
 
     ret($result);
 }
+fn _string_ocurrences_advanced($str1,$str2,$target)
+{
+    $target = string_ocurrences_advanced($str1,$str2);
+    ret($target);
+}
+functions.string_ocurrences_advanced = _string_ocurrences_advanced;
 
 fn string_split($string,$separator)
 {
@@ -350,6 +407,12 @@ fn string_split($string,$separator)
     remove($ocurrences);
     ret($result);
 }
+fn _string_split($string,$separator,$target)
+{
+    $target = string_split($string,$separator);
+    ret($target);
+}
+functions.string_split = _string_split;
 
 fn string_replace($string,$oldstr,$newstr)
 {
@@ -366,6 +429,12 @@ fn string_replace($string,$oldstr,$newstr)
     remove($ocurrences);
     ret($result);
 }
+fn _string_replace($string,$oldstr,$newstr,$target)
+{
+    $target = string_replace($string,$oldstr,$newstr);
+    ret($target);
+}
+functions.string_replace = _string_replace;
 
 fn string_replace_char($string,$oldchar,$newchar)
 {
@@ -382,6 +451,12 @@ fn string_replace_char($string,$oldchar,$newchar)
     }
     ret($string);
 }
+fn _string_replace_char($string,$oldchar,$newchar,$target)
+{
+    $target = string_replace_char($string,$oldchar,$newchar);
+    ret($target);
+}
+functions.string_replace_char = _string_replace_char;
 
 //basic constructors
 //basic constructors
@@ -394,6 +469,12 @@ fn vector2($x, $y)
     $temp.y = $y;
     ret($temp);
 }
+fn _vector2($x, $y, $target)
+{
+    $target = vector2($x, $y);
+    ret($target);
+}
+functions.vector2 = _vector2;
 
 //file functions
 //file functions
@@ -413,6 +494,12 @@ fn read_file($filename)
     fclose($file);
     ret($result);
 }
+fn _read_file($filename,$target)
+{
+    $target = read_file($filename);
+    ret($target);
+}
+functions.read_file = _read_file;
 
 fn write_file($filename,$content)
 {
@@ -421,6 +508,7 @@ fn write_file($filename,$content)
     fclose($file);
     //remove($file);
 }
+functions.write_file = write_file;
 
 //ini functions
 //ini functions
@@ -450,6 +538,12 @@ fn ini_load($file)
     remove($file);
     ret($result);
 }
+fn _ini_load($file,$target)
+{
+    $target = ini_load($file);
+    ret($target);
+}
+functions.ini_load = _ini_load;
 
 fn ini_save($file,$ini)
 {
@@ -472,6 +566,7 @@ fn ini_save($file,$ini)
     remove($result);
     remove($keys);
 }
+functions.ini_save = ini_save;
 
 // layers functions
 // layers functions
@@ -490,8 +585,14 @@ fn layer($container)
     set_alpha($temp, $alpha);
     ret($temp);
 }
+fn _layer($container,$target)
+{
+    $target = layer($container);
+    ret($target);
+}
+functions.layer = _layer;
 
-fn layers_merge($layers)
+fn layers_merge($layers)// incomplete
 {
     $temp_size = new();
     $temp_size.x = get_xsize($layers[0].color);
@@ -507,8 +608,13 @@ fn layers_merge($layers)
 
     remove($temp_size);
     ret($result);
-
 }
+fn _layers_merge($layers,$target)
+{
+    $target = layers_merge($layers);
+    ret($target);
+}
+functions.layers_merge = _layers_merge;
 
 fn layers_render($layers)
 {
@@ -518,6 +624,7 @@ fn layers_render($layers)
         pixi($layers[$i],$layers[$i].position.x,$layers[$i].position.y);
     }
 }
+functions.layers_render = layers_render;
 
 // input functions
 // input functions
@@ -538,11 +645,13 @@ fn keyboard_new()
     $temp.keys = new();
     ret($temp);
 }
+functions.keyboard_new = keyboard_new;
 
 fn keyboard_add($keyboard,$keycode,$up,$callback,$arg)
 {
     list_push($keyboard.keys,key_new($keycode,$callback,$arg,$up));
 }
+functions.keyboard_add = keyboard_add;
 
 fn eventor($system)
 {
@@ -608,6 +717,7 @@ fn eventor($system)
         }
     }
 }
+functions.eventor = eventor;
 
 //startup functions
 //startup functions
@@ -623,6 +733,7 @@ fn system_loop($system, $callback, $arg)
         frame();
     }
 }
+functions.system_loop = system_loop;
 
 fn system_new($configpath)
 {
@@ -649,3 +760,9 @@ fn system_new($configpath)
     refresh_seed();//required to get a different random number each time  
     ret($system);
 }
+fn _system_new($configpath,$target)
+{
+    $target = system_new($configpath);
+    ret($target);
+}
+functions.system_new = _system_new;
