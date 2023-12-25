@@ -1338,94 +1338,96 @@ fn __t_point($float_array_vec3)
 functions.t_point = __t_point;
 
 // Audio
-fn __set_audio_callback()
+fn __set_audio_callback($callback, $userdata, $sample_rate, $format, $channels, $flags)
 {
-    ret(set_audio_callback());
+    ret(set_audio_callback($callback, $userdata, $sample_rate, $format, $channels, $flags));
 }
 functions.set_audio_callback = __set_audio_callback;
 
-fn __get_audio_sample_rate()
+fn __get_audio_sample_rate($source)
 {
-    ret(get_audio_sample_rate());
+    ret(get_audio_sample_rate($source));
 }
 functions.get_audio_sample_rate = __get_audio_sample_rate;
 
-fn __enable_audio_input()
+fn __enable_audio_input($disable_enable)
 {
-    ret(enable_audio_input());
+    ret(enable_audio_input($disable_enable));
 }
 functions.enable_audio_input = __enable_audio_input;
 
-fn __get_note_freq()
+fn __get_note_freq($note, $finetune)
 {
-    ret(get_note_freq());
+    ret(get_note_freq($note, $finetune));
 }
 functions.get_note_freq = __get_note_freq;
 
 // MIDI
-fn __midi_open_client()
+fn __midi_open_client($client_name)
 {
-    ret(midi_open_client());
+    ret(midi_open_client($client_name));
 }
 functions.midi_open_client = __midi_open_client;
 
-fn __midi_close_client()
+fn __midi_close_client($client_id)
 {
-    ret(midi_close_client());
+    ret(midi_close_client($client_id));
 }
 functions.midi_close_client = __midi_close_client;
 
-fn __midi_get_device()
+fn __midi_get_device($client_id, $device_num, $flags)
 {
-    ret(midi_get_device());
+    ret(midi_get_device($client_id, $device_num, $flags));
 }
 functions.midi_get_device = __midi_get_device;
 
-fn __midi_open_port()
+fn __midi_open_port($client_id, $port_name, $device_name, $flags)
 {
-    ret(midi_open_port());
+    ret(midi_open_port($client_id, $port_name, $device_name, $flags));
 }
 functions.midi_open_port = __midi_open_port;
 
-fn __midi_reopen_port()
+fn __midi_reopen_port($client_id, $port_id)
 {
-    ret(midi_reopen_port());
+    ret(midi_reopen_port($client_id, $port_id));
 }
 functions.midi_reopen_port = __midi_reopen_port;
 
-fn __midi_close_port()
+fn __midi_close_port($client_id, $port_id)
 {
-    ret(midi_close_port());
+    ret(midi_close_port($client_id, $port_id));
 }
 functions.midi_close_port = __midi_close_port;
 
-fn __midi_get_event()
+fn __midi_get_event($client_id, $port_id, $cont)
 {
-    ret(midi_get_event());
+    ret(midi_get_event($client_id, $port_id, $cont));
 }
 functions.midi_get_event = __midi_get_event;
 
-fn __midi_get_event_time()
+fn __midi_get_event_time($client_id, $port_id)
 {
-    ret(midi_get_event_time());
+    ret(midi_get_event_time($client_id, $port_id));
 }
 functions.midi_get_event_time = __midi_get_event_time;
 
-fn __midi_next_event()
+fn __midi_next_event($client_id, $port_id)
 {
-    ret(midi_next_event());
+    ret(midi_next_event($client_id, $port_id));
 }
 functions.midi_next_event = __midi_next_event;
 
-fn __midi_send_event()
+fn __midi_send_event($client_id, $port_id, $data_cont, $data_size, $t )
 {
-    ret(midi_send_event());
+    ret(midi_send_event($client_id, $port_id, $data_cont, $data_size, $t));
 }
 functions.midi_send_event = __midi_send_event;
 
 // SunVox
     // Main
-    fn __sv_load_dll()
+
+    //NOT FOR PIXILANG
+    /*fn __sv_load_dll()
     {
         ret(sv_load_dll());
     }
@@ -1448,25 +1450,28 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_deinit());
     }
     functions.sv_deinit = __sv_deinit;
+    */
 
-    fn __sv_new()
+    fn __sv_new($sample_rate, $flags)
     {
-        ret(sv_new());
+        ret(sv_new($sample_rate, $flags));
     }
     functions.sv_new = __sv_new;
 
-    fn __sv_remove()
+    fn __sv_remove($sv)
     {
-        ret(sv_remove());
+        ret(sv_remove($sv));
     }
     functions.sv_remove = __sv_remove;
 
-    fn __sv_get_sample_rate()
+    fn __sv_get_sample_rate($sv)
     {
-        ret(sv_get_sample_rate());
+        ret(sv_get_sample_rate($sv));
     }
     functions.sv_get_sample_rate = __sv_get_sample_rate;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_update_input()
     {
         ret(sv_update_input());
@@ -1484,13 +1489,16 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_audio_callback2());
     }
     functions.sv_audio_callback2 = __sv_audio_callback2;
+    */
 
-    fn __sv_render()
+    fn __sv_render($sv, $buf, $frames, $latency, $out_time, $in_buf, $in_channels)
     {
-        ret(sv_render());
+        ret(sv_render($sv, $buf, $frames, $latency, $out_time, $in_buf, $in_channels));
     }
     functions.sv_render = __sv_render;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_open_slot()
     {
         ret(sv_open_slot());
@@ -1502,7 +1510,7 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_close_slot());
     }
     functions.sv_close_slot = __sv_close_slot;
-
+    
     fn __sv_lock_slot()
     {
         ret(sv_lock_slot());
@@ -1514,166 +1522,185 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_unlock_slot());
     }
     functions.sv_unlock_slot = __sv_unlock_slot;
+    */
 
-    fn __sv_lock()
+    fn __sv_lock($sv)
     {
-        ret(sv_lock());
+        ret(sv_lock($sv));
     }
     functions.sv_lock = __sv_lock;
 
-    fn __sv_unlock()
+    fn __sv_unlock($sv)
     {
-        ret(sv_unlock());
+        ret(sv_unlock($sv));
     }
     functions.sv_unlock = __sv_unlock;
 
     // Project file
-    fn __sv_load()
+    fn __sv_load($sv, $filename)
     {
-        ret(sv_load());
+        ret(sv_load($sv, $filename));
     }
     functions.sv_load = __sv_load;
-
+    
+    // NOT FOR PIXILANG
+    /*
     fn __sv_load_from_memory()
     {
         ret(sv_load_from_memory());
     }
     functions.sv_load_from_memory = __sv_load_from_memory;
+    */
 
-    fn __sv_fload()
+    fn __sv_fload($sv, $f)
     {
-        ret(sv_fload());
+        ret(sv_fload($sv, $f));
     }
     functions.sv_fload = __sv_fload;
 
-    fn __sv_save()
+    fn __sv_save($sv, $filename)
     {
-        ret(sv_save());
+        ret(sv_save($sv, $filename));
     }
     functions.sv_save = __sv_save;
 
-    fn __sv_fsave()
+    fn __sv_fsave($sv, $f)
     {
-        ret(sv_fsave());
+        ret(sv_fsave($sv, $f));
     }
     functions.sv_fsave = __sv_fsave;
 
     // Project playback
-    fn __sv_play()
+    fn __sv_play($sv, $line_num)
     {
-        ret(sv_play());
+        ret(sv_play($sv, $line_num));
     }
     functions.sv_play = __sv_play;
-
+    
+    // NOT FOR PIXILANG
+    /*
     fn __sv_play_from_beginning()
     {
         ret(sv_play_from_beginning());
     }
     functions.sv_play_from_beginning = __sv_play_from_beginning;
+    */
 
-    fn __sv_stop()
+    fn __sv_stop($sv)
     {
-        ret(sv_stop());
+        ret(sv_stop($sv));
     }
     functions.sv_stop = __sv_stop;
 
-    fn __sv_pause()
+    fn __sv_pause($sv)
     {
-        ret(sv_pause());
+        ret(sv_pause($sv));
     }
     functions.sv_pause = __sv_pause;
 
-    fn __sv_resume()
+    fn __sv_resume($sv)
     {
-        ret(sv_resume());
+        ret(sv_resume($sv));
     }
     functions.sv_resume = __sv_resume;
 
-    fn __sv_sync_resume()
+    fn __sv_sync_resume($sv)
     {
-        ret(sv_sync_resume());
+        ret(sv_sync_resume($sv));
     }
     functions.sv_sync_resume = __sv_sync_resume;
 
-    fn __sv_set_autostop()
+    fn __sv_set_autostop($sv,$autostop)
     {
-        ret(sv_set_autostop());
+        ret(sv_set_autostop($sv,$autostop));
     }
     functions.sv_set_autostop = __sv_set_autostop;
 
-    fn __sv_get_autostop()
+    fn __sv_get_autostop($sv)
     {
-        ret(sv_get_autostop());
+        ret(sv_get_autostop($sv));
     }
     functions.sv_get_autostop = __sv_get_autostop;
-
+    
+    // NOT FOR PIXILANG
+    /*
     fn __sv_end_of_song()
     {
         ret(sv_end_of_song());
     }
     functions.sv_end_of_song = __sv_end_of_song;
+    */
 
-    fn __sv_get_status()
+    fn __sv_get_status($sv)
     {
-        ret(sv_get_status());
+        ret(sv_get_status($sv));
     }
     functions.sv_get_status = __sv_get_status;
 
-    fn __sv_rewind()
+    fn __sv_rewind($sv, $line_num)
     {
-        ret(sv_rewind());
+        ret(sv_rewind($sv, $line_num));
     }
     functions.sv_rewind = __sv_rewind;
 
-    fn __sv_volume()
+    fn __sv_volume($sv, $vol)
     {
-        ret(sv_volume());
+        ret(sv_volume($sv, $vol));
     }
     functions.sv_volume = __sv_volume;
 
-    fn __sv_get_current_line()
+    fn __sv_get_current_line($sv)
     {
-        ret(sv_get_current_line());
+        ret(sv_get_current_line($sv));
     }
     functions.sv_get_current_line = __sv_get_current_line;
 
-    fn __sv_get_current_line2()
+    fn __sv_get_current_line2($sv)
     {
-        ret(sv_get_current_line2());
+        ret(sv_get_current_line2($sv));
     }
     functions.sv_get_current_line2 = __sv_get_current_line2;
 
-    fn __sv_get_current_signal_level()
+    fn __sv_get_current_signal_level($sv, $channel)
     {
-        ret(sv_get_current_signal_level());
+        ret(sv_get_current_signal_level($sv, $channel));
     }
     functions.sv_get_current_signal_level = __sv_get_current_signal_level;
 
     // Project info
+
+    // NOT FOR PIXILANG
+    /*
     fn __sv_get_song_name()
     {
         ret(sv_get_song_name());
     }
     functions.sv_get_song_name = __sv_get_song_name;
+    */
 
-    fn __sv_get_name()
+    fn __sv_get_name($sv)
     {
-        ret(sv_get_name());
+        ret(sv_get_name($sv));
     }
     functions.sv_get_name = __sv_get_name;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_set_song_name()
     {
         ret(sv_set_song_name());
     }
     functions.sv_set_song_name = __sv_set_song_name;
+    */
 
-    fn __sv_set_name()
+    fn __sv_set_name($sv, $name)
     {
-        ret(sv_set_name());
+        ret(sv_set_name($sv, $name));
     }
     functions.sv_set_name = __sv_set_name;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_get_song_bpm()
     {
         ret(sv_get_song_bpm());
@@ -1685,19 +1712,22 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_get_song_tpl());
     }
     functions.sv_get_song_tpl = __sv_get_song_tpl;
+    */
 
-    fn __sv_get_bpm()
+    fn __sv_get_bpm($sv)
     {
-        ret(sv_get_bpm());
+        ret(sv_get_bpm($sv));
     }
     functions.sv_get_bpm = __sv_get_bpm;
 
-    fn __sv_get_tpl()
+    fn __sv_get_tpl($sv)
     {
-        ret(sv_get_tpl());
+        ret(sv_get_tpl($sv));
     }
     functions.sv_get_tpl = __sv_get_tpl;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_get_song_length_frames()
     {
         ret(sv_get_song_length_frames());
@@ -1709,403 +1739,421 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_get_song_length_lines());
     }
     functions.sv_get_song_length_lines = __sv_get_song_length_lines;
+    */
 
-    fn __sv_get_length_frames()
+    fn __sv_get_length_frames($sv)
     {
-        ret(sv_get_length_frames());
+        ret(sv_get_length_frames($sv));
     }
     functions.sv_get_length_frames = __sv_get_length_frames;
 
-    fn __sv_get_length_lines()
+    fn __sv_get_length_lines($sv)
     {
-        ret(sv_get_length_lines());
+        ret(sv_get_length_lines($sv));
     }
     functions.sv_get_length_lines = __sv_get_length_lines;
 
-    fn __sv_get_time_map()
+    fn __sv_get_time_map($sv, $start_line, $len, $dest, $flags)
     {
-        ret(sv_get_time_map());
+        ret(sv_get_time_map($sv, $start_line, $len, $dest, $flags));
     }
     functions.sv_get_time_map = __sv_get_time_map;
 
     // Events
-    fn __sv_set_event_t()
+    fn __sv_set_event_t($sv, $set, $t)
     {
-        ret(sv_set_event_t());
+        ret(sv_set_event_t($sv, $set, $t));
     }
     functions.sv_set_event_t = __sv_set_event_t;
 
-    fn __sv_send_event()
+    fn __sv_send_event($sv, $track_num, $note, $vel, $module, $ctl, $ctl_val)
     {
-        ret(sv_send_event());
+        ret(sv_send_event($sv, $track_num, $note, $vel, $module, $ctl, $ctl_val));
     }
     functions.sv_send_event = __sv_send_event;
 
     // Modules
-    fn __sv_new_module()
+    fn __sv_new_module($sv, $type, $name, $x, $y, $z)
     {
-        ret(sv_new_module());
+        ret(sv_new_module($sv, $type, $name, $x, $y, $z));
     }
     functions.sv_new_module = __sv_new_module;
 
-    fn
-
-    __sv_remove_module()
+    fn __sv_remove_module($sv, $mod_num)
     {
-        ret(sv_remove_module());
+        ret(sv_remove_module($sv, $mod_num));
     }
     functions.sv_remove_module = __sv_remove_module;
 
-    fn __sv_connect_module()
+    fn __sv_connect_module($sv, $source, $destination)
     {
-        ret(sv_connect_module());
+        ret(sv_connect_module($sv, $source, $destination));
     }
     functions.sv_connect_module = __sv_connect_module;
 
-    fn __sv_disconnect_module()
+    fn __sv_disconnect_module($sv, $source, $destination)
     {
-        ret(sv_disconnect_module());
+        ret(sv_disconnect_module($sv, $source, $destination));
     }
     functions.sv_disconnect_module = __sv_disconnect_module;
 
-    fn __sv_load_module()
+    fn __sv_load_module($sv, $filename, $x, $y, $z)
     {
-        ret(sv_load_module());
+        ret(sv_load_module($sv, $filename, $x, $y, $z));
     }
     functions.sv_load_module = __sv_load_module;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_load_module_from_memory()
     {
         ret(sv_load_module_from_memory());
     }
     functions.sv_load_module_from_memory = __sv_load_module_from_memory;
+    */
 
-    fn __sv_fload_module()
+    fn __sv_fload_module($sv, $f, $x, $y, $z)
     {
-        ret(sv_fload_module());
+        ret(sv_fload_module($sv, $f, $x, $y, $z));
     }
     functions.sv_fload_module = __sv_fload_module;
 
-    fn __sv_sampler_load()
+    fn __sv_sampler_load($sv, $mod_num, $filename, $sample_slot)
     {
-        ret(sv_sampler_load());
+        ret(sv_sampler_load($sv, $mod_num, $filename, $sample_slot));
     }
     functions.sv_sampler_load = __sv_sampler_load;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_sampler_load_from_memory()
     {
         ret(sv_sampler_load_from_memory());
     }
     functions.sv_sampler_load_from_memory = __sv_sampler_load_from_memory;
+    */
 
-    fn __sv_sampler_fload()
+    fn __sv_sampler_fload($sv, $mod_num, $f, $sample_slot)
     {
-        ret(sv_sampler_fload());
+        ret(sv_sampler_fload($sv, $mod_num, $f, $sample_slot));
     }
     functions.sv_sampler_fload = __sv_sampler_fload;
 
-    fn __sv_metamodule_load()
+    fn __sv_metamodule_load($sv, $mod_num, $filename)
     {
-        ret(sv_metamodule_load());
+        ret(sv_metamodule_load($sv, $mod_num, $filename));
     }
     functions.sv_metamodule_load = __sv_metamodule_load;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_metamodule_load_from_memory()
     {
         ret(sv_metamodule_load_from_memory());
     }
     functions.sv_metamodule_load_from_memory = __sv_metamodule_load_from_memory;
+    */
 
-    fn __sv_metamodule_fload()
+    fn __sv_metamodule_fload($sv, $mod_num, $f)
     {
-        ret(sv_metamodule_fload());
+        ret(sv_metamodule_fload($sv, $mod_num, $f));
     }
     functions.sv_metamodule_fload = __sv_metamodule_fload;
 
-    fn __sv_vplayer_load()
+    fn __sv_vplayer_load($sv, $mod_num, $filename)
     {
-        ret(sv_vplayer_load());
+        ret(sv_vplayer_load($sv, $mod_num, $filename));
     }
     functions.sv_vplayer_load = __sv_vplayer_load;
-
+    
+    // NOT FOR PIXILANG
+    /*
     fn __sv_vplayer_load_from_memory()
     {
         ret(sv_vplayer_load_from_memory());
     }
     functions.sv_vplayer_load_from_memory = __sv_vplayer_load_from_memory;
+    */
 
-    fn __sv_vplayer_fload()
+    fn __sv_vplayer_fload($sv, $mod_num, $f)
     {
-        ret(sv_vplayer_fload());
+        ret(sv_vplayer_fload($sv, $mod_num, $f));
     }
     functions.sv_vplayer_fload = __sv_vplayer_fload;
 
-    fn __sv_get_number_of_modules()
+    fn __sv_get_number_of_modules($sv)
     {
-        ret(sv_get_number_of_modules());
+        ret(sv_get_number_of_modules($sv));
     }
     functions.sv_get_number_of_modules = __sv_get_number_of_modules;
 
-    fn __sv_find_module()
+    fn __sv_find_module($sv, $name)
     {
-        ret(sv_find_module());
+        ret(sv_find_module($sv,$name));
     }
     functions.sv_find_module = __sv_find_module;
 
-    fn __sv_get_module_flags()
+    fn __sv_get_module_flags($sv,$mod_num)
     {
-        ret(sv_get_module_flags());
+        ret(sv_get_module_flags($sv,$mod_num));
     }
     functions.sv_get_module_flags = __sv_get_module_flags;
 
-    fn __sv_get_module_inputs()
+    fn __sv_get_module_inputs($sv,$mod_num)
     {
-        ret(sv_get_module_inputs());
+        ret(sv_get_module_inputs($sv,$mod_num));
     }
     functions.sv_get_module_inputs = __sv_get_module_inputs;
 
-    fn __sv_get_module_outputs()
+    fn __sv_get_module_outputs($sv,$mod_num)
     {
-        ret(sv_get_module_outputs());
+        ret(sv_get_module_outputs($sv,$mod_num));
     }
     functions.sv_get_module_outputs = __sv_get_module_outputs;
 
-    fn __sv_get_module_type()
+    fn __sv_get_module_type($sv,$mod_num)
     {
-        ret(sv_get_module_type());
+        ret(sv_get_module_type($sv,$mod_num));
     }
     functions.sv_get_module_type = __sv_get_module_type;
 
-    fn __sv_get_module_name()
+    fn __sv_get_module_name($sv,$mod_num)
     {
-        ret(sv_get_module_name());
+        ret(sv_get_module_name($sv,$mod_num));
     }
     functions.sv_get_module_name = __sv_get_module_name;
 
-    fn __sv_set_module_name()
+    fn __sv_set_module_name($sv,$mod_num, $name)
     {
-        ret(sv_set_module_name());
+        ret(sv_set_module_name($sv,$mod_num, $name));
     }
     functions.sv_set_module_name = __sv_set_module_name;
 
-    fn __sv_get_module_xy()
+    fn __sv_get_module_xy($sv,$mod_num)
     {
-        ret(sv_get_module_xy());
+        ret(sv_get_module_xy($sv,$mod_num));
     }
     functions.sv_get_module_xy = __sv_get_module_xy;
 
-    fn __sv_set_module_xy()
+    fn __sv_set_module_xy($sv,$mod_num, $x, $y)
     {
-        ret(sv_set_module_xy());
+        ret(sv_set_module_xy($sv,$mod_num, $x, $y));
     }
     functions.sv_set_module_xy = __sv_set_module_xy;
 
-    fn __sv_get_module_color()
+    fn __sv_get_module_color($sv,$mod_num)
     {
-        ret(sv_get_module_color());
+        ret(sv_get_module_color($sv,$mod_num));
     }
     functions.sv_get_module_color = __sv_get_module_color;
 
-    fn __sv_set_module_color()
+    fn __sv_set_module_color($sv,$mod_num, $color)
     {
-        ret(sv_set_module_color());
+        ret(sv_set_module_color($sv,$mod_num, $color));
     }
     functions.sv_set_module_color = __sv_set_module_color;
 
-    fn __sv_get_module_finetune()
+    fn __sv_get_module_finetune($sv,$mod_num)
     {
-        ret(sv_get_module_finetune());
+        ret(sv_get_module_finetune($sv,$mod_num));
     }
     functions.sv_get_module_finetune = __sv_get_module_finetune;
 
-    fn __sv_set_module_finetune()
+    fn __sv_set_module_finetune($sv,$mod_num, $finetune)
     {
-        ret(sv_set_module_finetune());
+        ret(sv_set_module_finetune($sv,$mod_num, $finetune));
     }
     functions.sv_set_module_finetune = __sv_set_module_finetune;
 
-    fn __sv_set_module_relnote()
+    fn __sv_set_module_relnote($sv,$mod_num, $relative_note)
     {
-        ret(sv_set_module_relnote());
+        ret(sv_set_module_relnote($sv,$mod_num, $relative_note));
     }
     functions.sv_set_module_relnote = __sv_set_module_relnote;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_get_module_scope2()
     {
         ret(sv_get_module_scope2());
     }
     functions.sv_get_module_scope2 = __sv_get_module_scope2;
+    */
 
-    fn __sv_get_module_scope()
+    fn __sv_get_module_scope($sv, $mod_num, $channel, $dest_buf, $samples_to_read)
     {
-        ret(sv_get_module_scope());
+        ret(sv_get_module_scope($sv, $mod_num, $channel, $dest_buf, $samples_to_read));
     }
     functions.sv_get_module_scope = __sv_get_module_scope;
 
-    fn __sv_module_curve()
+    fn __sv_module_curve($sv, $mod_num, $curve_num, $data, $len, $w)
     {
-        ret(sv_module_curve());
+        ret(sv_module_curve($sv, $mod_num, $curve_num, $data, $len, $w));
     }
     functions.sv_module_curve = __sv_module_curve;
 
-    fn __sv_get_number_of_module_ctls()
+    fn __sv_get_number_of_module_ctls($sv, $mod_num)
     {
-        ret(sv_get_number_of_module_ctls());
+        ret(sv_get_number_of_module_ctls($sv, $mod_num));
     }
     functions.sv_get_number_of_module_ctls = __sv_get_number_of_module_ctls;
 
-    fn __sv_get_module_ctl_name()
+    fn __sv_get_module_ctl_name($sv, $mod_num, $ctl_num)
     {
-        ret(sv_get_module_ctl_name());
+        ret(sv_get_module_ctl_name($sv, $mod_num, $ctl_num));
     }
     functions.sv_get_module_ctl_name = __sv_get_module_ctl_name;
 
-    fn __sv_get_module_ctl_value()
+    fn __sv_get_module_ctl_value($sv, $mod_num, $ctl_num, $scaled)
     {
-        ret(sv_get_module_ctl_value());
+        ret(sv_get_module_ctl_value($sv, $mod_num, $ctl_num, $scaled));
     }
     functions.sv_get_module_ctl_value = __sv_get_module_ctl_value;
 
-    fn __sv_set_module_ctl_value()
+    fn __sv_set_module_ctl_value($sv, $mod_num, $ctl_num, $val, $scaled)
     {
-        ret(sv_set_module_ctl_value());
+        ret(sv_set_module_ctl_value($sv, $mod_num, $ctl_num, $val, $scaled));
     }
     functions.sv_set_module_ctl_value = __sv_set_module_ctl_value;
 
-    fn __sv_get_module_ctl_min()
+    fn __sv_get_module_ctl_min($sv, $mod_num, $ctl_num, $scaled)
     {
-        ret(sv_get_module_ctl_min());
+        ret(sv_get_module_ctl_min($sv, $mod_num, $ctl_num, $scaled));
     }
     functions.sv_get_module_ctl_min = __sv_get_module_ctl_min;
 
-    fn __sv_get_module_ctl_max()
+    fn __sv_get_module_ctl_max($sv, $mod_num, $ctl_num, $scaled)
     {
-        ret(sv_get_module_ctl_max());
+        ret(sv_get_module_ctl_max($sv, $mod_num, $ctl_num, $scaled));
     }
     functions.sv_get_module_ctl_max = __sv_get_module_ctl_max;
 
-    fn __sv_get_module_ctl_offset()
+    fn __sv_get_module_ctl_offset($sv, $mod_num, $ctl_num)
     {
-        ret(sv_get_module_ctl_offset());
+        ret(sv_get_module_ctl_offset($sv, $mod_num, $ctl_num));
     }
     functions.sv_get_module_ctl_offset = __sv_get_module_ctl_offset;
 
-    fn __sv_get_module_ctl_type()
+    fn __sv_get_module_ctl_type($sv, $mod_num, $ctl_num)
     {
-        ret(sv_get_module_ctl_type());
+        ret(sv_get_module_ctl_type($sv, $mod_num, $ctl_num));
     }
     functions.sv_get_module_ctl_type = __sv_get_module_ctl_type;
 
-    fn __sv_get_module_ctl_group()
+    fn __sv_get_module_ctl_group($sv, $mod_num, $ctl_num)
     {
-        ret(sv_get_module_ctl_group());
+        ret(sv_get_module_ctl_group($sv, $mod_num, $ctl_num));
     }
     functions.sv_get_module_ctl_group = __sv_get_module_ctl_group;
 
     // Patterns
-    fn __sv_new_pattern()
+    fn __sv_new_pattern($sv, $clone, $x, $y, $tracks, $lines, $icon_seed, $name)
     {
-        ret(sv_new_pattern());
+        ret(sv_new_pattern($sv, $clone, $x, $y, $tracks, $lines, $icon_seed, $name));
     }
     functions.sv_new_pattern = __sv_new_pattern;
 
-    fn __sv_remove_pattern()
+    fn __sv_remove_pattern($sv, $pat_num)
     {
-        ret(sv_remove_pattern());
+        ret(sv_remove_pattern($sv, $pat_num));
     }
     functions.sv_remove_pattern = __sv_remove_pattern;
 
-    fn __sv_get_number_of_patterns()
+    fn __sv_get_number_of_patterns($sv)
     {
-        ret(sv_get_number_of_patterns());
+        ret(sv_get_number_of_patterns($sv));
     }
     functions.sv_get_number_of_patterns = __sv_get_number_of_patterns;
 
-    fn __sv_find_pattern()
+    fn __sv_find_pattern($sv, $name)
     {
-        ret(sv_find_pattern());
+        ret(sv_find_pattern($sv, $name));
     }
     functions.sv_find_pattern = __sv_find_pattern;
 
-    fn __sv_get_pattern_x()
+    fn __sv_get_pattern_x($sv, $pat_num)
     {
-        ret(sv_get_pattern_x());
+        ret(sv_get_pattern_x($sv, $pat_num));
     }
     functions.sv_get_pattern_x = __sv_get_pattern_x;
 
-    fn __sv_get_pattern_y()
+    fn __sv_get_pattern_y($sv, $pat_num)
     {
-        ret(sv_get_pattern_y());
+        ret(sv_get_pattern_y($sv, $pat_num));
     }
     functions.sv_get_pattern_y = __sv_get_pattern_y;
 
-    fn __sv_set_pattern_xy()
+    fn __sv_set_pattern_xy($sv, $pat_num, $x, $y)
     {
-        ret(sv_set_pattern_xy());
+        ret(sv_set_pattern_xy($sv, $pat_num, $x, $y));
     }
     functions.sv_set_pattern_xy = __sv_set_pattern_xy;
 
-    fn __sv_get_pattern_tracks()
+    fn __sv_get_pattern_tracks($sv, $pat_num)
     {
-        ret(sv_get_pattern_tracks());
+        ret(sv_get_pattern_tracks($sv, $pat_num));
     }
     functions.sv_get_pattern_tracks = __sv_get_pattern_tracks;
 
-    fn __sv_get_pattern_lines()
+    fn __sv_get_pattern_lines($sv, $pat_num)
     {
-        ret(sv_get_pattern_lines());
+        ret(sv_get_pattern_lines($sv, $pat_num));
     }
     functions.sv_get_pattern_lines = __sv_get_pattern_lines;
 
-    fn __sv_set_pattern_size()
+    fn __sv_set_pattern_size($sv, $pat_num, $tracks, $lines)
     {
-        ret(sv_set_pattern_size());
+        ret(sv_set_pattern_size($sv, $pat_num, $tracks, $lines));
     }
     functions.sv_set_pattern_size = __sv_set_pattern_size;
 
-    fn __sv_get_pattern_name()
+    fn __sv_get_pattern_name($sv, $pat_num)
     {
-        ret(sv_get_pattern_name());
+        ret(sv_get_pattern_name($sv, $pat_num));
     }
     functions.sv_get_pattern_name = __sv_get_pattern_name;
 
-    fn __sv_set_pattern_name()
+    fn __sv_set_pattern_name($sv, $pat_num, $name)
     {
-        ret(sv_set_pattern_name());
+        ret(sv_set_pattern_name($sv, $pat_num, $name));
     }
     functions.sv_set_pattern_name = __sv_set_pattern_name;
 
-    fn __sv_get_pattern_data()
+    fn __sv_get_pattern_data($sv, $pat_num)
     {
-        ret(sv_get_pattern_data());
+        ret(sv_get_pattern_data($sv, $pat_num));
     }
     functions.sv_get_pattern_data = __sv_get_pattern_data;
 
+    // NOT FOR PIXILANG
+    /*
     fn __sv_set_pattern_data()
     {
         ret(sv_set_pattern_data());
     }
     functions.sv_set_pattern_data = __sv_set_pattern_data;
+    */
 
-    fn __sv_set_pattern_event()
+    fn __sv_set_pattern_event($sv, $pat, $track, $line, $nn, $vv, $mm, $ccee, $xxyy )
     {
-        ret(sv_set_pattern_event());
+        ret(sv_set_pattern_event($sv, $pat, $track, $line, $nn, $vv, $mm, $ccee, $xxyy));
     }
     functions.sv_set_pattern_event = __sv_set_pattern_event;
 
-    fn __sv_get_pattern_event()
+    fn __sv_get_pattern_event($sv, $pat, $track, $line, $column)
     {
-        ret(sv_get_pattern_event());
+        ret(sv_get_pattern_event($sv, $pat, $track, $line, $column));
     }
     functions.sv_get_pattern_event = __sv_get_pattern_event;
 
-    fn __sv_pattern_mute()
+    fn __sv_pattern_mute($sv, $pat, $mute)
     {
-        ret(sv_pattern_mute());
+        ret(sv_pattern_mute($sv, $pat, $mute));
     }
     functions.sv_pattern_mute = __sv_pattern_mute;
 
-
+    // NOT FOR PIXILANG
+    /*
     // Other
     fn __sv_get_ticks()
     {
@@ -2124,6 +2172,7 @@ functions.midi_send_event = __midi_send_event;
         ret(sv_get_log());
     }
     functions.sv_get_log = __sv_get_log;
+    */
 
 // Time
 fn __start_timer($timer_num)
@@ -2457,100 +2506,113 @@ fn __op_cc2($opcode, $C1, $C2, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize)
 }
 functions.op_cc2 = __op_cc2;
 
-fn __op_ccn()
+fn __op_ccn($opcode, $C1, $C2, $N)
 {
-    ret(op_ccn());
+    ret(op_ccn($opcode, $C1, $C2, $N));
 }
 functions.op_ccn = __op_ccn;
 
-fn __generator()
+fn __op_ccn1($opcode, $C1, $C2, $N, $dest_x, $src_x, $xsize)
 {
-    ret(generator());
+    ret(op_ccn($opcode, $C1, $C2, $N, $dest_x, $src_x, $xsize));
+}
+functions.op_ccn1 = __op_ccn1;
+
+fn __op_ccn2($opcode, $C1, $C2, $N, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize)
+{
+    ret(op_ccn($opcode, $C1, $C2, $N, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize));
+}
+functions.op_ccn2 = __op_ccn2;
+
+fn __generator($opcode, $pixi, $phase, $amplitude, $delta_x, $delta_y, $x, $y, $xsize, $ysize)
+{
+    ret(generator($opcode, $pixi, $phase, $amplitude, $delta_x, $delta_y, $x, $y, $xsize, $ysize));
 }
 functions.generator = __generator;
 
-fn __wavetable_generator()
+fn __wavetable_generator($dest, $dest_offset, $dest_length, $table, $amp, $amp_delta, $pos, $pos_delta, $gen_offset, $gen_step, $gen_count)
 {
-    ret(wavetable_generator());
+    ret(wavetable_generator($dest, $dest_offset, $dest_length, $table, $amp, $amp_delta, $pos, $pos_delta, $gen_offset, $gen_step, $gen_count));
 }
 functions.wavetable_generator = __wavetable_generator;
 
-fn __sampler()
+fn __sampler($sample_info)
 {
-    ret(sampler());
+    ret(sampler($sample_info));
 }
 functions.sampler = __sampler;
 
-fn __envelope2p()
+fn __envelope2p($data_cont, $v1, $v2, $offset, $size, $dc_offset1, $dc_offset2)
 {
-    ret(envelope2p());
+    ret(envelope2p($data_cont, $v1, $v2, $offset, $size, $dc_offset1, $dc_offset2));
 }
 functions.envelope2p = __envelope2p;
 
-fn __gradient($pixi_container)
+fn __gradient($pixi_container, $val1, $val2, $val3, $val4, $x, $y, $xsize, $ysize, $x_step, $y_step)
 {
-    ret(gradient($pixi_container));
+    ret(gradient($pixi_container, $val1, $val2, $val3, $val4, $x, $y, $xsize, $ysize, $x_step, $y_step));
 }
 functions.gradient = __gradient;
 
-fn __fft()
+fn __fft($inverse, $im, $re, $size)
 {
-    ret(fft());
+    ret(fft($inverse, $im, $re, $size));
 }
 functions.fft = __fft;
 
-fn __new_filter()
+fn __new_filter($flags_for_future_use)
 {
-    ret(new_filter());
+    ret(new_filter($flags_for_future_use));
 }
 functions.new_filter = __new_filter;
 
-fn __remove_filter()
+fn __remove_filter($filter)
 {
-    ret(remove_filter());
+    ret(remove_filter($filter));
 }
 functions.remove_filter = __remove_filter;
 
-fn __reset_filter()
+fn __reset_filter($filter)
 {
-    ret(reset_filter());
+    ret(reset_filter($filter));
 }
 functions.reset_filter = __reset_filter;
 
-fn __init_filter()
+fn __init_filter($filter, $a, $b, $rshift, $flags)
 {
-    ret(init_filter());
+    ret(init_filter($filter, $a, $b, $rshift, $flags));
 }
 functions.init_filter = __init_filter;
 
-fn __apply_filter()
+fn __apply_filter($filter, $output, $input, $flags, $offset, $size)
 {
-    ret(apply_filter());
+    ret(apply_filter($filter, $output, $input, $flags, $offset, $size));
 }
 functions.apply_filter = __apply_filter;
 
-fn __replace_values()
+//dest, src, values, dest_offset, src_offset, size 
+fn __replace_values($dest, $src, $values, $dest_offset, $src_offset, $size)
 {
-    ret(replace_values());
+    ret(replace_values($dest, $src, $values, $dest_offset, $src_offset, $size));
 }
 functions.replace_values = __replace_values;
 
-fn __copy_and_resize()
+fn __copy_and_resize($dest, $src, $flags, $dest_x, $dest_y, $dest_rect_xsize, $dest_rect_ysize, $src_x, $src_y, $src_rect_xsize, $src_rect_ysize)
 {
-    ret(copy_and_resize());
+    ret(copy_and_resize($dest, $src, $flags, $dest_x, $dest_y, $dest_rect_xsize, $dest_rect_ysize, $src_x, $src_y, $src_rect_xsize, $src_rect_ysize));
 }
 functions.copy_and_resize = __copy_and_resize;
 
-fn __conv_filter()
+fn __conv_filter($dest, $src, $kernel, $div, $offset, $flags, $kernel_xcenter, $kernel_ycenter, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize, $xstep, $ystep)
 {
-    ret(conv_filter());
+    ret(conv_filter($dest, $src, $kernel, $div, $offset, $flags, $kernel_xcenter, $kernel_ycenter, $dest_x, $dest_y, $src_x, $src_y, $xsize, $ysize, $xstep, $ystep));
 }
 functions.conv_filter = __conv_filter;
 
 // Dialogs
-fn __file_dialog()
+fn __file_dialog($dialog_name, $mask, $id, $default_name, $flags)
 {
-    ret(file_dialog());
+    ret(file_dialog($dialog_name, $mask, $id, $default_name, $flags));
 }
 functions.file_dialog = __file_dialog;
 
@@ -2560,48 +2622,48 @@ fn __prefs_dialog()
 }
 functions.prefs_dialog = __prefs_dialog;
 
-fn __textinput_dialog()
+fn __textinput_dialog($default_text, $dialog_name)
 {
-    ret(textinput_dialog());
+    ret(textinput_dialog($default_text, $dialog_name));
 }
 functions.textinput_dialog = __textinput_dialog;
 
 // Network
-fn __open_url()
+fn __open_url($url_string)
 {
-    ret(open_url());
+    ret(open_url($url_string));
 }
 functions.open_url = __open_url;
 
 // Native code
-fn __dlopen()
+fn __dlopen($lib_file_name)
 {
-    ret(dlopen());
+    ret(dlopen($lib_file_name));
 }
 functions.dlopen = __dlopen;
 
-fn __dlclose()
+fn __dlclose($lib_id)
 {
-    ret(dlclose());
+    ret(dlclose($lib_id));
 }
 functions.dlclose = __dlclose;
 
-fn __dlsym()
+fn __dlsym($lib_id, $symbol_name, $format, $calling_convention)
 {
-    ret(dlsym());
+    ret(dlsym($lib_id, $symbol_name, $format, $calling_convention));
 }
 functions.dlsym = __dlsym;
 
-fn __dlcall()
+fn __dlcall($lib_id, $symbol_id, $optional_function_parameters)
 {
-    ret(dlcall());
+    ret(dlcall($lib_id, $symbol_id, $optional_function_parameters));
 }
 functions.dlcall = __dlcall;
 
 // System functions
-fn __system()
+fn __system($command)
 {
-    ret(system());
+    ret(system($command));
 }
 functions.system = __system;
 
@@ -2611,14 +2673,14 @@ fn __argc()
 }
 functions.argc = __argc;
 
-fn __argv()
+fn __argv($n)
 {
-    ret(argv());
+    ret(argv($n));
 }
 functions.argv = __argv;
 
-fn __exit()
+fn __exit($exit_code)
 {
-    ret(exit());
+    ret(exit($exit_code));
 }
 functions.exit = __exit;
