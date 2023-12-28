@@ -690,11 +690,18 @@ fn __get_system_log()
 functions.get_system_log = __get_system_log;
 
 // Working with files
-fn __load($filename, $options)
+fn __load($name, $filename, $options)
 {
-    ret(load($filename, $options));
+    set_prop(variables, $name, load($filename, $options));
 }
 functions.load = __load;
+
+fn __load0($name, $filename)
+{
+    set_prop(variables, $name, load($filename));
+    ret(get_prop(variables, $name));
+}
+functions.load0 = __load0;
 
 fn __fload($stream, $options)
 {

@@ -231,10 +231,6 @@ fn recursive_prop($obj, $prop)
             printf("%d,%s\n", $size, $splited[$i]);
             $obj = get_prop($obj, $splited[$i]);
         }
-        for($i=0; $i < $size; $i+1)
-        {
-            remove($splited[$i]);
-        }
         remove($splited);
         remove($cloned);
         ret($obj);
@@ -258,11 +254,35 @@ fn default($obj, $default)
 }
 functions.default = default;
 
+fn define ($name, $value)
+{
+    $target = recursive_prop(variables, $name);
+    $target = $value;
+}
+
 fn create($name, $value)
 {
     set_prop(variables, $name, $value);
 }
 functions.create = create;
+
+fn create_empty($name)
+{
+    set_prop(variables, $name, new());
+}
+functions.create_empty = create_empty;
+
+fn create_array($name, $size)
+{
+    set_prop(variables, $name, new($size));
+}
+functions.create_array = create_array;
+
+fn create_matrix($name, $xsize, $ysize)
+{
+    set_prop(variables, $name, new($xsize, $ysize));
+}
+functions.create_matrix = create_matrix;
 
 //list functions
 //list functions
@@ -612,7 +632,7 @@ fn layer($container)
     set_alpha($temp, $alpha);
     ret($temp);
 }
-fn _layer($container,$target)
+fn _layer($target,$container)
 {
     $target = layer($container);
     ret($target);
@@ -754,9 +774,8 @@ fn system_loop($system, $callback, $arg)
 {
     while(true)
     {
-        eventor($system);
         layers_render($system.layers);
-        $callback(default($arg,null),$system);
+        eventor($system);
         frame();
     }
 }
@@ -787,9 +806,9 @@ fn system_new($configpath)
     refresh_seed();//required to get a different random number each time  
     ret($system);
 }
-fn _system_new($configpath,$target)
+fn _system_new($name,$configpath)
 {
-    $target = system_new($configpath);
-    ret($target);
+    set_prop(variables,$name,system_new($configpath));
+    //ret($target);
 }
 functions.system_new = _system_new;
