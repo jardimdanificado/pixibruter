@@ -219,6 +219,26 @@ fn _random($target,$min,$max)
 }
 functions.random = _random;
 
+fn recursive_prop($obj, $prop)
+{
+    if(strstr($prop, "."))
+    {
+        $splited = string_split($prop, ".");
+        $size = get_size($splited);
+        $temp = $obj;
+        for($i=0; $i < $size; $i+1)
+        {
+            $temp = get_prop($temp, $splited[$i]);
+        }
+        remove($splited);
+        ret($temp);
+    }
+    else
+    {
+        ret(get_prop($obj, $prop));
+    }
+}
+
 fn default($obj, $default)
 {
     if($obj == 0)
@@ -538,6 +558,7 @@ fn ini_load($file)
     remove($file);
     ret($result);
 }
+
 fn _ini_load($file,$target)
 {
     $target = ini_load($file);

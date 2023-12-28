@@ -63,7 +63,52 @@ fn RUN($func,$args)
                                         }
                                         else
                                         {
-                                            get_prop(functions,$func)();
+                                            if($size == 11)
+                                            {
+                                                get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10]);
+                                            }
+                                            else
+                                            {
+                                                if($size == 12)
+                                                {
+                                                    get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11]);
+                                                }
+                                                else
+                                                {
+                                                    if($size == 13)
+                                                    {
+                                                        get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12]);
+                                                    }
+                                                    else
+                                                    {
+                                                        if($size == 14)
+                                                        {
+                                                            get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13]);
+                                                        }
+                                                        else
+                                                        {
+                                                            if($size == 15)
+                                                            {
+                                                                get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14]);
+                                                            }
+                                                            else
+                                                            {
+                                                                if($size == 16)
+                                                                {
+                                                                    get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15]);
+                                                                }
+                                                                else
+                                                                {
+                                                                    if($size == 17)
+                                                                    {
+                                                                        get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16]);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -94,7 +139,7 @@ fn interpret($command)
             if($splited[$i][0] == '#')
             {
                 $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
-                $args[$i-1] = get_prop(constants, $temp);
+                $args[$i-1] = recursive_prop(constants, $temp);
                 //printf("r:%d g:%d b:%d\n", get_red($args[$i-1]), get_green($args[$i-1]), get_blue($args[$i-1]));
             }
             else
@@ -102,7 +147,7 @@ fn interpret($command)
                 if($splited[$i][0] == '$')
                 {
                     $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
-                    $args[$i-1] = get_prop(variables, $temp);
+                    $args[$i-1] = recursive_prop(variables, $temp);
                 }
                 else
                 {
