@@ -221,17 +221,23 @@ functions.random = _random;
 
 fn recursive_prop($obj, $prop)
 {
-    if(strstr($prop, "."))
+    if(strstr($prop, ".") > -1)
     {
-        $splited = string_split($prop, ".");
+        $cloned = clone($prop);
+        $splited = string_split($cloned, ".");
         $size = get_size($splited);
-        $temp = $obj;
         for($i=0; $i < $size; $i+1)
         {
-            $temp = get_prop($temp, $splited[$i]);
+            printf("%d,%s\n", $size, $splited[$i]);
+            $obj = get_prop($obj, $splited[$i]);
+        }
+        for($i=0; $i < $size; $i+1)
+        {
+            remove($splited[$i]);
         }
         remove($splited);
-        ret($temp);
+        remove($cloned);
+        ret($obj);
     }
     else
     {

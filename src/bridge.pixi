@@ -1,5 +1,205 @@
 include "brute.pixi";
 
+fn print_char($char)
+{
+    printf("%c\n", $char);
+}
+functions.print_char = print_char;
+
+fn print_int($num)
+{
+    printf("%d\n", $num);
+}
+functions.print_int = print_int;
+
+fn print_float($num)
+{
+    printf("%f\n", $num);
+}
+functions.print_float = print_float;
+
+fn print_string($str)
+{
+    printf("%s\n", $str);
+}
+functions.print_string = print_string;
+
+fn print_bool($bool)
+{
+    if($bool == 1)
+    {
+        printf("true\n");
+    }
+    else
+    {
+        printf("false\n");
+    }
+}
+functions.print_bool = print_bool;
+
+fn print_color($color)
+{
+    printf("r:%d g:%d b:%d\n", get_red($color), get_green($color), get_blue($color));
+}
+functions.print_color = print_color;
+
+fn print_array_int($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("%d", $array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_int = print_array_int;
+
+fn print_array_float($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("%f", $array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_float = print_array_float;
+
+fn print_array_string($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("%s", $array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_string = print_array_string;
+
+fn print_array_bool($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        if($array[$i] == 1)
+        {
+            printf("true");
+        }
+        else
+        {
+            printf("false");
+        }
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_bool = print_array_bool;
+
+fn print_array_color($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("r:%d g:%d b:%d", get_red($array[$i]), get_green($array[$i]), get_blue($array[$i]));
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_color = print_array_color;
+
+fn print_array_array_int($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_int($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_array_int = print_array_array_int;
+
+fn print_array_array_float($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_float($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_array_float = print_array_array_float;
+
+fn print_array_array_string($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_string($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_array_string = print_array_array_string;
+
+fn print_array_array_bool($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_bool($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_array_bool = print_array_array_bool;
+
+fn print_array_array_color($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_color($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+functions.print_array_array_color = print_array_array_color;
+
 fn RUN($func,$args)
 {
     $size = get_size($args);
