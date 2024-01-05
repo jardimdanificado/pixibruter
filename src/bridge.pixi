@@ -360,7 +360,6 @@ fn interpret($command)
             {
                 $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
                 $args[$i-1] = recursive_prop(constants, $temp);
-                //printf("r:%d g:%d b:%d\n", get_red($args[$i-1]), get_green($args[$i-1]), get_blue($args[$i-1]));
             }
             else
             {

@@ -781,6 +781,14 @@ fn system_loop($system, $callback, $arg)
 }
 functions.system_loop = system_loop;
 
+fn manual_loop($system, $callback, $arg)
+{
+    layers_render($system.layers);
+    eventor($system);
+    frame();
+}
+functions.manual_loop = manual_loop;
+
 fn system_new($configpath)
 {
     $configpath = default($configpath,"data/config.ini");

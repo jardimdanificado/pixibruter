@@ -4,3 +4,4 @@ pixilang
 .replit
 replit.nix
 .breakpoints
+node_modules
