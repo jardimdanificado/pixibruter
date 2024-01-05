@@ -159,6 +159,15 @@ fn dummy()
 //container counter
 container_counter = 0;
 
+fn print_all()
+{
+    for($i = 0; $i < 256; $i+1)
+    {
+        printf("$%d=%s\n", $i, $i);
+    }
+    printf("\n");
+}
+
 fn container_count()
 {
     $count = new();
@@ -781,7 +790,7 @@ fn system_loop($system, $callback, $arg)
 }
 functions.system_loop = system_loop;
 
-fn manual_loop($system, $callback, $arg)
+fn manual_loop($system)
 {
     layers_render($system.layers);
     eventor($system);

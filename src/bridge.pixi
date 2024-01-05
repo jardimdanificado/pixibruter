@@ -334,6 +334,7 @@ fn RUN($func,$args)
         }
     }
     get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9]);
+    //remove($args);
 }
 
 fn layer_new($system, $layer)
@@ -375,12 +376,14 @@ fn interpret($command)
             }
         }
     }
-
     RUN($splited[0], $args);
-
+    for ($i = 0; $i < $size; $i+1)
+    {
+        remove($splited[$i]);
+    }
     remove($splited);
     remove($args);
-    print_container_count();
+    //print_container_count();
 }
 
 
