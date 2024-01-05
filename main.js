@@ -1,5 +1,5 @@
 const potpiper = require('./lib/nodepiper.js');
-var command = "manual_loop $system 0;";
+var command = "manual_loop $system;";
 
 function main()
 {
