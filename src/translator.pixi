@@ -1,5 +1,0 @@
-include "brute.pixi";
-
-translator = new();
-translator.words = new();
-

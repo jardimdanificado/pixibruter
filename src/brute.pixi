@@ -829,3 +829,44 @@ fn _system_new($name,$configpath)
     //ret($target);
 }
 functions.system_new = _system_new;
+
+//bytestring functions
+//bytestring functions
+//bytestring functions
+
+fn bytestring_to_num($str)
+{
+    $result = 0;
+    $len = get_size($str);
+    if($len > 1)
+    {    
+        for($i=0;$i<$len-1;$i+1)
+        {
+            $result = pow(256,($len-$i-1))*$str[$i] + $result;
+        }
+    }
+    $result = $result + $str[$len-1] - ($len-1);
+    ret($result);
+}
+
+fn num_to_bytestring($num)
+{
+    $result = ""
+    sprintf($result, "");
+    $len = 1;
+    $max = 256;
+    while($num >= $max)
+    {
+        $len = $len + 1;
+        $max = $max * 256;
+    }
+    $max = $max / 256;
+    for($i=0;$i<$len-1;$i+1)
+    {
+        sprintf($result, "%s%c", $result, $num / $max);
+        $num = $num % $max;
+        $max = $max / 256;
+    }
+    sprintf($result, "%s%c", $result, $num + ($len-1));
+    ret($result);
+}
