@@ -2696,10 +2696,10 @@ set_prop(functions,"0",__sv_get_autostop);
 set_prop(functions,0,__sv_get_autostop);
 set_prop(functions,num_to_bytearray(0),__sv_get_autostop);
 
-functions.op_cn_ = __op_cn_;
-set_prop(functions,"1",__op_cn_);
-set_prop(functions,1,__op_cn_);
-set_prop(functions,num_to_bytearray(1),__op_cn_);
+functions.op_cn = __op_cn;
+set_prop(functions,"1",__op_cn);
+set_prop(functions,1,__op_cn);
+set_prop(functions,num_to_bytearray(1),__op_cn);
 
 functions.sinh = __sinh;
 set_prop(functions,"2",__sinh);
