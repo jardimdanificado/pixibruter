@@ -830,11 +830,11 @@ fn _system_new($name,$configpath)
 }
 functions.system_new = _system_new;
 
-//bytestring functions
-//bytestring functions
-//bytestring functions
+//bytearray functions
+//bytearray functions
+//bytearray functions
 
-fn bytestring_to_num($str)
+fn bytearray_to_num($str)
 {
     $result = 0;
     $len = get_size($str);
@@ -849,7 +849,7 @@ fn bytestring_to_num($str)
     ret($result);
 }
 
-fn num_to_bytestring($num)
+fn num_to_bytearray($num)
 {
     $result = ""
     sprintf($result, "");
