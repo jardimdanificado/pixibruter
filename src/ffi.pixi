@@ -2691,1675 +2691,1961 @@ fn __exit($exit_code)
     ret(exit($exit_code));
 }
 
+
+
+fn print_fps($a)
+{
+    printf("FPS: %u\n", FPS);
+}
+
+fn print_fps_screen($a)
+{
+    print( "$str", 0, 0, BLACK, TOP | LEFT )
+}
+
+fn print_char($char)
+{
+    printf("%c\n", $char);
+}
+
+fn print_int($num)
+{
+    printf("%d\n", $num);
+}
+
+fn print_float($num)
+{
+    printf("%f\n", $num);
+}
+
+fn print_string($str)
+{
+    printf("%s\n", $str);
+}
+
+fn print_bool($bool)
+{
+    if($bool == 1)
+    {
+        printf("true\n");
+    }
+    else
+    {
+        printf("false\n");
+    }
+}
+
+fn print_color($color)
+{
+    printf("r:%d g:%d b:%d\n", get_red($color), get_green($color), get_blue($color));
+}
+
+fn print_array_int($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("%d", $array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_float($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("%f", $array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_string($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("%s", $array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_bool($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        if($array[$i] == 1)
+        {
+            printf("true");
+        }
+        else
+        {
+            printf("false");
+        }
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_color($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        printf("r:%d g:%d b:%d", get_red($array[$i]), get_green($array[$i]), get_blue($array[$i]));
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_array_int($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_int($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_array_float($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_float($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_array_string($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_string($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_array_bool($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_bool($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+fn print_array_array_color($array)
+{
+    printf("[");
+    for($i=0; $i < get_size($array); $i+1)
+    {
+        print_array_color($array[$i]);
+        if($i < get_size($array)-1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
 functions.sv_get_autostop = __sv_get_autostop;
 set_prop(functions,"0",__sv_get_autostop);
 set_prop(functions,0,__sv_get_autostop);
-set_prop(functions,num_to_bytearray(0),__sv_get_autostop);
+set_prop(functions,num_to_bytestring(0),__sv_get_autostop);
 
 functions.op_cn = __op_cn;
 set_prop(functions,"1",__op_cn);
 set_prop(functions,1,__op_cn);
-set_prop(functions,num_to_bytearray(1),__op_cn);
+set_prop(functions,num_to_bytestring(1),__op_cn);
 
 functions.sinh = __sinh;
 set_prop(functions,"2",__sinh);
 set_prop(functions,2,__sinh);
-set_prop(functions,num_to_bytearray(2),__sinh);
+set_prop(functions,num_to_bytestring(2),__sinh);
 
 functions.sv_set_module_xy = __sv_set_module_xy;
 set_prop(functions,"3",__sv_set_module_xy);
 set_prop(functions,3,__sv_set_module_xy);
-set_prop(functions,num_to_bytearray(3),__sv_set_module_xy);
+set_prop(functions,num_to_bytestring(3),__sv_set_module_xy);
 
 functions.sv_metamodule_load = __sv_metamodule_load;
 set_prop(functions,"4",__sv_metamodule_load);
 set_prop(functions,4,__sv_metamodule_load);
-set_prop(functions,num_to_bytearray(4),__sv_metamodule_load);
+set_prop(functions,num_to_bytestring(4),__sv_metamodule_load);
 
 functions.fread = __fread;
 set_prop(functions,"5",__fread);
 set_prop(functions,5,__fread);
-set_prop(functions,num_to_bytearray(5),__fread);
+set_prop(functions,num_to_bytestring(5),__fread);
 
 functions.logf = __logf;
 set_prop(functions,"6",__logf);
 set_prop(functions,6,__logf);
-set_prop(functions,num_to_bytearray(6),__logf);
+set_prop(functions,num_to_bytestring(6),__logf);
 
 functions.strlen1 = __strlen1;
 set_prop(functions,"7",__strlen1);
 set_prop(functions,7,__strlen1);
-set_prop(functions,num_to_bytearray(7),__strlen1);
+set_prop(functions,num_to_bytestring(7),__strlen1);
 
 functions.log2 = __log2;
 set_prop(functions,"8",__log2);
 set_prop(functions,8,__log2);
-set_prop(functions,num_to_bytearray(8),__log2);
+set_prop(functions,num_to_bytestring(8),__log2);
 
 functions.sleep = __sleep;
 set_prop(functions,"9",__sleep);
 set_prop(functions,9,__sleep);
-set_prop(functions,num_to_bytearray(9),__sleep);
+set_prop(functions,num_to_bytestring(9),__sleep);
 
 functions.sv_disconnect_module = __sv_disconnect_module;
 set_prop(functions,"10",__sv_disconnect_module);
 set_prop(functions,10,__sv_disconnect_module);
-set_prop(functions,num_to_bytearray(10),__sv_disconnect_module);
+set_prop(functions,num_to_bytestring(10),__sv_disconnect_module);
 
 functions.set_gl_callback = __set_gl_callback;
 set_prop(functions,"11",__set_gl_callback);
 set_prop(functions,11,__set_gl_callback);
-set_prop(functions,num_to_bytearray(11),__set_gl_callback);
+set_prop(functions,num_to_bytestring(11),__set_gl_callback);
 
 functions.color_gradient = __color_gradient;
 set_prop(functions,"12",__color_gradient);
 set_prop(functions,12,__color_gradient);
-set_prop(functions,num_to_bytearray(12),__color_gradient);
+set_prop(functions,num_to_bytestring(12),__color_gradient);
 
 functions.fputc = __fputc;
 set_prop(functions,"13",__fputc);
 set_prop(functions,13,__fputc);
-set_prop(functions,num_to_bytearray(13),__fputc);
+set_prop(functions,num_to_bytestring(13),__fputc);
 
 functions.fprintf = __fprintf;
 set_prop(functions,"14",__fprintf);
 set_prop(functions,14,__fprintf);
-set_prop(functions,num_to_bytearray(14),__fprintf);
+set_prop(functions,num_to_bytestring(14),__fprintf);
 
 functions.tanh = __tanh;
 set_prop(functions,"15",__tanh);
 set_prop(functions,15,__tanh);
-set_prop(functions,num_to_bytearray(15),__tanh);
+set_prop(functions,num_to_bytestring(15),__tanh);
 
 functions.get_minutes = __get_minutes;
 set_prop(functions,"16",__get_minutes);
 set_prop(functions,16,__get_minutes);
-set_prop(functions,num_to_bytearray(16),__get_minutes);
+set_prop(functions,num_to_bytestring(16),__get_minutes);
 
 functions.sv_get_module_flags = __sv_get_module_flags;
 set_prop(functions,"17",__sv_get_module_flags);
 set_prop(functions,17,__sv_get_module_flags);
-set_prop(functions,num_to_bytearray(17),__sv_get_module_flags);
+set_prop(functions,num_to_bytestring(17),__sv_get_module_flags);
 
 functions.sv_vplayer_fload = __sv_vplayer_fload;
 set_prop(functions,"18",__sv_vplayer_fload);
 set_prop(functions,18,__sv_vplayer_fload);
-set_prop(functions,num_to_bytearray(18),__sv_vplayer_fload);
+set_prop(functions,num_to_bytestring(18),__sv_vplayer_fload);
 
 functions.sv_vplayer_load = __sv_vplayer_load;
 set_prop(functions,"19",__sv_vplayer_load);
 set_prop(functions,19,__sv_vplayer_load);
-set_prop(functions,num_to_bytearray(19),__sv_vplayer_load);
+set_prop(functions,num_to_bytestring(19),__sv_vplayer_load);
 
 functions.transp = __transp;
 set_prop(functions,"20",__transp);
 set_prop(functions,20,__transp);
-set_prop(functions,num_to_bytearray(20),__transp);
+set_prop(functions,num_to_bytestring(20),__transp);
 
 functions.remove_props = __remove_props;
 set_prop(functions,"21",__remove_props);
 set_prop(functions,21,__remove_props);
-set_prop(functions,num_to_bytearray(21),__remove_props);
+set_prop(functions,num_to_bytestring(21),__remove_props);
 
 functions.textinput_dialog = __textinput_dialog;
 set_prop(functions,"22",__textinput_dialog);
 set_prop(functions,22,__textinput_dialog);
-set_prop(functions,num_to_bytearray(22),__textinput_dialog);
+set_prop(functions,num_to_bytestring(22),__textinput_dialog);
 
 functions.conv_filter = __conv_filter;
 set_prop(functions,"23",__conv_filter);
 set_prop(functions,23,__conv_filter);
-set_prop(functions,num_to_bytearray(23),__conv_filter);
+set_prop(functions,num_to_bytestring(23),__conv_filter);
 
 functions.get_day = __get_day;
 set_prop(functions,"24",__get_day);
 set_prop(functions,24,__get_day);
-set_prop(functions,num_to_bytearray(24),__get_day);
+set_prop(functions,num_to_bytestring(24),__get_day);
 
 functions.sv_set_pattern_event = __sv_set_pattern_event;
 set_prop(functions,"25",__sv_set_pattern_event);
 set_prop(functions,25,__sv_set_pattern_event);
-set_prop(functions,num_to_bytearray(25),__sv_set_pattern_event);
+set_prop(functions,num_to_bytestring(25),__sv_set_pattern_event);
 
 functions.sv_get_module_scope = __sv_get_module_scope;
 set_prop(functions,"26",__sv_get_module_scope);
 set_prop(functions,26,__sv_get_module_scope);
-set_prop(functions,num_to_bytearray(26),__sv_get_module_scope);
+set_prop(functions,num_to_bytestring(26),__sv_get_module_scope);
 
 functions.sv_sampler_fload = __sv_sampler_fload;
 set_prop(functions,"27",__sv_sampler_fload);
 set_prop(functions,27,__sv_sampler_fload);
-set_prop(functions,num_to_bytearray(27),__sv_sampler_fload);
+set_prop(functions,num_to_bytestring(27),__sv_sampler_fload);
 
 functions.sv_load_module = __sv_load_module;
 set_prop(functions,"28",__sv_load_module);
 set_prop(functions,28,__sv_load_module);
-set_prop(functions,num_to_bytearray(28),__sv_load_module);
+set_prop(functions,num_to_bytestring(28),__sv_load_module);
 
 functions.sv_render = __sv_render;
 set_prop(functions,"29",__sv_render);
 set_prop(functions,29,__sv_render);
-set_prop(functions,num_to_bytearray(29),__sv_render);
+set_prop(functions,num_to_bytestring(29),__sv_render);
 
 functions.set_audio_callback = __set_audio_callback;
 set_prop(functions,"30",__set_audio_callback);
 set_prop(functions,30,__set_audio_callback);
-set_prop(functions,num_to_bytearray(30),__set_audio_callback);
+set_prop(functions,num_to_bytestring(30),__set_audio_callback);
 
 functions.t_get_matrix = __t_get_matrix;
 set_prop(functions,"31",__t_get_matrix);
 set_prop(functions,31,__t_get_matrix);
-set_prop(functions,num_to_bytearray(31),__t_get_matrix);
+set_prop(functions,num_to_bytestring(31),__t_get_matrix);
 
 functions.fgetc = __fgetc;
 set_prop(functions,"32",__fgetc);
 set_prop(functions,32,__fgetc);
-set_prop(functions,num_to_bytearray(32),__fgetc);
+set_prop(functions,num_to_bytestring(32),__fgetc);
 
 functions.system = __system;
 set_prop(functions,"33",__system);
 set_prop(functions,33,__system);
-set_prop(functions,num_to_bytearray(33),__system);
+set_prop(functions,num_to_bytestring(33),__system);
 
 functions.sampler = __sampler;
 set_prop(functions,"34",__sampler);
 set_prop(functions,34,__sampler);
-set_prop(functions,num_to_bytearray(34),__sampler);
+set_prop(functions,num_to_bytestring(34),__sampler);
 
 functions.sv_get_module_ctl_type = __sv_get_module_ctl_type;
 set_prop(functions,"35",__sv_get_module_ctl_type);
 set_prop(functions,35,__sv_get_module_ctl_type);
-set_prop(functions,num_to_bytearray(35),__sv_get_module_ctl_type);
+set_prop(functions,num_to_bytestring(35),__sv_get_module_ctl_type);
 
 functions.effector = __effector;
 set_prop(functions,"36",__effector);
 set_prop(functions,36,__effector);
-set_prop(functions,num_to_bytearray(36),__effector);
+set_prop(functions,num_to_bytestring(36),__effector);
 
 functions.set_disk0 = __set_disk0;
 set_prop(functions,"37",__set_disk0);
 set_prop(functions,37,__set_disk0);
-set_prop(functions,num_to_bytearray(37),__set_disk0);
+set_prop(functions,num_to_bytestring(37),__set_disk0);
 
 functions.tan = __tan;
 set_prop(functions,"38",__tan);
 set_prop(functions,38,__tan);
-set_prop(functions,num_to_bytearray(38),__tan);
+set_prop(functions,num_to_bytestring(38),__tan);
 
 functions.log = __log;
 set_prop(functions,"39",__log);
 set_prop(functions,39,__log);
-set_prop(functions,num_to_bytearray(39),__log);
+set_prop(functions,num_to_bytestring(39),__log);
 
 functions.ceil = __ceil;
 set_prop(functions,"40",__ceil);
 set_prop(functions,40,__ceil);
-set_prop(functions,num_to_bytearray(40),__ceil);
+set_prop(functions,num_to_bytestring(40),__ceil);
 
 functions.sv_remove = __sv_remove;
 set_prop(functions,"41",__sv_remove);
 set_prop(functions,41,__sv_remove);
-set_prop(functions,num_to_bytearray(41),__sv_remove);
+set_prop(functions,num_to_bytestring(41),__sv_remove);
 
 functions.midi_reopen_port = __midi_reopen_port;
 set_prop(functions,"42",__midi_reopen_port);
 set_prop(functions,42,__midi_reopen_port);
-set_prop(functions,num_to_bytearray(42),__midi_reopen_port);
+set_prop(functions,num_to_bytestring(42),__midi_reopen_port);
 
 functions.box = __box;
 set_prop(functions,"43",__box);
 set_prop(functions,43,__box);
-set_prop(functions,num_to_bytearray(43),__box);
+set_prop(functions,num_to_bytestring(43),__box);
 
 functions.vsync = __vsync;
 set_prop(functions,"44",__vsync);
 set_prop(functions,44,__vsync);
-set_prop(functions,num_to_bytearray(44),__vsync);
+set_prop(functions,num_to_bytestring(44),__vsync);
 
 functions.strstr = __strstr;
 set_prop(functions,"45",__strstr);
 set_prop(functions,45,__strstr);
-set_prop(functions,num_to_bytearray(45),__strstr);
+set_prop(functions,num_to_bytestring(45),__strstr);
 
 functions.gradient = __gradient;
 set_prop(functions,"46",__gradient);
 set_prop(functions,46,__gradient);
-set_prop(functions,num_to_bytearray(46),__gradient);
+set_prop(functions,num_to_bytestring(46),__gradient);
 
 functions.reinterpret_type = __reinterpret_type;
 set_prop(functions,"47",__reinterpret_type);
 set_prop(functions,47,__reinterpret_type);
-set_prop(functions,num_to_bytearray(47),__reinterpret_type);
+set_prop(functions,num_to_bytestring(47),__reinterpret_type);
 
 functions.thread_create = __thread_create;
 set_prop(functions,"48",__thread_create);
 set_prop(functions,48,__thread_create);
-set_prop(functions,num_to_bytearray(48),__thread_create);
+set_prop(functions,num_to_bytestring(48),__thread_create);
 
 functions.sv_sampler_load = __sv_sampler_load;
 set_prop(functions,"49",__sv_sampler_load);
 set_prop(functions,49,__sv_sampler_load);
-set_prop(functions,num_to_bytearray(49),__sv_sampler_load);
+set_prop(functions,num_to_bytestring(49),__sv_sampler_load);
 
 functions.gl_bind_framebuffer = __gl_bind_framebuffer;
 set_prop(functions,"50",__gl_bind_framebuffer);
 set_prop(functions,50,__gl_bind_framebuffer);
-set_prop(functions,num_to_bytearray(50),__gl_bind_framebuffer);
+set_prop(functions,num_to_bytestring(50),__gl_bind_framebuffer);
 
 functions.get_text_ysize = __get_text_ysize;
 set_prop(functions,"51",__get_text_ysize);
 set_prop(functions,51,__get_text_ysize);
-set_prop(functions,num_to_bytearray(51),__get_text_ysize);
+set_prop(functions,num_to_bytestring(51),__get_text_ysize);
 
 functions.strcat1 = __strcat1;
 set_prop(functions,"52",__strcat1);
 set_prop(functions,52,__strcat1);
-set_prop(functions,num_to_bytearray(52),__strcat1);
+set_prop(functions,num_to_bytestring(52),__strcat1);
 
 functions.op_cn2 = __op_cn2;
 set_prop(functions,"53",__op_cn2);
 set_prop(functions,53,__op_cn2);
-set_prop(functions,num_to_bytearray(53),__op_cn2);
+set_prop(functions,num_to_bytestring(53),__op_cn2);
 
 functions.expm1 = __expm1;
 set_prop(functions,"54",__expm1);
 set_prop(functions,54,__expm1);
-set_prop(functions,num_to_bytearray(54),__expm1);
+set_prop(functions,num_to_bytestring(54),__expm1);
 
 functions.cos = __cos;
 set_prop(functions,"55",__cos);
 set_prop(functions,55,__cos);
-set_prop(functions,num_to_bytearray(55),__cos);
+set_prop(functions,num_to_bytestring(55),__cos);
 
 functions.set_key_color = __set_key_color;
 set_prop(functions,"56",__set_key_color);
 set_prop(functions,56,__set_key_color);
-set_prop(functions,num_to_bytearray(56),__set_key_color);
+set_prop(functions,num_to_bytestring(56),__set_key_color);
 
 functions.get_dot = __get_dot;
 set_prop(functions,"57",__get_dot);
 set_prop(functions,57,__get_dot);
-set_prop(functions,num_to_bytearray(57),__get_dot);
+set_prop(functions,num_to_bytestring(57),__get_dot);
 
 functions.apply_filter = __apply_filter;
 set_prop(functions,"58",__apply_filter);
 set_prop(functions,58,__apply_filter);
-set_prop(functions,num_to_bytearray(58),__apply_filter);
+set_prop(functions,num_to_bytestring(58),__apply_filter);
 
 functions.thread_destroy = __thread_destroy;
 set_prop(functions,"59",__thread_destroy);
 set_prop(functions,59,__thread_destroy);
-set_prop(functions,num_to_bytearray(59),__thread_destroy);
+set_prop(functions,num_to_bytestring(59),__thread_destroy);
 
 functions.get_year = __get_year;
 set_prop(functions,"60",__get_year);
 set_prop(functions,60,__get_year);
-set_prop(functions,num_to_bytearray(60),__get_year);
+set_prop(functions,num_to_bytestring(60),__get_year);
 
 functions.sv_find_pattern = __sv_find_pattern;
 set_prop(functions,"61",__sv_find_pattern);
 set_prop(functions,61,__sv_find_pattern);
-set_prop(functions,num_to_bytearray(61),__sv_find_pattern);
+set_prop(functions,num_to_bytestring(61),__sv_find_pattern);
 
 functions.sv_set_event_t = __sv_set_event_t;
 set_prop(functions,"62",__sv_set_event_t);
 set_prop(functions,62,__sv_set_event_t);
-set_prop(functions,num_to_bytearray(62),__sv_set_event_t);
+set_prop(functions,num_to_bytestring(62),__sv_set_event_t);
 
 functions.sv_stop = __sv_stop;
 set_prop(functions,"63",__sv_stop);
 set_prop(functions,63,__sv_stop);
-set_prop(functions,num_to_bytearray(63),__sv_stop);
+set_prop(functions,num_to_bytestring(63),__sv_stop);
 
 functions.get_audio_sample_rate = __get_audio_sample_rate;
 set_prop(functions,"64",__get_audio_sample_rate);
 set_prop(functions,64,__get_audio_sample_rate);
-set_prop(functions,num_to_bytearray(64),__get_audio_sample_rate);
+set_prop(functions,num_to_bytestring(64),__get_audio_sample_rate);
 
 functions.clone_frame = __clone_frame;
 set_prop(functions,"65",__clone_frame);
 set_prop(functions,65,__clone_frame);
-set_prop(functions,num_to_bytearray(65),__clone_frame);
+set_prop(functions,num_to_bytestring(65),__clone_frame);
 
 functions.get_alpha = __get_alpha;
 set_prop(functions,"66",__get_alpha);
 set_prop(functions,66,__get_alpha);
-set_prop(functions,num_to_bytearray(66),__get_alpha);
+set_prop(functions,num_to_bytestring(66),__get_alpha);
 
 functions.mod = __mod;
 set_prop(functions,"67",__mod);
 set_prop(functions,67,__mod);
-set_prop(functions,num_to_bytearray(67),__mod);
+set_prop(functions,num_to_bytestring(67),__mod);
 
 functions.sv_get_time_map = __sv_get_time_map;
 set_prop(functions,"68",__sv_get_time_map);
 set_prop(functions,68,__sv_get_time_map);
-set_prop(functions,num_to_bytearray(68),__sv_get_time_map);
+set_prop(functions,num_to_bytestring(68),__sv_get_time_map);
 
 functions.sv_set_autostop = __sv_set_autostop;
 set_prop(functions,"69",__sv_set_autostop);
 set_prop(functions,69,__sv_set_autostop);
-set_prop(functions,num_to_bytearray(69),__sv_set_autostop);
+set_prop(functions,num_to_bytestring(69),__sv_set_autostop);
 
 functions.stop = __stop;
 set_prop(functions,"70",__stop);
 set_prop(functions,70,__stop);
-set_prop(functions,num_to_bytearray(70),__stop);
+set_prop(functions,num_to_bytestring(70),__stop);
 
 functions.gl_uniform_matrix = __gl_uniform_matrix;
 set_prop(functions,"71",__gl_uniform_matrix);
 set_prop(functions,71,__gl_uniform_matrix);
-set_prop(functions,num_to_bytearray(71),__gl_uniform_matrix);
+set_prop(functions,num_to_bytestring(71),__gl_uniform_matrix);
 
 functions.get_color = __get_color;
 set_prop(functions,"72",__get_color);
 set_prop(functions,72,__get_color);
-set_prop(functions,num_to_bytearray(72),__get_color);
+set_prop(functions,num_to_bytestring(72),__get_color);
 
 functions.get_prop = __get_prop;
 set_prop(functions,"73",__get_prop);
 set_prop(functions,73,__get_prop);
-set_prop(functions,num_to_bytearray(73),__get_prop);
+set_prop(functions,num_to_bytestring(73),__get_prop);
 
 functions.floor = __floor;
 set_prop(functions,"74",__floor);
 set_prop(functions,74,__floor);
-set_prop(functions,num_to_bytearray(74),__floor);
+set_prop(functions,num_to_bytestring(74),__floor);
 
 functions.cosh = __cosh;
 set_prop(functions,"75",__cosh);
 set_prop(functions,75,__cosh);
-set_prop(functions,num_to_bytearray(75),__cosh);
+set_prop(functions,num_to_bytestring(75),__cosh);
 
 functions.sv_get_module_ctl_min = __sv_get_module_ctl_min;
 set_prop(functions,"76",__sv_get_module_ctl_min);
 set_prop(functions,76,__sv_get_module_ctl_min);
-set_prop(functions,num_to_bytearray(76),__sv_get_module_ctl_min);
+set_prop(functions,num_to_bytestring(76),__sv_get_module_ctl_min);
 
 functions.sv_send_event = __sv_send_event;
 set_prop(functions,"77",__sv_send_event);
 set_prop(functions,77,__sv_send_event);
-set_prop(functions,num_to_bytearray(77),__sv_send_event);
+set_prop(functions,num_to_bytestring(77),__sv_send_event);
 
 functions.sv_resume = __sv_resume;
 set_prop(functions,"78",__sv_resume);
 set_prop(functions,78,__sv_resume);
-set_prop(functions,num_to_bytearray(78),__sv_resume);
+set_prop(functions,num_to_bytestring(78),__sv_resume);
 
 functions.gl_uniform = __gl_uniform;
 set_prop(functions,"79",__gl_uniform);
 set_prop(functions,79,__gl_uniform);
-set_prop(functions,num_to_bytearray(79),__gl_uniform);
+set_prop(functions,num_to_bytestring(79),__gl_uniform);
 
 functions.get_text_xsize = __get_text_xsize;
 set_prop(functions,"80",__get_text_xsize);
 set_prop(functions,80,__get_text_xsize);
-set_prop(functions,num_to_bytearray(80),__get_text_xsize);
+set_prop(functions,num_to_bytestring(80),__get_text_xsize);
 
 functions.triangles3d = __triangles3d;
 set_prop(functions,"81",__triangles3d);
 set_prop(functions,81,__triangles3d);
-set_prop(functions,num_to_bytearray(81),__triangles3d);
+set_prop(functions,num_to_bytestring(81),__triangles3d);
 
 functions.get_blend = __get_blend;
 set_prop(functions,"82",__get_blend);
 set_prop(functions,82,__get_blend);
-set_prop(functions,num_to_bytearray(82),__get_blend);
+set_prop(functions,num_to_bytestring(82),__get_blend);
 
 functions.get_file_format = __get_file_format;
 set_prop(functions,"83",__get_file_format);
 set_prop(functions,83,__get_file_format);
-set_prop(functions,num_to_bytearray(83),__get_file_format);
+set_prop(functions,num_to_bytestring(83),__get_file_format);
 
 functions.remove_flist = __remove_flist;
 set_prop(functions,"84",__remove_flist);
 set_prop(functions,84,__remove_flist);
-set_prop(functions,num_to_bytearray(84),__remove_flist);
+set_prop(functions,num_to_bytestring(84),__remove_flist);
 
 functions.get_esize = __get_esize;
 set_prop(functions,"85",__get_esize);
 set_prop(functions,85,__get_esize);
-set_prop(functions,num_to_bytearray(85),__get_esize);
+set_prop(functions,num_to_bytestring(85),__get_esize);
 
 functions.dlcall = __dlcall;
 set_prop(functions,"86",__dlcall);
 set_prop(functions,86,__dlcall);
-set_prop(functions,num_to_bytearray(86),__dlcall);
+set_prop(functions,num_to_bytestring(86),__dlcall);
 
 functions.wavetable_generator = __wavetable_generator;
 set_prop(functions,"87",__wavetable_generator);
 set_prop(functions,87,__wavetable_generator);
-set_prop(functions,num_to_bytearray(87),__wavetable_generator);
+set_prop(functions,num_to_bytestring(87),__wavetable_generator);
 
 functions.get_event = __get_event;
 set_prop(functions,"88",__get_event);
 set_prop(functions,88,__get_event);
-set_prop(functions,num_to_bytearray(88),__get_event);
+set_prop(functions,num_to_bytestring(88),__get_event);
 
 functions.midi_get_event_time = __midi_get_event_time;
 set_prop(functions,"89",__midi_get_event_time);
 set_prop(functions,89,__midi_get_event_time);
-set_prop(functions,num_to_bytearray(89),__midi_get_event_time);
+set_prop(functions,num_to_bytestring(89),__midi_get_event_time);
 
 functions.get_fformat_ext = __get_fformat_ext;
 set_prop(functions,"90",__get_fformat_ext);
 set_prop(functions,90,__get_fformat_ext);
-set_prop(functions,num_to_bytearray(90),__get_fformat_ext);
+set_prop(functions,num_to_bytestring(90),__get_fformat_ext);
 
 functions.printf1 = __printf1;
 set_prop(functions,"91",__printf1);
 set_prop(functions,91,__printf1);
-set_prop(functions,num_to_bytearray(91),__printf1);
+set_prop(functions,num_to_bytestring(91),__printf1);
 
 functions.sv_get_tpl = __sv_get_tpl;
 set_prop(functions,"92",__sv_get_tpl);
 set_prop(functions,92,__sv_get_tpl);
-set_prop(functions,num_to_bytearray(92),__sv_get_tpl);
+set_prop(functions,num_to_bytestring(92),__sv_get_tpl);
 
 functions.sv_pause = __sv_pause;
 set_prop(functions,"93",__sv_pause);
 set_prop(functions,93,__sv_pause);
-set_prop(functions,num_to_bytearray(93),__sv_pause);
+set_prop(functions,num_to_bytestring(93),__sv_pause);
 
 functions.t_push_matrix = __t_push_matrix;
 set_prop(functions,"94",__t_push_matrix);
 set_prop(functions,94,__t_push_matrix);
-set_prop(functions,num_to_bytearray(94),__t_push_matrix);
+set_prop(functions,num_to_bytestring(94),__t_push_matrix);
 
 functions.atan = __atan;
 set_prop(functions,"95",__atan);
 set_prop(functions,95,__atan);
-set_prop(functions,num_to_bytearray(95),__atan);
+set_prop(functions,num_to_bytestring(95),__atan);
 
 functions.get_screen = __get_screen;
 set_prop(functions,"96",__get_screen);
 set_prop(functions,96,__get_screen);
-set_prop(functions,num_to_bytearray(96),__get_screen);
+set_prop(functions,num_to_bytestring(96),__get_screen);
 
 functions.dlopen = __dlopen;
 set_prop(functions,"97",__dlopen);
 set_prop(functions,97,__dlopen);
-set_prop(functions,num_to_bytearray(97),__dlopen);
+set_prop(functions,num_to_bytestring(97),__dlopen);
 
 functions.abs = __abs;
 set_prop(functions,"98",__abs);
 set_prop(functions,98,__abs);
-set_prop(functions,num_to_bytearray(98),__abs);
+set_prop(functions,num_to_bytestring(98),__abs);
 
 functions.t_set_matrix = __t_set_matrix;
 set_prop(functions,"99",__t_set_matrix);
 set_prop(functions,99,__t_set_matrix);
-set_prop(functions,num_to_bytearray(99),__t_set_matrix);
+set_prop(functions,num_to_bytestring(99),__t_set_matrix);
 
 functions.line = __line;
 set_prop(functions,"100",__line);
 set_prop(functions,100,__line);
-set_prop(functions,num_to_bytearray(100),__line);
+set_prop(functions,num_to_bytestring(100),__line);
 
 functions.set_screen = __set_screen;
 set_prop(functions,"101",__set_screen);
 set_prop(functions,101,__set_screen);
-set_prop(functions,num_to_bytearray(101),__set_screen);
+set_prop(functions,num_to_bytestring(101),__set_screen);
 
 functions.zlib_unpack = __zlib_unpack;
 set_prop(functions,"102",__zlib_unpack);
 set_prop(functions,102,__zlib_unpack);
-set_prop(functions,num_to_bytearray(102),__zlib_unpack);
+set_prop(functions,num_to_bytestring(102),__zlib_unpack);
 
 functions.argc = __argc;
 set_prop(functions,"103",__argc);
 set_prop(functions,103,__argc);
-set_prop(functions,num_to_bytearray(103),__argc);
+set_prop(functions,num_to_bytestring(103),__argc);
 
 functions.fft = __fft;
 set_prop(functions,"104",__fft);
 set_prop(functions,104,__fft);
-set_prop(functions,num_to_bytearray(104),__fft);
+set_prop(functions,num_to_bytestring(104),__fft);
 
 functions.envelope2p = __envelope2p;
 set_prop(functions,"105",__envelope2p);
 set_prop(functions,105,__envelope2p);
-set_prop(functions,num_to_bytearray(105),__envelope2p);
+set_prop(functions,num_to_bytestring(105),__envelope2p);
 
 functions.acos = __acos;
 set_prop(functions,"106",__acos);
 set_prop(functions,106,__acos);
-set_prop(functions,num_to_bytearray(106),__acos);
+set_prop(functions,num_to_bytestring(106),__acos);
 
 functions.sv_module_curve = __sv_module_curve;
 set_prop(functions,"107",__sv_module_curve);
 set_prop(functions,107,__sv_module_curve);
-set_prop(functions,num_to_bytearray(107),__sv_module_curve);
+set_prop(functions,num_to_bytestring(107),__sv_module_curve);
 
 functions.sv_remove_module = __sv_remove_module;
 set_prop(functions,"108",__sv_remove_module);
 set_prop(functions,108,__sv_remove_module);
-set_prop(functions,num_to_bytearray(108),__sv_remove_module);
+set_prop(functions,num_to_bytestring(108),__sv_remove_module);
 
 functions.sv_set_name = __sv_set_name;
 set_prop(functions,"109",__sv_set_name);
 set_prop(functions,109,__sv_set_name);
-set_prop(functions,num_to_bytearray(109),__sv_set_name);
+set_prop(functions,num_to_bytestring(109),__sv_set_name);
 
 functions.dot = __dot;
 set_prop(functions,"110",__dot);
 set_prop(functions,110,__dot);
-set_prop(functions,num_to_bytearray(110),__dot);
+set_prop(functions,num_to_bytestring(110),__dot);
 
 functions.remove_with_alpha = __remove_with_alpha;
 set_prop(functions,"111",__remove_with_alpha);
 set_prop(functions,111,__remove_with_alpha);
-set_prop(functions,num_to_bytearray(111),__remove_with_alpha);
+set_prop(functions,num_to_bytestring(111),__remove_with_alpha);
 
 functions.prefs_dialog = __prefs_dialog;
 set_prop(functions,"112",__prefs_dialog);
 set_prop(functions,112,__prefs_dialog);
-set_prop(functions,num_to_bytearray(112),__prefs_dialog);
+set_prop(functions,num_to_bytestring(112),__prefs_dialog);
 
 functions.get_seconds = __get_seconds;
 set_prop(functions,"113",__get_seconds);
 set_prop(functions,113,__get_seconds);
-set_prop(functions,num_to_bytearray(113),__get_seconds);
+set_prop(functions,num_to_bytestring(113),__get_seconds);
 
 functions.start_timer = __start_timer;
 set_prop(functions,"114",__start_timer);
 set_prop(functions,114,__start_timer);
-set_prop(functions,num_to_bytearray(114),__start_timer);
+set_prop(functions,num_to_bytestring(114),__start_timer);
 
 functions.sv_set_module_name = __sv_set_module_name;
 set_prop(functions,"115",__sv_set_module_name);
 set_prop(functions,115,__sv_set_module_name);
-set_prop(functions,num_to_bytearray(115),__sv_set_module_name);
+set_prop(functions,num_to_bytestring(115),__sv_set_module_name);
 
 functions.sv_unlock = __sv_unlock;
 set_prop(functions,"116",__sv_unlock);
 set_prop(functions,116,__sv_unlock);
-set_prop(functions,num_to_bytearray(116),__sv_unlock);
+set_prop(functions,num_to_bytestring(116),__sv_unlock);
 
 functions.midi_close_port = __midi_close_port;
 set_prop(functions,"117",__midi_close_port);
 set_prop(functions,117,__midi_close_port);
-set_prop(functions,num_to_bytearray(117),__midi_close_port);
+set_prop(functions,num_to_bytestring(117),__midi_close_port);
 
 functions.get_green = __get_green;
 set_prop(functions,"118",__get_green);
 set_prop(functions,118,__get_green);
-set_prop(functions,num_to_bytearray(118),__get_green);
+set_prop(functions,num_to_bytestring(118),__get_green);
 
 functions.fputs = __fputs;
 set_prop(functions,"119",__fputs);
 set_prop(functions,119,__fputs);
-set_prop(functions,num_to_bytearray(119),__fputs);
+set_prop(functions,num_to_bytestring(119),__fputs);
 
 functions.init_filter = __init_filter;
 set_prop(functions,"120",__init_filter);
 set_prop(functions,120,__init_filter);
-set_prop(functions,num_to_bytearray(120),__init_filter);
+set_prop(functions,num_to_bytestring(120),__init_filter);
 
 functions.sv_get_sample_rate = __sv_get_sample_rate;
 set_prop(functions,"121",__sv_get_sample_rate);
 set_prop(functions,121,__sv_get_sample_rate);
-set_prop(functions,num_to_bytearray(121),__sv_get_sample_rate);
+set_prop(functions,num_to_bytestring(121),__sv_get_sample_rate);
 
 functions.midi_open_port = __midi_open_port;
 set_prop(functions,"122",__midi_open_port);
 set_prop(functions,122,__midi_open_port);
-set_prop(functions,num_to_bytearray(122),__midi_open_port);
+set_prop(functions,num_to_bytestring(122),__midi_open_port);
 
 functions.get_font = __get_font;
 set_prop(functions,"123",__get_font);
 set_prop(functions,123,__get_font);
-set_prop(functions,num_to_bytearray(123),__get_font);
+set_prop(functions,num_to_bytestring(123),__get_font);
 
 functions.get_zbuf = __get_zbuf;
 set_prop(functions,"124",__get_zbuf);
 set_prop(functions,124,__get_zbuf);
-set_prop(functions,num_to_bytearray(124),__get_zbuf);
+set_prop(functions,num_to_bytestring(124),__get_zbuf);
 
 functions.rename_file = __rename_file;
 set_prop(functions,"125",__rename_file);
 set_prop(functions,125,__rename_file);
-set_prop(functions,num_to_bytearray(125),__rename_file);
+set_prop(functions,num_to_bytestring(125),__rename_file);
 
 functions.strlen = __strlen;
 set_prop(functions,"126",__strlen);
 set_prop(functions,126,__strlen);
-set_prop(functions,num_to_bytearray(126),__strlen);
+set_prop(functions,num_to_bytestring(126),__strlen);
 
 functions.sv_set_pattern_name = __sv_set_pattern_name;
 set_prop(functions,"127",__sv_set_pattern_name);
 set_prop(functions,127,__sv_set_pattern_name);
-set_prop(functions,num_to_bytearray(127),__sv_set_pattern_name);
+set_prop(functions,num_to_bytestring(127),__sv_set_pattern_name);
 
 functions.fgets = __fgets;
 set_prop(functions,"128",__fgets);
 set_prop(functions,128,__fgets);
-set_prop(functions,num_to_bytearray(128),__fgets);
+set_prop(functions,num_to_bytestring(128),__fgets);
 
 functions.dlclose = __dlclose;
 set_prop(functions,"129",__dlclose);
 set_prop(functions,129,__dlclose);
-set_prop(functions,num_to_bytearray(129),__dlclose);
+set_prop(functions,num_to_bytestring(129),__dlclose);
 
 functions.sv_get_module_ctl_value = __sv_get_module_ctl_value;
 set_prop(functions,"130",__sv_get_module_ctl_value);
 set_prop(functions,130,__sv_get_module_ctl_value);
-set_prop(functions,num_to_bytearray(130),__sv_get_module_ctl_value);
+set_prop(functions,num_to_bytestring(130),__sv_get_module_ctl_value);
 
 functions.sv_metamodule_fload = __sv_metamodule_fload;
 set_prop(functions,"131",__sv_metamodule_fload);
 set_prop(functions,131,__sv_metamodule_fload);
-set_prop(functions,num_to_bytearray(131),__sv_metamodule_fload);
+set_prop(functions,num_to_bytestring(131),__sv_metamodule_fload);
 
 functions.remove_anim = __remove_anim;
 set_prop(functions,"132",__remove_anim);
 set_prop(functions,132,__remove_anim);
-set_prop(functions,num_to_bytearray(132),__remove_anim);
+set_prop(functions,num_to_bytestring(132),__remove_anim);
 
 functions.gl_draw_arrays = __gl_draw_arrays;
 set_prop(functions,"133",__gl_draw_arrays);
 set_prop(functions,133,__gl_draw_arrays);
-set_prop(functions,num_to_bytearray(133),__gl_draw_arrays);
+set_prop(functions,num_to_bytestring(133),__gl_draw_arrays);
 
 functions.set_alpha = __set_alpha;
 set_prop(functions,"134",__set_alpha);
 set_prop(functions,134,__set_alpha);
-set_prop(functions,num_to_bytearray(134),__set_alpha);
+set_prop(functions,num_to_bytestring(134),__set_alpha);
 
 functions.get_blue = __get_blue;
 set_prop(functions,"135",__get_blue);
 set_prop(functions,135,__get_blue);
-set_prop(functions,num_to_bytearray(135),__get_blue);
+set_prop(functions,num_to_bytestring(135),__get_blue);
 
 functions.get_real_path = __get_real_path;
 set_prop(functions,"136",__get_real_path);
 set_prop(functions,136,__get_real_path);
-set_prop(functions,num_to_bytearray(136),__get_real_path);
+set_prop(functions,num_to_bytestring(136),__get_real_path);
 
 functions.strcmp1 = __strcmp1;
 set_prop(functions,"137",__strcmp1);
 set_prop(functions,137,__strcmp1);
-set_prop(functions,num_to_bytearray(137),__strcmp1);
+set_prop(functions,num_to_bytestring(137),__strcmp1);
 
 functions.sv_set_pattern_xy = __sv_set_pattern_xy;
 set_prop(functions,"138",__sv_set_pattern_xy);
 set_prop(functions,138,__sv_set_pattern_xy);
-set_prop(functions,num_to_bytearray(138),__sv_set_pattern_xy);
+set_prop(functions,num_to_bytestring(138),__sv_set_pattern_xy);
 
 functions.sv_set_module_color = __sv_set_module_color;
 set_prop(functions,"139",__sv_set_module_color);
 set_prop(functions,139,__sv_set_module_color);
-set_prop(functions,num_to_bytearray(139),__sv_set_module_color);
+set_prop(functions,num_to_bytestring(139),__sv_set_module_color);
 
 functions.sv_get_status = __sv_get_status;
 set_prop(functions,"140",__sv_get_status);
 set_prop(functions,140,__sv_get_status);
-set_prop(functions,num_to_bytearray(140),__sv_get_status);
+set_prop(functions,num_to_bytestring(140),__sv_get_status);
 
 functions.rotate = __rotate;
 set_prop(functions,"141",__rotate);
 set_prop(functions,141,__rotate);
-set_prop(functions,num_to_bytearray(141),__rotate);
+set_prop(functions,num_to_bytestring(141),__rotate);
 
 functions.sv_get_pattern_name = __sv_get_pattern_name;
 set_prop(functions,"142",__sv_get_pattern_name);
 set_prop(functions,142,__sv_get_pattern_name);
-set_prop(functions,num_to_bytearray(142),__sv_get_pattern_name);
+set_prop(functions,num_to_bytestring(142),__sv_get_pattern_name);
 
 functions.split_rgb = __split_rgb;
 set_prop(functions,"143",__split_rgb);
 set_prop(functions,143,__split_rgb);
-set_prop(functions,num_to_bytearray(143),__split_rgb);
+set_prop(functions,num_to_bytestring(143),__split_rgb);
 
 functions.create_directory = __create_directory;
 set_prop(functions,"144",__create_directory);
 set_prop(functions,144,__create_directory);
-set_prop(functions,num_to_bytearray(144),__create_directory);
+set_prop(functions,num_to_bytestring(144),__create_directory);
 
 functions.set_quit_action = __set_quit_action;
 set_prop(functions,"145",__set_quit_action);
 set_prop(functions,145,__set_quit_action);
-set_prop(functions,num_to_bytearray(145),__set_quit_action);
+set_prop(functions,num_to_bytestring(145),__set_quit_action);
 
 functions.get_month = __get_month;
 set_prop(functions,"146",__get_month);
 set_prop(functions,146,__get_month);
-set_prop(functions,num_to_bytearray(146),__get_month);
+set_prop(functions,num_to_bytestring(146),__get_month);
 
 functions.sv_get_module_name = __sv_get_module_name;
 set_prop(functions,"147",__sv_get_module_name);
 set_prop(functions,147,__sv_get_module_name);
-set_prop(functions,num_to_bytearray(147),__sv_get_module_name);
+set_prop(functions,num_to_bytestring(147),__sv_get_module_name);
 
 functions.sv_get_number_of_modules = __sv_get_number_of_modules;
 set_prop(functions,"148",__sv_get_number_of_modules);
 set_prop(functions,148,__sv_get_number_of_modules);
-set_prop(functions,num_to_bytearray(148),__sv_get_number_of_modules);
+set_prop(functions,num_to_bytestring(148),__sv_get_number_of_modules);
 
 functions.sv_volume = __sv_volume;
 set_prop(functions,"149",__sv_volume);
 set_prop(functions,149,__sv_volume);
-set_prop(functions,num_to_bytearray(149),__sv_volume);
+set_prop(functions,num_to_bytestring(149),__sv_volume);
 
 functions.sv_load = __sv_load;
 set_prop(functions,"150",__sv_load);
 set_prop(functions,150,__sv_load);
-set_prop(functions,num_to_bytearray(150),__sv_load);
+set_prop(functions,num_to_bytestring(150),__sv_load);
 
 functions.unpack_frame = __unpack_frame;
 set_prop(functions,"151",__unpack_frame);
 set_prop(functions,151,__unpack_frame);
-set_prop(functions,num_to_bytearray(151),__unpack_frame);
+set_prop(functions,num_to_bytestring(151),__unpack_frame);
 
 functions.get_flist_name = __get_flist_name;
 set_prop(functions,"152",__get_flist_name);
 set_prop(functions,152,__get_flist_name);
-set_prop(functions,num_to_bytearray(152),__get_flist_name);
+set_prop(functions,num_to_bytestring(152),__get_flist_name);
 
 functions.sv_set_module_relnote = __sv_set_module_relnote;
 set_prop(functions,"153",__sv_set_module_relnote);
 set_prop(functions,153,__sv_set_module_relnote);
-set_prop(functions,num_to_bytearray(153),__sv_set_module_relnote);
+set_prop(functions,num_to_bytestring(153),__sv_set_module_relnote);
 
 functions.load = __load;
 set_prop(functions,"154",__load);
 set_prop(functions,154,__load);
-set_prop(functions,num_to_bytearray(154),__load);
+set_prop(functions,num_to_bytestring(154),__load);
 
 functions.log10 = __log10;
 set_prop(functions,"155",__log10);
 set_prop(functions,155,__log10);
-set_prop(functions,num_to_bytearray(155),__log10);
+set_prop(functions,num_to_bytestring(155),__log10);
 
 functions.sv_get_module_finetune = __sv_get_module_finetune;
 set_prop(functions,"156",__sv_get_module_finetune);
 set_prop(functions,156,__sv_get_module_finetune);
-set_prop(functions,num_to_bytearray(156),__sv_get_module_finetune);
+set_prop(functions,num_to_bytestring(156),__sv_get_module_finetune);
 
 functions.remove_proplist = __remove_proplist;
 set_prop(functions,"157",__remove_proplist);
 set_prop(functions,157,__remove_proplist);
-set_prop(functions,num_to_bytearray(157),__remove_proplist);
+set_prop(functions,num_to_bytestring(157),__remove_proplist);
 
 functions.op_cc = __op_cc;
 set_prop(functions,"158",__op_cc);
 set_prop(functions,158,__op_cc);
-set_prop(functions,num_to_bytearray(158),__op_cc);
+set_prop(functions,num_to_bytestring(158),__op_cc);
 
 functions.mutex_trylock = __mutex_trylock;
 set_prop(functions,"159",__mutex_trylock);
 set_prop(functions,159,__mutex_trylock);
-set_prop(functions,num_to_bytearray(159),__mutex_trylock);
+set_prop(functions,num_to_bytestring(159),__mutex_trylock);
 
 functions.sv_pattern_mute = __sv_pattern_mute;
 set_prop(functions,"160",__sv_pattern_mute);
 set_prop(functions,160,__sv_pattern_mute);
-set_prop(functions,num_to_bytearray(160),__sv_pattern_mute);
+set_prop(functions,num_to_bytestring(160),__sv_pattern_mute);
 
 functions.sv_get_pattern_data = __sv_get_pattern_data;
 set_prop(functions,"161",__sv_get_pattern_data);
 set_prop(functions,161,__sv_get_pattern_data);
-set_prop(functions,num_to_bytearray(161),__sv_get_pattern_data);
+set_prop(functions,num_to_bytestring(161),__sv_get_pattern_data);
 
 functions.sv_set_pattern_size = __sv_set_pattern_size;
 set_prop(functions,"162",__sv_set_pattern_size);
 set_prop(functions,162,__sv_set_pattern_size);
-set_prop(functions,num_to_bytearray(162),__sv_set_pattern_size);
+set_prop(functions,num_to_bytestring(162),__sv_set_pattern_size);
 
 functions.sv_new_pattern = __sv_new_pattern;
 set_prop(functions,"163",__sv_new_pattern);
 set_prop(functions,163,__sv_new_pattern);
-set_prop(functions,num_to_bytearray(163),__sv_new_pattern);
+set_prop(functions,num_to_bytestring(163),__sv_new_pattern);
 
 functions.sv_get_pattern_event = __sv_get_pattern_event;
 set_prop(functions,"164",__sv_get_pattern_event);
 set_prop(functions,164,__sv_get_pattern_event);
-set_prop(functions,num_to_bytearray(164),__sv_get_pattern_event);
+set_prop(functions,num_to_bytestring(164),__sv_get_pattern_event);
 
 functions.enable_audio_input = __enable_audio_input;
 set_prop(functions,"165",__enable_audio_input);
 set_prop(functions,165,__enable_audio_input);
-set_prop(functions,num_to_bytearray(165),__enable_audio_input);
+set_prop(functions,num_to_bytestring(165),__enable_audio_input);
 
 functions.frame = __frame;
 set_prop(functions,"166",__frame);
 set_prop(functions,166,__frame);
-set_prop(functions,num_to_bytearray(166),__frame);
+set_prop(functions,num_to_bytestring(166),__frame);
 
 functions.fflush = __fflush;
 set_prop(functions,"167",__fflush);
 set_prop(functions,167,__fflush);
-set_prop(functions,num_to_bytearray(167),__fflush);
+set_prop(functions,num_to_bytestring(167),__fflush);
 
 functions.load0 = __load0;
 set_prop(functions,"168",__load0);
 set_prop(functions,168,__load0);
-set_prop(functions,num_to_bytearray(168),__load0);
+set_prop(functions,num_to_bytestring(168),__load0);
 
 functions.get_size = __get_size;
 set_prop(functions,"169",__get_size);
 set_prop(functions,169,__get_size);
-set_prop(functions,num_to_bytearray(169),__get_size);
+set_prop(functions,num_to_bytestring(169),__get_size);
 
 functions.remove = __remove;
 set_prop(functions,"170",__remove);
 set_prop(functions,170,__remove);
-set_prop(functions,num_to_bytearray(170),__remove);
+set_prop(functions,num_to_bytestring(170),__remove);
 
 functions.sv_get_pattern_x = __sv_get_pattern_x;
 set_prop(functions,"171",__sv_get_pattern_x);
 set_prop(functions,171,__sv_get_pattern_x);
-set_prop(functions,num_to_bytearray(171),__sv_get_pattern_x);
+set_prop(functions,num_to_bytestring(171),__sv_get_pattern_x);
 
 functions.sv_get_module_outputs = __sv_get_module_outputs;
 set_prop(functions,"172",__sv_get_module_outputs);
 set_prop(functions,172,__sv_get_module_outputs);
-set_prop(functions,num_to_bytearray(172),__sv_get_module_outputs);
+set_prop(functions,num_to_bytestring(172),__sv_get_module_outputs);
 
 functions.midi_next_event = __midi_next_event;
 set_prop(functions,"173",__midi_next_event);
 set_prop(functions,173,__midi_next_event);
-set_prop(functions,num_to_bytearray(173),__midi_next_event);
+set_prop(functions,num_to_bytestring(173),__midi_next_event);
 
 functions.midi_close_client = __midi_close_client;
 set_prop(functions,"174",__midi_close_client);
 set_prop(functions,174,__midi_close_client);
-set_prop(functions,num_to_bytearray(174),__midi_close_client);
+set_prop(functions,num_to_bytestring(174),__midi_close_client);
 
 functions.gl_use_prog = __gl_use_prog;
 set_prop(functions,"175",__gl_use_prog);
 set_prop(functions,175,__gl_use_prog);
-set_prop(functions,num_to_bytearray(175),__gl_use_prog);
+set_prop(functions,num_to_bytestring(175),__gl_use_prog);
 
 functions.sv_get_pattern_y = __sv_get_pattern_y;
 set_prop(functions,"176",__sv_get_pattern_y);
 set_prop(functions,176,__sv_get_pattern_y);
-set_prop(functions,num_to_bytearray(176),__sv_get_pattern_y);
+set_prop(functions,num_to_bytestring(176),__sv_get_pattern_y);
 
 functions.sv_get_number_of_patterns = __sv_get_number_of_patterns;
 set_prop(functions,"177",__sv_get_number_of_patterns);
 set_prop(functions,177,__sv_get_number_of_patterns);
-set_prop(functions,num_to_bytearray(177),__sv_get_number_of_patterns);
+set_prop(functions,num_to_bytestring(177),__sv_get_number_of_patterns);
 
 functions.sv_save = __sv_save;
 set_prop(functions,"178",__sv_save);
 set_prop(functions,178,__sv_save);
-set_prop(functions,num_to_bytearray(178),__sv_save);
+set_prop(functions,num_to_bytestring(178),__sv_save);
 
 functions.t_pop_matrix = __t_pop_matrix;
 set_prop(functions,"179",__t_pop_matrix);
 set_prop(functions,179,__t_pop_matrix);
-set_prop(functions,num_to_bytearray(179),__t_pop_matrix);
+set_prop(functions,num_to_bytestring(179),__t_pop_matrix);
 
 functions.gl_get_int = __gl_get_int;
 set_prop(functions,"180",__gl_get_int);
 set_prop(functions,180,__gl_get_int);
-set_prop(functions,num_to_bytearray(180),__gl_get_int);
+set_prop(functions,num_to_bytestring(180),__gl_get_int);
 
 functions.flist_next = __flist_next;
 set_prop(functions,"181",__flist_next);
 set_prop(functions,181,__flist_next);
-set_prop(functions,num_to_bytearray(181),__flist_next);
+set_prop(functions,num_to_bytestring(181),__flist_next);
 
 functions.get_system_log = __get_system_log;
 set_prop(functions,"182",__get_system_log);
 set_prop(functions,182,__get_system_log);
-set_prop(functions,num_to_bytearray(182),__get_system_log);
+set_prop(functions,num_to_bytestring(182),__get_system_log);
 
 functions.printf = __printf;
 set_prop(functions,"183",__printf);
 set_prop(functions,183,__printf);
-set_prop(functions,num_to_bytearray(183),__printf);
+set_prop(functions,num_to_bytestring(183),__printf);
 
 functions.convert_type = __convert_type;
 set_prop(functions,"184",__convert_type);
 set_prop(functions,184,__convert_type);
-set_prop(functions,num_to_bytearray(184),__convert_type);
+set_prop(functions,num_to_bytestring(184),__convert_type);
 
 functions.sv_get_module_ctl_offset = __sv_get_module_ctl_offset;
 set_prop(functions,"185",__sv_get_module_ctl_offset);
 set_prop(functions,185,__sv_get_module_ctl_offset);
-set_prop(functions,num_to_bytearray(185),__sv_get_module_ctl_offset);
+set_prop(functions,num_to_bytestring(185),__sv_get_module_ctl_offset);
 
 functions.sv_rewind = __sv_rewind;
 set_prop(functions,"186",__sv_rewind);
 set_prop(functions,186,__sv_rewind);
-set_prop(functions,num_to_bytearray(186),__sv_rewind);
+set_prop(functions,num_to_bytestring(186),__sv_rewind);
 
 functions.update_gl_data = __update_gl_data;
 set_prop(functions,"187",__update_gl_data);
 set_prop(functions,187,__update_gl_data);
-set_prop(functions,num_to_bytearray(187),__update_gl_data);
+set_prop(functions,num_to_bytestring(187),__update_gl_data);
 
 functions.setxattr = __setxattr;
 set_prop(functions,"188",__setxattr);
 set_prop(functions,188,__setxattr);
-set_prop(functions,num_to_bytearray(188),__setxattr);
+set_prop(functions,num_to_bytestring(188),__setxattr);
 
 functions.fseek = __fseek;
 set_prop(functions,"189",__fseek);
 set_prop(functions,189,__fseek);
-set_prop(functions,num_to_bytearray(189),__fseek);
+set_prop(functions,num_to_bytestring(189),__fseek);
 
 functions.save = __save;
 set_prop(functions,"190",__save);
 set_prop(functions,190,__save);
-set_prop(functions,num_to_bytearray(190),__save);
+set_prop(functions,num_to_bytestring(190),__save);
 
 functions.num_to_str = __num_to_str;
 set_prop(functions,"191",__num_to_str);
 set_prop(functions,191,__num_to_str);
-set_prop(functions,num_to_bytearray(191),__num_to_str);
+set_prop(functions,num_to_bytestring(191),__num_to_str);
 
 functions.get_flags = __get_flags;
 set_prop(functions,"192",__get_flags);
 set_prop(functions,192,__get_flags);
-set_prop(functions,num_to_bytearray(192),__get_flags);
+set_prop(functions,num_to_bytestring(192),__get_flags);
 
 functions.op_ccn1 = __op_ccn1;
 set_prop(functions,"193",__op_ccn1);
 set_prop(functions,193,__op_ccn1);
-set_prop(functions,num_to_bytearray(193),__op_ccn1);
+set_prop(functions,num_to_bytestring(193),__op_ccn1);
 
 functions.sv_get_current_line = __sv_get_current_line;
 set_prop(functions,"194",__sv_get_current_line);
 set_prop(functions,194,__sv_get_current_line);
-set_prop(functions,num_to_bytearray(194),__sv_get_current_line);
+set_prop(functions,num_to_bytestring(194),__sv_get_current_line);
 
 functions.pixi = __pixi;
 set_prop(functions,"195",__pixi);
 set_prop(functions,195,__pixi);
-set_prop(functions,num_to_bytearray(195),__pixi);
+set_prop(functions,num_to_bytestring(195),__pixi);
 
 functions.op_ccn2 = __op_ccn2;
 set_prop(functions,"196",__op_ccn2);
 set_prop(functions,196,__op_ccn2);
-set_prop(functions,num_to_bytearray(196),__op_ccn2);
+set_prop(functions,num_to_bytestring(196),__op_ccn2);
 
 functions.sv_get_module_ctl_name = __sv_get_module_ctl_name;
 set_prop(functions,"197",__sv_get_module_ctl_name);
 set_prop(functions,197,__sv_get_module_ctl_name);
-set_prop(functions,num_to_bytearray(197),__sv_get_module_ctl_name);
+set_prop(functions,num_to_bytestring(197),__sv_get_module_ctl_name);
 
 functions.get_transp = __get_transp;
 set_prop(functions,"198",__get_transp);
 set_prop(functions,198,__get_transp);
-set_prop(functions,num_to_bytearray(198),__get_transp);
+set_prop(functions,num_to_bytestring(198),__get_transp);
 
 functions.clone = __clone;
 set_prop(functions,"199",__clone);
 set_prop(functions,199,__clone);
-set_prop(functions,num_to_bytearray(199),__clone);
+set_prop(functions,num_to_bytestring(199),__clone);
 
 functions.remove_filter = __remove_filter;
 set_prop(functions,"200",__remove_filter);
 set_prop(functions,200,__remove_filter);
-set_prop(functions,num_to_bytearray(200),__remove_filter);
+set_prop(functions,num_to_bytestring(200),__remove_filter);
 
 functions.sqrt = __sqrt;
 set_prop(functions,"201",__sqrt);
 set_prop(functions,201,__sqrt);
-set_prop(functions,num_to_bytearray(201),__sqrt);
+set_prop(functions,num_to_bytestring(201),__sqrt);
 
 functions.exp = __exp;
 set_prop(functions,"202",__exp);
 set_prop(functions,202,__exp);
-set_prop(functions,num_to_bytearray(202),__exp);
+set_prop(functions,num_to_bytestring(202),__exp);
 
 functions.mutex_destroy = __mutex_destroy;
 set_prop(functions,"203",__mutex_destroy);
 set_prop(functions,203,__mutex_destroy);
-set_prop(functions,num_to_bytearray(203),__mutex_destroy);
+set_prop(functions,num_to_bytestring(203),__mutex_destroy);
 
 functions.get_timer = __get_timer;
 set_prop(functions,"204",__get_timer);
 set_prop(functions,204,__get_timer);
-set_prop(functions,num_to_bytearray(204),__get_timer);
+set_prop(functions,num_to_bytestring(204),__get_timer);
 
 functions.resize = __resize;
 set_prop(functions,"205",__resize);
 set_prop(functions,205,__resize);
-set_prop(functions,num_to_bytearray(205),__resize);
+set_prop(functions,num_to_bytestring(205),__resize);
 
 functions.dlsym = __dlsym;
 set_prop(functions,"206",__dlsym);
 set_prop(functions,206,__dlsym);
-set_prop(functions,num_to_bytearray(206),__dlsym);
+set_prop(functions,num_to_bytestring(206),__dlsym);
 
 functions.sv_fload_module = __sv_fload_module;
 set_prop(functions,"207",__sv_fload_module);
 set_prop(functions,207,__sv_fload_module);
-set_prop(functions,num_to_bytearray(207),__sv_fload_module);
+set_prop(functions,num_to_bytestring(207),__sv_fload_module);
 
 functions.sv_new_module = __sv_new_module;
 set_prop(functions,"208",__sv_new_module);
 set_prop(functions,208,__sv_new_module);
-set_prop(functions,num_to_bytearray(208),__sv_new_module);
+set_prop(functions,num_to_bytestring(208),__sv_new_module);
 
 functions.midi_open_client = __midi_open_client;
 set_prop(functions,"209",__midi_open_client);
 set_prop(functions,209,__midi_open_client);
-set_prop(functions,num_to_bytearray(209),__midi_open_client);
+set_prop(functions,num_to_bytestring(209),__midi_open_client);
 
 functions.pack_frame = __pack_frame;
 set_prop(functions,"210",__pack_frame);
 set_prop(functions,210,__pack_frame);
-set_prop(functions,num_to_bytearray(210),__pack_frame);
+set_prop(functions,num_to_bytestring(210),__pack_frame);
 
 functions.str_to_num = __str_to_num;
 set_prop(functions,"211",__str_to_num);
 set_prop(functions,211,__str_to_num);
-set_prop(functions,num_to_bytearray(211),__str_to_num);
+set_prop(functions,num_to_bytestring(211),__str_to_num);
 
 functions.set_prop = __set_prop;
 set_prop(functions,"212",__set_prop);
 set_prop(functions,212,__set_prop);
-set_prop(functions,num_to_bytearray(212),__set_prop);
+set_prop(functions,num_to_bytestring(212),__set_prop);
 
 functions.argv = __argv;
 set_prop(functions,"213",__argv);
 set_prop(functions,213,__argv);
-set_prop(functions,num_to_bytearray(213),__argv);
+set_prop(functions,num_to_bytestring(213),__argv);
 
 functions.replace_values = __replace_values;
 set_prop(functions,"214",__replace_values);
 set_prop(functions,214,__replace_values);
-set_prop(functions,num_to_bytearray(214),__replace_values);
+set_prop(functions,num_to_bytestring(214),__replace_values);
 
 functions.new_filter = __new_filter;
 set_prop(functions,"215",__new_filter);
 set_prop(functions,215,__new_filter);
-set_prop(functions,num_to_bytearray(215),__new_filter);
+set_prop(functions,num_to_bytestring(215),__new_filter);
 
 functions.sin = __sin;
 set_prop(functions,"216",__sin);
 set_prop(functions,216,__sin);
-set_prop(functions,num_to_bytearray(216),__sin);
+set_prop(functions,num_to_bytestring(216),__sin);
 
 functions.sv_get_pattern_lines = __sv_get_pattern_lines;
 set_prop(functions,"217",__sv_get_pattern_lines);
 set_prop(functions,217,__sv_get_pattern_lines);
-set_prop(functions,num_to_bytearray(217),__sv_get_pattern_lines);
+set_prop(functions,num_to_bytestring(217),__sv_get_pattern_lines);
 
 functions.sv_get_module_color = __sv_get_module_color;
 set_prop(functions,"218",__sv_get_module_color);
 set_prop(functions,218,__sv_get_module_color);
-set_prop(functions,num_to_bytearray(218),__sv_get_module_color);
+set_prop(functions,num_to_bytestring(218),__sv_get_module_color);
 
 functions.create_anim = __create_anim;
 set_prop(functions,"219",__create_anim);
 set_prop(functions,219,__create_anim);
-set_prop(functions,num_to_bytearray(219),__create_anim);
+set_prop(functions,num_to_bytestring(219),__create_anim);
 
 functions.zlib_pack = __zlib_pack;
 set_prop(functions,"220",__zlib_pack);
 set_prop(functions,220,__zlib_pack);
-set_prop(functions,num_to_bytearray(220),__zlib_pack);
+set_prop(functions,num_to_bytestring(220),__zlib_pack);
 
 functions.asinh = __asinh;
 set_prop(functions,"221",__asinh);
 set_prop(functions,221,__asinh);
-set_prop(functions,num_to_bytearray(221),__asinh);
+set_prop(functions,num_to_bytestring(221),__asinh);
 
 functions.gl_bind_texture = __gl_bind_texture;
 set_prop(functions,"222",__gl_bind_texture);
 set_prop(functions,222,__gl_bind_texture);
-set_prop(functions,num_to_bytearray(222),__gl_bind_texture);
+set_prop(functions,num_to_bytestring(222),__gl_bind_texture);
 
 functions.print = __print;
 set_prop(functions,"223",__print);
 set_prop(functions,223,__print);
-set_prop(functions,num_to_bytearray(223),__print);
+set_prop(functions,num_to_bytestring(223),__print);
 
 functions.clear_zbuf = __clear_zbuf;
 set_prop(functions,"224",__clear_zbuf);
 set_prop(functions,224,__clear_zbuf);
-set_prop(functions,num_to_bytearray(224),__clear_zbuf);
+set_prop(functions,num_to_bytestring(224),__clear_zbuf);
 
 functions.new_flist = __new_flist;
 set_prop(functions,"225",__new_flist);
 set_prop(functions,225,__new_flist);
-set_prop(functions,num_to_bytearray(225),__new_flist);
+set_prop(functions,num_to_bytestring(225),__new_flist);
 
 functions.op_cc1 = __op_cc1;
 set_prop(functions,"226",__op_cc1);
 set_prop(functions,226,__op_cc1);
-set_prop(functions,num_to_bytearray(226),__op_cc1);
+set_prop(functions,num_to_bytestring(226),__op_cc1);
 
 functions.op_cn = __op_cn;
 set_prop(functions,"227",__op_cn);
 set_prop(functions,227,__op_cn);
-set_prop(functions,num_to_bytearray(227),__op_cn);
+set_prop(functions,num_to_bytestring(227),__op_cn);
 
 functions.atan2 = __atan2;
 set_prop(functions,"228",__atan2);
 set_prop(functions,228,__atan2);
-set_prop(functions,num_to_bytearray(228),__atan2);
+set_prop(functions,num_to_bytestring(228),__atan2);
 
 functions.sv_set_module_ctl_value = __sv_set_module_ctl_value;
 set_prop(functions,"229",__sv_set_module_ctl_value);
 set_prop(functions,229,__sv_set_module_ctl_value);
-set_prop(functions,num_to_bytearray(229),__sv_set_module_ctl_value);
+set_prop(functions,num_to_bytestring(229),__sv_set_module_ctl_value);
 
 functions.sv_fload = __sv_fload;
 set_prop(functions,"230",__sv_fload);
 set_prop(functions,230,__sv_fload);
-set_prop(functions,num_to_bytearray(230),__sv_fload);
+set_prop(functions,num_to_bytestring(230),__sv_fload);
 
 functions.gl_new_prog = __gl_new_prog;
 set_prop(functions,"231",__gl_new_prog);
 set_prop(functions,231,__gl_new_prog);
-set_prop(functions,num_to_bytearray(231),__gl_new_prog);
+set_prop(functions,num_to_bytestring(231),__gl_new_prog);
 
 functions.fopen = __fopen;
 set_prop(functions,"232",__fopen);
 set_prop(functions,232,__fopen);
-set_prop(functions,num_to_bytearray(232),__fopen);
+set_prop(functions,num_to_bytestring(232),__fopen);
 
 functions.reset_flags = __reset_flags;
 set_prop(functions,"233",__reset_flags);
 set_prop(functions,233,__reset_flags);
-set_prop(functions,num_to_bytearray(233),__reset_flags);
+set_prop(functions,num_to_bytestring(233),__reset_flags);
 
 functions.get_ysize = __get_ysize;
 set_prop(functions,"234",__get_ysize);
 set_prop(functions,234,__get_ysize);
-set_prop(functions,num_to_bytearray(234),__get_ysize);
+set_prop(functions,num_to_bytestring(234),__get_ysize);
 
 functions.generator = __generator;
 set_prop(functions,"235",__generator);
 set_prop(functions,235,__generator);
-set_prop(functions,num_to_bytearray(235),__generator);
+set_prop(functions,num_to_bytestring(235),__generator);
 
 functions.op_cc2 = __op_cc2;
 set_prop(functions,"236",__op_cc2);
 set_prop(functions,236,__op_cc2);
-set_prop(functions,num_to_bytearray(236),__op_cc2);
+set_prop(functions,num_to_bytestring(236),__op_cc2);
 
 functions.atanh = __atanh;
 set_prop(functions,"237",__atanh);
 set_prop(functions,237,__atanh);
-set_prop(functions,num_to_bytearray(237),__atanh);
+set_prop(functions,num_to_bytestring(237),__atanh);
 
 functions.sv_get_pattern_tracks = __sv_get_pattern_tracks;
 set_prop(functions,"238",__sv_get_pattern_tracks);
 set_prop(functions,238,__sv_get_pattern_tracks);
-set_prop(functions,num_to_bytearray(238),__sv_get_pattern_tracks);
+set_prop(functions,num_to_bytestring(238),__sv_get_pattern_tracks);
 
 functions.sv_get_module_ctl_group = __sv_get_module_ctl_group;
 set_prop(functions,"239",__sv_get_module_ctl_group);
 set_prop(functions,239,__sv_get_module_ctl_group);
-set_prop(functions,num_to_bytearray(239),__sv_get_module_ctl_group);
+set_prop(functions,num_to_bytestring(239),__sv_get_module_ctl_group);
 
 functions.sv_get_module_ctl_max = __sv_get_module_ctl_max;
 set_prop(functions,"240",__sv_get_module_ctl_max);
 set_prop(functions,240,__sv_get_module_ctl_max);
-set_prop(functions,num_to_bytearray(240),__sv_get_module_ctl_max);
+set_prop(functions,num_to_bytestring(240),__sv_get_module_ctl_max);
 
 functions.sv_set_module_finetune = __sv_set_module_finetune;
 set_prop(functions,"241",__sv_set_module_finetune);
 set_prop(functions,241,__sv_set_module_finetune);
-set_prop(functions,num_to_bytearray(241),__sv_set_module_finetune);
+set_prop(functions,num_to_bytestring(241),__sv_set_module_finetune);
 
 functions.sv_get_module_xy = __sv_get_module_xy;
 set_prop(functions,"242",__sv_get_module_xy);
 set_prop(functions,242,__sv_get_module_xy);
-set_prop(functions,num_to_bytearray(242),__sv_get_module_xy);
+set_prop(functions,num_to_bytestring(242),__sv_get_module_xy);
 
 functions.sv_get_current_signal_level = __sv_get_current_signal_level;
 set_prop(functions,"243",__sv_get_current_signal_level);
 set_prop(functions,243,__sv_get_current_signal_level);
-set_prop(functions,num_to_bytearray(243),__sv_get_current_signal_level);
+set_prop(functions,num_to_bytestring(243),__sv_get_current_signal_level);
 
 functions.sv_get_current_line2 = __sv_get_current_line2;
 set_prop(functions,"244",__sv_get_current_line2);
 set_prop(functions,244,__sv_get_current_line2);
-set_prop(functions,num_to_bytearray(244),__sv_get_current_line2);
+set_prop(functions,num_to_bytestring(244),__sv_get_current_line2);
 
 functions.gl_get_float = __gl_get_float;
 set_prop(functions,"245",__gl_get_float);
 set_prop(functions,245,__gl_get_float);
-set_prop(functions,num_to_bytearray(245),__gl_get_float);
+set_prop(functions,num_to_bytestring(245),__gl_get_float);
 
 functions.remove_gl_data = __remove_gl_data;
 set_prop(functions,"246",__remove_gl_data);
 set_prop(functions,246,__remove_gl_data);
-set_prop(functions,num_to_bytearray(246),__remove_gl_data);
+set_prop(functions,num_to_bytestring(246),__remove_gl_data);
 
 functions.sv_lock = __sv_lock;
 set_prop(functions,"247",__sv_lock);
 set_prop(functions,247,__sv_lock);
-set_prop(functions,num_to_bytearray(247),__sv_lock);
+set_prop(functions,num_to_bytestring(247),__sv_lock);
 
 functions.midi_send_event = __midi_send_event;
 set_prop(functions,"248",__midi_send_event);
 set_prop(functions,248,__midi_send_event);
-set_prop(functions,num_to_bytearray(248),__midi_send_event);
+set_prop(functions,num_to_bytestring(248),__midi_send_event);
 
 functions.t_translate = __t_translate;
 set_prop(functions,"249",__t_translate);
 set_prop(functions,249,__t_translate);
-set_prop(functions,num_to_bytearray(249),__t_translate);
+set_prop(functions,num_to_bytestring(249),__t_translate);
 
 functions.gl_blend_func = __gl_blend_func;
 set_prop(functions,"250",__gl_blend_func);
 set_prop(functions,250,__gl_blend_func);
-set_prop(functions,num_to_bytearray(250),__gl_blend_func);
+set_prop(functions,num_to_bytestring(250),__gl_blend_func);
 
 functions.fbox = __fbox;
 set_prop(functions,"251",__fbox);
 set_prop(functions,251,__fbox);
-set_prop(functions,num_to_bytearray(251),__fbox);
+set_prop(functions,num_to_bytestring(251),__fbox);
 
 functions.fwrite = __fwrite;
 set_prop(functions,"252",__fwrite);
 set_prop(functions,252,__fwrite);
-set_prop(functions,num_to_bytearray(252),__fwrite);
+set_prop(functions,num_to_bytestring(252),__fwrite);
 
 functions.reset_filter = __reset_filter;
 set_prop(functions,"253",__reset_filter);
 set_prop(functions,253,__reset_filter);
-set_prop(functions,num_to_bytearray(253),__reset_filter);
+set_prop(functions,num_to_bytestring(253),__reset_filter);
 
 functions.mutex_lock = __mutex_lock;
 set_prop(functions,"254",__mutex_lock);
 set_prop(functions,254,__mutex_lock);
-set_prop(functions,num_to_bytearray(254),__mutex_lock);
+set_prop(functions,num_to_bytestring(254),__mutex_lock);
 
 functions.get_note_freq = __get_note_freq;
 set_prop(functions,"255",__get_note_freq);
 set_prop(functions,255,__get_note_freq);
-set_prop(functions,num_to_bytearray(255),__get_note_freq);
+set_prop(functions,num_to_bytestring(255),__get_note_freq);
 
 functions.fload = __fload;
 set_prop(functions,"256",__fload);
 set_prop(functions,256,__fload);
-set_prop(functions,num_to_bytearray(256),__fload);
+set_prop(functions,num_to_bytestring(256),__fload);
 
 functions.show_memory_debug_messages = __show_memory_debug_messages;
 set_prop(functions,"257",__show_memory_debug_messages);
 set_prop(functions,257,__show_memory_debug_messages);
-set_prop(functions,num_to_bytearray(257),__show_memory_debug_messages);
+set_prop(functions,num_to_bytestring(257),__show_memory_debug_messages);
 
 functions.rand = __rand;
 set_prop(functions,"258",__rand);
 set_prop(functions,258,__rand);
-set_prop(functions,num_to_bytearray(258),__rand);
+set_prop(functions,num_to_bytestring(258),__rand);
 
 functions.get_hours = __get_hours;
 set_prop(functions,"259",__get_hours);
 set_prop(functions,259,__get_hours);
-set_prop(functions,num_to_bytearray(259),__get_hours);
+set_prop(functions,num_to_bytestring(259),__get_hours);
 
 functions.sort_triangles3d = __sort_triangles3d;
 set_prop(functions,"260",__sort_triangles3d);
 set_prop(functions,260,__sort_triangles3d);
-set_prop(functions,num_to_bytearray(260),__sort_triangles3d);
+set_prop(functions,num_to_bytestring(260),__sort_triangles3d);
 
 functions.ftell = __ftell;
 set_prop(functions,"261",__ftell);
 set_prop(functions,261,__ftell);
-set_prop(functions,num_to_bytearray(261),__ftell);
+set_prop(functions,num_to_bytestring(261),__ftell);
 
 functions.sprintf = __sprintf;
 set_prop(functions,"262",__sprintf);
 set_prop(functions,262,__sprintf);
-set_prop(functions,num_to_bytearray(262),__sprintf);
+set_prop(functions,num_to_bytestring(262),__sprintf);
 
 functions.set_flags = __set_flags;
 set_prop(functions,"263",__set_flags);
 set_prop(functions,263,__set_flags);
-set_prop(functions,num_to_bytearray(263),__set_flags);
+set_prop(functions,num_to_bytestring(263),__set_flags);
 
 functions.get_xsize = __get_xsize;
 set_prop(functions,"264",__get_xsize);
 set_prop(functions,264,__get_xsize);
-set_prop(functions,num_to_bytearray(264),__get_xsize);
+set_prop(functions,num_to_bytestring(264),__get_xsize);
 
 functions.copy = __copy;
 set_prop(functions,"265",__copy);
 set_prop(functions,265,__copy);
-set_prop(functions,num_to_bytearray(265),__copy);
+set_prop(functions,num_to_bytestring(265),__copy);
 
 functions.open_url = __open_url;
 set_prop(functions,"266",__open_url);
 set_prop(functions,266,__open_url);
-set_prop(functions,num_to_bytearray(266),__open_url);
+set_prop(functions,num_to_bytestring(266),__open_url);
 
 functions.midi_get_event = __midi_get_event;
 set_prop(functions,"267",__midi_get_event);
 set_prop(functions,267,__midi_get_event);
-set_prop(functions,num_to_bytearray(267),__midi_get_event);
+set_prop(functions,num_to_bytestring(267),__midi_get_event);
 
 functions.t_rotate = __t_rotate;
 set_prop(functions,"268",__t_rotate);
 set_prop(functions,268,__t_rotate);
-set_prop(functions,num_to_bytearray(268),__t_rotate);
+set_prop(functions,num_to_bytestring(268),__t_rotate);
 
 functions.t_reset = __t_reset;
 set_prop(functions,"269",__t_reset);
 set_prop(functions,269,__t_reset);
-set_prop(functions,num_to_bytearray(269),__t_reset);
+set_prop(functions,num_to_bytestring(269),__t_reset);
 
 functions.set_font = __set_font;
 set_prop(functions,"270",__set_font);
 set_prop(functions,270,__set_font);
-set_prop(functions,num_to_bytearray(270),__set_font);
+set_prop(functions,num_to_bytestring(270),__set_font);
 
 functions.set_zbuf = __set_zbuf;
 set_prop(functions,"271",__set_zbuf);
 set_prop(functions,271,__set_zbuf);
-set_prop(functions,num_to_bytearray(271),__set_zbuf);
+set_prop(functions,num_to_bytestring(271),__set_zbuf);
 
 functions.feof = __feof;
 set_prop(functions,"272",__feof);
 set_prop(functions,272,__feof);
-set_prop(functions,num_to_bytearray(272),__feof);
+set_prop(functions,num_to_bytestring(272),__feof);
 
 functions.remove_file = __remove_file;
 set_prop(functions,"273",__remove_file);
 set_prop(functions,273,__remove_file);
-set_prop(functions,num_to_bytearray(273),__remove_file);
+set_prop(functions,num_to_bytestring(273),__remove_file);
 
 functions.rand_seed = __rand_seed;
 set_prop(functions,"274",__rand_seed);
 set_prop(functions,274,__rand_seed);
-set_prop(functions,num_to_bytearray(274),__rand_seed);
+set_prop(functions,num_to_bytestring(274),__rand_seed);
 
 functions.exp2 = __exp2;
 set_prop(functions,"275",__exp2);
 set_prop(functions,275,__exp2);
-set_prop(functions,num_to_bytearray(275),__exp2);
+set_prop(functions,num_to_bytestring(275),__exp2);
 
 functions.asin = __asin;
 set_prop(functions,"276",__asin);
 set_prop(functions,276,__asin);
-set_prop(functions,num_to_bytearray(276),__asin);
+set_prop(functions,num_to_bytestring(276),__asin);
 
 functions.mutex_unlock = __mutex_unlock;
 set_prop(functions,"277",__mutex_unlock);
 set_prop(functions,277,__mutex_unlock);
-set_prop(functions,num_to_bytearray(277),__mutex_unlock);
+set_prop(functions,num_to_bytestring(277),__mutex_unlock);
 
 functions.sv_play = __sv_play;
 set_prop(functions,"278",__sv_play);
 set_prop(functions,278,__sv_play);
-set_prop(functions,num_to_bytearray(278),__sv_play);
+set_prop(functions,num_to_bytestring(278),__sv_play);
 
 functions.sv_fsave = __sv_fsave;
 set_prop(functions,"279",__sv_fsave);
 set_prop(functions,279,__sv_fsave);
-set_prop(functions,num_to_bytearray(279),__sv_fsave);
+set_prop(functions,num_to_bytestring(279),__sv_fsave);
 
 functions.t_mul_matrix = __t_mul_matrix;
 set_prop(functions,"280",__t_mul_matrix);
 set_prop(functions,280,__t_mul_matrix);
-set_prop(functions,num_to_bytearray(280),__t_mul_matrix);
+set_prop(functions,num_to_bytestring(280),__t_mul_matrix);
 
 functions.line3d = __line3d;
 set_prop(functions,"281",__line3d);
 set_prop(functions,281,__line3d);
-set_prop(functions,num_to_bytearray(281),__line3d);
+set_prop(functions,num_to_bytestring(281),__line3d);
 
 functions.get_dot3d = __get_dot3d;
 set_prop(functions,"282",__get_dot3d);
 set_prop(functions,282,__get_dot3d);
-set_prop(functions,num_to_bytearray(282),__get_dot3d);
+set_prop(functions,num_to_bytestring(282),__get_dot3d);
 
 functions.fopen_mem = __fopen_mem;
 set_prop(functions,"283",__fopen_mem);
 set_prop(functions,283,__fopen_mem);
-set_prop(functions,num_to_bytearray(283),__fopen_mem);
+set_prop(functions,num_to_bytestring(283),__fopen_mem);
 
 functions.sprintf2 = __sprintf2;
 set_prop(functions,"284",__sprintf2);
 set_prop(functions,284,__sprintf2);
-set_prop(functions,num_to_bytearray(284),__sprintf2);
+set_prop(functions,num_to_bytestring(284),__sprintf2);
 
 functions.get_tps = __get_tps;
 set_prop(functions,"285",__get_tps);
 set_prop(functions,285,__get_tps);
-set_prop(functions,num_to_bytearray(285),__get_tps);
+set_prop(functions,num_to_bytestring(285),__get_tps);
 
 functions.get_ticks = __get_ticks;
 set_prop(functions,"286",__get_ticks);
 set_prop(functions,286,__get_ticks);
-set_prop(functions,num_to_bytearray(286),__get_ticks);
+set_prop(functions,num_to_bytestring(286),__get_ticks);
 
 functions.sv_get_length_frames = __sv_get_length_frames;
 set_prop(functions,"287",__sv_get_length_frames);
 set_prop(functions,287,__sv_get_length_frames);
-set_prop(functions,num_to_bytearray(287),__sv_get_length_frames);
+set_prop(functions,num_to_bytestring(287),__sv_get_length_frames);
 
 functions.sv_new = __sv_new;
 set_prop(functions,"288",__sv_new);
 set_prop(functions,288,__sv_new);
-set_prop(functions,num_to_bytearray(288),__sv_new);
+set_prop(functions,num_to_bytestring(288),__sv_new);
 
 functions.t_point = __t_point;
 set_prop(functions,"289",__t_point);
 set_prop(functions,289,__t_point);
-set_prop(functions,num_to_bytearray(289),__t_point);
+set_prop(functions,num_to_bytestring(289),__t_point);
 
 functions.play = __play;
 set_prop(functions,"290",__play);
 set_prop(functions,290,__play);
-set_prop(functions,num_to_bytearray(290),__play);
+set_prop(functions,num_to_bytestring(290),__play);
 
 functions.copy_file = __copy_file;
 set_prop(functions,"291",__copy_file);
 set_prop(functions,291,__copy_file);
-set_prop(functions,num_to_bytearray(291),__copy_file);
+set_prop(functions,num_to_bytestring(291),__copy_file);
 
 functions.get_file_size = __get_file_size;
 set_prop(functions,"292",__get_file_size);
 set_prop(functions,292,__get_file_size);
-set_prop(functions,num_to_bytearray(292),__get_file_size);
+set_prop(functions,num_to_bytestring(292),__get_file_size);
 
 functions.new = __new;
 set_prop(functions,"293",__new);
 set_prop(functions,293,__new);
-set_prop(functions,num_to_bytearray(293),__new);
+set_prop(functions,num_to_bytestring(293),__new);
 
 functions.op_ccn = __op_ccn;
 set_prop(functions,"294",__op_ccn);
 set_prop(functions,294,__op_ccn);
-set_prop(functions,num_to_bytearray(294),__op_ccn);
+set_prop(functions,num_to_bytestring(294),__op_ccn);
 
 functions.sv_get_name = __sv_get_name;
 set_prop(functions,"295",__sv_get_name);
 set_prop(functions,295,__sv_get_name);
-set_prop(functions,num_to_bytearray(295),__sv_get_name);
+set_prop(functions,num_to_bytestring(295),__sv_get_name);
 
 functions.sv_sync_resume = __sv_sync_resume;
 set_prop(functions,"296",__sv_sync_resume);
 set_prop(functions,296,__sv_sync_resume);
-set_prop(functions,num_to_bytearray(296),__sv_sync_resume);
+set_prop(functions,num_to_bytestring(296),__sv_sync_resume);
 
 functions.split_ycbcr = __split_ycbcr;
 set_prop(functions,"297",__split_ycbcr);
 set_prop(functions,297,__split_ycbcr);
-set_prop(functions,num_to_bytearray(297),__split_ycbcr);
+set_prop(functions,num_to_bytestring(297),__split_ycbcr);
 
 functions.get_red = __get_red;
 set_prop(functions,"298",__get_red);
 set_prop(functions,298,__get_red);
-set_prop(functions,num_to_bytearray(298),__get_red);
+set_prop(functions,num_to_bytestring(298),__get_red);
 
 functions.clean = __clean;
 set_prop(functions,"299",__clean);
 set_prop(functions,299,__clean);
-set_prop(functions,num_to_bytearray(299),__clean);
+set_prop(functions,num_to_bytestring(299),__clean);
 
 functions.sv_get_module_inputs = __sv_get_module_inputs;
 set_prop(functions,"300",__sv_get_module_inputs);
 set_prop(functions,300,__sv_get_module_inputs);
-set_prop(functions,num_to_bytearray(300),__sv_get_module_inputs);
+set_prop(functions,num_to_bytestring(300),__sv_get_module_inputs);
 
 functions.sv_get_length_lines = __sv_get_length_lines;
 set_prop(functions,"301",__sv_get_length_lines);
 set_prop(functions,301,__sv_get_length_lines);
-set_prop(functions,num_to_bytearray(301),__sv_get_length_lines);
+set_prop(functions,num_to_bytestring(301),__sv_get_length_lines);
 
 functions.get_key_color = __get_key_color;
 set_prop(functions,"302",__get_key_color);
 set_prop(functions,302,__get_key_color);
-set_prop(functions,num_to_bytearray(302),__get_key_color);
+set_prop(functions,num_to_bytestring(302),__get_key_color);
 
 functions.fsave = __fsave;
 set_prop(functions,"303",__fsave);
 set_prop(functions,303,__fsave);
-set_prop(functions,num_to_bytearray(303),__fsave);
+set_prop(functions,num_to_bytestring(303),__fsave);
 
 functions.strcmp = __strcmp;
 set_prop(functions,"304",__strcmp);
 set_prop(functions,304,__strcmp);
-set_prop(functions,num_to_bytearray(304),__strcmp);
+set_prop(functions,num_to_bytestring(304),__strcmp);
 
 functions.get_proplist = __get_proplist;
 set_prop(functions,"305",__get_proplist);
 set_prop(functions,305,__get_proplist);
-set_prop(functions,num_to_bytearray(305),__get_proplist);
+set_prop(functions,num_to_bytestring(305),__get_proplist);
 
 functions.get_type = __get_type;
 set_prop(functions,"306",__get_type);
 set_prop(functions,306,__get_type);
-set_prop(functions,num_to_bytearray(306),__get_type);
+set_prop(functions,num_to_bytestring(306),__get_type);
 
 functions.file_dialog = __file_dialog;
 set_prop(functions,"307",__file_dialog);
 set_prop(functions,307,__file_dialog);
-set_prop(functions,num_to_bytearray(307),__file_dialog);
+set_prop(functions,num_to_bytestring(307),__file_dialog);
 
 functions.copy_and_resize = __copy_and_resize;
 set_prop(functions,"308",__copy_and_resize);
 set_prop(functions,308,__copy_and_resize);
-set_prop(functions,num_to_bytearray(308),__copy_and_resize);
+set_prop(functions,num_to_bytestring(308),__copy_and_resize);
 
 functions.acosh = __acosh;
 set_prop(functions,"309",__acosh);
 set_prop(functions,309,__acosh);
-set_prop(functions,num_to_bytearray(309),__acosh);
+set_prop(functions,num_to_bytestring(309),__acosh);
 
 functions.sv_get_bpm = __sv_get_bpm;
 set_prop(functions,"310",__sv_get_bpm);
 set_prop(functions,310,__sv_get_bpm);
-set_prop(functions,num_to_bytearray(310),__sv_get_bpm);
+set_prop(functions,num_to_bytestring(310),__sv_get_bpm);
 
 functions.midi_get_device = __midi_get_device;
 set_prop(functions,"311",__midi_get_device);
 set_prop(functions,311,__midi_get_device);
-set_prop(functions,num_to_bytearray(311),__midi_get_device);
+set_prop(functions,num_to_bytestring(311),__midi_get_device);
 
 functions.get_text_xysize = __get_text_xysize;
 set_prop(functions,"312",__get_text_xysize);
 set_prop(functions,312,__get_text_xysize);
-set_prop(functions,num_to_bytearray(312),__get_text_xysize);
+set_prop(functions,num_to_bytestring(312),__get_text_xysize);
 
 functions.fclose = __fclose;
 set_prop(functions,"313",__fclose);
 set_prop(functions,313,__fclose);
-set_prop(functions,num_to_bytearray(313),__fclose);
+set_prop(functions,num_to_bytestring(313),__fclose);
 
 functions.get_disk0 = __get_disk0;
 set_prop(functions,"314",__get_disk0);
 set_prop(functions,314,__get_disk0);
-set_prop(functions,num_to_bytearray(314),__get_disk0);
+set_prop(functions,num_to_bytestring(314),__get_disk0);
 
 functions.remove_prop = __remove_prop;
 set_prop(functions,"315",__remove_prop);
 set_prop(functions,315,__remove_prop);
-set_prop(functions,num_to_bytearray(315),__remove_prop);
+set_prop(functions,num_to_bytestring(315),__remove_prop);
 
 functions.sv_get_number_of_module_ctls = __sv_get_number_of_module_ctls;
 set_prop(functions,"316",__sv_get_number_of_module_ctls);
 set_prop(functions,316,__sv_get_number_of_module_ctls);
-set_prop(functions,num_to_bytearray(316),__sv_get_number_of_module_ctls);
+set_prop(functions,num_to_bytestring(316),__sv_get_number_of_module_ctls);
 
 functions.sv_find_module = __sv_find_module;
 set_prop(functions,"317",__sv_find_module);
 set_prop(functions,317,__sv_find_module);
-set_prop(functions,num_to_bytearray(317),__sv_find_module);
+set_prop(functions,num_to_bytestring(317),__sv_find_module);
 
 functions.get_pixel_size = __get_pixel_size;
 set_prop(functions,"318",__get_pixel_size);
 set_prop(functions,318,__get_pixel_size);
-set_prop(functions,num_to_bytearray(318),__get_pixel_size);
+set_prop(functions,num_to_bytestring(318),__get_pixel_size);
 
 functions.get_fformat_mime = __get_fformat_mime;
 set_prop(functions,"319",__get_fformat_mime);
 set_prop(functions,319,__get_fformat_mime);
-set_prop(functions,num_to_bytearray(319),__get_fformat_mime);
+set_prop(functions,num_to_bytestring(319),__get_fformat_mime);
 
 functions.sv_get_module_type = __sv_get_module_type;
 set_prop(functions,"320",__sv_get_module_type);
 set_prop(functions,320,__sv_get_module_type);
-set_prop(functions,num_to_bytearray(320),__sv_get_module_type);
+set_prop(functions,num_to_bytestring(320),__sv_get_module_type);
 
 functions.sv_connect_module = __sv_connect_module;
 set_prop(functions,"321",__sv_connect_module);
 set_prop(functions,321,__sv_connect_module);
-set_prop(functions,num_to_bytearray(321),__sv_connect_module);
+set_prop(functions,num_to_bytestring(321),__sv_connect_module);
 
 functions.remove_frame = __remove_frame;
 set_prop(functions,"322",__remove_frame);
 set_prop(functions,322,__remove_frame);
-set_prop(functions,num_to_bytearray(322),__remove_frame);
+set_prop(functions,num_to_bytestring(322),__remove_frame);
 
 functions.clear = __clear;
 set_prop(functions,"323",__clear);
 set_prop(functions,323,__clear);
-set_prop(functions,num_to_bytearray(323),__clear);
+set_prop(functions,num_to_bytestring(323),__clear);
 
 functions.set_pixel_size = __set_pixel_size;
 set_prop(functions,"324",__set_pixel_size);
 set_prop(functions,324,__set_pixel_size);
-set_prop(functions,num_to_bytearray(324),__set_pixel_size);
+set_prop(functions,num_to_bytestring(324),__set_pixel_size);
 
 functions.get_flist_type = __get_flist_type;
 set_prop(functions,"325",__get_flist_type);
 set_prop(functions,325,__get_flist_type);
-set_prop(functions,num_to_bytearray(325),__get_flist_type);
+set_prop(functions,num_to_bytestring(325),__get_flist_type);
 
 functions.strcat = __strcat;
 set_prop(functions,"326",__strcat);
 set_prop(functions,326,__strcat);
-set_prop(functions,num_to_bytearray(326),__strcat);
+set_prop(functions,num_to_bytestring(326),__strcat);
 
 functions.pow = __pow;
 set_prop(functions,"327",__pow);
 set_prop(functions,327,__pow);
-set_prop(functions,num_to_bytearray(327),__pow);
+set_prop(functions,num_to_bytestring(327),__pow);
 
 functions.mutex_create = __mutex_create;
 set_prop(functions,"328",__mutex_create);
 set_prop(functions,328,__mutex_create);
-set_prop(functions,num_to_bytearray(328),__mutex_create);
+set_prop(functions,num_to_bytestring(328),__mutex_create);
 
 functions.sv_remove_pattern = __sv_remove_pattern;
 set_prop(functions,"329",__sv_remove_pattern);
 set_prop(functions,329,__sv_remove_pattern);
-set_prop(functions,num_to_bytearray(329),__sv_remove_pattern);
+set_prop(functions,num_to_bytestring(329),__sv_remove_pattern);
 
 functions.dot3d = __dot3d;
 set_prop(functions,"330",__dot3d);
 set_prop(functions,330,__dot3d);
-set_prop(functions,num_to_bytearray(330),__dot3d);
+set_prop(functions,num_to_bytestring(330),__dot3d);
 
 functions.exit = __exit;
 set_prop(functions,"331",__exit);
 set_prop(functions,331,__exit);
-set_prop(functions,num_to_bytearray(331),__exit);
+set_prop(functions,num_to_bytestring(331),__exit);
 
 functions.t_scale = __t_scale;
 set_prop(functions,"332",__t_scale);
 set_prop(functions,332,__t_scale);
-set_prop(functions,num_to_bytearray(332),__t_scale);
+set_prop(functions,num_to_bytestring(332),__t_scale);
 
 functions.get_log = __get_log;
 set_prop(functions,"333",__get_log);
 set_prop(functions,333,__get_log);
-set_prop(functions,num_to_bytearray(333),__get_log);
+set_prop(functions,num_to_bytestring(333),__get_log);
+
+functions.print_fps = print_fps;
+set_prop(functions,"334",print_fps);
+set_prop(functions,334,print_fps);
+set_prop(functions,num_to_bytestring(334),print_fps);
+
+functions.print_fps_screen = print_fps_screen;
+set_prop(functions,"335",print_fps_screen);
+set_prop(functions,335,print_fps_screen);
+set_prop(functions,num_to_bytestring(335),print_fps_screen);
+
+functions.print_char = print_char;
+set_prop(functions,"336",print_char);
+set_prop(functions,336,print_char);
+set_prop(functions,num_to_bytestring(336),print_char);
+
+functions.print_int = print_int;
+set_prop(functions,"337",print_int);
+set_prop(functions,337,print_int);
+set_prop(functions,num_to_bytestring(337),print_int);
+
+functions.print_float = print_float;
+set_prop(functions,"338",print_float);
+set_prop(functions,338,print_float);
+set_prop(functions,num_to_bytestring(338),print_float);
+
+functions.print_string = print_string;
+set_prop(functions,"339",print_string);
+set_prop(functions,339,print_string);
+set_prop(functions,num_to_bytestring(339),print_string);
+
+functions.print_bool = print_bool;
+set_prop(functions,"340",print_bool);
+set_prop(functions,340,print_bool);
+set_prop(functions,num_to_bytestring(340),print_bool);
+
+functions.print_color = print_color;
+set_prop(functions,"341",print_color);
+set_prop(functions,341,print_color);
+set_prop(functions,num_to_bytestring(341),print_color);
+
+functions.print_array_int = print_array_int;
+set_prop(functions,"342",print_array_int);
+set_prop(functions,342,print_array_int);
+set_prop(functions,num_to_bytestring(342),print_array_int);
+
+functions.print_array_float = print_array_float;
+set_prop(functions,"343",print_array_float);
+set_prop(functions,343,print_array_float);
+set_prop(functions,num_to_bytestring(343),print_array_float);
+
+functions.print_array_string = print_array_string;
+set_prop(functions,"344",print_array_string);
+set_prop(functions,344,print_array_string);
+set_prop(functions,num_to_bytestring(344),print_array_string);
+
+functions.print_array_bool = print_array_bool;
+set_prop(functions,"345",print_array_bool);
+set_prop(functions,345,print_array_bool);
+set_prop(functions,num_to_bytestring(345),print_array_bool);
+
+functions.print_array_color = print_array_color;
+set_prop(functions,"346",print_array_color);
+set_prop(functions,346,print_array_color);
+set_prop(functions,num_to_bytestring(346),print_array_color);
+
+functions.print_array_array_int = print_array_array_int;
+set_prop(functions,"347",print_array_array_int);
+set_prop(functions,347,print_array_array_int);
+set_prop(functions,num_to_bytestring(347),print_array_array_int);
+
+functions.print_array_array_float = print_array_array_float;
+set_prop(functions,"348",print_array_array_float);
+set_prop(functions,348,print_array_array_float);
+set_prop(functions,num_to_bytestring(348),print_array_array_float);
+
+functions.print_array_array_string = print_array_array_string;
+set_prop(functions,"349",print_array_array_string);
+set_prop(functions,349,print_array_array_string);
+set_prop(functions,num_to_bytestring(349),print_array_array_string);
+
+functions.print_array_array_bool = print_array_array_bool;
+set_prop(functions,"350",print_array_array_bool);
+set_prop(functions,350,print_array_array_bool);
+set_prop(functions,num_to_bytestring(350),print_array_array_bool);
+
+functions.print_array_array_color = print_array_array_color;
+set_prop(functions,"351",print_array_array_color);
+set_prop(functions,351,print_array_array_color);
+set_prop(functions,num_to_bytestring(351),print_array_array_color);
 
 /*
 $proplist = get_proplist(functions);
@@ -4377,3 +4663,4 @@ for($i=0;$i<get_size($proplist);$i+1)
 
 write_file("./functions.ini", $test);
 */
+

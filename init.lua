@@ -20,7 +20,9 @@ local function example()
     _ "load image0 ../data/img/0.jpg;";
     _ "layer_new $system $image0;";
     while true do
-        _ "manual_loop $system;";
+        _ "layers_render $system.layers;";
+        _ "eventor $system;";
+        _ "frame 1;";
     end
     _ "close 0;"
 end

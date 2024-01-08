@@ -1,4 +1,4 @@
-include "bridge.pixi";
+include "brute.pixi";
 
 char = 'm';
 
