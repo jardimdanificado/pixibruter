@@ -173,13 +173,7 @@ fn container_count()
     $count = new();
     ret($count);
 }
-fn _container_count($target)
-{
-    $count = get_size($target);
-    $target = $count;
-    ret($target);
-}
-functions.container_count = _container_count;
+functions.container_count = container_count;
 
 fn print_container_count()
 {
@@ -220,13 +214,7 @@ fn random($min,$max)
     //considering that rand() returns a value between 0 and 32767
     ret((rand() % ($max - $min + 1)) + $min);
 }
-fn _random($target,$min,$max)
-{
-    //considering that rand() returns a value between 0 and 32767
-    $target = ((rand() % ($max - $min + 1)) + $min);
-    ret($target);
-}
-functions.random = _random;
+functions.random = random;
 
 fn recursive_prop($obj, $prop)
 {
@@ -370,12 +358,7 @@ fn list_find($list,$element)
     remove($oldsize);
     ret(-1);
 }
-fn _list_find($list,$element,$target)
-{
-    $target = list_find($list,$element);
-    ret($target);
-}
-functions.list_find = _list_find;
+functions.list_find = list_find;
 
 //strings functions
 //strings functions
@@ -387,12 +370,7 @@ fn string_new($size)
     $temp = new($size);
     ret($temp);
 }
-fn _string_new($size,$target)
-{
-    $target = string_new($size);
-    ret($target);
-}
-functions.string_new = _string_new;
+functions.string_new = string_new;
 
 fn string_sub($string,$start,$end)
 {
@@ -406,12 +384,7 @@ fn string_sub($string,$start,$end)
     }
     ret($newstr);
 }
-fn _string_sub($string,$start,$end,$target)
-{
-    $target = string_sub($string,$start,$end);
-    ret($target);
-}
-functions.string_sub = _string_sub;
+functions.string_sub = string_sub;
 
 //counting ocurrences using strstr
 fn string_ocurrences($str1,$str2)
@@ -432,12 +405,7 @@ fn string_ocurrences($str1,$str2)
     //remove($offset);
     ret($count);
 }
-fn _string_ocurrences($str1,$str2,$target)
-{
-    $target = string_ocurrences($str1,$str2);
-    ret($target);
-}
-functions.string_ocurrences = _string_ocurrences;
+functions.string_ocurrences = string_ocurrences;
 
 //this string returns the positions of each ocurrence
 fn string_ocurrences_advanced($str1,$str2)
@@ -460,12 +428,7 @@ fn string_ocurrences_advanced($str1,$str2)
 
     ret($result);
 }
-fn _string_ocurrences_advanced($str1,$str2,$target)
-{
-    $target = string_ocurrences_advanced($str1,$str2);
-    ret($target);
-}
-functions.string_ocurrences_advanced = _string_ocurrences_advanced;
+functions.string_ocurrences_advanced = string_ocurrences_advanced;
 
 fn string_split($string,$separator)
 {
@@ -483,12 +446,7 @@ fn string_split($string,$separator)
     remove($ocurrences);
     ret($result);
 }
-fn _string_split($string,$separator,$target)
-{
-    $target = string_split($string,$separator);
-    ret($target);
-}
-functions.string_split = _string_split;
+functions.string_split = string_split;
 
 fn string_replace($string,$oldstr,$newstr)
 {
@@ -505,12 +463,7 @@ fn string_replace($string,$oldstr,$newstr)
     remove($ocurrences);
     ret($result);
 }
-fn _string_replace($string,$oldstr,$newstr,$target)
-{
-    $target = string_replace($string,$oldstr,$newstr);
-    ret($target);
-}
-functions.string_replace = _string_replace;
+functions.string_replace = string_replace;
 
 fn string_replace_char($string,$oldchar,$newchar)
 {
@@ -527,12 +480,7 @@ fn string_replace_char($string,$oldchar,$newchar)
     }
     ret($string);
 }
-fn _string_replace_char($string,$oldchar,$newchar,$target)
-{
-    $target = string_replace_char($string,$oldchar,$newchar);
-    ret($target);
-}
-functions.string_replace_char = _string_replace_char;
+functions.string_replace_char = string_replace_char;
 
 //basic constructors
 //basic constructors
@@ -545,12 +493,7 @@ fn vector2($x, $y)
     $temp.y = $y;
     ret($temp);
 }
-fn _vector2($x, $y, $target)
-{
-    $target = vector2($x, $y);
-    ret($target);
-}
-functions.vector2 = _vector2;
+functions.vector2 = vector2;
 
 //file functions
 //file functions
@@ -570,12 +513,7 @@ fn read_file($filename)
     fclose($file);
     ret($result);
 }
-fn _read_file($filename,$target)
-{
-    $target = read_file($filename);
-    ret($target);
-}
-functions.read_file = _read_file;
+functions.read_file = read_file;
 
 fn write_file($filename,$content)
 {
@@ -614,13 +552,7 @@ fn ini_load($file)
     remove($file);
     ret($result);
 }
-
-fn _ini_load($file,$target)
-{
-    $target = ini_load($file);
-    ret($target);
-}
-functions.ini_load = _ini_load;
+functions.ini_load = ini_load;
 
 fn ini_save($file,$ini)
 {
@@ -662,12 +594,7 @@ fn layer($container)
     set_alpha($temp, $alpha);
     ret($temp);
 }
-fn _layer($target,$container)
-{
-    $target = layer($container);
-    ret($target);
-}
-functions.layer = _layer;
+functions.layer = layer;
 
 fn layers_merge($layers)// incomplete
 {
@@ -684,12 +611,7 @@ fn layers_merge($layers)// incomplete
     remove($temp_size);
     ret($result);
 }
-fn _layers_merge($layers,$target)
-{
-    $target = layers_merge($layers);
-    ret($target);
-}
-functions.layers_merge = _layers_merge;
+functions.layers_merge = layers_merge;
 
 fn layers_render($layers)
 {
