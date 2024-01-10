@@ -15,15 +15,14 @@ end
 local function example()
     local session = bruter.create()
     local _ = session.run;
-    _ "system_new:system;";
-    _ "load:image0 ../data/img/0.jpg;";
-    _ "load:image1 ../data/img/1.jpg;";
+    _ "system:system_new;";
+    _ "image0:load ../data/img/0.jpg;";
+    _ "image1:load ../data/img/1.jpg;";
     _ "list_push $system.layers $image1;";
     _ "list_push $system.layers $image0;";
-    
-    _ "vector2:system.layers.3.position 150 190;";
+    _ "system.layers.3.position:vector2 150 190;";
     _ "keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;";
-    _ "set:system.layers.3.position.x 500;";
+    _ "system.layers.3.position.x:set 500;";
     
     while true do
         _ "layers_render $system.layers;";

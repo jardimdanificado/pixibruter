@@ -896,7 +896,7 @@ fn interpret($command)
     {
         $cloned = clone($splited[0]);
         $localsplited = string_split($cloned, ":");
-        recursive_set_prop(variables, $localsplited[1], run_function($localsplited[0], $args));
+        recursive_set_prop(variables, $localsplited[0], run_function($localsplited[1], $args));
         remove($cloned);
         for ($i = 0; $i < get_size($localsplited); $i+1)
         {
