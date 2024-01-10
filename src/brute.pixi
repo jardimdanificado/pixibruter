@@ -161,7 +161,7 @@ container_counter = 0;
 
 fn print_all()
 {
-    for($i = 0; $i < 256; $i+1)
+    for($i = 0; $i < 512; $i+1)
     {
         printf("$%d=%s\n", $i, $i);
     }
@@ -173,13 +173,7 @@ fn container_count()
     $count = new();
     ret($count);
 }
-fn _container_count($target)
-{
-    $count = get_size($target);
-    $target = $count;
-    ret($target);
-}
-functions.container_count = _container_count;
+functions.container_count = container_count;
 
 fn print_container_count()
 {
@@ -220,13 +214,7 @@ fn random($min,$max)
     //considering that rand() returns a value between 0 and 32767
     ret((rand() % ($max - $min + 1)) + $min);
 }
-fn _random($target,$min,$max)
-{
-    //considering that rand() returns a value between 0 and 32767
-    $target = ((rand() % ($max - $min + 1)) + $min);
-    ret($target);
-}
-functions.random = _random;
+functions.random = random;
 
 fn recursive_prop($obj, $prop)
 {
@@ -237,8 +225,8 @@ fn recursive_prop($obj, $prop)
         $size = get_size($splited);
         for($i=0; $i < $size; $i+1)
         {
-            printf("%d,%s\n", $size, $splited[$i]);
             $obj = get_prop($obj, $splited[$i]);
+            remove($splited[$i]);
         }
         remove($splited);
         remove($cloned);
@@ -247,6 +235,29 @@ fn recursive_prop($obj, $prop)
     else
     {
         ret(get_prop($obj, $prop));
+    }
+}
+
+fn recursive_set_prop($obj, $prop, $value)
+{
+    if(strstr($prop, ".") > -1)
+    {
+        $cloned = clone($prop);
+        $splited = string_split($cloned, ".");
+        $size = get_size($splited);
+        for($i=0; $i < $size-1; $i+1)
+        {
+            $obj = get_prop($obj, $splited[$i]);
+            remove($splited[$i]);
+        }
+        set_prop($obj, $splited[$size-1], $value);
+        remove($splited[$size-1]);
+        remove($splited);
+        remove($cloned);
+    }
+    else
+    {
+        set_prop($obj, $prop, $value);
     }
 }
 
@@ -347,12 +358,7 @@ fn list_find($list,$element)
     remove($oldsize);
     ret(-1);
 }
-fn _list_find($list,$element,$target)
-{
-    $target = list_find($list,$element);
-    ret($target);
-}
-functions.list_find = _list_find;
+functions.list_find = list_find;
 
 //strings functions
 //strings functions
@@ -364,12 +370,7 @@ fn string_new($size)
     $temp = new($size);
     ret($temp);
 }
-fn _string_new($size,$target)
-{
-    $target = string_new($size);
-    ret($target);
-}
-functions.string_new = _string_new;
+functions.string_new = string_new;
 
 fn string_sub($string,$start,$end)
 {
@@ -383,12 +384,7 @@ fn string_sub($string,$start,$end)
     }
     ret($newstr);
 }
-fn _string_sub($string,$start,$end,$target)
-{
-    $target = string_sub($string,$start,$end);
-    ret($target);
-}
-functions.string_sub = _string_sub;
+functions.string_sub = string_sub;
 
 //counting ocurrences using strstr
 fn string_ocurrences($str1,$str2)
@@ -409,12 +405,7 @@ fn string_ocurrences($str1,$str2)
     //remove($offset);
     ret($count);
 }
-fn _string_ocurrences($str1,$str2,$target)
-{
-    $target = string_ocurrences($str1,$str2);
-    ret($target);
-}
-functions.string_ocurrences = _string_ocurrences;
+functions.string_ocurrences = string_ocurrences;
 
 //this string returns the positions of each ocurrence
 fn string_ocurrences_advanced($str1,$str2)
@@ -437,12 +428,7 @@ fn string_ocurrences_advanced($str1,$str2)
 
     ret($result);
 }
-fn _string_ocurrences_advanced($str1,$str2,$target)
-{
-    $target = string_ocurrences_advanced($str1,$str2);
-    ret($target);
-}
-functions.string_ocurrences_advanced = _string_ocurrences_advanced;
+functions.string_ocurrences_advanced = string_ocurrences_advanced;
 
 fn string_split($string,$separator)
 {
@@ -453,21 +439,14 @@ fn string_split($string,$separator)
     clean($result);
     for($i = 0; $i < get_size($result)-1; $i+1)
     {
-        $temp = string_sub($string,$offset,$ocurrences[$i])
-        $result[$i] = clone($temp);
+        $result[$i] = clone(string_sub($string,$offset,$ocurrences[$i]));
         $offset = $ocurrences[$i] + $len;
     }
-    $temp = string_sub($string,$offset,strlen($string));
-    $result[get_size($result)-1] = clone($temp);
+    $result[get_size($result)-1] = clone(string_sub($string,$offset,strlen($string)));
     remove($ocurrences);
     ret($result);
 }
-fn _string_split($string,$separator,$target)
-{
-    $target = string_split($string,$separator);
-    ret($target);
-}
-functions.string_split = _string_split;
+functions.string_split = string_split;
 
 fn string_replace($string,$oldstr,$newstr)
 {
@@ -484,12 +463,7 @@ fn string_replace($string,$oldstr,$newstr)
     remove($ocurrences);
     ret($result);
 }
-fn _string_replace($string,$oldstr,$newstr,$target)
-{
-    $target = string_replace($string,$oldstr,$newstr);
-    ret($target);
-}
-functions.string_replace = _string_replace;
+functions.string_replace = string_replace;
 
 fn string_replace_char($string,$oldchar,$newchar)
 {
@@ -506,12 +480,7 @@ fn string_replace_char($string,$oldchar,$newchar)
     }
     ret($string);
 }
-fn _string_replace_char($string,$oldchar,$newchar,$target)
-{
-    $target = string_replace_char($string,$oldchar,$newchar);
-    ret($target);
-}
-functions.string_replace_char = _string_replace_char;
+functions.string_replace_char = string_replace_char;
 
 //basic constructors
 //basic constructors
@@ -524,12 +493,7 @@ fn vector2($x, $y)
     $temp.y = $y;
     ret($temp);
 }
-fn _vector2($x, $y, $target)
-{
-    $target = vector2($x, $y);
-    ret($target);
-}
-functions.vector2 = _vector2;
+functions.vector2 = vector2;
 
 //file functions
 //file functions
@@ -549,12 +513,7 @@ fn read_file($filename)
     fclose($file);
     ret($result);
 }
-fn _read_file($filename,$target)
-{
-    $target = read_file($filename);
-    ret($target);
-}
-functions.read_file = _read_file;
+functions.read_file = read_file;
 
 fn write_file($filename,$content)
 {
@@ -593,13 +552,7 @@ fn ini_load($file)
     remove($file);
     ret($result);
 }
-
-fn _ini_load($file,$target)
-{
-    $target = ini_load($file);
-    ret($target);
-}
-functions.ini_load = _ini_load;
+functions.ini_load = ini_load;
 
 fn ini_save($file,$ini)
 {
@@ -641,12 +594,7 @@ fn layer($container)
     set_alpha($temp, $alpha);
     ret($temp);
 }
-fn _layer($target,$container)
-{
-    $target = layer($container);
-    ret($target);
-}
-functions.layer = _layer;
+functions.layer = layer;
 
 fn layers_merge($layers)// incomplete
 {
@@ -660,17 +608,10 @@ fn layers_merge($layers)// incomplete
     clean(get_alpha($result));
     $temp_nsize = get_size($layers[0]);
 
-
-
     remove($temp_size);
     ret($result);
 }
-fn _layers_merge($layers,$target)
-{
-    $target = layers_merge($layers);
-    ret($target);
-}
-functions.layers_merge = _layers_merge;
+functions.layers_merge = layers_merge;
 
 fn layers_render($layers)
 {
@@ -784,6 +725,7 @@ fn system_loop($system, $callback, $arg)
     while(true)
     {
         layers_render($system.layers);
+        print_fps_screen();
         eventor($system);
         frame();
     }
@@ -823,18 +765,13 @@ fn system_new($configpath)
     refresh_seed();//required to get a different random number each time  
     ret($system);
 }
-fn _system_new($name,$configpath)
-{
-    set_prop(variables,$name,system_new($configpath));
-    //ret($target);
-}
-functions.system_new = _system_new;
+functions.system_new = system_new;
 
-//bytearray functions
-//bytearray functions
-//bytearray functions
+//bytestring functions
+//bytestring functions
+//bytestring functions
 
-fn bytearray_to_num($str)
+fn bytestring_to_num($str)
 {
     $result = 0;
     $len = get_size($str);
@@ -849,7 +786,7 @@ fn bytearray_to_num($str)
     ret($result);
 }
 
-fn num_to_bytearray($num)
+fn num_to_bytestring($num)
 {
     $result = ""
     sprintf($result, "");
@@ -869,4 +806,80 @@ fn num_to_bytearray($num)
     }
     sprintf($result, "%s%c", $result, $num + ($len-1));
     ret($result);
+}
+
+//main functions
+//main functions
+//main functions
+
+
+fn run_function($func,$args)
+{
+    ret(get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
+}
+
+fn interpret($command)
+{
+    $splited = string_split($command, " ");
+    $size = get_size($splited);
+    $args = new($size-1);
+    for ($i = 1; $i < $size; $i+1)
+    {
+        if($splited[$i][0] == '#')
+        {
+            $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
+            $args[$i-1] = recursive_prop(constants, $temp);
+        }
+        else
+        {
+            if($splited[$i][0] == '$')
+            {
+                $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
+                $args[$i-1] = recursive_prop(variables, $temp);
+            }
+            else
+            {
+                if($splited[$i][0] == '@')
+                {
+                    $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
+                    $args[$i-1] = recursive_prop(functions, $temp);
+                }
+                else
+                {
+                    if(($splited[$i][0] > 47 && $splited[$i][0] < 58) || $splited[$i][0] == '-')
+                    {
+                        $args[$i-1] = str_to_num($splited[$i]);
+                    }
+                    else
+                    {
+                        $args[$i-1] = $splited[$i];
+                    }
+                }
+            }
+        }
+    }
+
+    if(strstr($splited[0], 1, ":", 0) > 0)
+    {
+        $cloned = clone($splited[0]);
+        $localsplited = string_split($cloned, ":");
+        
+        recursive_set_prop(variables, $localsplited[1], run_function($localsplited[0], $args));
+
+        remove($cloned);
+        remove($localsplited[0]);
+        remove($localsplited[1]);
+        remove($localsplited);
+    }
+    else
+    {
+        run_function($splited[0], $args);
+    }
+    
+    for ($i = 0; $i < $size; $i+1)
+    {
+        remove($splited[$i]);
+    }
+    remove($splited);
+    remove($args);
 }
