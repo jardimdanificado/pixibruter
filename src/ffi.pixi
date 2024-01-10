@@ -690,16 +690,16 @@ fn __get_system_log()
 
 
 // Working with files
-fn __load($name, $filename, $options)
+fn __load($filename, $options)
 {
-    set_prop(variables, $name, load($filename, $options));
+    //set_prop(variables, $name, load($filename, $options));
+    ret(load($filename, $options));
 }
 
 
-fn __load0($name, $filename)
+fn __load0($filename)
 {
-    set_prop(variables, $name, load($filename));
-    ret(get_prop(variables, $name));
+    ret(load($filename));
 }
 
 

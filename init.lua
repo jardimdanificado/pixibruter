@@ -16,9 +16,9 @@ end
 local function example()
     local session = bruter.create()
     local _ = session.run;
-    _ "system_new system;";
-    _ "load image0 ../data/img/0.jpg;";
-    _ "layer_new $system $image0;";
+    _ "system_new:system 0;";
+    _ "load:image0 ../data/img/0.jpg;";
+    _ "list_push $system.layers $image0;";
     while true do
         _ "layers_render $system.layers;";
         _ "eventor $system;";
