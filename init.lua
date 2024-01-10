@@ -23,7 +23,7 @@ local function example()
     
     _ "vector2:system.layers.3.position 150 190;";
     _ "keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;";
-    --$system.layers[2].position = vector2(190,150);
+    _ "set:system.layers.3.position.x 500;";
     
     while true do
         _ "layers_render $system.layers;";

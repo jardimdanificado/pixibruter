@@ -296,25 +296,36 @@ fn define ($name, $value)
     $target = recursive_prop(variables, $name);
     $target = $value;
 }
+functions.define = define;
 
+fn set($value)
+{
+    ret($value);
+}
+functions.set = set;
+
+//obsolete
 fn create($name, $value)
 {
     set_prop(variables, $name, $value);
 }
 functions.create = create;
 
+//obsolete
 fn create_empty($name)
 {
     set_prop(variables, $name, new());
 }
 functions.create_empty = create_empty;
 
+//obsolete
 fn create_array($name, $size)
 {
     set_prop(variables, $name, new($size));
 }
 functions.create_array = create_array;
 
+//obsolete
 fn create_matrix($name, $xsize, $ysize)
 {
     set_prop(variables, $name, new($xsize, $ysize));
