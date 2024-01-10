@@ -250,6 +250,29 @@ fn recursive_prop($obj, $prop)
     }
 }
 
+fn recursive_set_prop($obj, $prop, $value)
+{
+    if(strstr($prop, ".") > -1)
+    {
+        $cloned = clone($prop);
+        $splited = string_split($cloned, ".");
+        $size = get_size($splited);
+        for($i=0; $i < $size-1; $i+1)
+        {
+            $obj = get_prop($obj, $splited[$i]);
+            remove($splited[$i]);
+        }
+        set_prop($obj, $splited[$size-1], $value);
+        remove($splited[$size-1]);
+        remove($splited);
+        remove($cloned);
+    }
+    else
+    {
+        set_prop($obj, $prop, $value);
+    }
+}
+
 fn default($obj, $default)
 {
     if($obj == 0)
@@ -894,24 +917,32 @@ fn interpret($command)
             }
             else
             {
-                if(($splited[$i][0] > 47 && $splited[$i][0] < 58) || $splited[$i][0] == '-')
+                if($splited[$i][0] == '@')
                 {
-                    $args[$i-1] = str_to_num($splited[$i]);
+                    $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
+                    $args[$i-1] = recursive_prop(functions, $temp);
                 }
                 else
                 {
-                    $args[$i-1] = $splited[$i];
+                    if(($splited[$i][0] > 47 && $splited[$i][0] < 58) || $splited[$i][0] == '-')
+                    {
+                        $args[$i-1] = str_to_num($splited[$i]);
+                    }
+                    else
+                    {
+                        $args[$i-1] = $splited[$i];
+                    }
                 }
             }
         }
     }
 
-    if(strstr($splited[0], ":") > 0)
+    if(strstr($splited[0], 1, ":", 0) > 0)
     {
         $cloned = clone($splited[0]);
         $localsplited = string_split($cloned, ":");
         
-        set_prop(variables, $localsplited[1], run_function($localsplited[0], $args));
+        recursive_set_prop(variables, $localsplited[1], run_function($localsplited[0], $args));
 
         remove($cloned);
         remove($localsplited[0]);

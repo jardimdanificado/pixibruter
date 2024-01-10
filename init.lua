@@ -3,7 +3,6 @@ local luapiper = require("lib.luapiper")
 local bruter = {};
 
 bruter.create = function()
-    
     local newsession = {};
     newsession.child = luapiper.PipeSession("pixilang", { "./src/entrypoint.pixi" });
     newsession.run = function(str)
@@ -16,15 +15,15 @@ end
 local function example()
     local session = bruter.create()
     local _ = session.run;
-    _ "system_new:system 0;";
+    _ "system_new:system;";
     _ "load:image0 ../data/img/0.jpg;";
     _ "list_push $system.layers $image0;";
     while true do
         _ "layers_render $system.layers;";
         _ "eventor $system;";
-        _ "frame 1;";
+        _ "frame;";
     end
-    _ "close 0;"
+    _ "close;"
 end
 
 example()

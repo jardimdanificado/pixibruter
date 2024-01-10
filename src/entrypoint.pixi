@@ -25,6 +25,10 @@ while(1)
     	$char = fgetc(STDIN);
     	if($char == ';')
     	{
+			if(strstr($command, " ") == -1)
+			{
+				strcat($command, " 0");
+			}
     	    interpret($command);
 			sprintf($command, "");
 		}
@@ -33,6 +37,5 @@ while(1)
     	    sprintf($command, "%s%c", $command, $char);
 		}
     }
-	//print_all();
 }
 
