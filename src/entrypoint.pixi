@@ -33,5 +33,6 @@ while(1)
     	    sprintf($command, "%s%c", $command, $char);
 		}
     }
+	//print_all();
 }
 
