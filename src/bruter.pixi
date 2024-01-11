@@ -836,6 +836,28 @@ fn num_to_bytestring($num)
     ret($result);
 }
 
+//procedure functions
+//procedure functions
+//procedure functions
+
+
+fn procedure_new($name, $callback, $arg)
+{
+    $temp = new();
+    $temp.name = $name;
+    $temp.callback = $callback;
+    $temp.arg = $arg;
+    ret($temp);
+}
+
+
+//condition functions
+//condition functions
+//condition functions
+
+
+
+
 //main functions
 //main functions
 //main functions

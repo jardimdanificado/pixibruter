@@ -30,23 +30,13 @@ local function example()
     local session = bruter.create()
     local _ = session.soft;
     
-    local tstr = 
-    [[system:system_new;
-image0:load ../data/img/0.jpg;
-image1:load ../data/img/1.jpg;
-list_push $system.layers $image1;
-list_push $system.layers $image0;
-system.layers.3.position:vector2 150 190;
-keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;
-system.layers.3.position.x:set 500;
-system.layers.3.5.5:set #RED;]];
+    local tstr = utils.file.load.text("./data/example.brut");
     local preparsed = parse_it(tstr);
 
     --the following are equivalent:
-    session.dofile("./data/example.brute");--run a brute script from a file
+    session.dofile("./data/example.brut");--run a brute script from a file
     session.soft(tstr);--parse and run a brute script from a string
     session.brute(preparsed);--run a brute script from a string, without parsing it, this is faster
-
 
     while true do
         _ "layers_render $system.layers;";
