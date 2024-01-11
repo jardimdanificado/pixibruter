@@ -894,13 +894,21 @@ fn treat_args($splited, $size)
                 }
                 else
                 {
-                    if(($splited[$i][0] > 47 && $splited[$i][0] < 58) || $splited[$i][0] == '-')
+                    if($splited[$i][0] == '!')
                     {
-                        $args[$i-1] = str_to_num($splited[$i]);
+                        $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
+                        $args[$i-1] = recursive_prop(procedures, $temp);
                     }
                     else
                     {
-                        $args[$i-1] = $splited[$i];
+                        if(($splited[$i][0] > 47 && $splited[$i][0] < 58) || $splited[$i][0] == '-')
+                        {
+                            $args[$i-1] = str_to_num($splited[$i]);
+                        }
+                        else
+                        {
+                            $args[$i-1] = $splited[$i];
+                        }
                     }
                 }
             }
