@@ -1,7 +1,11 @@
+// Global Storages
+// Global Storages
+// Global Storages
 
-functions = new();
-constants = new();
-variables = new();
+functions  = new(); // @ as callbacks
+constants  = new(); // # as constants
+variables  = new(); // $ as variables
+procedures = new(); // ! as procedures
 
 // Constants
 // Constants

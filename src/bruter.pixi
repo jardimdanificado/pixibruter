@@ -225,7 +225,14 @@ fn recursive_prop($obj, $prop)
         $size = get_size($splited);
         for($i=0; $i < $size; $i+1)
         {
-            $obj = get_prop($obj, $splited[$i]);
+            if($splited[$i][0] > 47 && $splited[$i][0] < 58)
+            {
+                $obj = $obj[str_to_num($splited[$i])];
+            }
+            else
+            {
+                $obj = get_prop($obj, $splited[$i]);
+            }
             remove($splited[$i]);
         }
         remove($splited);
@@ -237,9 +244,11 @@ fn recursive_prop($obj, $prop)
         ret(get_prop($obj, $prop));
     }
 }
+functions.recursive_prop = recursive_prop;
 
 fn recursive_set_prop($obj, $prop, $value)
 {
+    //printf("recursive_prop(%s,%s)\n", $obj, $prop);
     if(strstr($prop, ".") > -1)
     {
         $cloned = clone($prop);
@@ -247,7 +256,14 @@ fn recursive_set_prop($obj, $prop, $value)
         $size = get_size($splited);
         for($i=0; $i < $size-1; $i+1)
         {
-            $obj = get_prop($obj, $splited[$i]);
+            if($splited[$i][0] > 47 && $splited[$i][0] < 58)
+            {
+                $obj = $obj[str_to_num($splited[$i])];
+            }
+            else
+            {
+                $obj = get_prop($obj, $splited[$i]);
+            }
             remove($splited[$i]);
         }
         set_prop($obj, $splited[$size-1], $value);
@@ -260,6 +276,7 @@ fn recursive_set_prop($obj, $prop, $value)
         set_prop($obj, $prop, $value);
     }
 }
+functions.recursive_set_prop = recursive_set_prop;
 
 fn default($obj, $default)
 {
@@ -279,25 +296,36 @@ fn define ($name, $value)
     $target = recursive_prop(variables, $name);
     $target = $value;
 }
+functions.define = define;
 
+fn set($value)
+{
+    ret($value);
+}
+functions.set = set;
+
+//obsolete
 fn create($name, $value)
 {
     set_prop(variables, $name, $value);
 }
 functions.create = create;
 
+//obsolete
 fn create_empty($name)
 {
     set_prop(variables, $name, new());
 }
 functions.create_empty = create_empty;
 
+//obsolete
 fn create_array($name, $size)
 {
     set_prop(variables, $name, new($size));
 }
 functions.create_array = create_array;
 
+//obsolete
 fn create_matrix($name, $xsize, $ysize)
 {
     set_prop(variables, $name, new($xsize, $ysize));
@@ -808,6 +836,28 @@ fn num_to_bytestring($num)
     ret($result);
 }
 
+//procedure functions
+//procedure functions
+//procedure functions
+
+
+fn procedure_new($name, $callback, $arg)
+{
+    $temp = new();
+    $temp.name = $name;
+    $temp.callback = $callback;
+    $temp.arg = $arg;
+    ret($temp);
+}
+
+
+//condition functions
+//condition functions
+//condition functions
+
+
+
+
 //main functions
 //main functions
 //main functions
@@ -818,10 +868,8 @@ fn run_function($func,$args)
     ret(get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
 }
 
-fn interpret($command)
+fn treat_args($splited, $size)
 {
-    $splited = string_split($command, " ");
-    $size = get_size($splited);
     $args = new($size-1);
     for ($i = 1; $i < $size; $i+1)
     {
@@ -858,17 +906,24 @@ fn interpret($command)
             }
         }
     }
+    ret($args);
+}
 
+fn interpret($command)
+{
+    $splited = string_split($command, " ");
+    $size = get_size($splited);
+    $args = treat_args($splited,$size);
     if(strstr($splited[0], 1, ":", 0) > 0)
     {
         $cloned = clone($splited[0]);
         $localsplited = string_split($cloned, ":");
-        
-        recursive_set_prop(variables, $localsplited[1], run_function($localsplited[0], $args));
-
+        recursive_set_prop(variables, $localsplited[0], run_function($localsplited[1], $args));
         remove($cloned);
-        remove($localsplited[0]);
-        remove($localsplited[1]);
+        for ($i = 0; $i < get_size($localsplited); $i+1)
+        {
+            remove($localsplited[$i]);
+        }
         remove($localsplited);
     }
     else
