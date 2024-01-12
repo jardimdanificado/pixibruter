@@ -856,6 +856,138 @@ fn procedure_new($name, $callback, $arg)
 //condition functions
 
 
+fn parse_condition($splited)
+{
+    if(strcmp($splited[1], "==") == 0)
+    {
+        if($splited[0][0] >= '0' && $splited[0][0] <= '9' || $splited[0][0] == '-')
+        {
+            if($splited[0] == $splited[2])
+            {
+                ret(true);
+            }
+            else
+            {
+                ret(false);
+            }
+        }
+        else
+        {
+            if(strcmp($splited[0], $splited[2]) == 0)
+            {
+                ret(true);
+            }
+            else
+            {
+                ret(false);
+            }
+        }
+    }
+    else
+    {
+        if(strcmp($splited[1], ">=") == 0)
+        {
+            if($splited[0] >= $splited[2])
+            {
+                ret(true);
+            }
+            else
+            {
+                ret(false);
+            }
+        }
+        else
+        {
+            if(strcmp($splited[1], "<=") == 0)
+            {
+                if($splited[0] <= $splited[2])
+                {
+                    ret(true);
+                }
+                else
+                {
+                    ret(false);
+                }
+            }
+            else
+            {
+                if(strcmp($splited[1], ">") == 0)
+                {
+                    if($splited[0] > $splited[2])
+                    {
+
+                        ret(true);
+                    }
+                    else
+                    {
+                        ret(false);
+                    }
+                }
+                else
+                {
+                    if(strcmp($splited[1], "<") == 0)
+                    {
+                        if($splited[0] == $splited[2])
+                        {
+                            ret(true);
+                        }
+                        else
+                        {
+                            ret(false);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+fn _if($a, $op, $b, $callback)
+{
+    $temp = new(3);
+    $temp[0] = $a;
+    $temp[1] = $op;
+    $temp[2] = $b;
+    if(parse_condition($temp))
+    {
+        $callback();
+    }
+    remove($temp);
+}
+set_prop(functions, "if", _if);
+
+fn _ifnot($a, $op, $b, $callback)
+{
+    $temp = new(3);
+    $temp[0] = $a;
+    $temp[1] = $op;
+    $temp[2] = $b;
+    if(parse_condition($temp))
+    {
+        $callback();
+    }
+    remove($temp);
+}
+set_prop(functions, "ifnot", _ifnot);
+
+fn _ifelse($a, $op, $b, $callback1, $callback2)
+{
+    $temp = new(3);
+    $temp[0] = $a;
+    $temp[1] = $op;
+    $temp[2] = $b;
+    if(parse_condition($temp))
+    {
+        $callback1();
+    }
+    else
+    {
+        $callback2();
+    }
+    remove($temp);
+}
+set_prop(functions, "ifelse", _ifelse);
+
 
 
 //main functions
