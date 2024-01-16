@@ -167,6 +167,7 @@ fn print_all()
     }
     printf("\n");
 }
+functions.print_all = print_all;
 
 fn container_count()
 {
@@ -510,6 +511,20 @@ fn string_replace_char($string,$oldchar,$newchar)
 }
 functions.string_replace_char = string_replace_char;
 
+fn string_remove_char($string,$char)
+{
+    $result = "";
+    for($i = 0; $i < strlen($string); $i+1)
+    {
+        if($string[$i] != $char)
+        {
+            sprintf($result, "%s%c", $result, $string[$i]);
+        }
+    }
+    ret($result);
+}
+functions.string_remove_char = string_remove_char;
+
 //basic constructors
 //basic constructors
 //basic constructors
@@ -836,21 +851,6 @@ fn num_to_bytestring($num)
     ret($result);
 }
 
-//procedure functions
-//procedure functions
-//procedure functions
-
-
-fn procedure_new($name, $callback, $arg)
-{
-    $temp = new();
-    $temp.name = $name;
-    $temp.callback = $callback;
-    $temp.arg = $arg;
-    ret($temp);
-}
-
-
 //condition functions
 //condition functions
 //condition functions
@@ -989,6 +989,79 @@ fn _ifelse($a, $op, $b, $callback1, $callback2)
 set_prop(functions, "ifelse", _ifelse);
 
 
+//loop functions
+//loop functions
+//loop functions
+
+
+fn repeat($times, $callback)
+{
+    for($i = 0; $i < $times; $i+1)
+    {
+        $callback();
+    }
+}
+
+
+fn repeat_for($start, $end, $callback)
+{
+    for($i = $start; $i < $end; $i+1)
+    {
+        $callback();
+    }
+}
+
+//procedure functions
+//procedure functions
+//procedure functions
+
+
+fn procedure_load($filepath, $name)
+{
+    $result = read_file($filepath);
+    $result = string_remove_char($result, '\n');
+    if($result[get_size($result)-1] == ';')
+    {
+        $result[get_size($result)-1] = '\0';
+    }
+    $splited = string_split($result, ";");
+    set_prop(procedures, $name, $splited);
+    remove($result);
+}
+functions.procedure_load = procedure_load;
+
+fn procedure_run($procedure)
+{
+    for($i = 0; $i < get_size($procedure); $i+1)
+    {
+        interpret($procedure[$i]);
+    }
+}
+functions.procedure_run = procedure_run;
+
+fn procedure_repeat($times, $procedure)
+{
+    for($i = 0; $i < $times; $i+1)
+    {
+        for($j = 0; $j < get_size($procedure); $j+1)
+        {
+            interpret($procedure[$j]);
+        }
+    }
+}
+functions.procedure_repeat = procedure_repeat;
+
+fn procedure_for($start, $end, $procedure)
+{
+    for($i = $start; $i < $end; $i+1)
+    {
+        for($j = 0; $j < get_size($procedure); $j+1)
+        {
+            get_prop(procedures, $procedure[$j]);
+        }
+    }
+}
+functions.procedure_for = procedure_for;
 
 //main functions
 //main functions
