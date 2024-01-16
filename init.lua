@@ -34,11 +34,15 @@ local function example()
     local preparsed = parse_it(tstr);
 
     --the following are equivalent:
-    session.dofile("./data/example.brut");--run a brute script from a file
-    session.soft(tstr);--parse and run a brute script from a string
+    --session.dofile("./data/example.brut");--run a brute script from a file
+    --session.soft(tstr);--parse and run a brute script from a string
     session.brute(preparsed);--run a brute script from a string, without parsing it, this is faster
-    _ "a:set 50;"
-    _ "if 1 > 0 @print_container_count;"
+
+    session.brute("procedure_load ../data/test.brut test;");
+    session.brute("procedure_run !test;");
+    --session.brute("print_int 4;");
+    _ "a:set 50;";
+    _ "if 1 > 0 @print_container_count;";
     while true do
         _ "layers_render $system.layers;";
         _ "eventor $system;";
