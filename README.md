@@ -28,7 +28,9 @@ Global Objects: variables, functions, constants.
 
 - `@callback` = args that starts with @, default functions, those can only be defined before compiling and must be written in pixilang, all the functions avaliable are also avaliable as callback and they are stored under "functions"  
 
-- `!procedure` = yet to be implemented!
+- `!procedure` = args that starts with !, are always arrays of strings(array of INT8), procedures are pre-parsed brut scripts usually loaded from a file, procedures are stored in "procedures"
+
+- `&direct` = args that starts with &, can be any type, the difference between this and $variable is that this one have all the contents of "functions" and "constants" too but does not share the contents with "variables", this is the only storage that can be parsed in direct mode, but it can be accessed from default mode like any other storage, directs are stored in "directs"
 
 - `number` = args that starts with 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 or -
 
@@ -73,6 +75,11 @@ take a look at pixilang docs and src/ffi.pixi to get better understanding of the
 
 `function @callback_1 @callback_2 ...;`
 
+## Direct Mode
+
+[YET TO BE IMPLEMENTED, WORK IN PROGRESS]
+
+direct mode is a simpler interpreter that behave just like the default interpreter, except that it does not deduce the type of the args neither have diferents storage types(variables, constants, functions, procedures), in direct mode everything is stored, and must be accessed from &, direct and default can be used at the same time but be careful, as direct mode cannot parse the default storages(!, @, #, $) while default interpreter can access direct storage(&) like any other, direct mode is designed to be faster than the default interpreter.
 
 ## Contributing
 
