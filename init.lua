@@ -50,7 +50,6 @@ local function example()
     
     session.brute("procedure_load ../data/test.brut test;");
     session.brute("procedure_run !test;");
-    --session.brute("print_int 4;");
     _ "$a:set 50;";
     _ "if 1 > 0 @print_container_count;";
     while true do
