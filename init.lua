@@ -10,7 +10,7 @@ end
 
 bruter.create = function()
     local newsession = {};
-    newsession.child = luapiper.PipeSession("pixilang", { "./src/entrypoint.pixi" });
+    newsession.child = luapiper.PipeSession("pixilang", { "./src/entrypoint.pixicode" });
     newsession.brute = function(str)
         newsession.child.send(newsession.child,str);
     end
@@ -37,11 +37,21 @@ local function example()
     --session.dofile("./data/example.brut");--run a brute script from a file
     --session.soft(tstr);--parse and run a brute script from a string
     session.brute(preparsed);--run a brute script from a string, without parsing it, this is faster
-
+    
+    
+    -- this need fixing
+    --[[
+        _ "$txt:read_file ../data/test.brut;";
+        _ "print_string $txt;"
+        _ "!test:procedure_parse $txt;";
+        _ "print_string !test.0;"
+    ]]
+    
+    
     session.brute("procedure_load ../data/test.brut test;");
     session.brute("procedure_run !test;");
     --session.brute("print_int 4;");
-    _ "a:set 50;";
+    _ "$a:set 50;";
     _ "if 1 > 0 @print_container_count;";
     while true do
         _ "layers_render $system.layers;";
