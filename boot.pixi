@@ -1,4 +1,4 @@
-include "src/brute.pixi";
+include "src/bruter.pixi";
 
 //main loop
 //main loop

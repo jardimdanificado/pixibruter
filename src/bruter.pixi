@@ -200,6 +200,342 @@ fn flex($object,$size)
 }
 functions.flex = flex;
 
+//error functions
+//error functions
+//error functions
+
+fn error($message)
+{
+    printf("[Error]: %s\n", $message);
+    halt;
+}
+functions.error = error;
+
+fn errorf($message, $args)
+{
+    printf("[Error]: ");
+    printf($message, $args);
+    printf("\n");
+    halt;
+}
+functions.errorf = errorf;
+
+fn errorf1($message, $arg1)
+{
+    printf("[Error]: ");
+    printf($message, $arg1);
+    printf("\n");
+    halt;
+}
+functions.errorf1 = errorf1;
+
+fn errorf2($message, $arg1, $arg2)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2);
+    printf("\n");
+    halt;
+}
+functions.errorf2 = errorf2;
+
+fn errorf3($message, $arg1, $arg2, $arg3)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2, $arg3);
+    printf("\n");
+    halt;
+}
+functions.errorf3 = errorf3;
+
+fn errorf4($message, $arg1, $arg2, $arg3, $arg4)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4);
+    printf("\n");
+    halt;
+}
+functions.errorf4 = errorf4;
+
+fn errorf5($message, $arg1, $arg2, $arg3, $arg4, $arg5)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5);
+    printf("\n");
+    halt;
+}
+functions.errorf5 = errorf5;
+
+fn errorf6($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
+    printf("\n");
+    halt;
+}
+functions.errorf6 = errorf6;
+
+fn errorf7($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7);
+    printf("\n");
+    halt;
+}
+functions.errorf7 = errorf7;
+
+fn errorf8($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
+{
+    printf("[Error]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8);
+    printf("\n");
+    halt;
+}
+functions.errorf8 = errorf8;
+
+fn warning($message)
+{
+    printf("[Warning]: %s\n", $message);
+}
+functions.warning = warning;
+
+fn warningf($message, $args)
+{
+    printf("[Warning]: ");
+    printf($message, $args);
+    printf("\n");
+}
+functions.warningf = warningf;
+
+fn warningf1($message, $arg1)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1);
+    printf("\n");
+}
+functions.warningf1 = warningf1;
+
+fn warningf2($message, $arg1, $arg2)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2);
+    printf("\n");
+}
+functions.warningf2 = warningf2;
+
+fn warningf3($message, $arg1, $arg2, $arg3)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2, $arg3);
+    printf("\n");
+}
+functions.warningf3 = warningf3;
+
+fn warningf4($message, $arg1, $arg2, $arg3, $arg4)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4);
+    printf("\n");
+}
+functions.warningf4 = warningf4;
+
+fn warningf5($message, $arg1, $arg2, $arg3, $arg4, $arg5)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5);
+    printf("\n");
+}
+functions.warningf5 = warningf5;
+
+fn warningf6($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
+    printf("\n");
+}
+functions.warningf6 = warningf6;
+
+fn warningf7($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7);
+    printf("\n");
+}
+functions.warningf7 = warningf7;
+
+fn warningf8($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
+{
+    printf("[Warning]: ");
+    printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8);
+    printf("\n");
+}
+functions.warningf8 = warningf8;
+
+fn error_log($message)
+{
+    logf("[Error]: %s\n", $message);
+    halt;
+}
+functions.error_log = error_log;
+
+fn errorf_log($message, $args)
+{
+    logf("[Error]: ");
+    logf($message, $args);
+    logf("\n");
+    halt;
+}
+functions.errorf_log = errorf_log;
+
+fn errorf1_log($message, $arg1)
+{
+    logf("[Error]: ");
+    logf($message, $arg1);
+    logf("\n");
+    halt;
+}
+functions.errorf1_log = errorf1_log;
+
+fn errorf2_log($message, $arg1, $arg2)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2);
+    logf("\n");
+    halt;
+}
+functions.errorf2_log = errorf2_log;
+
+fn errorf3_log($message, $arg1, $arg2, $arg3)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2, $arg3);
+    logf("\n");
+    halt;
+}
+functions.errorf3_log = errorf3_log;
+
+fn errorf4_log($message, $arg1, $arg2, $arg3, $arg4)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4);
+    logf("\n");
+    halt;
+}
+functions.errorf4_log = errorf4_log;
+
+fn errorf5_log($message, $arg1, $arg2, $arg3, $arg4, $arg5)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5);
+    logf("\n");
+    halt;
+}
+functions.errorf5_log = errorf5_log;
+
+fn errorf6_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
+    logf("\n");
+    halt;
+}
+functions.errorf6_log = errorf6_log;
+
+fn errorf7_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7);
+    logf("\n");
+    halt;
+}
+functions.errorf7_log = errorf7_log;
+
+fn errorf8_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
+{
+    logf("[Error]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8);
+    logf("\n");
+    halt;
+}
+functions.errorf8_log = errorf8_log;
+
+fn warning_log($message)
+{
+    logf("[Warning]: %s\n", $message);
+}
+functions.warning_log = warning_log;
+
+fn warningf_log($message, $args)
+{
+    logf("[Warning]: ");
+    logf($message, $args);
+    logf("\n");
+}
+functions.warningf_log = warningf_log;
+
+fn warningf1_log($message, $arg1)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1);
+    logf("\n");
+}
+functions.warningf1_log = warningf1_log;
+
+fn warningf2_log($message, $arg1, $arg2)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2);
+    logf("\n");
+}
+functions.warningf2_log = warningf2_log;
+
+fn warningf3_log($message, $arg1, $arg2, $arg3)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2, $arg3);
+    logf("\n");
+}
+functions.warningf3_log = warningf3_log;
+
+fn warningf4_log($message, $arg1, $arg2, $arg3, $arg4)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4);
+    logf("\n");
+}
+functions.warningf4_log = warningf4_log;
+
+fn warningf5_log($message, $arg1, $arg2, $arg3, $arg4, $arg5)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5);
+    logf("\n");
+}
+functions.warningf5_log = warningf5_log;
+
+fn warningf6_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
+    logf("\n");
+}
+functions.warningf6_log = warningf6_log;
+
+fn warningf7_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7);
+    logf("\n");
+}
+functions.warningf7_log = warningf7_log;
+
+fn warningf8_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
+{
+    logf("[Warning]: ");
+    logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8);
+    logf("\n");
+}
+functions.warningf8_log = warningf8_log;
+
 //util functions
 //util functions
 //util functions
@@ -1015,16 +1351,23 @@ fn repeat_for($start, $end, $callback)
 //procedure functions
 //procedure functions
 
-
-fn procedure_load($filepath, $name)
+fn procedure_parse($text)
 {
-    $result = read_file($filepath);
-    $result = string_remove_char($result, '\n');
+    $result = string_remove_char($text, '\n');
     if($result[get_size($result)-1] == ';')
     {
         $result[get_size($result)-1] = '\0';
     }
     $splited = string_split($result, ";");
+    printf("r:%s \nt:%s\n", $result, $text);
+    ret($splited);
+}
+functions.procedure_parse = procedure_parse;
+
+fn procedure_load($filepath, $name)
+{
+    $result = read_file($filepath);
+    $splited = procedure_parse($result);
     set_prop(procedures, $name, $splited);
     remove($result);
 }
@@ -1053,12 +1396,13 @@ functions.procedure_repeat = procedure_repeat;
 
 fn procedure_for($start, $end, $procedure)
 {
+    if($start > $end)
+    {
+        error("procedure_for: start > end");
+    }
     for($i = $start; $i < $end; $i+1)
     {
-        for($j = 0; $j < get_size($procedure); $j+1)
-        {
-            get_prop(procedures, $procedure[$j]);
-        }
+        get_prop(procedures, $procedure[$i]);  
     }
 }
 functions.procedure_for = procedure_for;
@@ -1073,51 +1417,56 @@ fn run_function($func,$args)
     ret(get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
 }
 
+fn treat_arg($arg)
+{
+    if($arg[0] == '#')//constant
+    {
+        $temp = string_sub($arg, 1, get_size($arg));
+        ret(recursive_prop(constants, $temp));
+    }
+    else
+    {
+        if($arg[0] == '$')//variable
+        {
+            $temp = string_sub($arg, 1, get_size($arg));
+            ret(recursive_prop(variables, $temp));
+        }
+        else
+        {
+            if($arg[0] == '@')//function
+            {
+                $temp = string_sub($arg, 1, get_size($arg));
+                ret(recursive_prop(functions, $temp));
+            }
+            else
+            {
+                if($arg[0] == '!')//procedure
+                {
+                    $temp = string_sub($arg, 1, get_size($arg));
+                    ret(recursive_prop(procedures, $temp));
+                }
+                else
+                {
+                    if(($arg[0] > 47 && $arg[0] < 58) || $arg[0] == '-')//number
+                    {
+                        ret(str_to_num($arg));
+                    }
+                    else//string
+                    {
+                        ret($arg);
+                    }
+                }
+            }
+        }
+    }
+}
+
 fn treat_args($splited, $size)
 {
     $args = new($size-1);
     for ($i = 1; $i < $size; $i+1)
     {
-        if($splited[$i][0] == '#')
-        {
-            $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
-            $args[$i-1] = recursive_prop(constants, $temp);
-        }
-        else
-        {
-            if($splited[$i][0] == '$')
-            {
-                $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
-                $args[$i-1] = recursive_prop(variables, $temp);
-            }
-            else
-            {
-                if($splited[$i][0] == '@')
-                {
-                    $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
-                    $args[$i-1] = recursive_prop(functions, $temp);
-                }
-                else
-                {
-                    if($splited[$i][0] == '!')
-                    {
-                        $temp = string_sub($splited[$i], 1, get_size($splited[$i]));
-                        $args[$i-1] = recursive_prop(procedures, $temp);
-                    }
-                    else
-                    {
-                        if(($splited[$i][0] > 47 && $splited[$i][0] < 58) || $splited[$i][0] == '-')
-                        {
-                            $args[$i-1] = str_to_num($splited[$i]);
-                        }
-                        else
-                        {
-                            $args[$i-1] = $splited[$i];
-                        }
-                    }
-                }
-            }
-        }
+        $args[$i-1] = treat_arg($splited[$i]);
     }
     ret($args);
 }
@@ -1131,7 +1480,37 @@ fn interpret($command)
     {
         $cloned = clone($splited[0]);
         $localsplited = string_split($cloned, ":");
-        recursive_set_prop(variables, $localsplited[0], run_function($localsplited[1], $args));
+        $temp = string_sub($localsplited[0], 1, get_size($localsplited[0]));
+        if($localsplited[0][0] == '#')//constant
+        {
+            recursive_set_prop(constants, $temp, run_function($localsplited[1], $args));
+        }
+        else
+        {
+            if($localsplited[0][0] == '$')//variable
+            {
+                recursive_set_prop(variables, $temp, run_function($localsplited[1], $args));
+            }
+            else
+            {
+                if($localsplited[0][0] == '@')//function
+                {
+                    recursive_set_prop(functions, $temp, run_function($localsplited[1], $args));
+                }
+                else
+                {
+                    if($localsplited[0][0] == '!')//procedure
+                    {
+                        recursive_set_prop(procedures, $temp, run_function($localsplited[1], $args));
+                    }
+                    else
+                    {
+                        errorf1_log("interpret(): unknown command {%s}", $splited[0]);
+                    }
+                }
+            }
+        }
+        //remove($temp);
         remove($cloned);
         for ($i = 0; $i < get_size($localsplited); $i+1)
         {
@@ -1144,6 +1523,7 @@ fn interpret($command)
         run_function($splited[0], $args);
     }
     
+    //printf("interpret(): setting variable %s to %s\n", $splited[0], $splited[1]);
     for ($i = 0; $i < $size; $i+1)
     {
         remove($splited[$i]);

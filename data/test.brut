@@ -1,5 +1,5 @@
 print_int 14;
 print_string asdasdasd;
 print_float 123;
-a:set 4;
+$a:set 4;
 print_int $a;
