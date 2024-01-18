@@ -595,6 +595,7 @@ fn recursive_set_prop($obj, $prop, $value)
         {
             if($splited[$i][0] > 47 && $splited[$i][0] < 58)
             {
+                //printf("teste::: recursive_prop: %s\n", $splited[$i]);
                 $obj = $obj[str_to_num($splited[$i])];
             }
             else
@@ -1359,7 +1360,7 @@ fn procedure_parse($text)
         $result[get_size($result)-1] = '\0';
     }
     $splited = string_split($result, ";");
-    printf("r:%s \nt:%s\n", $result, $text);
+    printf("r:%s \nt:%s\n\n", $splited[0], $splited[1]);
     ret($splited);
 }
 functions.procedure_parse = procedure_parse;
@@ -1421,29 +1422,25 @@ fn treat_arg($arg)
 {
     if($arg[0] == '#')//constant
     {
-        $temp = string_sub($arg, 1, get_size($arg));
-        ret(recursive_prop(constants, $temp));
+        ret(recursive_prop(constants, string_sub($arg, 1, get_size($arg))));
     }
     else
     {
         if($arg[0] == '$')//variable
         {
-            $temp = string_sub($arg, 1, get_size($arg));
-            ret(recursive_prop(variables, $temp));
+            ret(recursive_prop(variables, string_sub($arg, 1, get_size($arg))));
         }
         else
         {
             if($arg[0] == '@')//function
             {
-                $temp = string_sub($arg, 1, get_size($arg));
-                ret(recursive_prop(functions, $temp));
+                ret(recursive_prop(functions, string_sub($arg, 1, get_size($arg))));
             }
             else
             {
                 if($arg[0] == '!')//procedure
-                {
-                    $temp = string_sub($arg, 1, get_size($arg));
-                    ret(recursive_prop(procedures, $temp));
+                {                    
+                    ret(recursive_prop(procedures, string_sub($arg, 1, get_size($arg))));
                 }
                 else
                 {
@@ -1480,37 +1477,35 @@ fn interpret($command)
     {
         $cloned = clone($splited[0]);
         $localsplited = string_split($cloned, ":");
-        $temp = string_sub($localsplited[0], 1, get_size($localsplited[0]));
         if($localsplited[0][0] == '#')//constant
         {
-            recursive_set_prop(constants, $temp, run_function($localsplited[1], $args));
+            recursive_set_prop(constants, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
         }
         else
         {
             if($localsplited[0][0] == '$')//variable
             {
-                recursive_set_prop(variables, $temp, run_function($localsplited[1], $args));
+                recursive_set_prop(variables, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
             }
             else
             {
                 if($localsplited[0][0] == '@')//function
                 {
-                    recursive_set_prop(functions, $temp, run_function($localsplited[1], $args));
+                    recursive_set_prop(functions, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
                 }
                 else
                 {
                     if($localsplited[0][0] == '!')//procedure
                     {
-                        recursive_set_prop(procedures, $temp, run_function($localsplited[1], $args));
+                        recursive_set_prop(procedures, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
                     }
                     else
                     {
-                        errorf1_log("interpret(): unknown command {%s}", $splited[0]);
+                        errorf1("interpret(): unknown command {%s}", $splited[0]);
                     }
                 }
             }
         }
-        //remove($temp);
         remove($cloned);
         for ($i = 0; $i < get_size($localsplited); $i+1)
         {
@@ -1523,7 +1518,6 @@ fn interpret($command)
         run_function($splited[0], $args);
     }
     
-    //printf("interpret(): setting variable %s to %s\n", $splited[0], $splited[1]);
     for ($i = 0; $i < $size; $i+1)
     {
         remove($splited[$i]);

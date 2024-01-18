@@ -33,25 +33,27 @@ local function example()
     local tstr = utils.file.load.text("./data/example.brut");
     local preparsed = parse_it(tstr);
 
-    --the following are equivalent:
-    --session.dofile("./data/example.brut");--run a brute script from a file
-    --session.soft(tstr);--parse and run a brute script from a string
-    session.brute(preparsed);--run a brute script from a string, without parsing it, this is faster
+    --run a brute script from a file
+    --session.dofile("./data/example.brut");
     
+    --parse and run a brute script from a string
+    --session.soft(tstr);
     
-    -- this need fixing
-    --[[
-        _ "$txt:read_file ../data/test.brut;";
-        _ "print_string $txt;"
-        _ "!test:procedure_parse $txt;";
-        _ "print_string !test.0;"
-    ]]
+    --run a brute script from a string, without parsing it, this is faster
+    session.brute(preparsed);
     
+    -- manually loading and parsing a brut script
+    _ "$txt:read_file ../data/test.brut;";
+    _ "!test:procedure_parse $txt;";
     
-    session.brute("procedure_load ../data/test.brut test;");
-    session.brute("procedure_run !test;");
+    -- automatically loading and parsing a brut script
+    --_("procedure_load ../data/test.brut test;"); directly load a procedure from a file, but does not run it
+    
+    _("procedure_run !test;");
+    
     _ "$a:set 50;";
     _ "if 1 > 0 @print_container_count;";
+    
     while true do
         _ "layers_render $system.layers;";
         _ "eventor $system;";
