@@ -1,27 +1,19 @@
-include "src/bruter.pixi";
+include "src/bruter.pixi"
 
-//main loop
-//main loop
-//main loop
-fn main()
+dl = dlopen( "data/main.so" ) //Open the library
+if dl >= 0 
 {
-    $image0 = load("data/img/0.jpg");
-    $image1 = load("data/img/1.jpg");
-    resize($image0, 400, 400,-1,RESIZE_COLOR_INTERP2);
-    resize($image1, 100, 100,-1,RESIZE_COLOR_INTERP2);
-    $system = system_new();
-    fn main_callback($_,$system)
-    {
-        $log = get_system_log();
-        print($log,-$system.config.width/2,-$system.config.height/2, WHITE, LEFT | TOP);
-        remove($log);
-    }
-    list_push($system.layers, layer($image0));
-    list_push($system.layers, layer($image1));
-    $system.layers[2].position = vector2(190,150);
-    keyboard_add($system.keyboard, KEY_F2, false, print_container_count);
-    log_container_count();
-    system_loop($system,main_callback);
+  f = dlsym( dl, "main", "p()" )
+  t = dlcall( dl, f)
+  printf( "main returned %s\n", t ) 
+  bulk_interpret(t);
+  
+  while(1)
+  {
+    layers_render(variables.system.layers);
+    eventor(variables.system);
+    frame();
+  }
+  dlclose( dl ) //Close the library
 }
 
-main();

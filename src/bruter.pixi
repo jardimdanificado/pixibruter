@@ -1,4 +1,4 @@
-include "ffi.pixi";//functions, variables, constants
+include "interpreter.pixi";//functions, variables, constants
 
 //constants
 //constants
@@ -1371,6 +1371,7 @@ fn procedure_load($filepath, $name)
     $splited = procedure_parse($result);
     set_prop(procedures, $name, $splited);
     remove($result);
+    ret($splited);
 }
 functions.procedure_load = procedure_load;
 
@@ -1524,4 +1525,20 @@ fn interpret($command)
     }
     remove($splited);
     remove($args);
+}
+
+fn bulk_interpret($commands)
+{
+    $commands = string_replace($commands, ";\n", ";▓");//this is a hack to avoid problems with \n
+    $commands = string_remove_char($commands, "▓");
+    $splited = string_split($commands, ";");
+    for ($i = 0; $i < get_size($splited); $i+1)
+    {
+        interpret($splited[$i]);
+    }
+    for ($i = 0; $i < get_size($splited); $i+1)
+    {
+        remove($splited[$i]);
+    }
+    remove($splited);
 }
