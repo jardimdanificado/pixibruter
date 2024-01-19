@@ -4650,21 +4650,3 @@ functions.print_array_array_color = print_array_array_color;
 set_prop(functions,"351",print_array_array_color);
 set_prop(functions,351,print_array_array_color);
 set_prop(functions,num_to_bytestring(351),print_array_array_color);
-
-/*
-$proplist = get_proplist(functions);
-$test = "";
-    $str = "";
-for($i=0;$i<get_size($proplist);$i+1)
-{
-    sprintf($str, "functions.%s = __%s;", $proplist[$i], $proplist[$i], $proplist[$i], $proplist[$i]);
-    sprintf($str, "%s\nset_prop(functions,\"%d\",__%s);", $str, $i, $proplist[$i]);
-    sprintf($str, "%s\nset_prop(functions,%d,__%s);\n", $str, $i, $proplist[$i]);
-    strcat($test, $str);
-    strcat($test, "\n");
-}
-
-
-write_file("./functions.ini", $test);
-*/
-

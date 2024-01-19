@@ -1,13 +1,11 @@
 #!/bin/bash
-pixilang -c ./src/entrypoint.pixi
+pixilang -c ./boot.pixi
+gcc -fPIC -shared -o src/main.so src/main.c
 rm -rf ./build
 mkdir ./build
-mv ./src/entrypoint.pixicode ./build/entrypoint.pixicode
 cp -r ./data ./build/data
-cp -r ./lib ./build/lib
-cp init.lua ./build/init.lua
 cp pixilang_config.ini ./build/pixilang_config.ini
+mv src/main.so ./build/data/main.so
+mv boot.pixicode build/boot.pixicode
 cd build
-mkdir src 
-mv entrypoint.pixicode src/entrypoint.pixicode
-luajit init.lua
+pixilang

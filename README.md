@@ -2,7 +2,10 @@
 
 ## Description
 
-a pixilang compatibility layer to be used from other languages via child_process, a intermediate easy-to-parse language is used to comunicate between the pixilang and the host process.
+a pixilang based multimedia engine, for working with native back-end + pixilang front-end using pixilang's ffi. 
+
+
+this also implements a intermediary communication language called brut(.brut) that has it own syntax and allow to do dynamic importing, while you cannot declare functions in brut you can still declare `procedures` which work like functions, of course, there is a overhead, but might not be so noticiable as brut is very very simple to parse.
 
 ## Table of Contents
 
@@ -14,7 +17,7 @@ a pixilang compatibility layer to be used from other languages via child_process
 
 ## Installation
 
-[YET TO WRITE INSTALATTION BUT IS PRETTY STRAIGHTFORWARD](LOOK AT RELEASES AND `init.lua` AND `main.js` AND SUCH)
+run ./build.sh then run pixilang on the build folder.
 
 ## Pixilang
 
