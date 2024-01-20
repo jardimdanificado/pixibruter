@@ -957,196 +957,6 @@ fn ini_save($file,$ini)
 }
 functions.ini_save = ini_save;
 
-// layers functions
-// layers functions
-// layers functions
-
-fn layer($container)
-{
-    $temp = new(medium_array, medium_array, INT8);
-    if($container > 0)
-    {
-        remove($temp);
-        $temp = $container;
-    }
-    $alpha = new(get_xsize($temp), get_ysize($temp), INT8)
-    clean($alpha,255);
-    set_alpha($temp, $alpha);
-    ret($temp);
-}
-functions.layer = layer;
-
-fn layers_merge($layers)// incomplete
-{
-    $temp_size = new();
-    $temp_size.x = get_xsize($layers[0].color);
-    $temp_size.y = get_ysize($layers[0].color);
-
-    $result = new($temp_size.x,$temp_size.y,INT8);
-    clean($result);
-    set_alpha($result,new($temp_size.x,$temp_size.y,INT8));
-    clean(get_alpha($result));
-    $temp_nsize = get_size($layers[0]);
-
-    remove($temp_size);
-    ret($result);
-}
-functions.layers_merge = layers_merge;
-
-fn layers_render($layers)
-{
-    clear();
-    for($i = 0; $i < get_size($layers); $i+1)
-    {
-        pixi($layers[$i],$layers[$i].position.x,$layers[$i].position.y);
-    }
-}
-functions.layers_render = layers_render;
-
-// input functions
-// input functions
-// input functions
-
-fn key_new($keycode,$callback,$arg,$up)//down = 0 for down, 1 for up
-{
-    $temp = new();
-    $temp.keycode = $keycode;
-    $temp.callback = $callback;
-    $temp.up = $up;
-    ret($temp);
-}
-
-fn keyboard_new()
-{
-    $temp = new();
-    $temp.keys = new();
-    ret($temp);
-}
-functions.keyboard_new = keyboard_new;
-
-fn keyboard_add($keyboard,$keycode,$up,$callback,$arg)
-{
-    list_push($keyboard.keys,key_new($keycode,$callback,$arg,$up));
-}
-functions.keyboard_add = keyboard_add;
-
-fn eventor($system)
-{
-    while(get_event()) 
-    {
-        if EVT[ EVT_TYPE ] == EVT_QUIT 
-        {
-            halt; 
-        }
-        
-        if EVT[EVT_TYPE] == EVT_BUTTONDOWN
-        {
-            key = EVT[ EVT_KEY ];
-            for($i = 0; $i < get_size($system.keyboard.keys); $i+1)
-            {
-                if($system.keyboard.keys[$i].keycode == key)
-                {
-                    if($system.keyboard.keys[$i].up == false)
-                    {
-                        $system.keyboard.keys[$i].callback(default($system.keyboard.keys[$i].arg,null));
-                    }
-                }
-            }
-        }
-        if EVT[EVT_TYPE] == EVT_BUTTONUP
-        {
-            key = EVT[ EVT_KEY ];
-            for($i = 0; $i < get_size($system.keyboard.keys); $i+1)
-            {
-                if($system.keyboard.keys[$i].keycode == key)
-                {
-                    if($system.keyboard.keys[$i].up == true)
-                    {
-                        $system.keyboard.keys[$i].callback(default($system.keyboard.keys[$i].arg,null));
-                    }
-                }
-            }
-        }
-
-        if EVT[ EVT_KEY ] == KEY_MOUSE_LEFT
-        {
-            x = EVT[ EVT_X ]
-            y = EVT[ EVT_Y ]
-            tnum = 0
-            if EVT[ EVT_KEY ] == EVT_MOUSEBUTTONDOWN 
-            {
-            }
-            if EVT[ EVT_KEY ] == EVT_MOUSEMOVE 
-            {
-            }
-            if EVT[ EVT_KEY ] == EVT_MOUSEBUTTONUP
-            {
-            }
-            if EVT[ EVT_KEY ] == EVT_TOUCHBEGIN
-            {
-            }
-            if EVT[ EVT_KEY ] == EVT_TOUCHMOVE
-            {
-            }
-            if EVT[ EVT_KEY ] == EVT_TOUCHEND
-            {
-            }
-        }
-    }
-}
-functions.eventor = eventor;
-
-//startup functions
-//startup functions
-//startup functions
-
-fn system_loop($system, $callback, $arg)
-{
-    while(true)
-    {
-        layers_render($system.layers);
-        print_fps_screen();
-        eventor($system);
-        frame();
-    }
-}
-functions.system_loop = system_loop;
-
-fn manual_loop($system)
-{
-    layers_render($system.layers);
-    eventor($system);
-    frame();
-}
-functions.manual_loop = manual_loop;
-
-fn system_new($configpath)
-{
-    $configpath = default($configpath,"data/config.ini");
-    $system = new();
-    $system.config = ini_load(read_file($configpath));
-    $system.layers = new();
-    list_push($system.layers,layer(0,0,WINDOW_XSIZE,WINDOW_YSIZE));
-    if($system.config < 0)
-    {
-        logf("Error loading config file: %s\n", $configpath);
-        halt;
-    }
-    else
-    {
-        $system.config.width = default($system.config.width,WINDOW_XSIZE);
-        $system.config.height = default($system.config.height,WINDOW_YSIZE);
-        resize( get_screen(), $system.config.width, $system.config.height );
-        set_pixel_size( WINDOW_XSIZE / $system.config.width );
-    }
-    $system.window = new();
-    $system.keyboard = keyboard_new();
-    start_timer(0);
-    refresh_seed();//required to get a different random number each time  
-    ret($system);
-}
-functions.system_new = system_new;
-
 //bytestring functions
 //bytestring functions
 //bytestring functions
@@ -1409,6 +1219,181 @@ fn procedure_for($start, $end, $procedure)
 }
 functions.procedure_for = procedure_for;
 
+
+// layers functions
+// layers functions
+// layers functions
+
+fn layer($container,$x,$y,$width,$height)
+{
+    $temp = 1;
+    if($container > 0)
+    {
+        $temp = $container;
+    }
+    else
+    {
+        $temp = new($width,$height,INT8);
+    }
+    $alpha = new(default($width,get_xsize($temp)), default($height,get_ysize($temp)), INT8)
+    clean($alpha,255);
+    set_alpha($temp, $alpha);
+    set_prop($temp, "position", vector2(0,0));
+    ret($temp);
+}
+functions.layer = layer;
+
+fn layers_merge($layers)// incomplete
+{
+    $temp_size = new();
+    $temp_size.x = get_xsize($layers[0].color);
+    $temp_size.y = get_ysize($layers[0].color);
+
+    $result = new($temp_size.x,$temp_size.y,INT8);
+    clean($result);
+    set_alpha($result,new($temp_size.x,$temp_size.y,INT8));
+    clean(get_alpha($result));
+    $temp_nsize = get_size($layers[0]);
+
+    remove($temp_size);
+    ret($result);
+}
+functions.layers_merge = layers_merge;
+
+fn layers_render($layers)
+{
+    clear();
+    for($i = 0; $i < get_size($layers); $i+1)
+    {
+        pixi($layers[$i],$layers[$i].position.x,$layers[$i].position.y);
+    }
+}
+functions.layers_render = layers_render;
+
+// input functions
+// input functions
+// input functions
+
+fn key_new($keycode,$callback,$arg,$up)//down = 0 for down, 1 for up
+{
+    $temp = new();
+    $temp.keycode = $keycode;
+    $temp.callback = $callback;
+    $temp.up = $up;
+    ret($temp);
+}
+
+fn keyboard_new()
+{
+    $temp = new();
+    $temp.keys = new();
+    ret($temp);
+}
+functions.keyboard_new = keyboard_new;
+
+fn keyboard_add($keyboard,$keycode,$up,$callback,$arg)
+{
+    list_push($keyboard.keys,key_new($keycode,$callback,$arg,$up));
+}
+functions.keyboard_add = keyboard_add;
+
+fn eventor($system)
+{
+    while(get_event()) 
+    {
+        if EVT[ EVT_TYPE ] == EVT_QUIT 
+        {
+            halt; 
+        }
+        
+        if EVT[EVT_TYPE] == EVT_BUTTONDOWN
+        {
+            key = EVT[ EVT_KEY ];
+            for($i = 0; $i < get_size($system.keyboard.keys); $i+1)
+            {
+                if($system.keyboard.keys[$i].keycode == key)
+                {
+                    if($system.keyboard.keys[$i].up == false)
+                    {
+                        $system.keyboard.keys[$i].callback(default($system.keyboard.keys[$i].arg,null));
+                    }
+                }
+            }
+        }
+        if EVT[EVT_TYPE] == EVT_BUTTONUP
+        {
+            key = EVT[ EVT_KEY ];
+            for($i = 0; $i < get_size($system.keyboard.keys); $i+1)
+            {
+                if($system.keyboard.keys[$i].keycode == key)
+                {
+                    if($system.keyboard.keys[$i].up == true)
+                    {
+                        $system.keyboard.keys[$i].callback(default($system.keyboard.keys[$i].arg,null));
+                    }
+                }
+            }
+        }
+
+        if EVT[ EVT_KEY ] == KEY_MOUSE_LEFT
+        {
+            x = EVT[ EVT_X ]
+            y = EVT[ EVT_Y ]
+            tnum = 0
+            if EVT[ EVT_KEY ] == EVT_MOUSEBUTTONDOWN 
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_MOUSEMOVE 
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_MOUSEBUTTONUP
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_TOUCHBEGIN
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_TOUCHMOVE
+            {
+            }
+            if EVT[ EVT_KEY ] == EVT_TOUCHEND
+            {
+            }
+        }
+    }
+}
+functions.eventor = eventor;
+
+//startup functions
+//startup functions
+//startup functions
+
+fn system_new($configpath)
+{
+    vsync(0);
+    $configpath = default($configpath,"data/config.ini");
+    $system = new();
+    $system.config = ini_load(read_file($configpath));
+    $system.layers = new();
+    //list_push($system.layers,layer(0,0,WINDOW_XSIZE,WINDOW_YSIZE));
+    if($system.config < 0)
+    {
+        error("Error loading config file");
+    }
+    else
+    {
+        $system.config.width = default($system.config.width,WINDOW_XSIZE);
+        $system.config.height = default($system.config.height,WINDOW_YSIZE);
+        resize( get_screen(), $system.config.width, $system.config.height );
+        set_pixel_size( WINDOW_XSIZE / $system.config.width );
+    }
+    $system.window = new();
+    $system.keyboard = keyboard_new();
+    start_timer(0);
+    refresh_seed();//required to get a different random number each time
+    ret($system);
+}
+functions.system_new = system_new;
+
 //main functions
 //main functions
 //main functions
@@ -1508,10 +1493,8 @@ fn interpret($command)
             }
         }
         remove($cloned);
-        for ($i = 0; $i < get_size($localsplited); $i+1)
-        {
-            remove($localsplited[$i]);
-        }
+        remove($localsplited[0]);
+        remove($localsplited[1]);
         remove($localsplited);
     }
     else
@@ -1529,15 +1512,12 @@ fn interpret($command)
 
 fn bulk_interpret($commands)
 {
-    $commands = string_replace($commands, ";\n", ";▓");//this is a hack to avoid problems with \n
-    $commands = string_remove_char($commands, "▓");
-    $splited = string_split($commands, ";");
-    for ($i = 0; $i < get_size($splited); $i+1)
+    $splited = string_split(clone(string_replace($commands, ";\n", ";")), ";");
+    
+    for ($i = 0; $i < get_size($splited)-1; $i+1)
     {
+        //printf("bulk_interpret: %s\n", $splited[$i]);
         interpret($splited[$i]);
-    }
-    for ($i = 0; $i < get_size($splited); $i+1)
-    {
         remove($splited[$i]);
     }
     remove($splited);

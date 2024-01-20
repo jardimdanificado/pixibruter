@@ -6,3 +6,4 @@ replit.nix
 .breakpoints
 node_modules
 build
+.vscode

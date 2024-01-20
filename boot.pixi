@@ -1,19 +1,25 @@
 include "src/bruter.pixi"
+variables.system = system_new();
+list_remove(variables.system.layers,0);
 
 dl = dlopen( "data/main.so" ) //Open the library
 if dl >= 0 
 {
-  f = dlsym( dl, "main", "p()" )
-  t = dlcall( dl, f)
-  printf( "main returned %s\n", t ) 
-  bulk_interpret(t);
-  
+  startup = dlsym(dl, "startup", "p()" )
+  r = dlcall(dl, startup)
+  bulk_interpret(r);
+  remove(r);
+
+  main = dlsym(dl, "main", "p(p)" )
+
   while(1)
   {
-    layers_render(variables.system.layers);
-    eventor(variables.system);
-    frame();
+    result = dlcall(dl, main, "0");
+    bulk_interpret(result);
+ //   printf("result = %s\n", result)
+    remove(result);
   }
+
   dlclose( dl ) //Close the library
 }
 
