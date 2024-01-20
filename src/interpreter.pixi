@@ -2891,6 +2891,14 @@ fn print_array_array_color($array)
     printf("]\n");
 }
 
+lastframe = 0;
+fn print_frametime()
+{
+    printf("frametime: %u\n", get_timer()-lastframe);
+    lastframe = get_timer();
+}
+
+
 functions.sv_get_autostop = __sv_get_autostop;
 set_prop(functions,"0",__sv_get_autostop);
 set_prop(functions,0,__sv_get_autostop);
@@ -4650,3 +4658,8 @@ functions.print_array_array_color = print_array_array_color;
 set_prop(functions,"351",print_array_array_color);
 set_prop(functions,351,print_array_array_color);
 set_prop(functions,num_to_bytestring(351),print_array_array_color);
+
+functions.print_frametime = print_frametime;
+set_prop(functions,"352",print_frametime);
+set_prop(functions,352,print_frametime);
+set_prop(functions,num_to_bytestring(352),print_frametime);
