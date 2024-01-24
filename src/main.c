@@ -76,7 +76,13 @@ char* startup()
     ucmd("keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;");
     ucmd("keyboard_add $system.keyboard #KEY_F3 0 @print_all;");
     ucmd("$system.layers.1.position.x:set 500;");
+    ucmd("$imgtxt:img_to_txt $image2;");
     return(output);
+}
+
+void receive_image(char** data, int width, int height)
+{
+    printf("image received: %d %d\n", width, height);
 }
 
 char* mainloop(char* input)

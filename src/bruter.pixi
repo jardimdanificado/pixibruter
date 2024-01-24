@@ -1,4 +1,4 @@
-include "interpreter.pixi";//functions, variables, constants
+include "repl.pixi";//functions, variables, constants
 
 //constants
 //constants
@@ -1083,6 +1083,24 @@ fn parse_condition($splited)
                             ret(false);
                         }
                     }
+                    else
+                    {
+                        if(strcmp($splited[1], "includes") == 0)
+                        {
+                            if(get_prop($splited[0],$splited[2]) != 0)
+                            {
+                                ret(true);
+                            }
+                            else
+                            {
+                                ret(false);
+                            }
+                        }
+                        else
+                        {
+                            error("parse_condition: invalid operator");
+                        }
+                    }
                 }
             }
         }
@@ -1135,6 +1153,51 @@ fn _ifelse($a, $op, $b, $callback1, $callback2)
 }
 set_prop(functions, "ifelse", _ifelse);
 
+fn _pif($a, $op, $b, $pid)//procedure if
+{
+    $temp = new(3);
+    $temp[0] = $a;
+    $temp[1] = $op;
+    $temp[2] = $b;
+    if(parse_condition($temp))
+    {
+        interpret(get_prop(procedures, $pid));
+    }
+    remove($temp);
+}
+set_prop(functions, "pif", _pif);
+
+fn _pifnot($a, $op, $b, $pid)//procedure if not
+{
+    $temp = new(3);
+    $temp[0] = $a;
+    $temp[1] = $op;
+    $temp[2] = $b;
+    if(parse_condition($temp))
+    {
+        interpret(get_prop(procedures, $pid));
+    }
+    remove($temp);
+}
+set_prop(functions, "pifnot", _pifnot);
+
+fn _pifelse($a, $op, $b, $pid1, $pid2)//procedure if else
+{
+    $temp = new(3);
+    $temp[0] = $a;
+    $temp[1] = $op;
+    $temp[2] = $b;
+    if(parse_condition($temp))
+    {
+        interpret(get_prop(procedures, $pid1));
+    }
+    else
+    {
+        interpret(get_prop(procedures, $pid2));
+    }
+    remove($temp);
+}
+set_prop(functions, "pifelse", _pifelse);
 
 //loop functions
 //loop functions
@@ -1219,6 +1282,45 @@ fn procedure_for($start, $end, $procedure)
 }
 functions.procedure_for = procedure_for;
 
+// image functions
+// image functions
+// image functions
+
+fn img_to_txt($img)
+{
+    $xsize = get_xsize($img);
+    $ysize = get_ysize($img);
+    $current = "";
+    for($y = 0; $y < $ysize; $y+1)
+    {
+        for($x = 0; $x < $xsize; $x+1)
+        {
+            sprintf($current,"%s%c%c%c", $current, get_red($img[$x, $y]), get_green($img[$x, $y]), get_blue($img[$x, $y]));
+        }
+    }
+    ret($current);
+}
+functions.img_to_txt = img_to_txt;
+
+fn imgwa_to_txt($img)
+{
+    $xsize = get_xsize($img);
+    $ysize = get_ysize($img);
+    $result = new($ysize);
+    $current = "";
+    $alpha = get_alpha($img);
+    for($y = 0; $y < $ysize; $y+1)
+    {
+        for($x = 0; $x < $xsize; $x+1)
+        {
+            $current = sprintf("%s%c%c%c%c", $current, $img[$x][$y].r, $img[$x][$y].g, $img[$x][$y].b, $alpha[$x][$y]);
+        }
+        list_push($result, $current);
+        sprintf($current, "");
+    }
+    ret($result);
+}
+functions.imgwa_to_txt = imgwa_to_txt;
 
 // layers functions
 // layers functions
@@ -1518,7 +1620,6 @@ fn bulk_interpret($commands)
     
     for ($i = 0; $i < get_size($splited); $i+1)
     {
-        //printf("bulk_interpret: %s\n", $splited[$i]);
         interpret($splited[$i]);
         remove($splited[$i]);
     }
