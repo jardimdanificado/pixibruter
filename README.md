@@ -49,7 +49,7 @@ take a look at pixilang docs and src/ffi.pixi to get better understanding of the
 
 - returnless function:
 
-`function arg1 arg2...;`
+`function arg1 arg2 ...;`
 
 
 - function which return goes to $target_variable (":" denotes a return, the target variable must be on the left):
