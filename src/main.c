@@ -3,21 +3,19 @@
 #include "string.h"
 
 //vectors   
-struct Vector2
+typedef struct
 {
     int x;
     int y;
-};
-typedef struct Vector2 Vector2;
+} Vector2;
 #define Vector2(x, y) (Vector2){ x, y }
 
-struct Vector3
+typedef struct
 {
     int x;
     int y;
     int z;
-};
-typedef struct Vector3 Vector3;
+} Vector3;
 #define Vector3(x, y, z) (Vector3){ x, y, z }
 
 //lists using define
@@ -74,15 +72,21 @@ char* startup()
     ucmd("$system.layers.2.position:vector2 150 190;");
     
     ucmd("keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;");
+    ucmd("keyboard_add $system.keyboard #KEY_F3 0 @print_all;");
     ucmd("$system.layers.1.position.x:set 500;");
+    //ucmd("$imgtxt:img_to_txt $image2;");
     return(output);
 }
 
-char* main(char* input)
+void receive_image(char** data, int width, int height)
+{
+    printf("image received: %d %d\n", width, height);
+}
+
+char* mainloop(char* input)
 {
     output = "";
     input = (strlen(input) > 0) ? input : "";
-    //free(output);
-    output = "layers_render $system.layers;eventor $system;print_frametime;frame;";
+    output = "layers_render $system.layers;eventor $system;frame;";
     return(output);
 }

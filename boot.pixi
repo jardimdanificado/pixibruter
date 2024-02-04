@@ -9,17 +9,14 @@ if dl >= 0
   r = dlcall(dl, startup)
   bulk_interpret(r);
   remove(r);
-
-  main = dlsym(dl, "main", "p(p)" )
-
+  main = dlsym(dl, "mainloop", "p(p)" )
+  zero = "0";
   while(1)
   {
-    result = dlcall(dl, main, "0");
+    result = dlcall(dl, main, zero);
     bulk_interpret(result);
- //   printf("result = %s\n", result)
     remove(result);
   }
-
   dlclose( dl ) //Close the library
 }
 
