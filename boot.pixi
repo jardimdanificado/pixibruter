@@ -13,18 +13,38 @@ if dl >= 0
   zero = "0";
   
   
-  //pattern example, uncomment to test it
-  /*
-  fn test($pixel, $x, $y)
+  //pattern examples start here, uncomment to test it
+  ///*
+  fn blackbox_wrapper()
   {
-    //printf("x: %d, y: %d\n", $x, $y);
-    //printf("r: %d, g: %d, b: %d\n", get_color(get_red($pixel), get_green($pixel), get_blue($pixel)));
-    ret(get_color(get_red($pixel)+50, get_green($pixel), get_blue($pixel)));
+    $ptt = new(8,8);
+    set_all_2d($ptt, just_return);//set all to return the pixel itself
+    $ptt[0,0] = ret_black;
+    $ptt[0,1] = ret_black;
+    $ptt[0,2] = ret_black;
+    $ptt[1,0] = ret_black;
+    $ptt[2,0] = ret_black;
+    $ptt[2,1] = ret_black;
+    $ptt[2,2] = ret_black;
+    $ptt[1,2] = ret_black;
+    pattern(variables.system.layers[3], $ptt);
+    remove($ptt);
   }
-  $ptt = new(1,1);
-  $ptt[0] = test;
-  pattern(variables.system.layers[1], $ptt);
-  */
+  auto_thread(blackbox_wrapper);//this one does not contains the interval, so it will generate a warning and run in manual mode
+
+  fn grain($pixel, $x, $y)
+  {
+    ret(get_color(get_red($pixel)+random(1,100), get_green($pixel)+random(1,100), get_blue($pixel)+random(1,100)));
+  }
+  fn grain_pattern_wrapper()
+  {
+    $ptt = new(1,1);
+    $ptt[0] = grain;
+    pattern(variables.system.layers[1], $ptt);
+    remove($ptt);
+  }
+  auto_thread( grain_pattern_wrapper, 5000)//this one contains the interval, so it will autodestroy after 5000ms
+  //*/
 
 
   //main loop

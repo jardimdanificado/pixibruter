@@ -151,6 +151,29 @@ fn dummy()
 {
     ret(0);
 }
+functions.dummy = dummy;
+
+fn just_return($value)
+{
+    ret($value);
+}
+functions.just_return = just_return;
+
+fn set_all($array,$value)
+{
+    for($i = 0; $i < get_size($array); $i+1)
+    {
+        $array[$i] = $value;
+    }
+}
+
+fn set_all_2d($array,$value)
+{
+    for($i = 0; $i < get_size($array); $i+1)
+    {
+        $array[$i] = $value;
+    }
+}
 
 //memory functions
 //memory functions
@@ -669,6 +692,27 @@ fn create_matrix($name, $xsize, $ysize)
     set_prop(variables, $name, new($xsize, $ysize));
 }
 functions.create_matrix = create_matrix;
+
+//threads functions
+//threads functions
+//threads functions
+
+fn manual_thread($function)
+{
+    ret(thread_create($function,0))
+}
+functions.manual_thread = manual_thread;
+
+fn auto_thread($function, $interval)
+{
+    if($interval <= 0)
+    {
+        warning("auto_thread: interval is 0, using manual_thread instead");
+        ret(manual_thread($function));
+    }
+    ret(thread_create($function,$interval,THREAD_FLAG_AUTO_DESTROY))
+}
+functions.auto_thread = auto_thread;
 
 //list functions
 //list functions
@@ -1500,43 +1544,82 @@ functions.system_new = system_new;
 //pattern functions
 //pattern functions
 
+fn ret_black()
+{
+    ret(BLACK);
+}
+functions.ret_black = ret_black;
+
+fn ret_white()
+{
+    ret(WHITE);
+}
+functions.ret_white = ret_white;
+
+fn ret_red()
+{
+    ret(RED);
+}
+functions.ret_red = ret_red;
+
+fn ret_green()
+{
+    ret(GREEN);
+}
+functions.ret_green = ret_green;
+
+fn ret_blue()
+{
+    ret(BLUE);
+}
+functions.ret_blue = ret_blue;
+
+fn retyellow()
+{
+    ret(YELLOW);
+}
+functions.retyellow = retyellow;
+
+fn ret_orange()
+{
+    ret(ORANGE);
+}
+functions.ret_orange = ret_orange;
+
 fn pattern($image,$functions)
 {
     $img_width = get_xsize($image);
     $img_height = get_ysize($image);
     
-    $chunk_sizex = get_xsize($functions);
-    $chunk_sizey = get_ysize($functions);
+    $chunk_size_x = get_xsize($functions);
+    $chunk_size_y = get_ysize($functions);
 
-    $cw = $img_width / $chunk_sizex + 1;
-    $ch = $img_height / $chunk_sizey + 1;
+    $clunk_width = $img_width / $chunk_size_x;
+    $clunk_height = $img_height / $chunk_size_y;
     
-    for($x = 0; $x < $cw; $x+1)
+    for($current_chunk_x = 0; $current_chunk_x < $clunk_width; $current_chunk_x+1)
     {
-        for($y = 0; $y < $ch; $y+1)
+        for($current_chunk_y = 0; $current_chunk_y < $clunk_height; $current_chunk_y+1)
         {
-            for($cx = 0; $cx < $chunk_sizex; $cx+1)
+            for($chunk_current_x_local = 0; $chunk_current_x_local < $chunk_size_x; $chunk_current_x_local+1)
             {
-                for($cy = 0; $cy < $chunk_sizey; $cy+1)
+                for($chunk_current_y_local = 0; $chunk_current_y_local < $chunk_size_y; $chunk_current_y_local+1)
                 {
-                    if($image[$x * $chunk_sizex + $cx, $y * $chunk_sizey + $cy] != 0)
-                    {
-                        $image[$x * $chunk_sizex + $cx, $y * $chunk_sizey + $cy] = $functions[$cx, $cy](
-                            $image[($x * $chunk_sizex) + $cx, ($y * $chunk_sizey + $cy)],//current pixel
-                            $x * $chunk_sizex + $cx,//x in image
-                            $y * $chunk_sizey + $cy,//y in image
-                            $cx,//chunk_current_x_local
-                            $cy,//chunk_current_y_local
-                            $chunk_sizex,//chunk_sizex
-                            $chunk_sizey,//chunk_sizey
-                            $x,//current_chunk_x
-                            $y,//current_chunk_y
-                            $img_width,//img_width
-                            $img_height,//img_height
-                            $image,//image
-                            $functions//pattern
-                        );
-                    }
+                    $image[$current_chunk_x * $chunk_size_x + $chunk_current_x_local, $current_chunk_y * $chunk_size_y + $chunk_current_y_local] = $functions[$chunk_current_x_local, $chunk_current_y_local](
+                        $image[($current_chunk_x * $chunk_size_x) + $chunk_current_x_local, ($current_chunk_y * $chunk_size_y + $chunk_current_y_local)],//current_pixel
+                        $current_chunk_x * $chunk_size_x + $chunk_current_x_local,//x_in_image
+                        $current_chunk_y * $chunk_size_y + $chunk_current_y_local,//y_in_image
+                        $chunk_current_x_local,//chunk_current_x_local
+                        $chunk_current_y_local,//chunk_current_y_local
+                        $chunk_size_x,//chunk_size_x
+                        $chunk_size_y,//chunk_size_y
+                        $current_chunk_x,//$current_chunk_x
+                        $current_chunk_y,//current_chunk_y
+                        $img_width,//img_width
+                        $img_height,//img_height
+                        $image,//image
+                        $functions//pattern
+                    );
                 }
             }
         }
