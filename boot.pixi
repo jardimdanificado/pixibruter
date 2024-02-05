@@ -2,18 +2,9 @@ include "src/bruter.pixi"
 variables.system = system_new();
 list_remove(variables.system.layers,0);
 
-dl = dlopen( "data/main.so" ) //Open the library
-if dl >= 0 
+fn pattern_examples()
 {
-  startup = dlsym(dl, "startup", "p()" );
-  r = dlcall(dl, startup)
-  bulk_interpret(r);
-  remove(r);
-  main = dlsym(dl, "mainloop", "p(p)" );
-  zero = "0";
-  
-  
-  //pattern examples start here, uncomment to test it
+    //pattern examples start here, uncomment to test it
   ///*
   fn blackbox_wrapper()
   {
@@ -45,8 +36,19 @@ if dl >= 0
   }
   auto_thread( grain_pattern_wrapper, 5000)//this one contains the interval, so it will autodestroy after 5000ms
   //*/
+}
 
+dl = dlopen( "data/main.so" ) //Open the library
+if dl >= 0
+{
+  startup = dlsym(dl, "startup", "p()" );
+  r = dlcall(dl, startup)
+  bulk_interpret(r);
+  remove(r);
+  main = dlsym(dl, "mainloop", "p(p)" );
+  zero = "0";
 
+  pattern_examples();
   //main loop
   while(1)
   {
@@ -54,8 +56,27 @@ if dl >= 0
     bulk_interpret(result);
     remove(result);
   }
-
-
   dlclose( dl ) //Close the library
+}
+else
+{
+  warning("Could not open the library, interpreting brut instead.");
+  //$l2 = string_remove_char($l, '\n');
+  $example = read_file_safe("data/main.brut");
+  $example2 = string_remove_char($example, '\n');
+  bulk_interpret($example2);
+
+  $l = read_file_safe("data/loop.brut");//not working for some reason
+  $loop = "layers_render $system.layers;eventor $system;frame;";
+  printf("strcmp: %d\n", strcmp($l, $loop));
+  printf("l: %s\n\n%s\n", $l, $loop);
+  pattern_examples();
+  while(1)
+  {
+    //bulk_interpret($l); // need to fix this
+    //bulk_interpret($l2);// this messes positions and such
+    bulk_interpret($loop);
+  }
+
 }
 

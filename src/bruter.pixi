@@ -929,15 +929,24 @@ fn read_file($filename)
     $file = fopen($filename,"rb");
     if($file == 0)
     {
-        ret(null);
+        errorf1("read_file: file %s not found", $filename);
     }
-    $result = "";
-    resize($result, $size);
-    fread($result,$size,$file);
+    $result_ = string_new($size);
+    fread($result_,$size,$file);
     fclose($file);
-    ret($result);
+    ret($result_);
 }
 functions.read_file = read_file;
+
+fn read_file_safe($filepath)
+{
+    $txt = read_file($filepath);
+    $result = "";
+    sprintf($result, "%s", $txt);
+    remove($txt);
+    ret($result);
+}
+functions.read_file_safe = read_file_safe;
 
 fn write_file($filename,$content)
 {
@@ -1277,16 +1286,15 @@ fn procedure_parse($text)
         $result[get_size($result)-1] = '\0';
     }
     $splited = string_split($result, ";");
-    printf("r:%s \nt:%s\n\n", $splited[0], $splited[1]);
+    remove($result);
     ret($splited);
 }
 functions.procedure_parse = procedure_parse;
 
-fn procedure_load($filepath, $name)
+fn procedure_load($filepath)
 {
     $result = read_file($filepath);
     $splited = procedure_parse($result);
-    set_prop(procedures, $name, $splited);
     remove($result);
     ret($splited);
 }
@@ -1330,6 +1338,7 @@ functions.procedure_for = procedure_for;
 // image functions
 // image functions
 
+//obsolete
 fn img_to_txt($img)
 {
     $xsize = get_xsize($img);
@@ -1346,6 +1355,7 @@ fn img_to_txt($img)
 }
 functions.img_to_txt = img_to_txt;
 
+//obsolete
 fn imgwa_to_txt($img)
 {
     $xsize = get_xsize($img);

@@ -76,6 +76,10 @@ take a look at pixilang docs and src/ffi.pixi to get better understanding of the
 
 `function @callback_1 @callback_2 ...;`
 
+- procedures always starts with @:
+
+`function !procedure_1 !procedure_2 ...;`
+
 ## Contributing
 
 [WORK IN PROGRESS]
