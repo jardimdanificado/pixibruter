@@ -5,18 +5,37 @@ list_remove(variables.system.layers,0);
 dl = dlopen( "data/main.so" ) //Open the library
 if dl >= 0 
 {
-  startup = dlsym(dl, "startup", "p()" )
+  startup = dlsym(dl, "startup", "p()" );
   r = dlcall(dl, startup)
   bulk_interpret(r);
   remove(r);
-  main = dlsym(dl, "mainloop", "p(p)" )
+  main = dlsym(dl, "mainloop", "p(p)" );
   zero = "0";
+  
+  
+  //pattern example, uncomment to test it
+  /*
+  fn test($pixel, $x, $y)
+  {
+    //printf("x: %d, y: %d\n", $x, $y);
+    //printf("r: %d, g: %d, b: %d\n", get_color(get_red($pixel), get_green($pixel), get_blue($pixel)));
+    ret(get_color(get_red($pixel)+50, get_green($pixel), get_blue($pixel)));
+  }
+  $ptt = new(1,1);
+  $ptt[0] = test;
+  pattern(variables.system.layers[1], $ptt);
+  */
+
+
+  //main loop
   while(1)
   {
     result = dlcall(dl, main, zero);
     bulk_interpret(result);
     remove(result);
   }
+
+
   dlclose( dl ) //Close the library
 }
 

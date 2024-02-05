@@ -1496,6 +1496,53 @@ fn system_new($configpath)
 }
 functions.system_new = system_new;
 
+//pattern functions
+//pattern functions
+//pattern functions
+
+fn pattern($image,$functions)
+{
+    $img_width = get_xsize($image);
+    $img_height = get_ysize($image);
+    
+    $chunk_sizex = get_xsize($functions);
+    $chunk_sizey = get_ysize($functions);
+
+    $cw = $img_width / $chunk_sizex + 1;
+    $ch = $img_height / $chunk_sizey + 1;
+    
+    for($x = 0; $x < $cw; $x+1)
+    {
+        for($y = 0; $y < $ch; $y+1)
+        {
+            for($cx = 0; $cx < $chunk_sizex; $cx+1)
+            {
+                for($cy = 0; $cy < $chunk_sizey; $cy+1)
+                {
+                    if($image[$x * $chunk_sizex + $cx, $y * $chunk_sizey + $cy] != 0)
+                    {
+                        $image[$x * $chunk_sizex + $cx, $y * $chunk_sizey + $cy] = $functions[$cx, $cy](
+                            $image[($x * $chunk_sizex) + $cx, ($y * $chunk_sizey + $cy)],//current pixel
+                            $x * $chunk_sizex + $cx,//x in image
+                            $y * $chunk_sizey + $cy,//y in image
+                            $cx,//chunk_current_x_local
+                            $cy,//chunk_current_y_local
+                            $chunk_sizex,//chunk_sizex
+                            $chunk_sizey,//chunk_sizey
+                            $x,//current_chunk_x
+                            $y,//current_chunk_y
+                            $img_width,//img_width
+                            $img_height,//img_height
+                            $image,//image
+                            $functions//pattern
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
+
 //main functions
 //main functions
 //main functions
