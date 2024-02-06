@@ -858,6 +858,41 @@ fn string_split( $string, $separator )
 }
 functions.string_split = string_split;
 
+
+fn string_split2( $str, $separator )
+{
+    $rv = new( 16, 1, INT )
+    clean( $rv, -1 )
+    $str_count = 0
+    $str_len = strlen( $str )
+    $separator_len = strlen( $separator )
+    $ptr = 0
+    while 1
+    {
+	$prev_ptr = $ptr
+        $ptr = strstr( $str, $ptr, $separator, 0 )
+        if $ptr < 0
+        {
+	    if $prev_ptr >= $str_len { break }
+	    $ptr = $str_len
+    	}
+        $len = $ptr - $prev_ptr
+	$s = new( $len, 1, INT8 )
+	copy( $s, $str, 0, $prev_ptr, $len )
+	$cur_size = get_size( $rv )
+	if $str_count >= $cur_size
+	{
+	    $cur_size = $str_count + 16
+	    resize( $rv, $cur_size, 1, INT )
+	}
+	$rv[ $str_count ] = $s
+	$str_count + 1
+        $ptr + $separator_len
+    }
+    resize( $rv, $str_count, 1, INT )
+    ret( $rv )
+}
+
 fn string_replace( $str1, $str2, $str3 )//modified function, original can be found at pixilang3/lib/string.pixi
 {
     $str1_len = strlen( $str1 )
@@ -1250,7 +1285,7 @@ fn _ifelse($a, $op, $b, $callback1, $callback2)
 }
 set_prop(functions, "ifelse", _ifelse);
 
-fn _pif($a, $op, $b, $pid)//procedure if
+fn _pif($a, $op, $b, $procedure)//procedure if
 {
     $temp = new(3);
     $temp[0] = $a;
@@ -1258,13 +1293,13 @@ fn _pif($a, $op, $b, $pid)//procedure if
     $temp[2] = $b;
     if(parse_condition($temp))
     {
-        interpret(get_prop(procedures, $pid));
+        eval($procedure);
     }
     remove($temp);
 }
 set_prop(functions, "pif", _pif);
 
-fn _pifnot($a, $op, $b, $pid)//procedure if not
+fn _pifnot($a, $op, $b, $procedure)//procedure if not
 {
     $temp = new(3);
     $temp[0] = $a;
@@ -1272,13 +1307,13 @@ fn _pifnot($a, $op, $b, $pid)//procedure if not
     $temp[2] = $b;
     if(parse_condition($temp))
     {
-        interpret(get_prop(procedures, $pid));
+        eval($procedure);
     }
     remove($temp);
 }
 set_prop(functions, "pifnot", _pifnot);
 
-fn _pifelse($a, $op, $b, $pid1, $pid2)//procedure if else
+fn _pifelse($a, $op, $b, $procedure1, $procedure2)//procedure if else
 {
     $temp = new(3);
     $temp[0] = $a;
@@ -1286,11 +1321,11 @@ fn _pifelse($a, $op, $b, $pid1, $pid2)//procedure if else
     $temp[2] = $b;
     if(parse_condition($temp))
     {
-        interpret(get_prop(procedures, $pid1));
+        eval($procedure1);
     }
     else
     {
-        interpret(get_prop(procedures, $pid2));
+        eval($procedure2);
     }
     remove($temp);
 }
@@ -1318,45 +1353,60 @@ fn repeat_for($start, $end, $callback)
     }
 }
 
-//procedure functions // completely broken // need future reimplementation(not any soon)
-//procedure functions // completely broken // need future reimplementation(not any soon)
-//procedure functions // completely broken // need future reimplementation(not any soon)
+//procedure functions 
+//procedure functions 
+//procedure functions 
 
 fn procedure_parse($text) //obsolete
 {
+    warning("procedure_parse: this function is obsolete.");
     $result = string_remove_char($text, '\n');
     if($result[get_size($result)-1] == ';')
     {
         $result[get_size($result)-1] = '\0';
     }
-    $splited = string_split($result, ";");
+    $splited = string_split2($result, ";");
     remove($result);
     ret($splited);
 }
 functions.procedure_parse = procedure_parse;
 
-fn procedure_load($filepath) //obsolete
+fn procedure_load($filepath,$name)
 {
-    $result = read_file($filepath);
-    $splited = procedure_parse($result);
-    remove($result);
-    ret($splited);
+    $result = read_txt($filepath);
+    if($name != 0)
+    {
+        set_prop(procedures, $name, $result);
+    }
+    ret($result);
 }
 functions.procedure_load = procedure_load;
 
-fn procedure_repeat($times, $procedure) //obsolete
+fn procedure_run($procedure) //just a safe eval
 {
+    printf("procedure_run: %s\n", $procedure);
+    if($procedure == 0)
+    {
+        error("procedure_run: procedure is null");
+    }
+    eval($procedure);
+}
+functions.procedure_run = procedure_run;
+
+fn procedure_repeat($procedure,$times)
+{
+    if($times <= 0)
+    {
+        error("procedure_repeat: times <= 0");
+    }
     for($i = 0; $i < $times; $i+1)
     {
-        for($j = 0; $j < get_size($procedure); $j+1)
-        {
-            interpret($procedure[$j]);
-        }
+        eval($procedure);
     }
 }
 functions.procedure_repeat = procedure_repeat;
 
-fn procedure_for($start, $end, $procedure) //obsolete
+fn procedure_for($procedure,$start,$end)
 {
     if($start > $end)
     {
@@ -1364,7 +1414,7 @@ fn procedure_for($start, $end, $procedure) //obsolete
     }
     for($i = $start; $i < $end; $i+1)
     {
-        get_prop(procedures, $procedure[$i]);  
+        eval($procedure[$i]);  
     }
 }
 functions.procedure_for = procedure_for;
@@ -1793,9 +1843,8 @@ functions.interpret = interpret;
 
 fn bulk_interpret($commands)
 {
-    $c2 = clone($commands); 
-    string_replace($c2, ";\n", ";");
-    $cloned = clone($c2);
+    $cloned = clone($commands);
+    string_replace($cloned, ";\n", ";");
     $splited = string_split($cloned, ";");
     
     for ($i = 0; $i < get_size($splited); $i+1)
@@ -1806,7 +1855,6 @@ fn bulk_interpret($commands)
     remove($splited);
     remove($cloned);
 }
-functions.bulk_interpret = bulk_interpret;
 
 eval = bulk_interpret;
 functions.eval = eval;
