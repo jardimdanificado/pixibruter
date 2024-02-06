@@ -39,7 +39,7 @@ fn pattern_examples()
 }
 
 dl = dlopen( "data/main.so" ) //Open the library
-if dl >= 0
+if 0
 {
   startup = dlsym(dl, "startup", "p()" );
   r = dlcall(dl, startup)
@@ -61,20 +61,15 @@ if dl >= 0
 else
 {
   warning("Could not open the library, interpreting brut instead.");
-  //$l2 = string_remove_char($l, '\n');
-  $example = read_file_safe("data/main.brut");
-  $example2 = string_remove_char($example, '\n');
-  bulk_interpret($example2);
 
-  $l = read_file_safe("data/loop.brut");//not working for some reason
-  $loop = "layers_render $system.layers;eventor $system;frame;";
-  printf("strcmp: %d\n", strcmp($l, $loop));
-  printf("l: %s\n\n%s\n", $l, $loop);
+  $example = read_txt("data/main.brut");
+  bulk_interpret($example);
+
+  $loop = read_txt("data/loop.brut");
   pattern_examples();
+
   while(1)
   {
-    //bulk_interpret($l); // need to fix this
-    //bulk_interpret($l2);// this messes positions and such
     bulk_interpret($loop);
   }
 

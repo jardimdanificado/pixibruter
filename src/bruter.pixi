@@ -840,7 +840,7 @@ fn string_ocurrences_advanced($str1,$str2)
 }
 functions.string_ocurrences_advanced = string_ocurrences_advanced;
 
-fn string_split($string,$separator)
+fn string_split( $string, $separator )
 {
     $offset = 0;
     $len = strlen($separator);
@@ -858,20 +858,40 @@ fn string_split($string,$separator)
 }
 functions.string_split = string_split;
 
-fn string_replace($string,$oldstr,$newstr)
+fn string_replace( $str1, $str2, $str3 )//modified function, original can be found at pixilang3/lib/string.pixi
 {
-    $result = "";
-    $offset = 0;
-    $len = strlen($oldstr);
-    $ocurrences = string_ocurrences_advanced($string,$oldstr);
-    for($i = 0; $i < get_size($ocurrences); $i+1)
+    $str1_len = strlen( $str1 )
+    $str2_len = strlen( $str2 )
+    $str3_len = strlen( $str3 )
+    if $str1_len <= 0 
     {
-        $result = string_sub($string,$offset,$ocurrences[$i]);
-        $offset = $ocurrences[$i] + $len;
+        error("string_replace: string 1 is empty, halting..."); 
     }
-    $result = string_sub($string,$offset,strlen($string));
-    remove($ocurrences);
-    ret($result);
+    if $str2_len <= 0 
+    {
+        error("string_replace: string 2 is empty, halting..."); 
+    }
+    if $str3_len < 0 
+    {
+        error("string_replace: string 3 is empty, halting...");
+    }
+    $ptr = 0
+    while 1
+    {
+        $ptr = strstr( $str1, $ptr, $str2, 0 )
+        if $ptr < 0 { break }
+        $d = $str3_len - $str2_len
+        if $str1_len + $d > get_size( $str1 )
+        {
+            resize( $str1, $str1_len + $d, 1 )
+        }
+        copy( $str1, $str1, $ptr + $str3_len, $ptr + $str2_len, $str1_len )
+        copy( $str1, $str3, $ptr, 0, $str3_len )
+        $str1_len + $d
+        $str1[ $str1_len ] = 0
+        $ptr + $str3_len
+    }
+    ret($str1);
 }
 functions.string_replace = string_replace;
 
@@ -894,15 +914,17 @@ functions.string_replace_char = string_replace_char;
 
 fn string_remove_char($string,$char)
 {
-    $result = "";
+    $_result = new();
+    sprintf($_result, "");
     for($i = 0; $i < strlen($string); $i+1)
     {
         if($string[$i] != $char)
         {
-            sprintf($result, "%s%c", $result, $string[$i]);
+            sprintf($_result, "%s%c", $_result, $string[$i]);
         }
+        //printf("string_remove_char: %s\n", $_result);
     }
-    ret($result);
+    ret($_result);
 }
 functions.string_remove_char = string_remove_char;
 
@@ -938,6 +960,28 @@ fn read_file($filename)
 }
 functions.read_file = read_file;
 
+fn read_file_by_char($filename)//for text files
+{
+    $size = get_file_size($filename);
+    $file = fopen($filename,"rb");
+    if($file == 0)
+    {
+        errorf1("read_file: file %s not found", $filename);
+    }
+    $result_ = "";
+    sprintf($result_,"");
+    for($i = 0; $i < $size; $i+1)
+    {
+        sprintf($result_,"%s%c",$result_,fgetc($file));
+    }
+    fclose($file);
+    ret($result_);
+}
+functions.read_file_by_char = read_file_by_char;
+
+read_txt = read_file_by_char;
+functions.read_txt = read_txt;
+
 fn read_file_safe($filepath)
 {
     $txt = read_file($filepath);
@@ -972,7 +1016,7 @@ fn ini_load($file)
         $lsplited = string_split($splited[$i]," ");
         if(strstr($lsplited[1],"\"") != -1)
         {
-            $lsplited[1] = string_replace($lsplited[1],"\"","");
+            string_replace($lsplited[1],"\"","");
         }
         else
         {
@@ -1274,11 +1318,11 @@ fn repeat_for($start, $end, $callback)
     }
 }
 
-//procedure functions
-//procedure functions
-//procedure functions
+//procedure functions // completely broken // need future reimplementation(not any soon)
+//procedure functions // completely broken // need future reimplementation(not any soon)
+//procedure functions // completely broken // need future reimplementation(not any soon)
 
-fn procedure_parse($text)
+fn procedure_parse($text) //obsolete
 {
     $result = string_remove_char($text, '\n');
     if($result[get_size($result)-1] == ';')
@@ -1291,7 +1335,7 @@ fn procedure_parse($text)
 }
 functions.procedure_parse = procedure_parse;
 
-fn procedure_load($filepath)
+fn procedure_load($filepath) //obsolete
 {
     $result = read_file($filepath);
     $splited = procedure_parse($result);
@@ -1300,16 +1344,7 @@ fn procedure_load($filepath)
 }
 functions.procedure_load = procedure_load;
 
-fn procedure_run($procedure)
-{
-    for($i = 0; $i < get_size($procedure); $i+1)
-    {
-        interpret($procedure[$i]);
-    }
-}
-functions.procedure_run = procedure_run;
-
-fn procedure_repeat($times, $procedure)
+fn procedure_repeat($times, $procedure) //obsolete
 {
     for($i = 0; $i < $times; $i+1)
     {
@@ -1321,7 +1356,7 @@ fn procedure_repeat($times, $procedure)
 }
 functions.procedure_repeat = procedure_repeat;
 
-fn procedure_for($start, $end, $procedure)
+fn procedure_for($start, $end, $procedure) //obsolete
 {
     if($start > $end)
     {
@@ -1645,6 +1680,7 @@ fn run_function($func,$args)
 {
     ret(get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
 }
+functions.run_function = run_function;
 
 fn treat_arg($arg)
 {
@@ -1685,6 +1721,7 @@ fn treat_arg($arg)
         }
     }
 }
+functions.treat_arg = treat_arg;
 
 fn treat_args($splited, $size)
 {
@@ -1695,6 +1732,7 @@ fn treat_args($splited, $size)
     }
     ret($args);
 }
+functions.treat_args = treat_args;
 
 fn interpret($command)
 {
@@ -1751,10 +1789,12 @@ fn interpret($command)
     remove($splited);
     remove($args);
 }
+functions.interpret = interpret;
 
 fn bulk_interpret($commands)
 {
-    $c2 = string_replace($commands, ";\n", ";");
+    $c2 = clone($commands); 
+    string_replace($c2, ";\n", ";");
     $cloned = clone($c2);
     $splited = string_split($cloned, ";");
     
@@ -1766,3 +1806,7 @@ fn bulk_interpret($commands)
     remove($splited);
     remove($cloned);
 }
+functions.bulk_interpret = bulk_interpret;
+
+eval = bulk_interpret;
+functions.eval = eval;
