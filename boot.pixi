@@ -43,9 +43,9 @@ if dl >= 0
 {
   startup = dlsym(dl, "startup", "p()" );
   r = dlcall(dl, startup)
-  eval(r);
-  //printf("Library loaded successfully\n");
+  eval2(r);
   remove(r);
+
   main = dlsym(dl, "mainloop", "p(p)" );
   zero = "0";
 
@@ -54,7 +54,9 @@ if dl >= 0
   while(1)
   {
     result = dlcall(dl, main, zero);
-    eval(result);
+    printf("Result: %s\n", result);
+    eval2(result);
+    printf("Library loaded successfully\n");
     remove(result);
   }
   dlclose( dl ) //Close the library

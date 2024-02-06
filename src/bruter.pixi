@@ -1855,6 +1855,23 @@ fn bulk_interpret($commands)
     remove($splited);
     remove($cloned);
 }
+functions.bulk_interpret = bulk_interpret;
+
+fn bulk_interpret2($commands)
+{
+    $splited = string_split($commands, ";");
+    string_replace($commands, ";\n", ";");
+    for ($i = 0; $i < get_size($splited); $i+1)
+    {
+        interpret($splited[$i]);
+        remove($splited[$i]);
+    }
+    remove($splited);
+    //remove($cloned);
+}
+functions.bulk_interpret2 = bulk_interpret2;
 
 eval = bulk_interpret;
+eval2 = bulk_interpret2;
 functions.eval = eval;
+functions.eval2 = eval2;
