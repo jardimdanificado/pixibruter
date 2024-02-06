@@ -31,7 +31,7 @@ Global Objects: variables, functions, constants.
 
 - `@callback` = args that starts with @, default functions, those can only be defined before compiling and must be written in pixilang, all the functions avaliable are also avaliable as callback and they are stored under "functions"  
 
-- `!procedure` = args that starts with !, are always arrays of strings(array of INT8), procedures are pre-parsed brut scripts usually loaded from a file, procedures are stored in "procedures"
+- `!procedure` = args that starts with !, are always arrays of strings(array of INT8), procedures are pre-parsed brut scripts usually loaded from a file, procedures are stored in "procedures". (procedures are deprecated avoid it, use eval()/bulk_interpret() instead.)
 
 - `number` = args that starts with 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 or -
 
@@ -49,7 +49,7 @@ take a look at pixilang docs and src/ffi.pixi to get better understanding of the
 
 - returnless function:
 
-`function arg1 arg2...;`
+`function arg1 arg2 ...;`
 
 
 - function which return goes to $target_variable (":" denotes a return, the target variable must be on the left):
@@ -75,6 +75,10 @@ take a look at pixilang docs and src/ffi.pixi to get better understanding of the
 - callbacks always starts with @:
 
 `function @callback_1 @callback_2 ...;`
+
+- procedures always starts with ! (procedures are deprecated avoid it, use eval()/bulk_interpret() instead.):
+
+`function !procedure_1 !procedure_2 ...;`
 
 ## Contributing
 

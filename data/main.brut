@@ -1,0 +1,13 @@
+$image0:load ./data/img/0.jpg;
+$image1:load ./data/img/1.jpg;
+$image2:load ./data/img/2.jpeg;
+$layer0:layer $image0;
+$layer1:layer $image1;
+$layer2:layer $image2;
+list_push $system.layers $layer1;
+list_push $system.layers $layer0;
+list_push $system.layers $layer2;
+$system.layers.2.position:vector2 150 190;
+keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;
+keyboard_add $system.keyboard #KEY_F3 0 @print_all;
+$system.layers.1.position.x:set 500;
