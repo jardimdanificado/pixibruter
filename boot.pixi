@@ -39,12 +39,13 @@ fn pattern_examples()
 }
 
 dl = dlopen( "data/main.so" ) //Open the library
-if 0
+if dl >= 0
 {
   startup = dlsym(dl, "startup", "p()" );
   r = dlcall(dl, startup)
-  bulk_interpret(r);
+  eval2(r);
   remove(r);
+
   main = dlsym(dl, "mainloop", "p(p)" );
   zero = "0";
 
@@ -53,7 +54,9 @@ if 0
   while(1)
   {
     result = dlcall(dl, main, zero);
-    bulk_interpret(result);
+    printf("Result: %s\n", result);
+    eval2(result);
+    printf("Library loaded successfully\n");
     remove(result);
   }
   dlclose( dl ) //Close the library
@@ -63,15 +66,14 @@ else
   warning("Could not open the library, interpreting brut instead.");
 
   $example = read_txt("data/main.brut");
-  bulk_interpret($example);
+  eval($example);
 
-  $loop = read_txt("data/loop.brut");
   pattern_examples();
+  $loop = get_prop(procedures, "mainloop");//loaded from the main.brut, see line 14
 
   while(1)
   {
-    bulk_interpret($loop);
+    eval($loop);
+    //eval("procedure_run !mainloop;");//procedure_run calls runs twice idk why
   }
-
 }
-

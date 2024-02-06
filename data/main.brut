@@ -11,3 +11,4 @@ $system.layers.2.position:vector2 150 190;
 keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;
 keyboard_add $system.keyboard #KEY_F3 0 @print_all;
 $system.layers.1.position.x:set 500;
+!mainloop:procedure_load ./data/loop.brut;
