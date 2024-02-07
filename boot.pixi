@@ -54,9 +54,7 @@ if dl >= 0
   while(1)
   {
     result = dlcall(dl, main, zero);
-    printf("Result: %s\n", result);
     eval2(result);
-    printf("Library loaded successfully\n");
     remove(result);
   }
   dlclose( dl ) //Close the library
