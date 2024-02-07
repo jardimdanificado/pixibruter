@@ -41,9 +41,13 @@ fn pattern_examples()
 dl = dlopen( "data/main.so" ) //Open the library
 if dl >= 0
 {
+  //if the library could be opened, run the mainloop from the library
+  //better for using pixilang as a library and the main program is written in C
+  //good for games and other performance critical applications
   startup = dlsym(dl, "startup", "p()" );
   r = dlcall(dl, startup)
-  eval2(r);
+  
+  eval2(r);//eval2 must be used when parsing a string returned by a C function
   remove(r);
 
   main = dlsym(dl, "mainloop", "p(p)" );
@@ -61,6 +65,8 @@ if dl >= 0
 }
 else
 {
+  //if the library could not be opened, interpret the brut file instead
+  //better for image editing and using pixilang as the main program
   warning("Could not open the library, interpreting brut instead.");
 
   $example = read_txt("data/main.brut");
