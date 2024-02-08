@@ -1,6 +1,9 @@
 #!/bin/bash
 pixilang -c ./boot.pixi
-gcc -fPIC -shared -o src/main.so src/main.c
+terra src/main.t 
+#gcc -fPIC -shared -o src/main.so src/main.o src/main.c
+#nelua -H src/main.nelua -o src/main.so
+#gdc -fPIC -shared -o src/main.so src/main.d
 rm -rf ./build
 mkdir ./build
 cp -r ./data ./build/data

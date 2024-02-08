@@ -1857,7 +1857,7 @@ fn bulk_interpret($commands)
 }
 functions.bulk_interpret = bulk_interpret;
 
-fn bulk_interpret2($commands)
+fn bulk_interpret2($commands)//use when parsing native code strings
 {
     $splited = string_split($commands, ";");
     string_replace($commands, ";\n", ";");
