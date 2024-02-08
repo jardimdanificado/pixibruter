@@ -1,0 +1,38 @@
+require "string";
+
+local current_frame = 0;
+local output:string = "";
+
+--//#define ucmd(input) ucmd(&output, input)
+global function ucmd(input:string)
+    output = output .. input;
+end
+
+global function startup()<cexport, codename 'startup'>
+    ucmd("$image0:load ./data/img/0.jpg;");
+    ucmd("$image1:load ./data/img/1.jpg;");
+    ucmd("$image2:load ./data/img/2.jpeg;");
+
+    ucmd("$layer0:layer $image0;");
+    ucmd("$layer1:layer $image1;");
+    ucmd("$layer2:layer $image2;");
+
+    ucmd("list_push $system.layers $layer1;");
+    ucmd("list_push $system.layers $layer0;");
+    ucmd("list_push $system.layers $layer2;");
+    
+    ucmd("$system.layers.2.position:vector2 150 190;");
+    
+    ucmd("keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;");
+    ucmd("keyboard_add $system.keyboard #KEY_F3 0 @print_all;");
+    ucmd("$system.layers.1.position.x:set 500;");
+    --//ucmd("$imgtxt:img_to_txt $image2;");
+    return(output);
+end
+
+global function mainloop(input:string)<cexport, codename 'mainloop'>
+    output = "";
+    input = input or "";
+    output = "layers_render $system.layers;eventor $system;frame;";
+    return(output);
+end
