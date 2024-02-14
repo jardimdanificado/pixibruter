@@ -1,68 +1,56 @@
+package.terrapath = package.terrapath .. ";src/?.t;src/?/?.t;src/?/?/?.t"
+
+local buffer_max_size = 4096
+
+local String = require 'std.string'
+buffer = global(String);
+
 c = terralib.includecstring([[
 #include <stdlib.h>
 #include <stdio.h>
 
-char* output;
+char buffer[]] .. buffer_max_size ..  [[];
 
-void _ucmd(char* str) 
+char* tocstr(char* b) 
 {
-    //concatenando strings manualmente
-    int current_size = 0;
-    while(output[current_size] != 0) 
+    for(int i = 0; i < ]] .. buffer_max_size ..  [[; i++)
     {
-        current_size++;
+        buffer[i] = b[i];
+        if(b[i] == 0)
+        {
+            break;
+        }
     }
-    for(int i = 0; i < strlen(str); i++) 
-    {
-        output[current_size + i] = str[i];
-    }
-    output[current_size + strlen(str)] = 0;
-}
-
-char* cmdget()
-{
-    return output;
-}
-
-void cmdreset()
-{
-    output[0] = 0;
-}
-
-void cmdinit(int output_size)
-{
-    output = (char*)malloc(output_size);
-    output[0] = 0;
+    return buffer;
 }
 ]]);
 
-ucmd = c._ucmd;
-init = c.cmdinit;
-done = c.cmdget;
-reset = c.cmdreset;
+tocstr = c.tocstr;
 
 terra startup():&int8
-    init(4096);--init the output buffer with 4096 bytes
-    ucmd("$image0:load ./data/img/0.jpg;");
-    ucmd("$image1:load ./data/img/1.jpg;");
-    ucmd("$image2:load ./data/img/2.jpeg;");
-    ucmd("$layer0:layer $image0;");
-    ucmd("$layer1:layer $image1;");
-    ucmd("$layer2:layer $image2;");
-    ucmd("list_push $system.layers $layer1;");
-    ucmd("list_push $system.layers $layer0;");
-    ucmd("list_push $system.layers $layer2;");
-    ucmd("$system.layers.2.position:vector2 150 190;");    
-    ucmd("keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;");
-    ucmd("keyboard_add $system.keyboard #KEY_F3 0 @print_all;");
-    ucmd("$system.layers.1.position.x:set 500;");
-    return(done());
+
+    var buffer:String;
+    buffer = buffer + "$image0:load ./data/img/0.jpg;";
+    buffer = buffer + "$image1:load ./data/img/1.jpg;";
+    buffer = buffer + "$image2:load ./data/img/2.jpeg;";
+    buffer = buffer + "$layer0:layer $image0;";
+    buffer = buffer + "$layer1:layer $image1;";
+    buffer = buffer + "$layer2:layer $image2;";
+    buffer = buffer + "list_push $system.layers $layer1;";
+    buffer = buffer + "list_push $system.layers $layer0;";
+    buffer = buffer + "list_push $system.layers $layer2;";
+    buffer = buffer + "$system.layers.2.position:vector2 150 190;";
+    buffer = buffer + "keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;";
+    buffer = buffer + "keyboard_add $system.keyboard #KEY_F3 0 @print_all;";
+    buffer = buffer + "$system.layers.1.position.x:set 500;";
+    --c.printf("buffer = %s\n",buffer.s);
+    return(tocstr(buffer.s));
 end
 
 terra mainloop():&int8
-    reset();
-    ucmd("layers_render $system.layers;eventor $system;frame;")
-    return(done());
+    buffer.s = ""
+    buffer = buffer + "layers_render $system.layers;eventor $system;frame;";
+    return(tocstr(buffer.s));
 end
 
 --this will save the object file
