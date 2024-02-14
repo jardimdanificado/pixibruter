@@ -1,4 +1,5 @@
-package.terrapath = package.terrapath .. ";src/?.t;src/?/?.t;src/?/?/?.t"
+--package.terrapath = package.terrapath .. ";src/?.t;src/?/?.t;src/?/?/?.t"
+package.terrapath = package.terrapath .. ";lib/?.t;lib/?/?.t;lib/?/?/?.t;"
 
 local buffer_max_size = 4096
 
