@@ -73,7 +73,7 @@ else
   eval($example);
 
   pattern_examples();
-  $loop = get_prop(procedures, "mainloop");//loaded from the main.brut, see line 14
+  $loop = get_prop(variables, "mainloop");//loaded from the main.brut, see line 14
 
   while(1)
   {

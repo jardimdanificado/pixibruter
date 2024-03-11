@@ -1,9 +1,0 @@
-return {
-    _all = {
-        lpath = "../?.lua",
-        tpath = "../?.t",
-    },
-    default = {
-        ROOT= {"./spec"},
-    }
-}

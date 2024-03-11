@@ -2,422 +2,419 @@
 // Global Storages
 // Global Storages
 
-functions  = new(); // @ as callbacks
-constants  = new(); // # as constants
-variables  = new(); // $ as variables
-procedures = new(); // ! as procedures
+variables  = new();
 
-// Constants
-// Constants
-// Constants
+// variables
+// variables
+// variables
 
 // Container types
-constants.INT = INT;
-constants.INT8 = INT8;
-constants.INT16 = INT16;
-constants.INT32 = INT32;
-constants.INT64 = INT64;
-constants.FLOAT = FLOAT;
-constants.FLOAT32 = FLOAT32;
-constants.FLOAT64 = FLOAT64;
-constants.PIXEL = PIXEL;
+variables.INT = INT;
+variables.INT8 = INT8;
+variables.INT16 = INT16;
+variables.INT32 = INT32;
+variables.INT64 = INT64;
+variables.FLOAT = FLOAT;
+variables.FLOAT32 = FLOAT32;
+variables.FLOAT64 = FLOAT64;
+variables.PIXEL = PIXEL;
 
 // Compression flags
-constants.Z_NO_COMPRESSION = Z_NO_COMPRESSION;
-constants.Z_BEST_SPEED = Z_BEST_SPEED;
-constants.Z_BEST_COMPRESSION = Z_BEST_COMPRESSION;
-constants.Z_DEFAULT_COMPRESSION = Z_DEFAULT_COMPRESSION;
+variables.Z_NO_COMPRESSION = Z_NO_COMPRESSION;
+variables.Z_BEST_SPEED = Z_BEST_SPEED;
+variables.Z_BEST_COMPRESSION = Z_BEST_COMPRESSION;
+variables.Z_DEFAULT_COMPRESSION = Z_DEFAULT_COMPRESSION;
 
 // Container flags
-constants.CFLAG_INTERP = CFLAG_INTERP;
-constants.GL_MIN_LINEAR = GL_MIN_LINEAR;
-constants.GL_MAG_LINEAR = GL_MAG_LINEAR;
-constants.GL_NICEST = GL_NICEST;
-constants.GL_NO_XREPEAT = GL_NO_XREPEAT;
-constants.GL_NO_YREPEAT = GL_NO_YREPEAT;
-constants.GL_NO_ALPHA = GL_NO_ALPHA;
-constants.GL_NPOT = GL_NPOT;
+variables.CFLAG_INTERP = CFLAG_INTERP;
+variables.GL_MIN_LINEAR = GL_MIN_LINEAR;
+variables.GL_MAG_LINEAR = GL_MAG_LINEAR;
+variables.GL_NICEST = GL_NICEST;
+variables.GL_NO_XREPEAT = GL_NO_XREPEAT;
+variables.GL_NO_YREPEAT = GL_NO_YREPEAT;
+variables.GL_NO_ALPHA = GL_NO_ALPHA;
+variables.GL_NPOT = GL_NPOT;
 
 // Container resizing flags
-constants.RESIZE_INTERP1 = RESIZE_INTERP1;
-constants.RESIZE_INTERP2 = RESIZE_INTERP2;
-constants.RESIZE_UNSIGNED_INTERP2 = RESIZE_UNSIGNED_INTERP2;
-constants.RESIZE_COLOR_INTERP1 = RESIZE_COLOR_INTERP1;
-constants.RESIZE_COLOR_INTERP2 = RESIZE_COLOR_INTERP2;
+variables.RESIZE_INTERP1 = RESIZE_INTERP1;
+variables.RESIZE_INTERP2 = RESIZE_INTERP2;
+variables.RESIZE_UNSIGNED_INTERP2 = RESIZE_UNSIGNED_INTERP2;
+variables.RESIZE_COLOR_INTERP1 = RESIZE_COLOR_INTERP1;
+variables.RESIZE_COLOR_INTERP2 = RESIZE_COLOR_INTERP2;
 
 // Container copying flags
-constants.COPY_NO_AUTOROTATE = COPY_NO_AUTOROTATE;
-constants.COPY_CLIPPING = COPY_CLIPPING;
+variables.COPY_NO_AUTOROTATE = COPY_NO_AUTOROTATE;
+variables.COPY_CLIPPING = COPY_CLIPPING;
 
 // File formats
-constants.FORMAT_RAW = FORMAT_RAW;
-constants.FORMAT_WAVE = FORMAT_WAVE;
-constants.FORMAT_AIFF = FORMAT_AIFF;
-constants.FORMAT_OGG = FORMAT_OGG;
-constants.FORMAT_MP3 = FORMAT_MP3;
-constants.FORMAT_FLAC = FORMAT_FLAC;
-constants.FORMAT_MIDI = FORMAT_MIDI;
-constants.FORMAT_SUNVOX = FORMAT_SUNVOX;
-constants.FORMAT_SUNVOXMODULE = FORMAT_SUNVOXMODULE;
-constants.FORMAT_XM = FORMAT_XM;
-constants.FORMAT_MOD = FORMAT_MOD;
-constants.FORMAT_JPEG = FORMAT_JPEG;
-constants.FORMAT_PNG = FORMAT_PNG;
-constants.FORMAT_GIF = FORMAT_GIF;
-constants.FORMAT_AVI = FORMAT_AVI;
-constants.FORMAT_MP4 = FORMAT_MP4;
-constants.FORMAT_ZIP = FORMAT_ZIP;
-constants.FORMAT_PIXICONTAINER = FORMAT_PIXICONTAINER;
+variables.FORMAT_RAW = FORMAT_RAW;
+variables.FORMAT_WAVE = FORMAT_WAVE;
+variables.FORMAT_AIFF = FORMAT_AIFF;
+variables.FORMAT_OGG = FORMAT_OGG;
+variables.FORMAT_MP3 = FORMAT_MP3;
+variables.FORMAT_FLAC = FORMAT_FLAC;
+variables.FORMAT_MIDI = FORMAT_MIDI;
+variables.FORMAT_SUNVOX = FORMAT_SUNVOX;
+variables.FORMAT_SUNVOXMODULE = FORMAT_SUNVOXMODULE;
+variables.FORMAT_XM = FORMAT_XM;
+variables.FORMAT_MOD = FORMAT_MOD;
+variables.FORMAT_JPEG = FORMAT_JPEG;
+variables.FORMAT_PNG = FORMAT_PNG;
+variables.FORMAT_GIF = FORMAT_GIF;
+variables.FORMAT_AVI = FORMAT_AVI;
+variables.FORMAT_MP4 = FORMAT_MP4;
+variables.FORMAT_ZIP = FORMAT_ZIP;
+variables.FORMAT_PIXICONTAINER = FORMAT_PIXICONTAINER;
 
 // Load/Save options
-constants.LOAD_FIRST_FRAME = LOAD_FIRST_FRAME;
-constants.LOAD_AS_RAW = LOAD_AS_RAW;
+variables.LOAD_FIRST_FRAME = LOAD_FIRST_FRAME;
+variables.LOAD_AS_RAW = LOAD_AS_RAW;
 
 // GIF saving options
-constants.GIF_GRAYSCALE = GIF_GRAYSCALE;
-constants.GIF_DITHER = GIF_DITHER;
+variables.GIF_GRAYSCALE = GIF_GRAYSCALE;
+variables.GIF_DITHER = GIF_DITHER;
 
 // JPEG saving options
-constants.JPEG_H1V1 = JPEG_H1V1;
-constants.JPEG_H2V1 = JPEG_H2V1;
-constants.JPEG_H2V2 = JPEG_H2V2;
-constants.JPEG_TWOPASS = JPEG_TWOPASS;
+variables.JPEG_H1V1 = JPEG_H1V1;
+variables.JPEG_H2V1 = JPEG_H2V1;
+variables.JPEG_H2V2 = JPEG_H2V2;
+variables.JPEG_TWOPASS = JPEG_TWOPASS;
 
 // Colors
-constants.ORANGE = ORANGE;
-constants.BLACK = BLACK;
-constants.WHITE = WHITE;
-constants.YELLOW = YELLOW;
-constants.RED = RED;
-constants.GREEN = GREEN;
-constants.BLUE = BLUE;
+variables.ORANGE = ORANGE;
+variables.BLACK = BLACK;
+variables.WHITE = WHITE;
+variables.YELLOW = YELLOW;
+variables.RED = RED;
+variables.GREEN = GREEN;
+variables.BLUE = BLUE;
 
 // Alignment
-constants.TOP = TOP;
-constants.BOTTOM = BOTTOM;
-constants.LEFT = LEFT;
-constants.RIGHT = RIGHT;
+variables.TOP = TOP;
+variables.BOTTOM = BOTTOM;
+variables.LEFT = LEFT;
+variables.RIGHT = RIGHT;
 
 // Effects
-constants.EFF_NOISE = EFF_NOISE;
-constants.EFF_SPREAD_LEFT = EFF_SPREAD_LEFT;
-constants.EFF_SPREAD_RIGHT = EFF_SPREAD_RIGHT;
-constants.EFF_SPREAD_UP = EFF_SPREAD_UP;
-constants.EFF_SPREAD_DOWN = EFF_SPREAD_DOWN;
-constants.EFF_HBLUR = EFF_HBLUR;
-constants.EFF_VBLUR = EFF_VBLUR;
-constants.EFF_COLOR = EFF_COLOR;
+variables.EFF_NOISE = EFF_NOISE;
+variables.EFF_SPREAD_LEFT = EFF_SPREAD_LEFT;
+variables.EFF_SPREAD_RIGHT = EFF_SPREAD_RIGHT;
+variables.EFF_SPREAD_UP = EFF_SPREAD_UP;
+variables.EFF_SPREAD_DOWN = EFF_SPREAD_DOWN;
+variables.EFF_HBLUR = EFF_HBLUR;
+variables.EFF_VBLUR = EFF_VBLUR;
+variables.EFF_COLOR = EFF_COLOR;
 
-// OpenGL constants
-constants.GL_POINTS = GL_POINTS;
-constants.GL_LINE_STRIP = GL_LINE_STRIP;
-constants.GL_LINE_LOOP = GL_LINE_LOOP;
-constants.GL_LINES = GL_LINES;
-constants.GL_TRIANGLE_STRIP = GL_TRIANGLE_STRIP;
-constants.GL_TRIANGLE_FAN = GL_TRIANGLE_FAN;
-constants.GL_TRIANGLES = GL_TRIANGLES;
+// OpenGL variables
+variables.GL_POINTS = GL_POINTS;
+variables.GL_LINE_STRIP = GL_LINE_STRIP;
+variables.GL_LINE_LOOP = GL_LINE_LOOP;
+variables.GL_LINES = GL_LINES;
+variables.GL_TRIANGLE_STRIP = GL_TRIANGLE_STRIP;
+variables.GL_TRIANGLE_FAN = GL_TRIANGLE_FAN;
+variables.GL_TRIANGLES = GL_TRIANGLES;
 
-constants.GL_ZERO = GL_ZERO;
-constants.GL_ONE = GL_ONE;
-constants.GL_SRC_COLOR = GL_SRC_COLOR;
-constants.GL_ONE_MINUS_SRC_COLOR = GL_ONE_MINUS_SRC_COLOR;
-constants.GL_DST_COLOR = GL_DST_COLOR;
-constants.GL_ONE_MINUS_DST_COLOR = GL_ONE_MINUS_DST_COLOR;
-constants.GL_SRC_ALPHA = GL_SRC_ALPHA;
-constants.GL_ONE_MINUS_SRC_ALPHA = GL_ONE_MINUS_SRC_ALPHA;
-constants.GL_DST_ALPHA = GL_DST_ALPHA;
-constants.GL_ONE_MINUS_DST_ALPHA = GL_ONE_MINUS_DST_ALPHA;
-constants.GL_SRC_ALPHA_SATURATE = GL_SRC_ALPHA_SATURATE;
+variables.GL_ZERO = GL_ZERO;
+variables.GL_ONE = GL_ONE;
+variables.GL_SRC_COLOR = GL_SRC_COLOR;
+variables.GL_ONE_MINUS_SRC_COLOR = GL_ONE_MINUS_SRC_COLOR;
+variables.GL_DST_COLOR = GL_DST_COLOR;
+variables.GL_ONE_MINUS_DST_COLOR = GL_ONE_MINUS_DST_COLOR;
+variables.GL_SRC_ALPHA = GL_SRC_ALPHA;
+variables.GL_ONE_MINUS_SRC_ALPHA = GL_ONE_MINUS_SRC_ALPHA;
+variables.GL_DST_ALPHA = GL_DST_ALPHA;
+variables.GL_ONE_MINUS_DST_ALPHA = GL_ONE_MINUS_DST_ALPHA;
+variables.GL_SRC_ALPHA_SATURATE = GL_SRC_ALPHA_SATURATE;
 
-constants.GL_BFB_IDENTITY_MATRIX = GL_BFB_IDENTITY_MATRIX;
+variables.GL_BFB_IDENTITY_MATRIX = GL_BFB_IDENTITY_MATRIX;
 
-constants.GL_MAX_TEXTURE_SIZE = GL_MAX_TEXTURE_SIZE;
-constants.GL_MAX_VERTEX_ATTRIBS = GL_MAX_VERTEX_ATTRIBS;
-constants.GL_MAX_VERTEX_UNIFORM_VECTORS = GL_MAX_VERTEX_UNIFORM_VECTORS;
-constants.GL_MAX_VARYING_VECTORS = GL_MAX_VARYING_VECTORS;
-constants.GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS = GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
-constants.GL_MAX_TEXTURE_IMAGE_UNITS = GL_MAX_TEXTURE_IMAGE_UNITS;
-constants.GL_MAX_FRAGMENT_UNIFORM_VECTORS = GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+variables.GL_MAX_TEXTURE_SIZE = GL_MAX_TEXTURE_SIZE;
+variables.GL_MAX_VERTEX_ATTRIBS = GL_MAX_VERTEX_ATTRIBS;
+variables.GL_MAX_VERTEX_UNIFORM_VECTORS = GL_MAX_VERTEX_UNIFORM_VECTORS;
+variables.GL_MAX_VARYING_VECTORS = GL_MAX_VARYING_VECTORS;
+variables.GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS = GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+variables.GL_MAX_TEXTURE_IMAGE_UNITS = GL_MAX_TEXTURE_IMAGE_UNITS;
+variables.GL_MAX_FRAGMENT_UNIFORM_VECTORS = GL_MAX_FRAGMENT_UNIFORM_VECTORS;
 
-constants.GL_SHADER_SOLID = GL_SHADER_SOLID;
-constants.GL_SHADER_GRAD = GL_SHADER_GRAD;
-constants.GL_SHADER_TEX_ALPHA_SOLID = GL_SHADER_TEX_ALPHA_SOLID;
-constants.GL_SHADER_TEX_ALPHA_GRAD = GL_SHADER_TEX_ALPHA_GRAD;
-constants.GL_SHADER_TEX_RGB_SOLID = GL_SHADER_TEX_RGB_SOLID;
-constants.GL_SHADER_TEX_RGB_GRAD = GL_SHADER_TEX_RGB_GRAD;
+variables.GL_SHADER_SOLID = GL_SHADER_SOLID;
+variables.GL_SHADER_GRAD = GL_SHADER_GRAD;
+variables.GL_SHADER_TEX_ALPHA_SOLID = GL_SHADER_TEX_ALPHA_SOLID;
+variables.GL_SHADER_TEX_ALPHA_GRAD = GL_SHADER_TEX_ALPHA_GRAD;
+variables.GL_SHADER_TEX_RGB_SOLID = GL_SHADER_TEX_RGB_SOLID;
+variables.GL_SHADER_TEX_RGB_GRAD = GL_SHADER_TEX_RGB_GRAD;
 
-constants.GL_SCREEN = GL_SCREEN;
-constants.GL_ZBUF = GL_ZBUF;
+variables.GL_SCREEN = GL_SCREEN;
+variables.GL_ZBUF = GL_ZBUF;
 
-// Audio constants
-constants.AUDIO_FLAG_INTERP2 = AUDIO_FLAG_INTERP2;
+// Audio variables
+variables.AUDIO_FLAG_INTERP2 = AUDIO_FLAG_INTERP2;
 
-// MIDI constants
-constants.MIDI_PORT_READ = MIDI_PORT_READ;
-constants.MIDI_PORT_WRITE = MIDI_PORT_WRITE;
+// MIDI variables
+variables.MIDI_PORT_READ = MIDI_PORT_READ;
+variables.MIDI_PORT_WRITE = MIDI_PORT_WRITE;
 
-// Events constants
-constants.EVT = EVT;
-constants.EVT_TYPE = EVT_TYPE;
-constants.EVT_FLAGS = EVT_FLAGS;
-constants.EVT_TIME = EVT_TIME;
-constants.EVT_X = EVT_X;
-constants.EVT_Y = EVT_Y;
-constants.EVT_KEY = EVT_KEY;
-constants.EVT_SCANCODE = EVT_SCANCODE;
-constants.EVT_PRESSURE = EVT_PRESSURE;
+// Events variables
+variables.EVT = EVT;
+variables.EVT_TYPE = EVT_TYPE;
+variables.EVT_FLAGS = EVT_FLAGS;
+variables.EVT_TIME = EVT_TIME;
+variables.EVT_X = EVT_X;
+variables.EVT_Y = EVT_Y;
+variables.EVT_KEY = EVT_KEY;
+variables.EVT_SCANCODE = EVT_SCANCODE;
+variables.EVT_PRESSURE = EVT_PRESSURE;
 
-constants.EVT_MOUSEBUTTONDOWN = EVT_MOUSEBUTTONDOWN;
-constants.EVT_MOUSEBUTTONUP = EVT_MOUSEBUTTONUP;
-constants.EVT_MOUSEMOVE = EVT_MOUSEMOVE;
-constants.EVT_TOUCHBEGIN = EVT_TOUCHBEGIN;
-constants.EVT_TOUCHEND = EVT_TOUCHEND;
-constants.EVT_TOUCHMOVE = EVT_TOUCHMOVE;
-constants.EVT_BUTTONDOWN = EVT_BUTTONDOWN;
-constants.EVT_BUTTONUP = EVT_BUTTONUP;
-constants.EVT_SCREENRESIZE = EVT_SCREENRESIZE;
-constants.EVT_QUIT = EVT_QUIT;
+variables.EVT_MOUSEBUTTONDOWN = EVT_MOUSEBUTTONDOWN;
+variables.EVT_MOUSEBUTTONUP = EVT_MOUSEBUTTONUP;
+variables.EVT_MOUSEMOVE = EVT_MOUSEMOVE;
+variables.EVT_TOUCHBEGIN = EVT_TOUCHBEGIN;
+variables.EVT_TOUCHEND = EVT_TOUCHEND;
+variables.EVT_TOUCHMOVE = EVT_TOUCHMOVE;
+variables.EVT_BUTTONDOWN = EVT_BUTTONDOWN;
+variables.EVT_BUTTONUP = EVT_BUTTONUP;
+variables.EVT_SCREENRESIZE = EVT_SCREENRESIZE;
+variables.EVT_QUIT = EVT_QUIT;
 
-constants.EVT_FLAG_SHIFT = EVT_FLAG_SHIFT;
-constants.EVT_FLAG_CTRL = EVT_FLAG_CTRL;
-constants.EVT_FLAG_ALT = EVT_FLAG_ALT;
-constants.EVT_FLAG_MODE = EVT_FLAG_MODE;
-constants.EVT_FLAG_MODS = EVT_FLAG_MODS;
-constants.EVT_FLAG_DOUBLECLICK = EVT_FLAG_DOUBLECLICK;
+variables.EVT_FLAG_SHIFT = EVT_FLAG_SHIFT;
+variables.EVT_FLAG_CTRL = EVT_FLAG_CTRL;
+variables.EVT_FLAG_ALT = EVT_FLAG_ALT;
+variables.EVT_FLAG_MODE = EVT_FLAG_MODE;
+variables.EVT_FLAG_MODS = EVT_FLAG_MODS;
+variables.EVT_FLAG_DOUBLECLICK = EVT_FLAG_DOUBLECLICK;
 
-constants.KEY_MOUSE_LEFT = KEY_MOUSE_LEFT;
-constants.KEY_MOUSE_MIDDLE = KEY_MOUSE_MIDDLE;
-constants.KEY_MOUSE_RIGHT = KEY_MOUSE_RIGHT;
-constants.KEY_MOUSE_SCROLLUP = KEY_MOUSE_SCROLLUP;
-constants.KEY_MOUSE_SCROLLDOWN = KEY_MOUSE_SCROLLDOWN;
-constants.KEY_BACKSPACE = KEY_BACKSPACE;
-constants.KEY_TAB = KEY_TAB;
-constants.KEY_ENTER = KEY_ENTER;
-constants.KEY_ESCAPE = KEY_ESCAPE;
-constants.KEY_SPACE = KEY_SPACE;
-constants.KEY_F1 = KEY_F1;
-constants.KEY_F2 = KEY_F2;
-constants.KEY_F3 = KEY_F3;
-constants.KEY_F4 = KEY_F4;
-constants.KEY_F5 = KEY_F5;
-constants.KEY_F6 = KEY_F6;
-constants.KEY_F7 = KEY_F7;
-constants.KEY_F8 = KEY_F8;
-constants.KEY_F9 = KEY_F9;
-constants.KEY_F10 = KEY_F10;
-constants.KEY_F11 = KEY_F11;
-constants.KEY_F12 = KEY_F12;
-constants.KEY_UP = KEY_UP;
-constants.KEY_DOWN = KEY_DOWN;
-constants.KEY_LEFT = KEY_LEFT;
-constants.KEY_RIGHT = KEY_RIGHT;
-constants.KEY_INSERT = KEY_INSERT;
-constants.KEY_DELETE = KEY_DELETE;
-constants.KEY_HOME = KEY_HOME;
-constants.KEY_END = KEY_END;
-constants.KEY_PAGEUP = KEY_PAGEUP;
-constants.KEY_PAGEDOWN = KEY_PAGEDOWN;
-constants.KEY_CAPS = KEY_CAPS;
-constants.KEY_SHIFT = KEY_SHIFT;
-constants.KEY_CTRL = KEY_CTRL;
-constants.KEY_ALT = KEY_ALT;
-constants.KEY_MENU = KEY_MENU;
-constants.KEY_UNKNOWN = KEY_UNKNOWN;
+variables.KEY_MOUSE_LEFT = KEY_MOUSE_LEFT;
+variables.KEY_MOUSE_MIDDLE = KEY_MOUSE_MIDDLE;
+variables.KEY_MOUSE_RIGHT = KEY_MOUSE_RIGHT;
+variables.KEY_MOUSE_SCROLLUP = KEY_MOUSE_SCROLLUP;
+variables.KEY_MOUSE_SCROLLDOWN = KEY_MOUSE_SCROLLDOWN;
+variables.KEY_BACKSPACE = KEY_BACKSPACE;
+variables.KEY_TAB = KEY_TAB;
+variables.KEY_ENTER = KEY_ENTER;
+variables.KEY_ESCAPE = KEY_ESCAPE;
+variables.KEY_SPACE = KEY_SPACE;
+variables.KEY_F1 = KEY_F1;
+variables.KEY_F2 = KEY_F2;
+variables.KEY_F3 = KEY_F3;
+variables.KEY_F4 = KEY_F4;
+variables.KEY_F5 = KEY_F5;
+variables.KEY_F6 = KEY_F6;
+variables.KEY_F7 = KEY_F7;
+variables.KEY_F8 = KEY_F8;
+variables.KEY_F9 = KEY_F9;
+variables.KEY_F10 = KEY_F10;
+variables.KEY_F11 = KEY_F11;
+variables.KEY_F12 = KEY_F12;
+variables.KEY_UP = KEY_UP;
+variables.KEY_DOWN = KEY_DOWN;
+variables.KEY_LEFT = KEY_LEFT;
+variables.KEY_RIGHT = KEY_RIGHT;
+variables.KEY_INSERT = KEY_INSERT;
+variables.KEY_DELETE = KEY_DELETE;
+variables.KEY_HOME = KEY_HOME;
+variables.KEY_END = KEY_END;
+variables.KEY_PAGEUP = KEY_PAGEUP;
+variables.KEY_PAGEDOWN = KEY_PAGEDOWN;
+variables.KEY_CAPS = KEY_CAPS;
+variables.KEY_SHIFT = KEY_SHIFT;
+variables.KEY_CTRL = KEY_CTRL;
+variables.KEY_ALT = KEY_ALT;
+variables.KEY_MENU = KEY_MENU;
+variables.KEY_UNKNOWN = KEY_UNKNOWN;
 
-constants.QA_NONE = QA_NONE;
-constants.QA_CLOSE_VM = QA_CLOSE_VM;
+variables.QA_NONE = QA_NONE;
+variables.QA_CLOSE_VM = QA_CLOSE_VM;
 
-// Threads constants
-constants.THREAD_FLAG_AUTO_DESTROY = THREAD_FLAG_AUTO_DESTROY;
+// Threads variables
+variables.THREAD_FLAG_AUTO_DESTROY = THREAD_FLAG_AUTO_DESTROY;
 
-// Mathematical constants
-constants.M_E = M_E;
-constants.M_LOG2E = M_LOG2E;
-constants.M_LOG10E = M_LOG10E;
-constants.M_LN2 = M_LN2;
-constants.M_LN10 = M_LN10;
-constants.M_PI = M_PI;
-constants.M_2_SQRTPI = M_2_SQRTPI;
-constants.M_SQRT2 = M_SQRT2;
-constants.M_SQRT1_2 = M_SQRT1_2;
+// Mathematical variables
+variables.M_E = M_E;
+variables.M_LOG2E = M_LOG2E;
+variables.M_LOG10E = M_LOG10E;
+variables.M_LN2 = M_LN2;
+variables.M_LN10 = M_LN10;
+variables.M_PI = M_PI;
+variables.M_2_SQRTPI = M_2_SQRTPI;
+variables.M_SQRT2 = M_SQRT2;
+variables.M_SQRT1_2 = M_SQRT1_2;
 
 // Data processing operations for op_cn() function
-constants.OP_MIN = OP_MIN;
-constants.OP_MAX = OP_MAX;
-constants.OP_MAXABS = OP_MAXABS;
-constants.OP_SUM = OP_SUM;
-constants.OP_LIMIT_TOP = OP_LIMIT_TOP;
-constants.OP_LIMIT_BOTTOM = OP_LIMIT_BOTTOM;
-constants.OP_ABS = OP_ABS;
-constants.OP_SUB2 = OP_SUB2;
-constants.OP_COLOR_SUB2 = OP_COLOR_SUB2;
-constants.OP_DIV2 = OP_DIV2;
-constants.OP_H_INTEGRAL = OP_H_INTEGRAL;
-constants.OP_V_INTEGRAL = OP_V_INTEGRAL;
-constants.OP_H_DERIVATIVE = OP_H_DERIVATIVE;
-constants.OP_V_DERIVATIVE = OP_V_DERIVATIVE;
-constants.OP_H_FLIP = OP_H_FLIP;
-constants.OP_V_FLIP = OP_V_FLIP;
+variables.OP_MIN = OP_MIN;
+variables.OP_MAX = OP_MAX;
+variables.OP_MAXABS = OP_MAXABS;
+variables.OP_SUM = OP_SUM;
+variables.OP_LIMIT_TOP = OP_LIMIT_TOP;
+variables.OP_LIMIT_BOTTOM = OP_LIMIT_BOTTOM;
+variables.OP_ABS = OP_ABS;
+variables.OP_SUB2 = OP_SUB2;
+variables.OP_COLOR_SUB2 = OP_COLOR_SUB2;
+variables.OP_DIV2 = OP_DIV2;
+variables.OP_H_INTEGRAL = OP_H_INTEGRAL;
+variables.OP_V_INTEGRAL = OP_V_INTEGRAL;
+variables.OP_H_DERIVATIVE = OP_H_DERIVATIVE;
+variables.OP_V_DERIVATIVE = OP_V_DERIVATIVE;
+variables.OP_H_FLIP = OP_H_FLIP;
+variables.OP_V_FLIP = OP_V_FLIP;
 
 // Data processing operations for op_cc() function
-constants.OP_ADD = OP_ADD;
-constants.OP_SADD = OP_SADD;
-constants.OP_COLOR_ADD = OP_COLOR_ADD;
-constants.OP_SUB = OP_SUB;
-constants.OP_SSUB = OP_SSUB;
-constants.OP_COLOR_SUB = OP_COLOR_SUB;
-constants.OP_MUL = OP_MUL;
-constants.OP_SMUL = OP_SMUL;
-constants.OP_MUL_RSHIFT15 = OP_MUL_RSHIFT15;
-constants.OP_COLOR_MUL = OP_COLOR_MUL;
-constants.OP_DIV = OP_DIV;
-constants.OP_COLOR_DIV = OP_COLOR_DIV;
-constants.OP_AND = OP_AND;
-constants.OP_OR = OP_OR;
-constants.OP_XOR = OP_XOR;
-constants.OP_LSHIFT = OP_LSHIFT;
-constants.OP_RSHIFT = OP_RSHIFT;
-constants.OP_EQUAL = OP_EQUAL;
-constants.OP_LESS = OP_LESS;
-constants.OP_GREATER = OP_GREATER;
-constants.OP_COPY = OP_COPY;
-constants.OP_COPY_LESS = OP_COPY_LESS;
-constants.OP_COPY_GREATER = OP_COPY_GREATER;
+variables.OP_ADD = OP_ADD;
+variables.OP_SADD = OP_SADD;
+variables.OP_COLOR_ADD = OP_COLOR_ADD;
+variables.OP_SUB = OP_SUB;
+variables.OP_SSUB = OP_SSUB;
+variables.OP_COLOR_SUB = OP_COLOR_SUB;
+variables.OP_MUL = OP_MUL;
+variables.OP_SMUL = OP_SMUL;
+variables.OP_MUL_RSHIFT15 = OP_MUL_RSHIFT15;
+variables.OP_COLOR_MUL = OP_COLOR_MUL;
+variables.OP_DIV = OP_DIV;
+variables.OP_COLOR_DIV = OP_COLOR_DIV;
+variables.OP_AND = OP_AND;
+variables.OP_OR = OP_OR;
+variables.OP_XOR = OP_XOR;
+variables.OP_LSHIFT = OP_LSHIFT;
+variables.OP_RSHIFT = OP_RSHIFT;
+variables.OP_EQUAL = OP_EQUAL;
+variables.OP_LESS = OP_LESS;
+variables.OP_GREATER = OP_GREATER;
+variables.OP_COPY = OP_COPY;
+variables.OP_COPY_LESS = OP_COPY_LESS;
+variables.OP_COPY_GREATER = OP_COPY_GREATER;
 
 // Data processing operations for op_ccn() function
-constants.OP_MUL_DIV = OP_MUL_DIV;
-constants.OP_MUL_RSHIFT = OP_MUL_RSHIFT;
+variables.OP_MUL_DIV = OP_MUL_DIV;
+variables.OP_MUL_RSHIFT = OP_MUL_RSHIFT;
 
 // Data processing operations for generator() function
-constants.OP_SIN = OP_SIN;
-constants.OP_SIN8 = OP_SIN8;
-constants.OP_RAND = OP_RAND;
+variables.OP_SIN = OP_SIN;
+variables.OP_SIN8 = OP_SIN8;
+variables.OP_RAND = OP_RAND;
 
-// Sampler constants
-constants.SMP_INFO_SIZE = SMP_INFO_SIZE;
+// Sampler variables
+variables.SMP_INFO_SIZE = SMP_INFO_SIZE;
 
 // Sample info field numbers
-constants.SMP_DEST = SMP_DEST;
-constants.SMP_DEST_OFF = SMP_DEST_OFF;
-constants.SMP_DEST_LEN = SMP_DEST_LEN;
-constants.SMP_SRC = SMP_SRC;
-constants.SMP_SRC_OFF_H = SMP_SRC_OFF_H;
-constants.SMP_SRC_OFF_L = SMP_SRC_OFF_L;
-constants.SMP_SRC_SIZE = SMP_SRC_SIZE;
-constants.SMP_LOOP = SMP_LOOP;
-constants.SMP_LOOP_LEN = SMP_LOOP_LEN;
-constants.SMP_VOL1 = SMP_VOL1;
-constants.SMP_VOL2 = SMP_VOL2;
-constants.SMP_DELTA = SMP_DELTA;
-constants.SMP_FLAGS = SMP_FLAGS;
+variables.SMP_DEST = SMP_DEST;
+variables.SMP_DEST_OFF = SMP_DEST_OFF;
+variables.SMP_DEST_LEN = SMP_DEST_LEN;
+variables.SMP_SRC = SMP_SRC;
+variables.SMP_SRC_OFF_H = SMP_SRC_OFF_H;
+variables.SMP_SRC_OFF_L = SMP_SRC_OFF_L;
+variables.SMP_SRC_SIZE = SMP_SRC_SIZE;
+variables.SMP_LOOP = SMP_LOOP;
+variables.SMP_LOOP_LEN = SMP_LOOP_LEN;
+variables.SMP_VOL1 = SMP_VOL1;
+variables.SMP_VOL2 = SMP_VOL2;
+variables.SMP_DELTA = SMP_DELTA;
+variables.SMP_FLAGS = SMP_FLAGS;
 
 // Sample info flags
-constants.SMP_FLAG_INTERP2 = SMP_FLAG_INTERP2;
-constants.SMP_FLAG_INTERP4 = SMP_FLAG_INTERP4;
-constants.SMP_FLAG_PINGPONG = SMP_FLAG_PINGPONG;
-constants.SMP_FLAG_REVERSE = SMP_FLAG_REVERSE;
+variables.SMP_FLAG_INTERP2 = SMP_FLAG_INTERP2;
+variables.SMP_FLAG_INTERP4 = SMP_FLAG_INTERP4;
+variables.SMP_FLAG_PINGPONG = SMP_FLAG_PINGPONG;
+variables.SMP_FLAG_REVERSE = SMP_FLAG_REVERSE;
 
 // Convolution filter flags
-constants.CONV_FILTER_COLOR = CONV_FILTER_COLOR;
-constants.CONV_FILTER_BORDER_EXTEND = CONV_FILTER_BORDER_EXTEND;
-constants.CONV_FILTER_BORDER_SKIP = CONV_FILTER_BORDER_SKIP;
-constants.CONV_FILTER_UNSIGNED = CONV_FILTER_UNSIGNED;
+variables.CONV_FILTER_COLOR = CONV_FILTER_COLOR;
+variables.CONV_FILTER_BORDER_EXTEND = CONV_FILTER_BORDER_EXTEND;
+variables.CONV_FILTER_BORDER_SKIP = CONV_FILTER_BORDER_SKIP;
+variables.CONV_FILTER_UNSIGNED = CONV_FILTER_UNSIGNED;
 
 // File dialog options
-constants.FDIALOG_FLAG_LOAD = FDIALOG_FLAG_LOAD;
+variables.FDIALOG_FLAG_LOAD = FDIALOG_FLAG_LOAD;
 
-// Native code constants
-constants.CCONV_DEFAULT = CCONV_DEFAULT;
-constants.CCONV_CDECL = CCONV_CDECL;
-constants.CCONV_STDCALL = CCONV_STDCALL;
-constants.CCONV_UNIX_AMD64 = CCONV_UNIX_AMD64;
-constants.CCONV_WIN64 = CCONV_WIN64;
+// Native code variables
+variables.CCONV_DEFAULT = CCONV_DEFAULT;
+variables.CCONV_CDECL = CCONV_CDECL;
+variables.CCONV_STDCALL = CCONV_STDCALL;
+variables.CCONV_UNIX_AMD64 = CCONV_UNIX_AMD64;
+variables.CCONV_WIN64 = CCONV_WIN64;
 
-// POSIX constants
-constants.FOPEN_MAX = FOPEN_MAX;
-constants.SEEK_CUR = SEEK_CUR;
-constants.SEEK_END = SEEK_END;
-constants.SEEK_SET = SEEK_SET;
-constants.EOF = EOF;
-constants.STDIN = STDIN;
-constants.STDOUT = STDOUT;
-constants.STDERR = STDERR;
+// POSIX variables
+variables.FOPEN_MAX = FOPEN_MAX;
+variables.SEEK_CUR = SEEK_CUR;
+variables.SEEK_END = SEEK_END;
+variables.SEEK_SET = SEEK_SET;
+variables.EOF = EOF;
+variables.STDIN = STDIN;
+variables.STDOUT = STDOUT;
+variables.STDERR = STDERR;
 
 // Pixilang info flags
-constants.PIXINFO_MULTITOUCH = PIXINFO_MULTITOUCH;
-constants.PIXINFO_TOUCHCONTROL = PIXINFO_TOUCHCONTROL;
-constants.PIXINFO_NOWINDOW = PIXINFO_NOWINDOW;
-constants.PIXINFO_MIDIIN = PIXINFO_MIDIIN;
-constants.PIXINFO_MIDIOUT = PIXINFO_MIDIOUT;
+variables.PIXINFO_MULTITOUCH = PIXINFO_MULTITOUCH;
+variables.PIXINFO_TOUCHCONTROL = PIXINFO_TOUCHCONTROL;
+variables.PIXINFO_NOWINDOW = PIXINFO_NOWINDOW;
+variables.PIXINFO_MIDIIN = PIXINFO_MIDIIN;
+variables.PIXINFO_MIDIOUT = PIXINFO_MIDIOUT;
 
-// Misc constants
-constants.PIXILANG_VERSION = PIXILANG_VERSION;
-constants.OS_NAME = OS_NAME;
-constants.ARCH_NAME = ARCH_NAME;
-constants.LANG_NAME = LANG_NAME;
-constants.CURRENT_PATH = CURRENT_PATH;
-constants.USER_PATH = USER_PATH;
-constants.TEMP_PATH = TEMP_PATH;
-constants.OPENGL = OPENGL;
-constants.INT_SIZE = INT_SIZE;
-constants.FLOAT_SIZE = FLOAT_SIZE;
-constants.INT_MAX = INT_MAX;
-constants.COLORBITS = COLORBITS;
+// Misc variables
+variables.PIXILANG_VERSION = PIXILANG_VERSION;
+variables.OS_NAME = OS_NAME;
+variables.ARCH_NAME = ARCH_NAME;
+variables.LANG_NAME = LANG_NAME;
+variables.CURRENT_PATH = CURRENT_PATH;
+variables.USER_PATH = USER_PATH;
+variables.TEMP_PATH = TEMP_PATH;
+variables.OPENGL = OPENGL;
+variables.INT_SIZE = INT_SIZE;
+variables.FLOAT_SIZE = FLOAT_SIZE;
+variables.INT_MAX = INT_MAX;
+variables.COLORBITS = COLORBITS;
 
 // Built-in global variables
-constants.WINDOW_XSIZE = WINDOW_XSIZE;
-constants.WINDOW_YSIZE = WINDOW_YSIZE;
-constants.WINDOW_ZSIZE = WINDOW_ZSIZE;
-constants.WINDOW_SAFE_AREA_X = WINDOW_SAFE_AREA_X;
-constants.WINDOW_SAFE_AREA_Y = WINDOW_SAFE_AREA_Y;
-constants.WINDOW_SAFE_AREA_W = WINDOW_SAFE_AREA_W;
-constants.WINDOW_SAFE_AREA_H = WINDOW_SAFE_AREA_H;
-constants.FPS = FPS;
-constants.PPI = PPI;
-constants.UI_SCALE = UI_SCALE;
-constants.UI_FONT_SCALE = UI_FONT_SCALE;
-constants.PIXILANG_INFO = PIXILANG_INFO;
+variables.WINDOW_XSIZE = WINDOW_XSIZE;
+variables.WINDOW_YSIZE = WINDOW_YSIZE;
+variables.WINDOW_ZSIZE = WINDOW_ZSIZE;
+variables.WINDOW_SAFE_AREA_X = WINDOW_SAFE_AREA_X;
+variables.WINDOW_SAFE_AREA_Y = WINDOW_SAFE_AREA_Y;
+variables.WINDOW_SAFE_AREA_W = WINDOW_SAFE_AREA_W;
+variables.WINDOW_SAFE_AREA_H = WINDOW_SAFE_AREA_H;
+variables.FPS = FPS;
+variables.PPI = PPI;
+variables.UI_SCALE = UI_SCALE;
+variables.UI_FONT_SCALE = UI_FONT_SCALE;
+variables.PIXILANG_INFO = PIXILANG_INFO;
 
-// Sunvox constants
+// Sunvox variables
     // Note commands
-    constants.NOTECMD_NOTE_OFF = NOTECMD_NOTE_OFF;
-    constants.NOTECMD_ALL_NOTES_OFF = NOTECMD_ALL_NOTES_OFF;
-    constants.NOTECMD_CLEAN_SYNTHS = NOTECMD_CLEAN_SYNTHS;
-    constants.NOTECMD_STOP = NOTECMD_STOP;
-    constants.NOTECMD_PLAY = NOTECMD_PLAY;
-    constants.NOTECMD_SET_PITCH = NOTECMD_SET_PITCH;
-    constants.NOTECMD_CLEAN_MODULE = NOTECMD_CLEAN_MODULE;
+    variables.NOTECMD_NOTE_OFF = NOTECMD_NOTE_OFF;
+    variables.NOTECMD_ALL_NOTES_OFF = NOTECMD_ALL_NOTES_OFF;
+    variables.NOTECMD_CLEAN_SYNTHS = NOTECMD_CLEAN_SYNTHS;
+    variables.NOTECMD_STOP = NOTECMD_STOP;
+    variables.NOTECMD_PLAY = NOTECMD_PLAY;
+    variables.NOTECMD_SET_PITCH = NOTECMD_SET_PITCH;
+    variables.NOTECMD_CLEAN_MODULE = NOTECMD_CLEAN_MODULE;
 
     // Flags for sv_init()
-    constants.SV_INIT_FLAG_NO_DEBUG_OUTPUT = SV_INIT_FLAG_NO_DEBUG_OUTPUT;
-    constants.SV_INIT_FLAG_USER_AUDIO_CALLBACK = SV_INIT_FLAG_USER_AUDIO_CALLBACK;
-    constants.SV_INIT_FLAG_OFFLINE = SV_INIT_FLAG_OFFLINE;
-    constants.SV_INIT_FLAG_AUDIO_INT16 = SV_INIT_FLAG_AUDIO_INT16;
-    constants.SV_INIT_FLAG_AUDIO_FLOAT32 = SV_INIT_FLAG_AUDIO_FLOAT32;
-    constants.SV_INIT_FLAG_ONE_THREAD = SV_INIT_FLAG_ONE_THREAD;
+    variables.SV_INIT_FLAG_NO_DEBUG_OUTPUT = SV_INIT_FLAG_NO_DEBUG_OUTPUT;
+    variables.SV_INIT_FLAG_USER_AUDIO_CALLBACK = SV_INIT_FLAG_USER_AUDIO_CALLBACK;
+    variables.SV_INIT_FLAG_OFFLINE = SV_INIT_FLAG_OFFLINE;
+    variables.SV_INIT_FLAG_AUDIO_INT16 = SV_INIT_FLAG_AUDIO_INT16;
+    variables.SV_INIT_FLAG_AUDIO_FLOAT32 = SV_INIT_FLAG_AUDIO_FLOAT32;
+    variables.SV_INIT_FLAG_ONE_THREAD = SV_INIT_FLAG_ONE_THREAD;
 
     // Flags for sv_get_time_map()
-    constants.SV_TIME_MAP_SPEED = SV_TIME_MAP_SPEED;
-    constants.SV_TIME_MAP_FRAMECNT = SV_TIME_MAP_FRAMECNT;
+    variables.SV_TIME_MAP_SPEED = SV_TIME_MAP_SPEED;
+    variables.SV_TIME_MAP_FRAMECNT = SV_TIME_MAP_FRAMECNT;
 
     // Flags for sv_get_module_flags()
-    constants.SV_MODULE_FLAG_EXISTS = SV_MODULE_FLAG_EXISTS;
-    constants.SV_MODULE_FLAG_GENERATOR = SV_MODULE_FLAG_GENERATOR;
-    constants.SV_MODULE_FLAG_EFFECT = SV_MODULE_FLAG_EFFECT;
-    constants.SV_MODULE_FLAG_MUTE = SV_MODULE_FLAG_MUTE;
-    constants.SV_MODULE_FLAG_SOLO = SV_MODULE_FLAG_SOLO;
-    constants.SV_MODULE_FLAG_BYPASS = SV_MODULE_FLAG_BYPASS;
-    constants.SV_MODULE_INPUTS_OFF = SV_MODULE_INPUTS_OFF;
-    constants.SV_MODULE_INPUTS_MASK = SV_MODULE_INPUTS_MASK;
-    constants.SV_MODULE_OUTPUTS_OFF = SV_MODULE_OUTPUTS_OFF;
-    constants.SV_MODULE_OUTPUTS_MASK = SV_MODULE_OUTPUTS_MASK;
+    variables.SV_MODULE_FLAG_EXISTS = SV_MODULE_FLAG_EXISTS;
+    variables.SV_MODULE_FLAG_GENERATOR = SV_MODULE_FLAG_GENERATOR;
+    variables.SV_MODULE_FLAG_EFFECT = SV_MODULE_FLAG_EFFECT;
+    variables.SV_MODULE_FLAG_MUTE = SV_MODULE_FLAG_MUTE;
+    variables.SV_MODULE_FLAG_SOLO = SV_MODULE_FLAG_SOLO;
+    variables.SV_MODULE_FLAG_BYPASS = SV_MODULE_FLAG_BYPASS;
+    variables.SV_MODULE_INPUTS_OFF = SV_MODULE_INPUTS_OFF;
+    variables.SV_MODULE_INPUTS_MASK = SV_MODULE_INPUTS_MASK;
+    variables.SV_MODULE_OUTPUTS_OFF = SV_MODULE_OUTPUTS_OFF;
+    variables.SV_MODULE_OUTPUTS_MASK = SV_MODULE_OUTPUTS_MASK;
 
     // Other
-    constants.NULL = -1;
+    variables.NULL = -1;
 
-// Functions
-// Functions
-// Functions
+// variables
+// variables
+// variables
 
 // Containers (memory management)
 fn __new($xsize, $ysize, $type)
@@ -2671,7 +2668,7 @@ fn __dlcall($lib_id, $symbol_id, $optional_function_parameters)
 }
 
 
-// System functions
+// System variables
 fn __system($command)
 {
     ret(system($command));
@@ -2899,1767 +2896,1767 @@ fn print_frametime()
 }
 
 
-functions.sv_get_autostop = __sv_get_autostop;
-set_prop(functions,"0",__sv_get_autostop);
-set_prop(functions,0,__sv_get_autostop);
-set_prop(functions,num_to_bytestring(0),__sv_get_autostop);
-
-functions.op_cn = __op_cn;
-set_prop(functions,"1",__op_cn);
-set_prop(functions,1,__op_cn);
-set_prop(functions,num_to_bytestring(1),__op_cn);
-
-functions.sinh = __sinh;
-set_prop(functions,"2",__sinh);
-set_prop(functions,2,__sinh);
-set_prop(functions,num_to_bytestring(2),__sinh);
-
-functions.sv_set_module_xy = __sv_set_module_xy;
-set_prop(functions,"3",__sv_set_module_xy);
-set_prop(functions,3,__sv_set_module_xy);
-set_prop(functions,num_to_bytestring(3),__sv_set_module_xy);
-
-functions.sv_metamodule_load = __sv_metamodule_load;
-set_prop(functions,"4",__sv_metamodule_load);
-set_prop(functions,4,__sv_metamodule_load);
-set_prop(functions,num_to_bytestring(4),__sv_metamodule_load);
-
-functions.fread = __fread;
-set_prop(functions,"5",__fread);
-set_prop(functions,5,__fread);
-set_prop(functions,num_to_bytestring(5),__fread);
-
-functions.logf = __logf;
-set_prop(functions,"6",__logf);
-set_prop(functions,6,__logf);
-set_prop(functions,num_to_bytestring(6),__logf);
-
-functions.strlen1 = __strlen1;
-set_prop(functions,"7",__strlen1);
-set_prop(functions,7,__strlen1);
-set_prop(functions,num_to_bytestring(7),__strlen1);
-
-functions.log2 = __log2;
-set_prop(functions,"8",__log2);
-set_prop(functions,8,__log2);
-set_prop(functions,num_to_bytestring(8),__log2);
-
-functions.sleep = __sleep;
-set_prop(functions,"9",__sleep);
-set_prop(functions,9,__sleep);
-set_prop(functions,num_to_bytestring(9),__sleep);
-
-functions.sv_disconnect_module = __sv_disconnect_module;
-set_prop(functions,"10",__sv_disconnect_module);
-set_prop(functions,10,__sv_disconnect_module);
-set_prop(functions,num_to_bytestring(10),__sv_disconnect_module);
-
-functions.set_gl_callback = __set_gl_callback;
-set_prop(functions,"11",__set_gl_callback);
-set_prop(functions,11,__set_gl_callback);
-set_prop(functions,num_to_bytestring(11),__set_gl_callback);
-
-functions.color_gradient = __color_gradient;
-set_prop(functions,"12",__color_gradient);
-set_prop(functions,12,__color_gradient);
-set_prop(functions,num_to_bytestring(12),__color_gradient);
-
-functions.fputc = __fputc;
-set_prop(functions,"13",__fputc);
-set_prop(functions,13,__fputc);
-set_prop(functions,num_to_bytestring(13),__fputc);
-
-functions.fprintf = __fprintf;
-set_prop(functions,"14",__fprintf);
-set_prop(functions,14,__fprintf);
-set_prop(functions,num_to_bytestring(14),__fprintf);
-
-functions.tanh = __tanh;
-set_prop(functions,"15",__tanh);
-set_prop(functions,15,__tanh);
-set_prop(functions,num_to_bytestring(15),__tanh);
-
-functions.get_minutes = __get_minutes;
-set_prop(functions,"16",__get_minutes);
-set_prop(functions,16,__get_minutes);
-set_prop(functions,num_to_bytestring(16),__get_minutes);
-
-functions.sv_get_module_flags = __sv_get_module_flags;
-set_prop(functions,"17",__sv_get_module_flags);
-set_prop(functions,17,__sv_get_module_flags);
-set_prop(functions,num_to_bytestring(17),__sv_get_module_flags);
-
-functions.sv_vplayer_fload = __sv_vplayer_fload;
-set_prop(functions,"18",__sv_vplayer_fload);
-set_prop(functions,18,__sv_vplayer_fload);
-set_prop(functions,num_to_bytestring(18),__sv_vplayer_fload);
-
-functions.sv_vplayer_load = __sv_vplayer_load;
-set_prop(functions,"19",__sv_vplayer_load);
-set_prop(functions,19,__sv_vplayer_load);
-set_prop(functions,num_to_bytestring(19),__sv_vplayer_load);
-
-functions.transp = __transp;
-set_prop(functions,"20",__transp);
-set_prop(functions,20,__transp);
-set_prop(functions,num_to_bytestring(20),__transp);
-
-functions.remove_props = __remove_props;
-set_prop(functions,"21",__remove_props);
-set_prop(functions,21,__remove_props);
-set_prop(functions,num_to_bytestring(21),__remove_props);
-
-functions.textinput_dialog = __textinput_dialog;
-set_prop(functions,"22",__textinput_dialog);
-set_prop(functions,22,__textinput_dialog);
-set_prop(functions,num_to_bytestring(22),__textinput_dialog);
-
-functions.conv_filter = __conv_filter;
-set_prop(functions,"23",__conv_filter);
-set_prop(functions,23,__conv_filter);
-set_prop(functions,num_to_bytestring(23),__conv_filter);
-
-functions.get_day = __get_day;
-set_prop(functions,"24",__get_day);
-set_prop(functions,24,__get_day);
-set_prop(functions,num_to_bytestring(24),__get_day);
-
-functions.sv_set_pattern_event = __sv_set_pattern_event;
-set_prop(functions,"25",__sv_set_pattern_event);
-set_prop(functions,25,__sv_set_pattern_event);
-set_prop(functions,num_to_bytestring(25),__sv_set_pattern_event);
-
-functions.sv_get_module_scope = __sv_get_module_scope;
-set_prop(functions,"26",__sv_get_module_scope);
-set_prop(functions,26,__sv_get_module_scope);
-set_prop(functions,num_to_bytestring(26),__sv_get_module_scope);
-
-functions.sv_sampler_fload = __sv_sampler_fload;
-set_prop(functions,"27",__sv_sampler_fload);
-set_prop(functions,27,__sv_sampler_fload);
-set_prop(functions,num_to_bytestring(27),__sv_sampler_fload);
-
-functions.sv_load_module = __sv_load_module;
-set_prop(functions,"28",__sv_load_module);
-set_prop(functions,28,__sv_load_module);
-set_prop(functions,num_to_bytestring(28),__sv_load_module);
-
-functions.sv_render = __sv_render;
-set_prop(functions,"29",__sv_render);
-set_prop(functions,29,__sv_render);
-set_prop(functions,num_to_bytestring(29),__sv_render);
-
-functions.set_audio_callback = __set_audio_callback;
-set_prop(functions,"30",__set_audio_callback);
-set_prop(functions,30,__set_audio_callback);
-set_prop(functions,num_to_bytestring(30),__set_audio_callback);
-
-functions.t_get_matrix = __t_get_matrix;
-set_prop(functions,"31",__t_get_matrix);
-set_prop(functions,31,__t_get_matrix);
-set_prop(functions,num_to_bytestring(31),__t_get_matrix);
-
-functions.fgetc = __fgetc;
-set_prop(functions,"32",__fgetc);
-set_prop(functions,32,__fgetc);
-set_prop(functions,num_to_bytestring(32),__fgetc);
-
-functions.system = __system;
-set_prop(functions,"33",__system);
-set_prop(functions,33,__system);
-set_prop(functions,num_to_bytestring(33),__system);
-
-functions.sampler = __sampler;
-set_prop(functions,"34",__sampler);
-set_prop(functions,34,__sampler);
-set_prop(functions,num_to_bytestring(34),__sampler);
-
-functions.sv_get_module_ctl_type = __sv_get_module_ctl_type;
-set_prop(functions,"35",__sv_get_module_ctl_type);
-set_prop(functions,35,__sv_get_module_ctl_type);
-set_prop(functions,num_to_bytestring(35),__sv_get_module_ctl_type);
-
-functions.effector = __effector;
-set_prop(functions,"36",__effector);
-set_prop(functions,36,__effector);
-set_prop(functions,num_to_bytestring(36),__effector);
-
-functions.set_disk0 = __set_disk0;
-set_prop(functions,"37",__set_disk0);
-set_prop(functions,37,__set_disk0);
-set_prop(functions,num_to_bytestring(37),__set_disk0);
-
-functions.tan = __tan;
-set_prop(functions,"38",__tan);
-set_prop(functions,38,__tan);
-set_prop(functions,num_to_bytestring(38),__tan);
-
-functions.log = __log;
-set_prop(functions,"39",__log);
-set_prop(functions,39,__log);
-set_prop(functions,num_to_bytestring(39),__log);
-
-functions.ceil = __ceil;
-set_prop(functions,"40",__ceil);
-set_prop(functions,40,__ceil);
-set_prop(functions,num_to_bytestring(40),__ceil);
-
-functions.sv_remove = __sv_remove;
-set_prop(functions,"41",__sv_remove);
-set_prop(functions,41,__sv_remove);
-set_prop(functions,num_to_bytestring(41),__sv_remove);
-
-functions.midi_reopen_port = __midi_reopen_port;
-set_prop(functions,"42",__midi_reopen_port);
-set_prop(functions,42,__midi_reopen_port);
-set_prop(functions,num_to_bytestring(42),__midi_reopen_port);
-
-functions.box = __box;
-set_prop(functions,"43",__box);
-set_prop(functions,43,__box);
-set_prop(functions,num_to_bytestring(43),__box);
-
-functions.vsync = __vsync;
-set_prop(functions,"44",__vsync);
-set_prop(functions,44,__vsync);
-set_prop(functions,num_to_bytestring(44),__vsync);
-
-functions.strstr = __strstr;
-set_prop(functions,"45",__strstr);
-set_prop(functions,45,__strstr);
-set_prop(functions,num_to_bytestring(45),__strstr);
-
-functions.gradient = __gradient;
-set_prop(functions,"46",__gradient);
-set_prop(functions,46,__gradient);
-set_prop(functions,num_to_bytestring(46),__gradient);
-
-functions.reinterpret_type = __reinterpret_type;
-set_prop(functions,"47",__reinterpret_type);
-set_prop(functions,47,__reinterpret_type);
-set_prop(functions,num_to_bytestring(47),__reinterpret_type);
-
-functions.thread_create = __thread_create;
-set_prop(functions,"48",__thread_create);
-set_prop(functions,48,__thread_create);
-set_prop(functions,num_to_bytestring(48),__thread_create);
-
-functions.sv_sampler_load = __sv_sampler_load;
-set_prop(functions,"49",__sv_sampler_load);
-set_prop(functions,49,__sv_sampler_load);
-set_prop(functions,num_to_bytestring(49),__sv_sampler_load);
-
-functions.gl_bind_framebuffer = __gl_bind_framebuffer;
-set_prop(functions,"50",__gl_bind_framebuffer);
-set_prop(functions,50,__gl_bind_framebuffer);
-set_prop(functions,num_to_bytestring(50),__gl_bind_framebuffer);
-
-functions.get_text_ysize = __get_text_ysize;
-set_prop(functions,"51",__get_text_ysize);
-set_prop(functions,51,__get_text_ysize);
-set_prop(functions,num_to_bytestring(51),__get_text_ysize);
-
-functions.strcat1 = __strcat1;
-set_prop(functions,"52",__strcat1);
-set_prop(functions,52,__strcat1);
-set_prop(functions,num_to_bytestring(52),__strcat1);
-
-functions.op_cn2 = __op_cn2;
-set_prop(functions,"53",__op_cn2);
-set_prop(functions,53,__op_cn2);
-set_prop(functions,num_to_bytestring(53),__op_cn2);
-
-functions.expm1 = __expm1;
-set_prop(functions,"54",__expm1);
-set_prop(functions,54,__expm1);
-set_prop(functions,num_to_bytestring(54),__expm1);
-
-functions.cos = __cos;
-set_prop(functions,"55",__cos);
-set_prop(functions,55,__cos);
-set_prop(functions,num_to_bytestring(55),__cos);
-
-functions.set_key_color = __set_key_color;
-set_prop(functions,"56",__set_key_color);
-set_prop(functions,56,__set_key_color);
-set_prop(functions,num_to_bytestring(56),__set_key_color);
-
-functions.get_dot = __get_dot;
-set_prop(functions,"57",__get_dot);
-set_prop(functions,57,__get_dot);
-set_prop(functions,num_to_bytestring(57),__get_dot);
-
-functions.apply_filter = __apply_filter;
-set_prop(functions,"58",__apply_filter);
-set_prop(functions,58,__apply_filter);
-set_prop(functions,num_to_bytestring(58),__apply_filter);
-
-functions.thread_destroy = __thread_destroy;
-set_prop(functions,"59",__thread_destroy);
-set_prop(functions,59,__thread_destroy);
-set_prop(functions,num_to_bytestring(59),__thread_destroy);
-
-functions.get_year = __get_year;
-set_prop(functions,"60",__get_year);
-set_prop(functions,60,__get_year);
-set_prop(functions,num_to_bytestring(60),__get_year);
-
-functions.sv_find_pattern = __sv_find_pattern;
-set_prop(functions,"61",__sv_find_pattern);
-set_prop(functions,61,__sv_find_pattern);
-set_prop(functions,num_to_bytestring(61),__sv_find_pattern);
-
-functions.sv_set_event_t = __sv_set_event_t;
-set_prop(functions,"62",__sv_set_event_t);
-set_prop(functions,62,__sv_set_event_t);
-set_prop(functions,num_to_bytestring(62),__sv_set_event_t);
-
-functions.sv_stop = __sv_stop;
-set_prop(functions,"63",__sv_stop);
-set_prop(functions,63,__sv_stop);
-set_prop(functions,num_to_bytestring(63),__sv_stop);
-
-functions.get_audio_sample_rate = __get_audio_sample_rate;
-set_prop(functions,"64",__get_audio_sample_rate);
-set_prop(functions,64,__get_audio_sample_rate);
-set_prop(functions,num_to_bytestring(64),__get_audio_sample_rate);
-
-functions.clone_frame = __clone_frame;
-set_prop(functions,"65",__clone_frame);
-set_prop(functions,65,__clone_frame);
-set_prop(functions,num_to_bytestring(65),__clone_frame);
-
-functions.get_alpha = __get_alpha;
-set_prop(functions,"66",__get_alpha);
-set_prop(functions,66,__get_alpha);
-set_prop(functions,num_to_bytestring(66),__get_alpha);
-
-functions.mod = __mod;
-set_prop(functions,"67",__mod);
-set_prop(functions,67,__mod);
-set_prop(functions,num_to_bytestring(67),__mod);
-
-functions.sv_get_time_map = __sv_get_time_map;
-set_prop(functions,"68",__sv_get_time_map);
-set_prop(functions,68,__sv_get_time_map);
-set_prop(functions,num_to_bytestring(68),__sv_get_time_map);
-
-functions.sv_set_autostop = __sv_set_autostop;
-set_prop(functions,"69",__sv_set_autostop);
-set_prop(functions,69,__sv_set_autostop);
-set_prop(functions,num_to_bytestring(69),__sv_set_autostop);
-
-functions.stop = __stop;
-set_prop(functions,"70",__stop);
-set_prop(functions,70,__stop);
-set_prop(functions,num_to_bytestring(70),__stop);
-
-functions.gl_uniform_matrix = __gl_uniform_matrix;
-set_prop(functions,"71",__gl_uniform_matrix);
-set_prop(functions,71,__gl_uniform_matrix);
-set_prop(functions,num_to_bytestring(71),__gl_uniform_matrix);
-
-functions.get_color = __get_color;
-set_prop(functions,"72",__get_color);
-set_prop(functions,72,__get_color);
-set_prop(functions,num_to_bytestring(72),__get_color);
-
-functions.get_prop = __get_prop;
-set_prop(functions,"73",__get_prop);
-set_prop(functions,73,__get_prop);
-set_prop(functions,num_to_bytestring(73),__get_prop);
-
-functions.floor = __floor;
-set_prop(functions,"74",__floor);
-set_prop(functions,74,__floor);
-set_prop(functions,num_to_bytestring(74),__floor);
-
-functions.cosh = __cosh;
-set_prop(functions,"75",__cosh);
-set_prop(functions,75,__cosh);
-set_prop(functions,num_to_bytestring(75),__cosh);
-
-functions.sv_get_module_ctl_min = __sv_get_module_ctl_min;
-set_prop(functions,"76",__sv_get_module_ctl_min);
-set_prop(functions,76,__sv_get_module_ctl_min);
-set_prop(functions,num_to_bytestring(76),__sv_get_module_ctl_min);
-
-functions.sv_send_event = __sv_send_event;
-set_prop(functions,"77",__sv_send_event);
-set_prop(functions,77,__sv_send_event);
-set_prop(functions,num_to_bytestring(77),__sv_send_event);
-
-functions.sv_resume = __sv_resume;
-set_prop(functions,"78",__sv_resume);
-set_prop(functions,78,__sv_resume);
-set_prop(functions,num_to_bytestring(78),__sv_resume);
-
-functions.gl_uniform = __gl_uniform;
-set_prop(functions,"79",__gl_uniform);
-set_prop(functions,79,__gl_uniform);
-set_prop(functions,num_to_bytestring(79),__gl_uniform);
-
-functions.get_text_xsize = __get_text_xsize;
-set_prop(functions,"80",__get_text_xsize);
-set_prop(functions,80,__get_text_xsize);
-set_prop(functions,num_to_bytestring(80),__get_text_xsize);
-
-functions.triangles3d = __triangles3d;
-set_prop(functions,"81",__triangles3d);
-set_prop(functions,81,__triangles3d);
-set_prop(functions,num_to_bytestring(81),__triangles3d);
-
-functions.get_blend = __get_blend;
-set_prop(functions,"82",__get_blend);
-set_prop(functions,82,__get_blend);
-set_prop(functions,num_to_bytestring(82),__get_blend);
-
-functions.get_file_format = __get_file_format;
-set_prop(functions,"83",__get_file_format);
-set_prop(functions,83,__get_file_format);
-set_prop(functions,num_to_bytestring(83),__get_file_format);
-
-functions.remove_flist = __remove_flist;
-set_prop(functions,"84",__remove_flist);
-set_prop(functions,84,__remove_flist);
-set_prop(functions,num_to_bytestring(84),__remove_flist);
-
-functions.get_esize = __get_esize;
-set_prop(functions,"85",__get_esize);
-set_prop(functions,85,__get_esize);
-set_prop(functions,num_to_bytestring(85),__get_esize);
-
-functions.dlcall = __dlcall;
-set_prop(functions,"86",__dlcall);
-set_prop(functions,86,__dlcall);
-set_prop(functions,num_to_bytestring(86),__dlcall);
-
-functions.wavetable_generator = __wavetable_generator;
-set_prop(functions,"87",__wavetable_generator);
-set_prop(functions,87,__wavetable_generator);
-set_prop(functions,num_to_bytestring(87),__wavetable_generator);
-
-functions.get_event = __get_event;
-set_prop(functions,"88",__get_event);
-set_prop(functions,88,__get_event);
-set_prop(functions,num_to_bytestring(88),__get_event);
-
-functions.midi_get_event_time = __midi_get_event_time;
-set_prop(functions,"89",__midi_get_event_time);
-set_prop(functions,89,__midi_get_event_time);
-set_prop(functions,num_to_bytestring(89),__midi_get_event_time);
-
-functions.get_fformat_ext = __get_fformat_ext;
-set_prop(functions,"90",__get_fformat_ext);
-set_prop(functions,90,__get_fformat_ext);
-set_prop(functions,num_to_bytestring(90),__get_fformat_ext);
-
-functions.printf1 = __printf1;
-set_prop(functions,"91",__printf1);
-set_prop(functions,91,__printf1);
-set_prop(functions,num_to_bytestring(91),__printf1);
-
-functions.sv_get_tpl = __sv_get_tpl;
-set_prop(functions,"92",__sv_get_tpl);
-set_prop(functions,92,__sv_get_tpl);
-set_prop(functions,num_to_bytestring(92),__sv_get_tpl);
-
-functions.sv_pause = __sv_pause;
-set_prop(functions,"93",__sv_pause);
-set_prop(functions,93,__sv_pause);
-set_prop(functions,num_to_bytestring(93),__sv_pause);
-
-functions.t_push_matrix = __t_push_matrix;
-set_prop(functions,"94",__t_push_matrix);
-set_prop(functions,94,__t_push_matrix);
-set_prop(functions,num_to_bytestring(94),__t_push_matrix);
-
-functions.atan = __atan;
-set_prop(functions,"95",__atan);
-set_prop(functions,95,__atan);
-set_prop(functions,num_to_bytestring(95),__atan);
-
-functions.get_screen = __get_screen;
-set_prop(functions,"96",__get_screen);
-set_prop(functions,96,__get_screen);
-set_prop(functions,num_to_bytestring(96),__get_screen);
-
-functions.dlopen = __dlopen;
-set_prop(functions,"97",__dlopen);
-set_prop(functions,97,__dlopen);
-set_prop(functions,num_to_bytestring(97),__dlopen);
-
-functions.abs = __abs;
-set_prop(functions,"98",__abs);
-set_prop(functions,98,__abs);
-set_prop(functions,num_to_bytestring(98),__abs);
-
-functions.t_set_matrix = __t_set_matrix;
-set_prop(functions,"99",__t_set_matrix);
-set_prop(functions,99,__t_set_matrix);
-set_prop(functions,num_to_bytestring(99),__t_set_matrix);
-
-functions.line = __line;
-set_prop(functions,"100",__line);
-set_prop(functions,100,__line);
-set_prop(functions,num_to_bytestring(100),__line);
-
-functions.set_screen = __set_screen;
-set_prop(functions,"101",__set_screen);
-set_prop(functions,101,__set_screen);
-set_prop(functions,num_to_bytestring(101),__set_screen);
-
-functions.zlib_unpack = __zlib_unpack;
-set_prop(functions,"102",__zlib_unpack);
-set_prop(functions,102,__zlib_unpack);
-set_prop(functions,num_to_bytestring(102),__zlib_unpack);
-
-functions.argc = __argc;
-set_prop(functions,"103",__argc);
-set_prop(functions,103,__argc);
-set_prop(functions,num_to_bytestring(103),__argc);
-
-functions.fft = __fft;
-set_prop(functions,"104",__fft);
-set_prop(functions,104,__fft);
-set_prop(functions,num_to_bytestring(104),__fft);
-
-functions.envelope2p = __envelope2p;
-set_prop(functions,"105",__envelope2p);
-set_prop(functions,105,__envelope2p);
-set_prop(functions,num_to_bytestring(105),__envelope2p);
-
-functions.acos = __acos;
-set_prop(functions,"106",__acos);
-set_prop(functions,106,__acos);
-set_prop(functions,num_to_bytestring(106),__acos);
-
-functions.sv_module_curve = __sv_module_curve;
-set_prop(functions,"107",__sv_module_curve);
-set_prop(functions,107,__sv_module_curve);
-set_prop(functions,num_to_bytestring(107),__sv_module_curve);
-
-functions.sv_remove_module = __sv_remove_module;
-set_prop(functions,"108",__sv_remove_module);
-set_prop(functions,108,__sv_remove_module);
-set_prop(functions,num_to_bytestring(108),__sv_remove_module);
-
-functions.sv_set_name = __sv_set_name;
-set_prop(functions,"109",__sv_set_name);
-set_prop(functions,109,__sv_set_name);
-set_prop(functions,num_to_bytestring(109),__sv_set_name);
-
-functions.dot = __dot;
-set_prop(functions,"110",__dot);
-set_prop(functions,110,__dot);
-set_prop(functions,num_to_bytestring(110),__dot);
-
-functions.remove_with_alpha = __remove_with_alpha;
-set_prop(functions,"111",__remove_with_alpha);
-set_prop(functions,111,__remove_with_alpha);
-set_prop(functions,num_to_bytestring(111),__remove_with_alpha);
-
-functions.prefs_dialog = __prefs_dialog;
-set_prop(functions,"112",__prefs_dialog);
-set_prop(functions,112,__prefs_dialog);
-set_prop(functions,num_to_bytestring(112),__prefs_dialog);
-
-functions.get_seconds = __get_seconds;
-set_prop(functions,"113",__get_seconds);
-set_prop(functions,113,__get_seconds);
-set_prop(functions,num_to_bytestring(113),__get_seconds);
-
-functions.start_timer = __start_timer;
-set_prop(functions,"114",__start_timer);
-set_prop(functions,114,__start_timer);
-set_prop(functions,num_to_bytestring(114),__start_timer);
-
-functions.sv_set_module_name = __sv_set_module_name;
-set_prop(functions,"115",__sv_set_module_name);
-set_prop(functions,115,__sv_set_module_name);
-set_prop(functions,num_to_bytestring(115),__sv_set_module_name);
-
-functions.sv_unlock = __sv_unlock;
-set_prop(functions,"116",__sv_unlock);
-set_prop(functions,116,__sv_unlock);
-set_prop(functions,num_to_bytestring(116),__sv_unlock);
-
-functions.midi_close_port = __midi_close_port;
-set_prop(functions,"117",__midi_close_port);
-set_prop(functions,117,__midi_close_port);
-set_prop(functions,num_to_bytestring(117),__midi_close_port);
-
-functions.get_green = __get_green;
-set_prop(functions,"118",__get_green);
-set_prop(functions,118,__get_green);
-set_prop(functions,num_to_bytestring(118),__get_green);
-
-functions.fputs = __fputs;
-set_prop(functions,"119",__fputs);
-set_prop(functions,119,__fputs);
-set_prop(functions,num_to_bytestring(119),__fputs);
-
-functions.init_filter = __init_filter;
-set_prop(functions,"120",__init_filter);
-set_prop(functions,120,__init_filter);
-set_prop(functions,num_to_bytestring(120),__init_filter);
-
-functions.sv_get_sample_rate = __sv_get_sample_rate;
-set_prop(functions,"121",__sv_get_sample_rate);
-set_prop(functions,121,__sv_get_sample_rate);
-set_prop(functions,num_to_bytestring(121),__sv_get_sample_rate);
-
-functions.midi_open_port = __midi_open_port;
-set_prop(functions,"122",__midi_open_port);
-set_prop(functions,122,__midi_open_port);
-set_prop(functions,num_to_bytestring(122),__midi_open_port);
-
-functions.get_font = __get_font;
-set_prop(functions,"123",__get_font);
-set_prop(functions,123,__get_font);
-set_prop(functions,num_to_bytestring(123),__get_font);
-
-functions.get_zbuf = __get_zbuf;
-set_prop(functions,"124",__get_zbuf);
-set_prop(functions,124,__get_zbuf);
-set_prop(functions,num_to_bytestring(124),__get_zbuf);
-
-functions.rename_file = __rename_file;
-set_prop(functions,"125",__rename_file);
-set_prop(functions,125,__rename_file);
-set_prop(functions,num_to_bytestring(125),__rename_file);
-
-functions.strlen = __strlen;
-set_prop(functions,"126",__strlen);
-set_prop(functions,126,__strlen);
-set_prop(functions,num_to_bytestring(126),__strlen);
-
-functions.sv_set_pattern_name = __sv_set_pattern_name;
-set_prop(functions,"127",__sv_set_pattern_name);
-set_prop(functions,127,__sv_set_pattern_name);
-set_prop(functions,num_to_bytestring(127),__sv_set_pattern_name);
-
-functions.fgets = __fgets;
-set_prop(functions,"128",__fgets);
-set_prop(functions,128,__fgets);
-set_prop(functions,num_to_bytestring(128),__fgets);
-
-functions.dlclose = __dlclose;
-set_prop(functions,"129",__dlclose);
-set_prop(functions,129,__dlclose);
-set_prop(functions,num_to_bytestring(129),__dlclose);
-
-functions.sv_get_module_ctl_value = __sv_get_module_ctl_value;
-set_prop(functions,"130",__sv_get_module_ctl_value);
-set_prop(functions,130,__sv_get_module_ctl_value);
-set_prop(functions,num_to_bytestring(130),__sv_get_module_ctl_value);
-
-functions.sv_metamodule_fload = __sv_metamodule_fload;
-set_prop(functions,"131",__sv_metamodule_fload);
-set_prop(functions,131,__sv_metamodule_fload);
-set_prop(functions,num_to_bytestring(131),__sv_metamodule_fload);
-
-functions.remove_anim = __remove_anim;
-set_prop(functions,"132",__remove_anim);
-set_prop(functions,132,__remove_anim);
-set_prop(functions,num_to_bytestring(132),__remove_anim);
-
-functions.gl_draw_arrays = __gl_draw_arrays;
-set_prop(functions,"133",__gl_draw_arrays);
-set_prop(functions,133,__gl_draw_arrays);
-set_prop(functions,num_to_bytestring(133),__gl_draw_arrays);
-
-functions.set_alpha = __set_alpha;
-set_prop(functions,"134",__set_alpha);
-set_prop(functions,134,__set_alpha);
-set_prop(functions,num_to_bytestring(134),__set_alpha);
-
-functions.get_blue = __get_blue;
-set_prop(functions,"135",__get_blue);
-set_prop(functions,135,__get_blue);
-set_prop(functions,num_to_bytestring(135),__get_blue);
-
-functions.get_real_path = __get_real_path;
-set_prop(functions,"136",__get_real_path);
-set_prop(functions,136,__get_real_path);
-set_prop(functions,num_to_bytestring(136),__get_real_path);
-
-functions.strcmp1 = __strcmp1;
-set_prop(functions,"137",__strcmp1);
-set_prop(functions,137,__strcmp1);
-set_prop(functions,num_to_bytestring(137),__strcmp1);
-
-functions.sv_set_pattern_xy = __sv_set_pattern_xy;
-set_prop(functions,"138",__sv_set_pattern_xy);
-set_prop(functions,138,__sv_set_pattern_xy);
-set_prop(functions,num_to_bytestring(138),__sv_set_pattern_xy);
-
-functions.sv_set_module_color = __sv_set_module_color;
-set_prop(functions,"139",__sv_set_module_color);
-set_prop(functions,139,__sv_set_module_color);
-set_prop(functions,num_to_bytestring(139),__sv_set_module_color);
-
-functions.sv_get_status = __sv_get_status;
-set_prop(functions,"140",__sv_get_status);
-set_prop(functions,140,__sv_get_status);
-set_prop(functions,num_to_bytestring(140),__sv_get_status);
-
-functions.rotate = __rotate;
-set_prop(functions,"141",__rotate);
-set_prop(functions,141,__rotate);
-set_prop(functions,num_to_bytestring(141),__rotate);
-
-functions.sv_get_pattern_name = __sv_get_pattern_name;
-set_prop(functions,"142",__sv_get_pattern_name);
-set_prop(functions,142,__sv_get_pattern_name);
-set_prop(functions,num_to_bytestring(142),__sv_get_pattern_name);
-
-functions.split_rgb = __split_rgb;
-set_prop(functions,"143",__split_rgb);
-set_prop(functions,143,__split_rgb);
-set_prop(functions,num_to_bytestring(143),__split_rgb);
-
-functions.create_directory = __create_directory;
-set_prop(functions,"144",__create_directory);
-set_prop(functions,144,__create_directory);
-set_prop(functions,num_to_bytestring(144),__create_directory);
-
-functions.set_quit_action = __set_quit_action;
-set_prop(functions,"145",__set_quit_action);
-set_prop(functions,145,__set_quit_action);
-set_prop(functions,num_to_bytestring(145),__set_quit_action);
-
-functions.get_month = __get_month;
-set_prop(functions,"146",__get_month);
-set_prop(functions,146,__get_month);
-set_prop(functions,num_to_bytestring(146),__get_month);
-
-functions.sv_get_module_name = __sv_get_module_name;
-set_prop(functions,"147",__sv_get_module_name);
-set_prop(functions,147,__sv_get_module_name);
-set_prop(functions,num_to_bytestring(147),__sv_get_module_name);
-
-functions.sv_get_number_of_modules = __sv_get_number_of_modules;
-set_prop(functions,"148",__sv_get_number_of_modules);
-set_prop(functions,148,__sv_get_number_of_modules);
-set_prop(functions,num_to_bytestring(148),__sv_get_number_of_modules);
-
-functions.sv_volume = __sv_volume;
-set_prop(functions,"149",__sv_volume);
-set_prop(functions,149,__sv_volume);
-set_prop(functions,num_to_bytestring(149),__sv_volume);
-
-functions.sv_load = __sv_load;
-set_prop(functions,"150",__sv_load);
-set_prop(functions,150,__sv_load);
-set_prop(functions,num_to_bytestring(150),__sv_load);
-
-functions.unpack_frame = __unpack_frame;
-set_prop(functions,"151",__unpack_frame);
-set_prop(functions,151,__unpack_frame);
-set_prop(functions,num_to_bytestring(151),__unpack_frame);
-
-functions.get_flist_name = __get_flist_name;
-set_prop(functions,"152",__get_flist_name);
-set_prop(functions,152,__get_flist_name);
-set_prop(functions,num_to_bytestring(152),__get_flist_name);
-
-functions.sv_set_module_relnote = __sv_set_module_relnote;
-set_prop(functions,"153",__sv_set_module_relnote);
-set_prop(functions,153,__sv_set_module_relnote);
-set_prop(functions,num_to_bytestring(153),__sv_set_module_relnote);
-
-functions.load = __load;
-set_prop(functions,"154",__load);
-set_prop(functions,154,__load);
-set_prop(functions,num_to_bytestring(154),__load);
-
-functions.log10 = __log10;
-set_prop(functions,"155",__log10);
-set_prop(functions,155,__log10);
-set_prop(functions,num_to_bytestring(155),__log10);
-
-functions.sv_get_module_finetune = __sv_get_module_finetune;
-set_prop(functions,"156",__sv_get_module_finetune);
-set_prop(functions,156,__sv_get_module_finetune);
-set_prop(functions,num_to_bytestring(156),__sv_get_module_finetune);
-
-functions.remove_proplist = __remove_proplist;
-set_prop(functions,"157",__remove_proplist);
-set_prop(functions,157,__remove_proplist);
-set_prop(functions,num_to_bytestring(157),__remove_proplist);
-
-functions.op_cc = __op_cc;
-set_prop(functions,"158",__op_cc);
-set_prop(functions,158,__op_cc);
-set_prop(functions,num_to_bytestring(158),__op_cc);
-
-functions.mutex_trylock = __mutex_trylock;
-set_prop(functions,"159",__mutex_trylock);
-set_prop(functions,159,__mutex_trylock);
-set_prop(functions,num_to_bytestring(159),__mutex_trylock);
-
-functions.sv_pattern_mute = __sv_pattern_mute;
-set_prop(functions,"160",__sv_pattern_mute);
-set_prop(functions,160,__sv_pattern_mute);
-set_prop(functions,num_to_bytestring(160),__sv_pattern_mute);
-
-functions.sv_get_pattern_data = __sv_get_pattern_data;
-set_prop(functions,"161",__sv_get_pattern_data);
-set_prop(functions,161,__sv_get_pattern_data);
-set_prop(functions,num_to_bytestring(161),__sv_get_pattern_data);
-
-functions.sv_set_pattern_size = __sv_set_pattern_size;
-set_prop(functions,"162",__sv_set_pattern_size);
-set_prop(functions,162,__sv_set_pattern_size);
-set_prop(functions,num_to_bytestring(162),__sv_set_pattern_size);
-
-functions.sv_new_pattern = __sv_new_pattern;
-set_prop(functions,"163",__sv_new_pattern);
-set_prop(functions,163,__sv_new_pattern);
-set_prop(functions,num_to_bytestring(163),__sv_new_pattern);
-
-functions.sv_get_pattern_event = __sv_get_pattern_event;
-set_prop(functions,"164",__sv_get_pattern_event);
-set_prop(functions,164,__sv_get_pattern_event);
-set_prop(functions,num_to_bytestring(164),__sv_get_pattern_event);
-
-functions.enable_audio_input = __enable_audio_input;
-set_prop(functions,"165",__enable_audio_input);
-set_prop(functions,165,__enable_audio_input);
-set_prop(functions,num_to_bytestring(165),__enable_audio_input);
-
-functions.frame = __frame;
-set_prop(functions,"166",__frame);
-set_prop(functions,166,__frame);
-set_prop(functions,num_to_bytestring(166),__frame);
-
-functions.fflush = __fflush;
-set_prop(functions,"167",__fflush);
-set_prop(functions,167,__fflush);
-set_prop(functions,num_to_bytestring(167),__fflush);
-
-functions.load0 = __load0;
-set_prop(functions,"168",__load0);
-set_prop(functions,168,__load0);
-set_prop(functions,num_to_bytestring(168),__load0);
-
-functions.get_size = __get_size;
-set_prop(functions,"169",__get_size);
-set_prop(functions,169,__get_size);
-set_prop(functions,num_to_bytestring(169),__get_size);
-
-functions.remove = __remove;
-set_prop(functions,"170",__remove);
-set_prop(functions,170,__remove);
-set_prop(functions,num_to_bytestring(170),__remove);
-
-functions.sv_get_pattern_x = __sv_get_pattern_x;
-set_prop(functions,"171",__sv_get_pattern_x);
-set_prop(functions,171,__sv_get_pattern_x);
-set_prop(functions,num_to_bytestring(171),__sv_get_pattern_x);
-
-functions.sv_get_module_outputs = __sv_get_module_outputs;
-set_prop(functions,"172",__sv_get_module_outputs);
-set_prop(functions,172,__sv_get_module_outputs);
-set_prop(functions,num_to_bytestring(172),__sv_get_module_outputs);
-
-functions.midi_next_event = __midi_next_event;
-set_prop(functions,"173",__midi_next_event);
-set_prop(functions,173,__midi_next_event);
-set_prop(functions,num_to_bytestring(173),__midi_next_event);
-
-functions.midi_close_client = __midi_close_client;
-set_prop(functions,"174",__midi_close_client);
-set_prop(functions,174,__midi_close_client);
-set_prop(functions,num_to_bytestring(174),__midi_close_client);
-
-functions.gl_use_prog = __gl_use_prog;
-set_prop(functions,"175",__gl_use_prog);
-set_prop(functions,175,__gl_use_prog);
-set_prop(functions,num_to_bytestring(175),__gl_use_prog);
-
-functions.sv_get_pattern_y = __sv_get_pattern_y;
-set_prop(functions,"176",__sv_get_pattern_y);
-set_prop(functions,176,__sv_get_pattern_y);
-set_prop(functions,num_to_bytestring(176),__sv_get_pattern_y);
-
-functions.sv_get_number_of_patterns = __sv_get_number_of_patterns;
-set_prop(functions,"177",__sv_get_number_of_patterns);
-set_prop(functions,177,__sv_get_number_of_patterns);
-set_prop(functions,num_to_bytestring(177),__sv_get_number_of_patterns);
-
-functions.sv_save = __sv_save;
-set_prop(functions,"178",__sv_save);
-set_prop(functions,178,__sv_save);
-set_prop(functions,num_to_bytestring(178),__sv_save);
-
-functions.t_pop_matrix = __t_pop_matrix;
-set_prop(functions,"179",__t_pop_matrix);
-set_prop(functions,179,__t_pop_matrix);
-set_prop(functions,num_to_bytestring(179),__t_pop_matrix);
-
-functions.gl_get_int = __gl_get_int;
-set_prop(functions,"180",__gl_get_int);
-set_prop(functions,180,__gl_get_int);
-set_prop(functions,num_to_bytestring(180),__gl_get_int);
-
-functions.flist_next = __flist_next;
-set_prop(functions,"181",__flist_next);
-set_prop(functions,181,__flist_next);
-set_prop(functions,num_to_bytestring(181),__flist_next);
-
-functions.get_system_log = __get_system_log;
-set_prop(functions,"182",__get_system_log);
-set_prop(functions,182,__get_system_log);
-set_prop(functions,num_to_bytestring(182),__get_system_log);
-
-functions.printf = __printf;
-set_prop(functions,"183",__printf);
-set_prop(functions,183,__printf);
-set_prop(functions,num_to_bytestring(183),__printf);
-
-functions.convert_type = __convert_type;
-set_prop(functions,"184",__convert_type);
-set_prop(functions,184,__convert_type);
-set_prop(functions,num_to_bytestring(184),__convert_type);
-
-functions.sv_get_module_ctl_offset = __sv_get_module_ctl_offset;
-set_prop(functions,"185",__sv_get_module_ctl_offset);
-set_prop(functions,185,__sv_get_module_ctl_offset);
-set_prop(functions,num_to_bytestring(185),__sv_get_module_ctl_offset);
-
-functions.sv_rewind = __sv_rewind;
-set_prop(functions,"186",__sv_rewind);
-set_prop(functions,186,__sv_rewind);
-set_prop(functions,num_to_bytestring(186),__sv_rewind);
-
-functions.update_gl_data = __update_gl_data;
-set_prop(functions,"187",__update_gl_data);
-set_prop(functions,187,__update_gl_data);
-set_prop(functions,num_to_bytestring(187),__update_gl_data);
-
-functions.setxattr = __setxattr;
-set_prop(functions,"188",__setxattr);
-set_prop(functions,188,__setxattr);
-set_prop(functions,num_to_bytestring(188),__setxattr);
-
-functions.fseek = __fseek;
-set_prop(functions,"189",__fseek);
-set_prop(functions,189,__fseek);
-set_prop(functions,num_to_bytestring(189),__fseek);
-
-functions.save = __save;
-set_prop(functions,"190",__save);
-set_prop(functions,190,__save);
-set_prop(functions,num_to_bytestring(190),__save);
-
-functions.num_to_str = __num_to_str;
-set_prop(functions,"191",__num_to_str);
-set_prop(functions,191,__num_to_str);
-set_prop(functions,num_to_bytestring(191),__num_to_str);
-
-functions.get_flags = __get_flags;
-set_prop(functions,"192",__get_flags);
-set_prop(functions,192,__get_flags);
-set_prop(functions,num_to_bytestring(192),__get_flags);
-
-functions.op_ccn1 = __op_ccn1;
-set_prop(functions,"193",__op_ccn1);
-set_prop(functions,193,__op_ccn1);
-set_prop(functions,num_to_bytestring(193),__op_ccn1);
-
-functions.sv_get_current_line = __sv_get_current_line;
-set_prop(functions,"194",__sv_get_current_line);
-set_prop(functions,194,__sv_get_current_line);
-set_prop(functions,num_to_bytestring(194),__sv_get_current_line);
-
-functions.pixi = __pixi;
-set_prop(functions,"195",__pixi);
-set_prop(functions,195,__pixi);
-set_prop(functions,num_to_bytestring(195),__pixi);
-
-functions.op_ccn2 = __op_ccn2;
-set_prop(functions,"196",__op_ccn2);
-set_prop(functions,196,__op_ccn2);
-set_prop(functions,num_to_bytestring(196),__op_ccn2);
-
-functions.sv_get_module_ctl_name = __sv_get_module_ctl_name;
-set_prop(functions,"197",__sv_get_module_ctl_name);
-set_prop(functions,197,__sv_get_module_ctl_name);
-set_prop(functions,num_to_bytestring(197),__sv_get_module_ctl_name);
-
-functions.get_transp = __get_transp;
-set_prop(functions,"198",__get_transp);
-set_prop(functions,198,__get_transp);
-set_prop(functions,num_to_bytestring(198),__get_transp);
-
-functions.clone = __clone;
-set_prop(functions,"199",__clone);
-set_prop(functions,199,__clone);
-set_prop(functions,num_to_bytestring(199),__clone);
-
-functions.remove_filter = __remove_filter;
-set_prop(functions,"200",__remove_filter);
-set_prop(functions,200,__remove_filter);
-set_prop(functions,num_to_bytestring(200),__remove_filter);
-
-functions.sqrt = __sqrt;
-set_prop(functions,"201",__sqrt);
-set_prop(functions,201,__sqrt);
-set_prop(functions,num_to_bytestring(201),__sqrt);
-
-functions.exp = __exp;
-set_prop(functions,"202",__exp);
-set_prop(functions,202,__exp);
-set_prop(functions,num_to_bytestring(202),__exp);
-
-functions.mutex_destroy = __mutex_destroy;
-set_prop(functions,"203",__mutex_destroy);
-set_prop(functions,203,__mutex_destroy);
-set_prop(functions,num_to_bytestring(203),__mutex_destroy);
-
-functions.get_timer = __get_timer;
-set_prop(functions,"204",__get_timer);
-set_prop(functions,204,__get_timer);
-set_prop(functions,num_to_bytestring(204),__get_timer);
-
-functions.resize = __resize;
-set_prop(functions,"205",__resize);
-set_prop(functions,205,__resize);
-set_prop(functions,num_to_bytestring(205),__resize);
-
-functions.dlsym = __dlsym;
-set_prop(functions,"206",__dlsym);
-set_prop(functions,206,__dlsym);
-set_prop(functions,num_to_bytestring(206),__dlsym);
-
-functions.sv_fload_module = __sv_fload_module;
-set_prop(functions,"207",__sv_fload_module);
-set_prop(functions,207,__sv_fload_module);
-set_prop(functions,num_to_bytestring(207),__sv_fload_module);
-
-functions.sv_new_module = __sv_new_module;
-set_prop(functions,"208",__sv_new_module);
-set_prop(functions,208,__sv_new_module);
-set_prop(functions,num_to_bytestring(208),__sv_new_module);
-
-functions.midi_open_client = __midi_open_client;
-set_prop(functions,"209",__midi_open_client);
-set_prop(functions,209,__midi_open_client);
-set_prop(functions,num_to_bytestring(209),__midi_open_client);
-
-functions.pack_frame = __pack_frame;
-set_prop(functions,"210",__pack_frame);
-set_prop(functions,210,__pack_frame);
-set_prop(functions,num_to_bytestring(210),__pack_frame);
-
-functions.str_to_num = __str_to_num;
-set_prop(functions,"211",__str_to_num);
-set_prop(functions,211,__str_to_num);
-set_prop(functions,num_to_bytestring(211),__str_to_num);
-
-functions.set_prop = __set_prop;
-set_prop(functions,"212",__set_prop);
-set_prop(functions,212,__set_prop);
-set_prop(functions,num_to_bytestring(212),__set_prop);
-
-functions.argv = __argv;
-set_prop(functions,"213",__argv);
-set_prop(functions,213,__argv);
-set_prop(functions,num_to_bytestring(213),__argv);
-
-functions.replace_values = __replace_values;
-set_prop(functions,"214",__replace_values);
-set_prop(functions,214,__replace_values);
-set_prop(functions,num_to_bytestring(214),__replace_values);
-
-functions.new_filter = __new_filter;
-set_prop(functions,"215",__new_filter);
-set_prop(functions,215,__new_filter);
-set_prop(functions,num_to_bytestring(215),__new_filter);
-
-functions.sin = __sin;
-set_prop(functions,"216",__sin);
-set_prop(functions,216,__sin);
-set_prop(functions,num_to_bytestring(216),__sin);
-
-functions.sv_get_pattern_lines = __sv_get_pattern_lines;
-set_prop(functions,"217",__sv_get_pattern_lines);
-set_prop(functions,217,__sv_get_pattern_lines);
-set_prop(functions,num_to_bytestring(217),__sv_get_pattern_lines);
-
-functions.sv_get_module_color = __sv_get_module_color;
-set_prop(functions,"218",__sv_get_module_color);
-set_prop(functions,218,__sv_get_module_color);
-set_prop(functions,num_to_bytestring(218),__sv_get_module_color);
-
-functions.create_anim = __create_anim;
-set_prop(functions,"219",__create_anim);
-set_prop(functions,219,__create_anim);
-set_prop(functions,num_to_bytestring(219),__create_anim);
-
-functions.zlib_pack = __zlib_pack;
-set_prop(functions,"220",__zlib_pack);
-set_prop(functions,220,__zlib_pack);
-set_prop(functions,num_to_bytestring(220),__zlib_pack);
-
-functions.asinh = __asinh;
-set_prop(functions,"221",__asinh);
-set_prop(functions,221,__asinh);
-set_prop(functions,num_to_bytestring(221),__asinh);
-
-functions.gl_bind_texture = __gl_bind_texture;
-set_prop(functions,"222",__gl_bind_texture);
-set_prop(functions,222,__gl_bind_texture);
-set_prop(functions,num_to_bytestring(222),__gl_bind_texture);
-
-functions.print = __print;
-set_prop(functions,"223",__print);
-set_prop(functions,223,__print);
-set_prop(functions,num_to_bytestring(223),__print);
-
-functions.clear_zbuf = __clear_zbuf;
-set_prop(functions,"224",__clear_zbuf);
-set_prop(functions,224,__clear_zbuf);
-set_prop(functions,num_to_bytestring(224),__clear_zbuf);
-
-functions.new_flist = __new_flist;
-set_prop(functions,"225",__new_flist);
-set_prop(functions,225,__new_flist);
-set_prop(functions,num_to_bytestring(225),__new_flist);
-
-functions.op_cc1 = __op_cc1;
-set_prop(functions,"226",__op_cc1);
-set_prop(functions,226,__op_cc1);
-set_prop(functions,num_to_bytestring(226),__op_cc1);
-
-functions.op_cn = __op_cn;
-set_prop(functions,"227",__op_cn);
-set_prop(functions,227,__op_cn);
-set_prop(functions,num_to_bytestring(227),__op_cn);
-
-functions.atan2 = __atan2;
-set_prop(functions,"228",__atan2);
-set_prop(functions,228,__atan2);
-set_prop(functions,num_to_bytestring(228),__atan2);
-
-functions.sv_set_module_ctl_value = __sv_set_module_ctl_value;
-set_prop(functions,"229",__sv_set_module_ctl_value);
-set_prop(functions,229,__sv_set_module_ctl_value);
-set_prop(functions,num_to_bytestring(229),__sv_set_module_ctl_value);
-
-functions.sv_fload = __sv_fload;
-set_prop(functions,"230",__sv_fload);
-set_prop(functions,230,__sv_fload);
-set_prop(functions,num_to_bytestring(230),__sv_fload);
-
-functions.gl_new_prog = __gl_new_prog;
-set_prop(functions,"231",__gl_new_prog);
-set_prop(functions,231,__gl_new_prog);
-set_prop(functions,num_to_bytestring(231),__gl_new_prog);
-
-functions.fopen = __fopen;
-set_prop(functions,"232",__fopen);
-set_prop(functions,232,__fopen);
-set_prop(functions,num_to_bytestring(232),__fopen);
-
-functions.reset_flags = __reset_flags;
-set_prop(functions,"233",__reset_flags);
-set_prop(functions,233,__reset_flags);
-set_prop(functions,num_to_bytestring(233),__reset_flags);
-
-functions.get_ysize = __get_ysize;
-set_prop(functions,"234",__get_ysize);
-set_prop(functions,234,__get_ysize);
-set_prop(functions,num_to_bytestring(234),__get_ysize);
-
-functions.generator = __generator;
-set_prop(functions,"235",__generator);
-set_prop(functions,235,__generator);
-set_prop(functions,num_to_bytestring(235),__generator);
-
-functions.op_cc2 = __op_cc2;
-set_prop(functions,"236",__op_cc2);
-set_prop(functions,236,__op_cc2);
-set_prop(functions,num_to_bytestring(236),__op_cc2);
-
-functions.atanh = __atanh;
-set_prop(functions,"237",__atanh);
-set_prop(functions,237,__atanh);
-set_prop(functions,num_to_bytestring(237),__atanh);
-
-functions.sv_get_pattern_tracks = __sv_get_pattern_tracks;
-set_prop(functions,"238",__sv_get_pattern_tracks);
-set_prop(functions,238,__sv_get_pattern_tracks);
-set_prop(functions,num_to_bytestring(238),__sv_get_pattern_tracks);
-
-functions.sv_get_module_ctl_group = __sv_get_module_ctl_group;
-set_prop(functions,"239",__sv_get_module_ctl_group);
-set_prop(functions,239,__sv_get_module_ctl_group);
-set_prop(functions,num_to_bytestring(239),__sv_get_module_ctl_group);
-
-functions.sv_get_module_ctl_max = __sv_get_module_ctl_max;
-set_prop(functions,"240",__sv_get_module_ctl_max);
-set_prop(functions,240,__sv_get_module_ctl_max);
-set_prop(functions,num_to_bytestring(240),__sv_get_module_ctl_max);
-
-functions.sv_set_module_finetune = __sv_set_module_finetune;
-set_prop(functions,"241",__sv_set_module_finetune);
-set_prop(functions,241,__sv_set_module_finetune);
-set_prop(functions,num_to_bytestring(241),__sv_set_module_finetune);
-
-functions.sv_get_module_xy = __sv_get_module_xy;
-set_prop(functions,"242",__sv_get_module_xy);
-set_prop(functions,242,__sv_get_module_xy);
-set_prop(functions,num_to_bytestring(242),__sv_get_module_xy);
-
-functions.sv_get_current_signal_level = __sv_get_current_signal_level;
-set_prop(functions,"243",__sv_get_current_signal_level);
-set_prop(functions,243,__sv_get_current_signal_level);
-set_prop(functions,num_to_bytestring(243),__sv_get_current_signal_level);
-
-functions.sv_get_current_line2 = __sv_get_current_line2;
-set_prop(functions,"244",__sv_get_current_line2);
-set_prop(functions,244,__sv_get_current_line2);
-set_prop(functions,num_to_bytestring(244),__sv_get_current_line2);
-
-functions.gl_get_float = __gl_get_float;
-set_prop(functions,"245",__gl_get_float);
-set_prop(functions,245,__gl_get_float);
-set_prop(functions,num_to_bytestring(245),__gl_get_float);
-
-functions.remove_gl_data = __remove_gl_data;
-set_prop(functions,"246",__remove_gl_data);
-set_prop(functions,246,__remove_gl_data);
-set_prop(functions,num_to_bytestring(246),__remove_gl_data);
-
-functions.sv_lock = __sv_lock;
-set_prop(functions,"247",__sv_lock);
-set_prop(functions,247,__sv_lock);
-set_prop(functions,num_to_bytestring(247),__sv_lock);
-
-functions.midi_send_event = __midi_send_event;
-set_prop(functions,"248",__midi_send_event);
-set_prop(functions,248,__midi_send_event);
-set_prop(functions,num_to_bytestring(248),__midi_send_event);
-
-functions.t_translate = __t_translate;
-set_prop(functions,"249",__t_translate);
-set_prop(functions,249,__t_translate);
-set_prop(functions,num_to_bytestring(249),__t_translate);
-
-functions.gl_blend_func = __gl_blend_func;
-set_prop(functions,"250",__gl_blend_func);
-set_prop(functions,250,__gl_blend_func);
-set_prop(functions,num_to_bytestring(250),__gl_blend_func);
-
-functions.fbox = __fbox;
-set_prop(functions,"251",__fbox);
-set_prop(functions,251,__fbox);
-set_prop(functions,num_to_bytestring(251),__fbox);
-
-functions.fwrite = __fwrite;
-set_prop(functions,"252",__fwrite);
-set_prop(functions,252,__fwrite);
-set_prop(functions,num_to_bytestring(252),__fwrite);
-
-functions.reset_filter = __reset_filter;
-set_prop(functions,"253",__reset_filter);
-set_prop(functions,253,__reset_filter);
-set_prop(functions,num_to_bytestring(253),__reset_filter);
-
-functions.mutex_lock = __mutex_lock;
-set_prop(functions,"254",__mutex_lock);
-set_prop(functions,254,__mutex_lock);
-set_prop(functions,num_to_bytestring(254),__mutex_lock);
-
-functions.get_note_freq = __get_note_freq;
-set_prop(functions,"255",__get_note_freq);
-set_prop(functions,255,__get_note_freq);
-set_prop(functions,num_to_bytestring(255),__get_note_freq);
-
-functions.fload = __fload;
-set_prop(functions,"256",__fload);
-set_prop(functions,256,__fload);
-set_prop(functions,num_to_bytestring(256),__fload);
-
-functions.show_memory_debug_messages = __show_memory_debug_messages;
-set_prop(functions,"257",__show_memory_debug_messages);
-set_prop(functions,257,__show_memory_debug_messages);
-set_prop(functions,num_to_bytestring(257),__show_memory_debug_messages);
-
-functions.rand = __rand;
-set_prop(functions,"258",__rand);
-set_prop(functions,258,__rand);
-set_prop(functions,num_to_bytestring(258),__rand);
-
-functions.get_hours = __get_hours;
-set_prop(functions,"259",__get_hours);
-set_prop(functions,259,__get_hours);
-set_prop(functions,num_to_bytestring(259),__get_hours);
-
-functions.sort_triangles3d = __sort_triangles3d;
-set_prop(functions,"260",__sort_triangles3d);
-set_prop(functions,260,__sort_triangles3d);
-set_prop(functions,num_to_bytestring(260),__sort_triangles3d);
-
-functions.ftell = __ftell;
-set_prop(functions,"261",__ftell);
-set_prop(functions,261,__ftell);
-set_prop(functions,num_to_bytestring(261),__ftell);
-
-functions.sprintf = __sprintf;
-set_prop(functions,"262",__sprintf);
-set_prop(functions,262,__sprintf);
-set_prop(functions,num_to_bytestring(262),__sprintf);
-
-functions.set_flags = __set_flags;
-set_prop(functions,"263",__set_flags);
-set_prop(functions,263,__set_flags);
-set_prop(functions,num_to_bytestring(263),__set_flags);
-
-functions.get_xsize = __get_xsize;
-set_prop(functions,"264",__get_xsize);
-set_prop(functions,264,__get_xsize);
-set_prop(functions,num_to_bytestring(264),__get_xsize);
-
-functions.copy = __copy;
-set_prop(functions,"265",__copy);
-set_prop(functions,265,__copy);
-set_prop(functions,num_to_bytestring(265),__copy);
-
-functions.open_url = __open_url;
-set_prop(functions,"266",__open_url);
-set_prop(functions,266,__open_url);
-set_prop(functions,num_to_bytestring(266),__open_url);
-
-functions.midi_get_event = __midi_get_event;
-set_prop(functions,"267",__midi_get_event);
-set_prop(functions,267,__midi_get_event);
-set_prop(functions,num_to_bytestring(267),__midi_get_event);
-
-functions.t_rotate = __t_rotate;
-set_prop(functions,"268",__t_rotate);
-set_prop(functions,268,__t_rotate);
-set_prop(functions,num_to_bytestring(268),__t_rotate);
-
-functions.t_reset = __t_reset;
-set_prop(functions,"269",__t_reset);
-set_prop(functions,269,__t_reset);
-set_prop(functions,num_to_bytestring(269),__t_reset);
-
-functions.set_font = __set_font;
-set_prop(functions,"270",__set_font);
-set_prop(functions,270,__set_font);
-set_prop(functions,num_to_bytestring(270),__set_font);
-
-functions.set_zbuf = __set_zbuf;
-set_prop(functions,"271",__set_zbuf);
-set_prop(functions,271,__set_zbuf);
-set_prop(functions,num_to_bytestring(271),__set_zbuf);
-
-functions.feof = __feof;
-set_prop(functions,"272",__feof);
-set_prop(functions,272,__feof);
-set_prop(functions,num_to_bytestring(272),__feof);
-
-functions.remove_file = __remove_file;
-set_prop(functions,"273",__remove_file);
-set_prop(functions,273,__remove_file);
-set_prop(functions,num_to_bytestring(273),__remove_file);
-
-functions.rand_seed = __rand_seed;
-set_prop(functions,"274",__rand_seed);
-set_prop(functions,274,__rand_seed);
-set_prop(functions,num_to_bytestring(274),__rand_seed);
-
-functions.exp2 = __exp2;
-set_prop(functions,"275",__exp2);
-set_prop(functions,275,__exp2);
-set_prop(functions,num_to_bytestring(275),__exp2);
-
-functions.asin = __asin;
-set_prop(functions,"276",__asin);
-set_prop(functions,276,__asin);
-set_prop(functions,num_to_bytestring(276),__asin);
-
-functions.mutex_unlock = __mutex_unlock;
-set_prop(functions,"277",__mutex_unlock);
-set_prop(functions,277,__mutex_unlock);
-set_prop(functions,num_to_bytestring(277),__mutex_unlock);
-
-functions.sv_play = __sv_play;
-set_prop(functions,"278",__sv_play);
-set_prop(functions,278,__sv_play);
-set_prop(functions,num_to_bytestring(278),__sv_play);
-
-functions.sv_fsave = __sv_fsave;
-set_prop(functions,"279",__sv_fsave);
-set_prop(functions,279,__sv_fsave);
-set_prop(functions,num_to_bytestring(279),__sv_fsave);
-
-functions.t_mul_matrix = __t_mul_matrix;
-set_prop(functions,"280",__t_mul_matrix);
-set_prop(functions,280,__t_mul_matrix);
-set_prop(functions,num_to_bytestring(280),__t_mul_matrix);
-
-functions.line3d = __line3d;
-set_prop(functions,"281",__line3d);
-set_prop(functions,281,__line3d);
-set_prop(functions,num_to_bytestring(281),__line3d);
-
-functions.get_dot3d = __get_dot3d;
-set_prop(functions,"282",__get_dot3d);
-set_prop(functions,282,__get_dot3d);
-set_prop(functions,num_to_bytestring(282),__get_dot3d);
-
-functions.fopen_mem = __fopen_mem;
-set_prop(functions,"283",__fopen_mem);
-set_prop(functions,283,__fopen_mem);
-set_prop(functions,num_to_bytestring(283),__fopen_mem);
-
-functions.sprintf2 = __sprintf2;
-set_prop(functions,"284",__sprintf2);
-set_prop(functions,284,__sprintf2);
-set_prop(functions,num_to_bytestring(284),__sprintf2);
-
-functions.get_tps = __get_tps;
-set_prop(functions,"285",__get_tps);
-set_prop(functions,285,__get_tps);
-set_prop(functions,num_to_bytestring(285),__get_tps);
-
-functions.get_ticks = __get_ticks;
-set_prop(functions,"286",__get_ticks);
-set_prop(functions,286,__get_ticks);
-set_prop(functions,num_to_bytestring(286),__get_ticks);
-
-functions.sv_get_length_frames = __sv_get_length_frames;
-set_prop(functions,"287",__sv_get_length_frames);
-set_prop(functions,287,__sv_get_length_frames);
-set_prop(functions,num_to_bytestring(287),__sv_get_length_frames);
-
-functions.sv_new = __sv_new;
-set_prop(functions,"288",__sv_new);
-set_prop(functions,288,__sv_new);
-set_prop(functions,num_to_bytestring(288),__sv_new);
-
-functions.t_point = __t_point;
-set_prop(functions,"289",__t_point);
-set_prop(functions,289,__t_point);
-set_prop(functions,num_to_bytestring(289),__t_point);
-
-functions.play = __play;
-set_prop(functions,"290",__play);
-set_prop(functions,290,__play);
-set_prop(functions,num_to_bytestring(290),__play);
-
-functions.copy_file = __copy_file;
-set_prop(functions,"291",__copy_file);
-set_prop(functions,291,__copy_file);
-set_prop(functions,num_to_bytestring(291),__copy_file);
-
-functions.get_file_size = __get_file_size;
-set_prop(functions,"292",__get_file_size);
-set_prop(functions,292,__get_file_size);
-set_prop(functions,num_to_bytestring(292),__get_file_size);
-
-functions.new = __new;
-set_prop(functions,"293",__new);
-set_prop(functions,293,__new);
-set_prop(functions,num_to_bytestring(293),__new);
-
-functions.op_ccn = __op_ccn;
-set_prop(functions,"294",__op_ccn);
-set_prop(functions,294,__op_ccn);
-set_prop(functions,num_to_bytestring(294),__op_ccn);
-
-functions.sv_get_name = __sv_get_name;
-set_prop(functions,"295",__sv_get_name);
-set_prop(functions,295,__sv_get_name);
-set_prop(functions,num_to_bytestring(295),__sv_get_name);
-
-functions.sv_sync_resume = __sv_sync_resume;
-set_prop(functions,"296",__sv_sync_resume);
-set_prop(functions,296,__sv_sync_resume);
-set_prop(functions,num_to_bytestring(296),__sv_sync_resume);
-
-functions.split_ycbcr = __split_ycbcr;
-set_prop(functions,"297",__split_ycbcr);
-set_prop(functions,297,__split_ycbcr);
-set_prop(functions,num_to_bytestring(297),__split_ycbcr);
-
-functions.get_red = __get_red;
-set_prop(functions,"298",__get_red);
-set_prop(functions,298,__get_red);
-set_prop(functions,num_to_bytestring(298),__get_red);
-
-functions.clean = __clean;
-set_prop(functions,"299",__clean);
-set_prop(functions,299,__clean);
-set_prop(functions,num_to_bytestring(299),__clean);
-
-functions.sv_get_module_inputs = __sv_get_module_inputs;
-set_prop(functions,"300",__sv_get_module_inputs);
-set_prop(functions,300,__sv_get_module_inputs);
-set_prop(functions,num_to_bytestring(300),__sv_get_module_inputs);
-
-functions.sv_get_length_lines = __sv_get_length_lines;
-set_prop(functions,"301",__sv_get_length_lines);
-set_prop(functions,301,__sv_get_length_lines);
-set_prop(functions,num_to_bytestring(301),__sv_get_length_lines);
-
-functions.get_key_color = __get_key_color;
-set_prop(functions,"302",__get_key_color);
-set_prop(functions,302,__get_key_color);
-set_prop(functions,num_to_bytestring(302),__get_key_color);
-
-functions.fsave = __fsave;
-set_prop(functions,"303",__fsave);
-set_prop(functions,303,__fsave);
-set_prop(functions,num_to_bytestring(303),__fsave);
-
-functions.strcmp = __strcmp;
-set_prop(functions,"304",__strcmp);
-set_prop(functions,304,__strcmp);
-set_prop(functions,num_to_bytestring(304),__strcmp);
-
-functions.get_proplist = __get_proplist;
-set_prop(functions,"305",__get_proplist);
-set_prop(functions,305,__get_proplist);
-set_prop(functions,num_to_bytestring(305),__get_proplist);
-
-functions.get_type = __get_type;
-set_prop(functions,"306",__get_type);
-set_prop(functions,306,__get_type);
-set_prop(functions,num_to_bytestring(306),__get_type);
-
-functions.file_dialog = __file_dialog;
-set_prop(functions,"307",__file_dialog);
-set_prop(functions,307,__file_dialog);
-set_prop(functions,num_to_bytestring(307),__file_dialog);
-
-functions.copy_and_resize = __copy_and_resize;
-set_prop(functions,"308",__copy_and_resize);
-set_prop(functions,308,__copy_and_resize);
-set_prop(functions,num_to_bytestring(308),__copy_and_resize);
-
-functions.acosh = __acosh;
-set_prop(functions,"309",__acosh);
-set_prop(functions,309,__acosh);
-set_prop(functions,num_to_bytestring(309),__acosh);
-
-functions.sv_get_bpm = __sv_get_bpm;
-set_prop(functions,"310",__sv_get_bpm);
-set_prop(functions,310,__sv_get_bpm);
-set_prop(functions,num_to_bytestring(310),__sv_get_bpm);
-
-functions.midi_get_device = __midi_get_device;
-set_prop(functions,"311",__midi_get_device);
-set_prop(functions,311,__midi_get_device);
-set_prop(functions,num_to_bytestring(311),__midi_get_device);
-
-functions.get_text_xysize = __get_text_xysize;
-set_prop(functions,"312",__get_text_xysize);
-set_prop(functions,312,__get_text_xysize);
-set_prop(functions,num_to_bytestring(312),__get_text_xysize);
-
-functions.fclose = __fclose;
-set_prop(functions,"313",__fclose);
-set_prop(functions,313,__fclose);
-set_prop(functions,num_to_bytestring(313),__fclose);
-
-functions.get_disk0 = __get_disk0;
-set_prop(functions,"314",__get_disk0);
-set_prop(functions,314,__get_disk0);
-set_prop(functions,num_to_bytestring(314),__get_disk0);
-
-functions.remove_prop = __remove_prop;
-set_prop(functions,"315",__remove_prop);
-set_prop(functions,315,__remove_prop);
-set_prop(functions,num_to_bytestring(315),__remove_prop);
-
-functions.sv_get_number_of_module_ctls = __sv_get_number_of_module_ctls;
-set_prop(functions,"316",__sv_get_number_of_module_ctls);
-set_prop(functions,316,__sv_get_number_of_module_ctls);
-set_prop(functions,num_to_bytestring(316),__sv_get_number_of_module_ctls);
-
-functions.sv_find_module = __sv_find_module;
-set_prop(functions,"317",__sv_find_module);
-set_prop(functions,317,__sv_find_module);
-set_prop(functions,num_to_bytestring(317),__sv_find_module);
-
-functions.get_pixel_size = __get_pixel_size;
-set_prop(functions,"318",__get_pixel_size);
-set_prop(functions,318,__get_pixel_size);
-set_prop(functions,num_to_bytestring(318),__get_pixel_size);
-
-functions.get_fformat_mime = __get_fformat_mime;
-set_prop(functions,"319",__get_fformat_mime);
-set_prop(functions,319,__get_fformat_mime);
-set_prop(functions,num_to_bytestring(319),__get_fformat_mime);
-
-functions.sv_get_module_type = __sv_get_module_type;
-set_prop(functions,"320",__sv_get_module_type);
-set_prop(functions,320,__sv_get_module_type);
-set_prop(functions,num_to_bytestring(320),__sv_get_module_type);
-
-functions.sv_connect_module = __sv_connect_module;
-set_prop(functions,"321",__sv_connect_module);
-set_prop(functions,321,__sv_connect_module);
-set_prop(functions,num_to_bytestring(321),__sv_connect_module);
-
-functions.remove_frame = __remove_frame;
-set_prop(functions,"322",__remove_frame);
-set_prop(functions,322,__remove_frame);
-set_prop(functions,num_to_bytestring(322),__remove_frame);
-
-functions.clear = __clear;
-set_prop(functions,"323",__clear);
-set_prop(functions,323,__clear);
-set_prop(functions,num_to_bytestring(323),__clear);
-
-functions.set_pixel_size = __set_pixel_size;
-set_prop(functions,"324",__set_pixel_size);
-set_prop(functions,324,__set_pixel_size);
-set_prop(functions,num_to_bytestring(324),__set_pixel_size);
-
-functions.get_flist_type = __get_flist_type;
-set_prop(functions,"325",__get_flist_type);
-set_prop(functions,325,__get_flist_type);
-set_prop(functions,num_to_bytestring(325),__get_flist_type);
-
-functions.strcat = __strcat;
-set_prop(functions,"326",__strcat);
-set_prop(functions,326,__strcat);
-set_prop(functions,num_to_bytestring(326),__strcat);
-
-functions.pow = __pow;
-set_prop(functions,"327",__pow);
-set_prop(functions,327,__pow);
-set_prop(functions,num_to_bytestring(327),__pow);
-
-functions.mutex_create = __mutex_create;
-set_prop(functions,"328",__mutex_create);
-set_prop(functions,328,__mutex_create);
-set_prop(functions,num_to_bytestring(328),__mutex_create);
-
-functions.sv_remove_pattern = __sv_remove_pattern;
-set_prop(functions,"329",__sv_remove_pattern);
-set_prop(functions,329,__sv_remove_pattern);
-set_prop(functions,num_to_bytestring(329),__sv_remove_pattern);
-
-functions.dot3d = __dot3d;
-set_prop(functions,"330",__dot3d);
-set_prop(functions,330,__dot3d);
-set_prop(functions,num_to_bytestring(330),__dot3d);
-
-functions.exit = __exit;
-set_prop(functions,"331",__exit);
-set_prop(functions,331,__exit);
-set_prop(functions,num_to_bytestring(331),__exit);
-
-functions.t_scale = __t_scale;
-set_prop(functions,"332",__t_scale);
-set_prop(functions,332,__t_scale);
-set_prop(functions,num_to_bytestring(332),__t_scale);
-
-functions.get_log = __get_log;
-set_prop(functions,"333",__get_log);
-set_prop(functions,333,__get_log);
-set_prop(functions,num_to_bytestring(333),__get_log);
-
-functions.print_fps = print_fps;
-set_prop(functions,"334",print_fps);
-set_prop(functions,334,print_fps);
-set_prop(functions,num_to_bytestring(334),print_fps);
-
-functions.print_fps_screen = print_fps_screen;
-set_prop(functions,"335",print_fps_screen);
-set_prop(functions,335,print_fps_screen);
-set_prop(functions,num_to_bytestring(335),print_fps_screen);
-
-functions.print_char = print_char;
-set_prop(functions,"336",print_char);
-set_prop(functions,336,print_char);
-set_prop(functions,num_to_bytestring(336),print_char);
-
-functions.print_int = print_int;
-set_prop(functions,"337",print_int);
-set_prop(functions,337,print_int);
-set_prop(functions,num_to_bytestring(337),print_int);
-
-functions.print_float = print_float;
-set_prop(functions,"338",print_float);
-set_prop(functions,338,print_float);
-set_prop(functions,num_to_bytestring(338),print_float);
-
-functions.print_string = print_string;
-set_prop(functions,"339",print_string);
-set_prop(functions,339,print_string);
-set_prop(functions,num_to_bytestring(339),print_string);
-
-functions.print_bool = print_bool;
-set_prop(functions,"340",print_bool);
-set_prop(functions,340,print_bool);
-set_prop(functions,num_to_bytestring(340),print_bool);
-
-functions.print_color = print_color;
-set_prop(functions,"341",print_color);
-set_prop(functions,341,print_color);
-set_prop(functions,num_to_bytestring(341),print_color);
-
-functions.print_array_int = print_array_int;
-set_prop(functions,"342",print_array_int);
-set_prop(functions,342,print_array_int);
-set_prop(functions,num_to_bytestring(342),print_array_int);
-
-functions.print_array_float = print_array_float;
-set_prop(functions,"343",print_array_float);
-set_prop(functions,343,print_array_float);
-set_prop(functions,num_to_bytestring(343),print_array_float);
-
-functions.print_array_string = print_array_string;
-set_prop(functions,"344",print_array_string);
-set_prop(functions,344,print_array_string);
-set_prop(functions,num_to_bytestring(344),print_array_string);
-
-functions.print_array_bool = print_array_bool;
-set_prop(functions,"345",print_array_bool);
-set_prop(functions,345,print_array_bool);
-set_prop(functions,num_to_bytestring(345),print_array_bool);
-
-functions.print_array_color = print_array_color;
-set_prop(functions,"346",print_array_color);
-set_prop(functions,346,print_array_color);
-set_prop(functions,num_to_bytestring(346),print_array_color);
-
-functions.print_array_array_int = print_array_array_int;
-set_prop(functions,"347",print_array_array_int);
-set_prop(functions,347,print_array_array_int);
-set_prop(functions,num_to_bytestring(347),print_array_array_int);
-
-functions.print_array_array_float = print_array_array_float;
-set_prop(functions,"348",print_array_array_float);
-set_prop(functions,348,print_array_array_float);
-set_prop(functions,num_to_bytestring(348),print_array_array_float);
-
-functions.print_array_array_string = print_array_array_string;
-set_prop(functions,"349",print_array_array_string);
-set_prop(functions,349,print_array_array_string);
-set_prop(functions,num_to_bytestring(349),print_array_array_string);
-
-functions.print_array_array_bool = print_array_array_bool;
-set_prop(functions,"350",print_array_array_bool);
-set_prop(functions,350,print_array_array_bool);
-set_prop(functions,num_to_bytestring(350),print_array_array_bool);
-
-functions.print_array_array_color = print_array_array_color;
-set_prop(functions,"351",print_array_array_color);
-set_prop(functions,351,print_array_array_color);
-set_prop(functions,num_to_bytestring(351),print_array_array_color);
-
-functions.print_frametime = print_frametime;
-set_prop(functions,"352",print_frametime);
-set_prop(functions,352,print_frametime);
-set_prop(functions,num_to_bytestring(352),print_frametime);
+variables.sv_get_autostop = __sv_get_autostop;
+set_prop(variables,"0",__sv_get_autostop);
+set_prop(variables,0,__sv_get_autostop);
+set_prop(variables,num_to_bytestring(0),__sv_get_autostop);
+
+variables.op_cn = __op_cn;
+set_prop(variables,"1",__op_cn);
+set_prop(variables,1,__op_cn);
+set_prop(variables,num_to_bytestring(1),__op_cn);
+
+variables.sinh = __sinh;
+set_prop(variables,"2",__sinh);
+set_prop(variables,2,__sinh);
+set_prop(variables,num_to_bytestring(2),__sinh);
+
+variables.sv_set_module_xy = __sv_set_module_xy;
+set_prop(variables,"3",__sv_set_module_xy);
+set_prop(variables,3,__sv_set_module_xy);
+set_prop(variables,num_to_bytestring(3),__sv_set_module_xy);
+
+variables.sv_metamodule_load = __sv_metamodule_load;
+set_prop(variables,"4",__sv_metamodule_load);
+set_prop(variables,4,__sv_metamodule_load);
+set_prop(variables,num_to_bytestring(4),__sv_metamodule_load);
+
+variables.fread = __fread;
+set_prop(variables,"5",__fread);
+set_prop(variables,5,__fread);
+set_prop(variables,num_to_bytestring(5),__fread);
+
+variables.logf = __logf;
+set_prop(variables,"6",__logf);
+set_prop(variables,6,__logf);
+set_prop(variables,num_to_bytestring(6),__logf);
+
+variables.strlen1 = __strlen1;
+set_prop(variables,"7",__strlen1);
+set_prop(variables,7,__strlen1);
+set_prop(variables,num_to_bytestring(7),__strlen1);
+
+variables.log2 = __log2;
+set_prop(variables,"8",__log2);
+set_prop(variables,8,__log2);
+set_prop(variables,num_to_bytestring(8),__log2);
+
+variables.sleep = __sleep;
+set_prop(variables,"9",__sleep);
+set_prop(variables,9,__sleep);
+set_prop(variables,num_to_bytestring(9),__sleep);
+
+variables.sv_disconnect_module = __sv_disconnect_module;
+set_prop(variables,"10",__sv_disconnect_module);
+set_prop(variables,10,__sv_disconnect_module);
+set_prop(variables,num_to_bytestring(10),__sv_disconnect_module);
+
+variables.set_gl_callback = __set_gl_callback;
+set_prop(variables,"11",__set_gl_callback);
+set_prop(variables,11,__set_gl_callback);
+set_prop(variables,num_to_bytestring(11),__set_gl_callback);
+
+variables.color_gradient = __color_gradient;
+set_prop(variables,"12",__color_gradient);
+set_prop(variables,12,__color_gradient);
+set_prop(variables,num_to_bytestring(12),__color_gradient);
+
+variables.fputc = __fputc;
+set_prop(variables,"13",__fputc);
+set_prop(variables,13,__fputc);
+set_prop(variables,num_to_bytestring(13),__fputc);
+
+variables.fprintf = __fprintf;
+set_prop(variables,"14",__fprintf);
+set_prop(variables,14,__fprintf);
+set_prop(variables,num_to_bytestring(14),__fprintf);
+
+variables.tanh = __tanh;
+set_prop(variables,"15",__tanh);
+set_prop(variables,15,__tanh);
+set_prop(variables,num_to_bytestring(15),__tanh);
+
+variables.get_minutes = __get_minutes;
+set_prop(variables,"16",__get_minutes);
+set_prop(variables,16,__get_minutes);
+set_prop(variables,num_to_bytestring(16),__get_minutes);
+
+variables.sv_get_module_flags = __sv_get_module_flags;
+set_prop(variables,"17",__sv_get_module_flags);
+set_prop(variables,17,__sv_get_module_flags);
+set_prop(variables,num_to_bytestring(17),__sv_get_module_flags);
+
+variables.sv_vplayer_fload = __sv_vplayer_fload;
+set_prop(variables,"18",__sv_vplayer_fload);
+set_prop(variables,18,__sv_vplayer_fload);
+set_prop(variables,num_to_bytestring(18),__sv_vplayer_fload);
+
+variables.sv_vplayer_load = __sv_vplayer_load;
+set_prop(variables,"19",__sv_vplayer_load);
+set_prop(variables,19,__sv_vplayer_load);
+set_prop(variables,num_to_bytestring(19),__sv_vplayer_load);
+
+variables.transp = __transp;
+set_prop(variables,"20",__transp);
+set_prop(variables,20,__transp);
+set_prop(variables,num_to_bytestring(20),__transp);
+
+variables.remove_props = __remove_props;
+set_prop(variables,"21",__remove_props);
+set_prop(variables,21,__remove_props);
+set_prop(variables,num_to_bytestring(21),__remove_props);
+
+variables.textinput_dialog = __textinput_dialog;
+set_prop(variables,"22",__textinput_dialog);
+set_prop(variables,22,__textinput_dialog);
+set_prop(variables,num_to_bytestring(22),__textinput_dialog);
+
+variables.conv_filter = __conv_filter;
+set_prop(variables,"23",__conv_filter);
+set_prop(variables,23,__conv_filter);
+set_prop(variables,num_to_bytestring(23),__conv_filter);
+
+variables.get_day = __get_day;
+set_prop(variables,"24",__get_day);
+set_prop(variables,24,__get_day);
+set_prop(variables,num_to_bytestring(24),__get_day);
+
+variables.sv_set_pattern_event = __sv_set_pattern_event;
+set_prop(variables,"25",__sv_set_pattern_event);
+set_prop(variables,25,__sv_set_pattern_event);
+set_prop(variables,num_to_bytestring(25),__sv_set_pattern_event);
+
+variables.sv_get_module_scope = __sv_get_module_scope;
+set_prop(variables,"26",__sv_get_module_scope);
+set_prop(variables,26,__sv_get_module_scope);
+set_prop(variables,num_to_bytestring(26),__sv_get_module_scope);
+
+variables.sv_sampler_fload = __sv_sampler_fload;
+set_prop(variables,"27",__sv_sampler_fload);
+set_prop(variables,27,__sv_sampler_fload);
+set_prop(variables,num_to_bytestring(27),__sv_sampler_fload);
+
+variables.sv_load_module = __sv_load_module;
+set_prop(variables,"28",__sv_load_module);
+set_prop(variables,28,__sv_load_module);
+set_prop(variables,num_to_bytestring(28),__sv_load_module);
+
+variables.sv_render = __sv_render;
+set_prop(variables,"29",__sv_render);
+set_prop(variables,29,__sv_render);
+set_prop(variables,num_to_bytestring(29),__sv_render);
+
+variables.set_audio_callback = __set_audio_callback;
+set_prop(variables,"30",__set_audio_callback);
+set_prop(variables,30,__set_audio_callback);
+set_prop(variables,num_to_bytestring(30),__set_audio_callback);
+
+variables.t_get_matrix = __t_get_matrix;
+set_prop(variables,"31",__t_get_matrix);
+set_prop(variables,31,__t_get_matrix);
+set_prop(variables,num_to_bytestring(31),__t_get_matrix);
+
+variables.fgetc = __fgetc;
+set_prop(variables,"32",__fgetc);
+set_prop(variables,32,__fgetc);
+set_prop(variables,num_to_bytestring(32),__fgetc);
+
+variables.system = __system;
+set_prop(variables,"33",__system);
+set_prop(variables,33,__system);
+set_prop(variables,num_to_bytestring(33),__system);
+
+variables.sampler = __sampler;
+set_prop(variables,"34",__sampler);
+set_prop(variables,34,__sampler);
+set_prop(variables,num_to_bytestring(34),__sampler);
+
+variables.sv_get_module_ctl_type = __sv_get_module_ctl_type;
+set_prop(variables,"35",__sv_get_module_ctl_type);
+set_prop(variables,35,__sv_get_module_ctl_type);
+set_prop(variables,num_to_bytestring(35),__sv_get_module_ctl_type);
+
+variables.effector = __effector;
+set_prop(variables,"36",__effector);
+set_prop(variables,36,__effector);
+set_prop(variables,num_to_bytestring(36),__effector);
+
+variables.set_disk0 = __set_disk0;
+set_prop(variables,"37",__set_disk0);
+set_prop(variables,37,__set_disk0);
+set_prop(variables,num_to_bytestring(37),__set_disk0);
+
+variables.tan = __tan;
+set_prop(variables,"38",__tan);
+set_prop(variables,38,__tan);
+set_prop(variables,num_to_bytestring(38),__tan);
+
+variables.log = __log;
+set_prop(variables,"39",__log);
+set_prop(variables,39,__log);
+set_prop(variables,num_to_bytestring(39),__log);
+
+variables.ceil = __ceil;
+set_prop(variables,"40",__ceil);
+set_prop(variables,40,__ceil);
+set_prop(variables,num_to_bytestring(40),__ceil);
+
+variables.sv_remove = __sv_remove;
+set_prop(variables,"41",__sv_remove);
+set_prop(variables,41,__sv_remove);
+set_prop(variables,num_to_bytestring(41),__sv_remove);
+
+variables.midi_reopen_port = __midi_reopen_port;
+set_prop(variables,"42",__midi_reopen_port);
+set_prop(variables,42,__midi_reopen_port);
+set_prop(variables,num_to_bytestring(42),__midi_reopen_port);
+
+variables.box = __box;
+set_prop(variables,"43",__box);
+set_prop(variables,43,__box);
+set_prop(variables,num_to_bytestring(43),__box);
+
+variables.vsync = __vsync;
+set_prop(variables,"44",__vsync);
+set_prop(variables,44,__vsync);
+set_prop(variables,num_to_bytestring(44),__vsync);
+
+variables.strstr = __strstr;
+set_prop(variables,"45",__strstr);
+set_prop(variables,45,__strstr);
+set_prop(variables,num_to_bytestring(45),__strstr);
+
+variables.gradient = __gradient;
+set_prop(variables,"46",__gradient);
+set_prop(variables,46,__gradient);
+set_prop(variables,num_to_bytestring(46),__gradient);
+
+variables.reinterpret_type = __reinterpret_type;
+set_prop(variables,"47",__reinterpret_type);
+set_prop(variables,47,__reinterpret_type);
+set_prop(variables,num_to_bytestring(47),__reinterpret_type);
+
+variables.thread_create = __thread_create;
+set_prop(variables,"48",__thread_create);
+set_prop(variables,48,__thread_create);
+set_prop(variables,num_to_bytestring(48),__thread_create);
+
+variables.sv_sampler_load = __sv_sampler_load;
+set_prop(variables,"49",__sv_sampler_load);
+set_prop(variables,49,__sv_sampler_load);
+set_prop(variables,num_to_bytestring(49),__sv_sampler_load);
+
+variables.gl_bind_framebuffer = __gl_bind_framebuffer;
+set_prop(variables,"50",__gl_bind_framebuffer);
+set_prop(variables,50,__gl_bind_framebuffer);
+set_prop(variables,num_to_bytestring(50),__gl_bind_framebuffer);
+
+variables.get_text_ysize = __get_text_ysize;
+set_prop(variables,"51",__get_text_ysize);
+set_prop(variables,51,__get_text_ysize);
+set_prop(variables,num_to_bytestring(51),__get_text_ysize);
+
+variables.strcat1 = __strcat1;
+set_prop(variables,"52",__strcat1);
+set_prop(variables,52,__strcat1);
+set_prop(variables,num_to_bytestring(52),__strcat1);
+
+variables.op_cn2 = __op_cn2;
+set_prop(variables,"53",__op_cn2);
+set_prop(variables,53,__op_cn2);
+set_prop(variables,num_to_bytestring(53),__op_cn2);
+
+variables.expm1 = __expm1;
+set_prop(variables,"54",__expm1);
+set_prop(variables,54,__expm1);
+set_prop(variables,num_to_bytestring(54),__expm1);
+
+variables.cos = __cos;
+set_prop(variables,"55",__cos);
+set_prop(variables,55,__cos);
+set_prop(variables,num_to_bytestring(55),__cos);
+
+variables.set_key_color = __set_key_color;
+set_prop(variables,"56",__set_key_color);
+set_prop(variables,56,__set_key_color);
+set_prop(variables,num_to_bytestring(56),__set_key_color);
+
+variables.get_dot = __get_dot;
+set_prop(variables,"57",__get_dot);
+set_prop(variables,57,__get_dot);
+set_prop(variables,num_to_bytestring(57),__get_dot);
+
+variables.apply_filter = __apply_filter;
+set_prop(variables,"58",__apply_filter);
+set_prop(variables,58,__apply_filter);
+set_prop(variables,num_to_bytestring(58),__apply_filter);
+
+variables.thread_destroy = __thread_destroy;
+set_prop(variables,"59",__thread_destroy);
+set_prop(variables,59,__thread_destroy);
+set_prop(variables,num_to_bytestring(59),__thread_destroy);
+
+variables.get_year = __get_year;
+set_prop(variables,"60",__get_year);
+set_prop(variables,60,__get_year);
+set_prop(variables,num_to_bytestring(60),__get_year);
+
+variables.sv_find_pattern = __sv_find_pattern;
+set_prop(variables,"61",__sv_find_pattern);
+set_prop(variables,61,__sv_find_pattern);
+set_prop(variables,num_to_bytestring(61),__sv_find_pattern);
+
+variables.sv_set_event_t = __sv_set_event_t;
+set_prop(variables,"62",__sv_set_event_t);
+set_prop(variables,62,__sv_set_event_t);
+set_prop(variables,num_to_bytestring(62),__sv_set_event_t);
+
+variables.sv_stop = __sv_stop;
+set_prop(variables,"63",__sv_stop);
+set_prop(variables,63,__sv_stop);
+set_prop(variables,num_to_bytestring(63),__sv_stop);
+
+variables.get_audio_sample_rate = __get_audio_sample_rate;
+set_prop(variables,"64",__get_audio_sample_rate);
+set_prop(variables,64,__get_audio_sample_rate);
+set_prop(variables,num_to_bytestring(64),__get_audio_sample_rate);
+
+variables.clone_frame = __clone_frame;
+set_prop(variables,"65",__clone_frame);
+set_prop(variables,65,__clone_frame);
+set_prop(variables,num_to_bytestring(65),__clone_frame);
+
+variables.get_alpha = __get_alpha;
+set_prop(variables,"66",__get_alpha);
+set_prop(variables,66,__get_alpha);
+set_prop(variables,num_to_bytestring(66),__get_alpha);
+
+variables.mod = __mod;
+set_prop(variables,"67",__mod);
+set_prop(variables,67,__mod);
+set_prop(variables,num_to_bytestring(67),__mod);
+
+variables.sv_get_time_map = __sv_get_time_map;
+set_prop(variables,"68",__sv_get_time_map);
+set_prop(variables,68,__sv_get_time_map);
+set_prop(variables,num_to_bytestring(68),__sv_get_time_map);
+
+variables.sv_set_autostop = __sv_set_autostop;
+set_prop(variables,"69",__sv_set_autostop);
+set_prop(variables,69,__sv_set_autostop);
+set_prop(variables,num_to_bytestring(69),__sv_set_autostop);
+
+variables.stop = __stop;
+set_prop(variables,"70",__stop);
+set_prop(variables,70,__stop);
+set_prop(variables,num_to_bytestring(70),__stop);
+
+variables.gl_uniform_matrix = __gl_uniform_matrix;
+set_prop(variables,"71",__gl_uniform_matrix);
+set_prop(variables,71,__gl_uniform_matrix);
+set_prop(variables,num_to_bytestring(71),__gl_uniform_matrix);
+
+variables.get_color = __get_color;
+set_prop(variables,"72",__get_color);
+set_prop(variables,72,__get_color);
+set_prop(variables,num_to_bytestring(72),__get_color);
+
+variables.get_prop = __get_prop;
+set_prop(variables,"73",__get_prop);
+set_prop(variables,73,__get_prop);
+set_prop(variables,num_to_bytestring(73),__get_prop);
+
+variables.floor = __floor;
+set_prop(variables,"74",__floor);
+set_prop(variables,74,__floor);
+set_prop(variables,num_to_bytestring(74),__floor);
+
+variables.cosh = __cosh;
+set_prop(variables,"75",__cosh);
+set_prop(variables,75,__cosh);
+set_prop(variables,num_to_bytestring(75),__cosh);
+
+variables.sv_get_module_ctl_min = __sv_get_module_ctl_min;
+set_prop(variables,"76",__sv_get_module_ctl_min);
+set_prop(variables,76,__sv_get_module_ctl_min);
+set_prop(variables,num_to_bytestring(76),__sv_get_module_ctl_min);
+
+variables.sv_send_event = __sv_send_event;
+set_prop(variables,"77",__sv_send_event);
+set_prop(variables,77,__sv_send_event);
+set_prop(variables,num_to_bytestring(77),__sv_send_event);
+
+variables.sv_resume = __sv_resume;
+set_prop(variables,"78",__sv_resume);
+set_prop(variables,78,__sv_resume);
+set_prop(variables,num_to_bytestring(78),__sv_resume);
+
+variables.gl_uniform = __gl_uniform;
+set_prop(variables,"79",__gl_uniform);
+set_prop(variables,79,__gl_uniform);
+set_prop(variables,num_to_bytestring(79),__gl_uniform);
+
+variables.get_text_xsize = __get_text_xsize;
+set_prop(variables,"80",__get_text_xsize);
+set_prop(variables,80,__get_text_xsize);
+set_prop(variables,num_to_bytestring(80),__get_text_xsize);
+
+variables.triangles3d = __triangles3d;
+set_prop(variables,"81",__triangles3d);
+set_prop(variables,81,__triangles3d);
+set_prop(variables,num_to_bytestring(81),__triangles3d);
+
+variables.get_blend = __get_blend;
+set_prop(variables,"82",__get_blend);
+set_prop(variables,82,__get_blend);
+set_prop(variables,num_to_bytestring(82),__get_blend);
+
+variables.get_file_format = __get_file_format;
+set_prop(variables,"83",__get_file_format);
+set_prop(variables,83,__get_file_format);
+set_prop(variables,num_to_bytestring(83),__get_file_format);
+
+variables.remove_flist = __remove_flist;
+set_prop(variables,"84",__remove_flist);
+set_prop(variables,84,__remove_flist);
+set_prop(variables,num_to_bytestring(84),__remove_flist);
+
+variables.get_esize = __get_esize;
+set_prop(variables,"85",__get_esize);
+set_prop(variables,85,__get_esize);
+set_prop(variables,num_to_bytestring(85),__get_esize);
+
+variables.dlcall = __dlcall;
+set_prop(variables,"86",__dlcall);
+set_prop(variables,86,__dlcall);
+set_prop(variables,num_to_bytestring(86),__dlcall);
+
+variables.wavetable_generator = __wavetable_generator;
+set_prop(variables,"87",__wavetable_generator);
+set_prop(variables,87,__wavetable_generator);
+set_prop(variables,num_to_bytestring(87),__wavetable_generator);
+
+variables.get_event = __get_event;
+set_prop(variables,"88",__get_event);
+set_prop(variables,88,__get_event);
+set_prop(variables,num_to_bytestring(88),__get_event);
+
+variables.midi_get_event_time = __midi_get_event_time;
+set_prop(variables,"89",__midi_get_event_time);
+set_prop(variables,89,__midi_get_event_time);
+set_prop(variables,num_to_bytestring(89),__midi_get_event_time);
+
+variables.get_fformat_ext = __get_fformat_ext;
+set_prop(variables,"90",__get_fformat_ext);
+set_prop(variables,90,__get_fformat_ext);
+set_prop(variables,num_to_bytestring(90),__get_fformat_ext);
+
+variables.printf1 = __printf1;
+set_prop(variables,"91",__printf1);
+set_prop(variables,91,__printf1);
+set_prop(variables,num_to_bytestring(91),__printf1);
+
+variables.sv_get_tpl = __sv_get_tpl;
+set_prop(variables,"92",__sv_get_tpl);
+set_prop(variables,92,__sv_get_tpl);
+set_prop(variables,num_to_bytestring(92),__sv_get_tpl);
+
+variables.sv_pause = __sv_pause;
+set_prop(variables,"93",__sv_pause);
+set_prop(variables,93,__sv_pause);
+set_prop(variables,num_to_bytestring(93),__sv_pause);
+
+variables.t_push_matrix = __t_push_matrix;
+set_prop(variables,"94",__t_push_matrix);
+set_prop(variables,94,__t_push_matrix);
+set_prop(variables,num_to_bytestring(94),__t_push_matrix);
+
+variables.atan = __atan;
+set_prop(variables,"95",__atan);
+set_prop(variables,95,__atan);
+set_prop(variables,num_to_bytestring(95),__atan);
+
+variables.get_screen = __get_screen;
+set_prop(variables,"96",__get_screen);
+set_prop(variables,96,__get_screen);
+set_prop(variables,num_to_bytestring(96),__get_screen);
+
+variables.dlopen = __dlopen;
+set_prop(variables,"97",__dlopen);
+set_prop(variables,97,__dlopen);
+set_prop(variables,num_to_bytestring(97),__dlopen);
+
+variables.abs = __abs;
+set_prop(variables,"98",__abs);
+set_prop(variables,98,__abs);
+set_prop(variables,num_to_bytestring(98),__abs);
+
+variables.t_set_matrix = __t_set_matrix;
+set_prop(variables,"99",__t_set_matrix);
+set_prop(variables,99,__t_set_matrix);
+set_prop(variables,num_to_bytestring(99),__t_set_matrix);
+
+variables.line = __line;
+set_prop(variables,"100",__line);
+set_prop(variables,100,__line);
+set_prop(variables,num_to_bytestring(100),__line);
+
+variables.set_screen = __set_screen;
+set_prop(variables,"101",__set_screen);
+set_prop(variables,101,__set_screen);
+set_prop(variables,num_to_bytestring(101),__set_screen);
+
+variables.zlib_unpack = __zlib_unpack;
+set_prop(variables,"102",__zlib_unpack);
+set_prop(variables,102,__zlib_unpack);
+set_prop(variables,num_to_bytestring(102),__zlib_unpack);
+
+variables.argc = __argc;
+set_prop(variables,"103",__argc);
+set_prop(variables,103,__argc);
+set_prop(variables,num_to_bytestring(103),__argc);
+
+variables.fft = __fft;
+set_prop(variables,"104",__fft);
+set_prop(variables,104,__fft);
+set_prop(variables,num_to_bytestring(104),__fft);
+
+variables.envelope2p = __envelope2p;
+set_prop(variables,"105",__envelope2p);
+set_prop(variables,105,__envelope2p);
+set_prop(variables,num_to_bytestring(105),__envelope2p);
+
+variables.acos = __acos;
+set_prop(variables,"106",__acos);
+set_prop(variables,106,__acos);
+set_prop(variables,num_to_bytestring(106),__acos);
+
+variables.sv_module_curve = __sv_module_curve;
+set_prop(variables,"107",__sv_module_curve);
+set_prop(variables,107,__sv_module_curve);
+set_prop(variables,num_to_bytestring(107),__sv_module_curve);
+
+variables.sv_remove_module = __sv_remove_module;
+set_prop(variables,"108",__sv_remove_module);
+set_prop(variables,108,__sv_remove_module);
+set_prop(variables,num_to_bytestring(108),__sv_remove_module);
+
+variables.sv_set_name = __sv_set_name;
+set_prop(variables,"109",__sv_set_name);
+set_prop(variables,109,__sv_set_name);
+set_prop(variables,num_to_bytestring(109),__sv_set_name);
+
+variables.dot = __dot;
+set_prop(variables,"110",__dot);
+set_prop(variables,110,__dot);
+set_prop(variables,num_to_bytestring(110),__dot);
+
+variables.remove_with_alpha = __remove_with_alpha;
+set_prop(variables,"111",__remove_with_alpha);
+set_prop(variables,111,__remove_with_alpha);
+set_prop(variables,num_to_bytestring(111),__remove_with_alpha);
+
+variables.prefs_dialog = __prefs_dialog;
+set_prop(variables,"112",__prefs_dialog);
+set_prop(variables,112,__prefs_dialog);
+set_prop(variables,num_to_bytestring(112),__prefs_dialog);
+
+variables.get_seconds = __get_seconds;
+set_prop(variables,"113",__get_seconds);
+set_prop(variables,113,__get_seconds);
+set_prop(variables,num_to_bytestring(113),__get_seconds);
+
+variables.start_timer = __start_timer;
+set_prop(variables,"114",__start_timer);
+set_prop(variables,114,__start_timer);
+set_prop(variables,num_to_bytestring(114),__start_timer);
+
+variables.sv_set_module_name = __sv_set_module_name;
+set_prop(variables,"115",__sv_set_module_name);
+set_prop(variables,115,__sv_set_module_name);
+set_prop(variables,num_to_bytestring(115),__sv_set_module_name);
+
+variables.sv_unlock = __sv_unlock;
+set_prop(variables,"116",__sv_unlock);
+set_prop(variables,116,__sv_unlock);
+set_prop(variables,num_to_bytestring(116),__sv_unlock);
+
+variables.midi_close_port = __midi_close_port;
+set_prop(variables,"117",__midi_close_port);
+set_prop(variables,117,__midi_close_port);
+set_prop(variables,num_to_bytestring(117),__midi_close_port);
+
+variables.get_green = __get_green;
+set_prop(variables,"118",__get_green);
+set_prop(variables,118,__get_green);
+set_prop(variables,num_to_bytestring(118),__get_green);
+
+variables.fputs = __fputs;
+set_prop(variables,"119",__fputs);
+set_prop(variables,119,__fputs);
+set_prop(variables,num_to_bytestring(119),__fputs);
+
+variables.init_filter = __init_filter;
+set_prop(variables,"120",__init_filter);
+set_prop(variables,120,__init_filter);
+set_prop(variables,num_to_bytestring(120),__init_filter);
+
+variables.sv_get_sample_rate = __sv_get_sample_rate;
+set_prop(variables,"121",__sv_get_sample_rate);
+set_prop(variables,121,__sv_get_sample_rate);
+set_prop(variables,num_to_bytestring(121),__sv_get_sample_rate);
+
+variables.midi_open_port = __midi_open_port;
+set_prop(variables,"122",__midi_open_port);
+set_prop(variables,122,__midi_open_port);
+set_prop(variables,num_to_bytestring(122),__midi_open_port);
+
+variables.get_font = __get_font;
+set_prop(variables,"123",__get_font);
+set_prop(variables,123,__get_font);
+set_prop(variables,num_to_bytestring(123),__get_font);
+
+variables.get_zbuf = __get_zbuf;
+set_prop(variables,"124",__get_zbuf);
+set_prop(variables,124,__get_zbuf);
+set_prop(variables,num_to_bytestring(124),__get_zbuf);
+
+variables.rename_file = __rename_file;
+set_prop(variables,"125",__rename_file);
+set_prop(variables,125,__rename_file);
+set_prop(variables,num_to_bytestring(125),__rename_file);
+
+variables.strlen = __strlen;
+set_prop(variables,"126",__strlen);
+set_prop(variables,126,__strlen);
+set_prop(variables,num_to_bytestring(126),__strlen);
+
+variables.sv_set_pattern_name = __sv_set_pattern_name;
+set_prop(variables,"127",__sv_set_pattern_name);
+set_prop(variables,127,__sv_set_pattern_name);
+set_prop(variables,num_to_bytestring(127),__sv_set_pattern_name);
+
+variables.fgets = __fgets;
+set_prop(variables,"128",__fgets);
+set_prop(variables,128,__fgets);
+set_prop(variables,num_to_bytestring(128),__fgets);
+
+variables.dlclose = __dlclose;
+set_prop(variables,"129",__dlclose);
+set_prop(variables,129,__dlclose);
+set_prop(variables,num_to_bytestring(129),__dlclose);
+
+variables.sv_get_module_ctl_value = __sv_get_module_ctl_value;
+set_prop(variables,"130",__sv_get_module_ctl_value);
+set_prop(variables,130,__sv_get_module_ctl_value);
+set_prop(variables,num_to_bytestring(130),__sv_get_module_ctl_value);
+
+variables.sv_metamodule_fload = __sv_metamodule_fload;
+set_prop(variables,"131",__sv_metamodule_fload);
+set_prop(variables,131,__sv_metamodule_fload);
+set_prop(variables,num_to_bytestring(131),__sv_metamodule_fload);
+
+variables.remove_anim = __remove_anim;
+set_prop(variables,"132",__remove_anim);
+set_prop(variables,132,__remove_anim);
+set_prop(variables,num_to_bytestring(132),__remove_anim);
+
+variables.gl_draw_arrays = __gl_draw_arrays;
+set_prop(variables,"133",__gl_draw_arrays);
+set_prop(variables,133,__gl_draw_arrays);
+set_prop(variables,num_to_bytestring(133),__gl_draw_arrays);
+
+variables.set_alpha = __set_alpha;
+set_prop(variables,"134",__set_alpha);
+set_prop(variables,134,__set_alpha);
+set_prop(variables,num_to_bytestring(134),__set_alpha);
+
+variables.get_blue = __get_blue;
+set_prop(variables,"135",__get_blue);
+set_prop(variables,135,__get_blue);
+set_prop(variables,num_to_bytestring(135),__get_blue);
+
+variables.get_real_path = __get_real_path;
+set_prop(variables,"136",__get_real_path);
+set_prop(variables,136,__get_real_path);
+set_prop(variables,num_to_bytestring(136),__get_real_path);
+
+variables.strcmp1 = __strcmp1;
+set_prop(variables,"137",__strcmp1);
+set_prop(variables,137,__strcmp1);
+set_prop(variables,num_to_bytestring(137),__strcmp1);
+
+variables.sv_set_pattern_xy = __sv_set_pattern_xy;
+set_prop(variables,"138",__sv_set_pattern_xy);
+set_prop(variables,138,__sv_set_pattern_xy);
+set_prop(variables,num_to_bytestring(138),__sv_set_pattern_xy);
+
+variables.sv_set_module_color = __sv_set_module_color;
+set_prop(variables,"139",__sv_set_module_color);
+set_prop(variables,139,__sv_set_module_color);
+set_prop(variables,num_to_bytestring(139),__sv_set_module_color);
+
+variables.sv_get_status = __sv_get_status;
+set_prop(variables,"140",__sv_get_status);
+set_prop(variables,140,__sv_get_status);
+set_prop(variables,num_to_bytestring(140),__sv_get_status);
+
+variables.rotate = __rotate;
+set_prop(variables,"141",__rotate);
+set_prop(variables,141,__rotate);
+set_prop(variables,num_to_bytestring(141),__rotate);
+
+variables.sv_get_pattern_name = __sv_get_pattern_name;
+set_prop(variables,"142",__sv_get_pattern_name);
+set_prop(variables,142,__sv_get_pattern_name);
+set_prop(variables,num_to_bytestring(142),__sv_get_pattern_name);
+
+variables.split_rgb = __split_rgb;
+set_prop(variables,"143",__split_rgb);
+set_prop(variables,143,__split_rgb);
+set_prop(variables,num_to_bytestring(143),__split_rgb);
+
+variables.create_directory = __create_directory;
+set_prop(variables,"144",__create_directory);
+set_prop(variables,144,__create_directory);
+set_prop(variables,num_to_bytestring(144),__create_directory);
+
+variables.set_quit_action = __set_quit_action;
+set_prop(variables,"145",__set_quit_action);
+set_prop(variables,145,__set_quit_action);
+set_prop(variables,num_to_bytestring(145),__set_quit_action);
+
+variables.get_month = __get_month;
+set_prop(variables,"146",__get_month);
+set_prop(variables,146,__get_month);
+set_prop(variables,num_to_bytestring(146),__get_month);
+
+variables.sv_get_module_name = __sv_get_module_name;
+set_prop(variables,"147",__sv_get_module_name);
+set_prop(variables,147,__sv_get_module_name);
+set_prop(variables,num_to_bytestring(147),__sv_get_module_name);
+
+variables.sv_get_number_of_modules = __sv_get_number_of_modules;
+set_prop(variables,"148",__sv_get_number_of_modules);
+set_prop(variables,148,__sv_get_number_of_modules);
+set_prop(variables,num_to_bytestring(148),__sv_get_number_of_modules);
+
+variables.sv_volume = __sv_volume;
+set_prop(variables,"149",__sv_volume);
+set_prop(variables,149,__sv_volume);
+set_prop(variables,num_to_bytestring(149),__sv_volume);
+
+variables.sv_load = __sv_load;
+set_prop(variables,"150",__sv_load);
+set_prop(variables,150,__sv_load);
+set_prop(variables,num_to_bytestring(150),__sv_load);
+
+variables.unpack_frame = __unpack_frame;
+set_prop(variables,"151",__unpack_frame);
+set_prop(variables,151,__unpack_frame);
+set_prop(variables,num_to_bytestring(151),__unpack_frame);
+
+variables.get_flist_name = __get_flist_name;
+set_prop(variables,"152",__get_flist_name);
+set_prop(variables,152,__get_flist_name);
+set_prop(variables,num_to_bytestring(152),__get_flist_name);
+
+variables.sv_set_module_relnote = __sv_set_module_relnote;
+set_prop(variables,"153",__sv_set_module_relnote);
+set_prop(variables,153,__sv_set_module_relnote);
+set_prop(variables,num_to_bytestring(153),__sv_set_module_relnote);
+
+variables.load = __load;
+set_prop(variables,"154",__load);
+set_prop(variables,154,__load);
+set_prop(variables,num_to_bytestring(154),__load);
+
+variables.log10 = __log10;
+set_prop(variables,"155",__log10);
+set_prop(variables,155,__log10);
+set_prop(variables,num_to_bytestring(155),__log10);
+
+variables.sv_get_module_finetune = __sv_get_module_finetune;
+set_prop(variables,"156",__sv_get_module_finetune);
+set_prop(variables,156,__sv_get_module_finetune);
+set_prop(variables,num_to_bytestring(156),__sv_get_module_finetune);
+
+variables.remove_proplist = __remove_proplist;
+set_prop(variables,"157",__remove_proplist);
+set_prop(variables,157,__remove_proplist);
+set_prop(variables,num_to_bytestring(157),__remove_proplist);
+
+variables.op_cc = __op_cc;
+set_prop(variables,"158",__op_cc);
+set_prop(variables,158,__op_cc);
+set_prop(variables,num_to_bytestring(158),__op_cc);
+
+variables.mutex_trylock = __mutex_trylock;
+set_prop(variables,"159",__mutex_trylock);
+set_prop(variables,159,__mutex_trylock);
+set_prop(variables,num_to_bytestring(159),__mutex_trylock);
+
+variables.sv_pattern_mute = __sv_pattern_mute;
+set_prop(variables,"160",__sv_pattern_mute);
+set_prop(variables,160,__sv_pattern_mute);
+set_prop(variables,num_to_bytestring(160),__sv_pattern_mute);
+
+variables.sv_get_pattern_data = __sv_get_pattern_data;
+set_prop(variables,"161",__sv_get_pattern_data);
+set_prop(variables,161,__sv_get_pattern_data);
+set_prop(variables,num_to_bytestring(161),__sv_get_pattern_data);
+
+variables.sv_set_pattern_size = __sv_set_pattern_size;
+set_prop(variables,"162",__sv_set_pattern_size);
+set_prop(variables,162,__sv_set_pattern_size);
+set_prop(variables,num_to_bytestring(162),__sv_set_pattern_size);
+
+variables.sv_new_pattern = __sv_new_pattern;
+set_prop(variables,"163",__sv_new_pattern);
+set_prop(variables,163,__sv_new_pattern);
+set_prop(variables,num_to_bytestring(163),__sv_new_pattern);
+
+variables.sv_get_pattern_event = __sv_get_pattern_event;
+set_prop(variables,"164",__sv_get_pattern_event);
+set_prop(variables,164,__sv_get_pattern_event);
+set_prop(variables,num_to_bytestring(164),__sv_get_pattern_event);
+
+variables.enable_audio_input = __enable_audio_input;
+set_prop(variables,"165",__enable_audio_input);
+set_prop(variables,165,__enable_audio_input);
+set_prop(variables,num_to_bytestring(165),__enable_audio_input);
+
+variables.frame = __frame;
+set_prop(variables,"166",__frame);
+set_prop(variables,166,__frame);
+set_prop(variables,num_to_bytestring(166),__frame);
+
+variables.fflush = __fflush;
+set_prop(variables,"167",__fflush);
+set_prop(variables,167,__fflush);
+set_prop(variables,num_to_bytestring(167),__fflush);
+
+variables.load0 = __load0;
+set_prop(variables,"168",__load0);
+set_prop(variables,168,__load0);
+set_prop(variables,num_to_bytestring(168),__load0);
+
+variables.get_size = __get_size;
+set_prop(variables,"169",__get_size);
+set_prop(variables,169,__get_size);
+set_prop(variables,num_to_bytestring(169),__get_size);
+
+variables.remove = __remove;
+set_prop(variables,"170",__remove);
+set_prop(variables,170,__remove);
+set_prop(variables,num_to_bytestring(170),__remove);
+
+variables.sv_get_pattern_x = __sv_get_pattern_x;
+set_prop(variables,"171",__sv_get_pattern_x);
+set_prop(variables,171,__sv_get_pattern_x);
+set_prop(variables,num_to_bytestring(171),__sv_get_pattern_x);
+
+variables.sv_get_module_outputs = __sv_get_module_outputs;
+set_prop(variables,"172",__sv_get_module_outputs);
+set_prop(variables,172,__sv_get_module_outputs);
+set_prop(variables,num_to_bytestring(172),__sv_get_module_outputs);
+
+variables.midi_next_event = __midi_next_event;
+set_prop(variables,"173",__midi_next_event);
+set_prop(variables,173,__midi_next_event);
+set_prop(variables,num_to_bytestring(173),__midi_next_event);
+
+variables.midi_close_client = __midi_close_client;
+set_prop(variables,"174",__midi_close_client);
+set_prop(variables,174,__midi_close_client);
+set_prop(variables,num_to_bytestring(174),__midi_close_client);
+
+variables.gl_use_prog = __gl_use_prog;
+set_prop(variables,"175",__gl_use_prog);
+set_prop(variables,175,__gl_use_prog);
+set_prop(variables,num_to_bytestring(175),__gl_use_prog);
+
+variables.sv_get_pattern_y = __sv_get_pattern_y;
+set_prop(variables,"176",__sv_get_pattern_y);
+set_prop(variables,176,__sv_get_pattern_y);
+set_prop(variables,num_to_bytestring(176),__sv_get_pattern_y);
+
+variables.sv_get_number_of_patterns = __sv_get_number_of_patterns;
+set_prop(variables,"177",__sv_get_number_of_patterns);
+set_prop(variables,177,__sv_get_number_of_patterns);
+set_prop(variables,num_to_bytestring(177),__sv_get_number_of_patterns);
+
+variables.sv_save = __sv_save;
+set_prop(variables,"178",__sv_save);
+set_prop(variables,178,__sv_save);
+set_prop(variables,num_to_bytestring(178),__sv_save);
+
+variables.t_pop_matrix = __t_pop_matrix;
+set_prop(variables,"179",__t_pop_matrix);
+set_prop(variables,179,__t_pop_matrix);
+set_prop(variables,num_to_bytestring(179),__t_pop_matrix);
+
+variables.gl_get_int = __gl_get_int;
+set_prop(variables,"180",__gl_get_int);
+set_prop(variables,180,__gl_get_int);
+set_prop(variables,num_to_bytestring(180),__gl_get_int);
+
+variables.flist_next = __flist_next;
+set_prop(variables,"181",__flist_next);
+set_prop(variables,181,__flist_next);
+set_prop(variables,num_to_bytestring(181),__flist_next);
+
+variables.get_system_log = __get_system_log;
+set_prop(variables,"182",__get_system_log);
+set_prop(variables,182,__get_system_log);
+set_prop(variables,num_to_bytestring(182),__get_system_log);
+
+variables.printf = __printf;
+set_prop(variables,"183",__printf);
+set_prop(variables,183,__printf);
+set_prop(variables,num_to_bytestring(183),__printf);
+
+variables.convert_type = __convert_type;
+set_prop(variables,"184",__convert_type);
+set_prop(variables,184,__convert_type);
+set_prop(variables,num_to_bytestring(184),__convert_type);
+
+variables.sv_get_module_ctl_offset = __sv_get_module_ctl_offset;
+set_prop(variables,"185",__sv_get_module_ctl_offset);
+set_prop(variables,185,__sv_get_module_ctl_offset);
+set_prop(variables,num_to_bytestring(185),__sv_get_module_ctl_offset);
+
+variables.sv_rewind = __sv_rewind;
+set_prop(variables,"186",__sv_rewind);
+set_prop(variables,186,__sv_rewind);
+set_prop(variables,num_to_bytestring(186),__sv_rewind);
+
+variables.update_gl_data = __update_gl_data;
+set_prop(variables,"187",__update_gl_data);
+set_prop(variables,187,__update_gl_data);
+set_prop(variables,num_to_bytestring(187),__update_gl_data);
+
+variables.setxattr = __setxattr;
+set_prop(variables,"188",__setxattr);
+set_prop(variables,188,__setxattr);
+set_prop(variables,num_to_bytestring(188),__setxattr);
+
+variables.fseek = __fseek;
+set_prop(variables,"189",__fseek);
+set_prop(variables,189,__fseek);
+set_prop(variables,num_to_bytestring(189),__fseek);
+
+variables.save = __save;
+set_prop(variables,"190",__save);
+set_prop(variables,190,__save);
+set_prop(variables,num_to_bytestring(190),__save);
+
+variables.num_to_str = __num_to_str;
+set_prop(variables,"191",__num_to_str);
+set_prop(variables,191,__num_to_str);
+set_prop(variables,num_to_bytestring(191),__num_to_str);
+
+variables.get_flags = __get_flags;
+set_prop(variables,"192",__get_flags);
+set_prop(variables,192,__get_flags);
+set_prop(variables,num_to_bytestring(192),__get_flags);
+
+variables.op_ccn1 = __op_ccn1;
+set_prop(variables,"193",__op_ccn1);
+set_prop(variables,193,__op_ccn1);
+set_prop(variables,num_to_bytestring(193),__op_ccn1);
+
+variables.sv_get_current_line = __sv_get_current_line;
+set_prop(variables,"194",__sv_get_current_line);
+set_prop(variables,194,__sv_get_current_line);
+set_prop(variables,num_to_bytestring(194),__sv_get_current_line);
+
+variables.pixi = __pixi;
+set_prop(variables,"195",__pixi);
+set_prop(variables,195,__pixi);
+set_prop(variables,num_to_bytestring(195),__pixi);
+
+variables.op_ccn2 = __op_ccn2;
+set_prop(variables,"196",__op_ccn2);
+set_prop(variables,196,__op_ccn2);
+set_prop(variables,num_to_bytestring(196),__op_ccn2);
+
+variables.sv_get_module_ctl_name = __sv_get_module_ctl_name;
+set_prop(variables,"197",__sv_get_module_ctl_name);
+set_prop(variables,197,__sv_get_module_ctl_name);
+set_prop(variables,num_to_bytestring(197),__sv_get_module_ctl_name);
+
+variables.get_transp = __get_transp;
+set_prop(variables,"198",__get_transp);
+set_prop(variables,198,__get_transp);
+set_prop(variables,num_to_bytestring(198),__get_transp);
+
+variables.clone = __clone;
+set_prop(variables,"199",__clone);
+set_prop(variables,199,__clone);
+set_prop(variables,num_to_bytestring(199),__clone);
+
+variables.remove_filter = __remove_filter;
+set_prop(variables,"200",__remove_filter);
+set_prop(variables,200,__remove_filter);
+set_prop(variables,num_to_bytestring(200),__remove_filter);
+
+variables.sqrt = __sqrt;
+set_prop(variables,"201",__sqrt);
+set_prop(variables,201,__sqrt);
+set_prop(variables,num_to_bytestring(201),__sqrt);
+
+variables.exp = __exp;
+set_prop(variables,"202",__exp);
+set_prop(variables,202,__exp);
+set_prop(variables,num_to_bytestring(202),__exp);
+
+variables.mutex_destroy = __mutex_destroy;
+set_prop(variables,"203",__mutex_destroy);
+set_prop(variables,203,__mutex_destroy);
+set_prop(variables,num_to_bytestring(203),__mutex_destroy);
+
+variables.get_timer = __get_timer;
+set_prop(variables,"204",__get_timer);
+set_prop(variables,204,__get_timer);
+set_prop(variables,num_to_bytestring(204),__get_timer);
+
+variables.resize = __resize;
+set_prop(variables,"205",__resize);
+set_prop(variables,205,__resize);
+set_prop(variables,num_to_bytestring(205),__resize);
+
+variables.dlsym = __dlsym;
+set_prop(variables,"206",__dlsym);
+set_prop(variables,206,__dlsym);
+set_prop(variables,num_to_bytestring(206),__dlsym);
+
+variables.sv_fload_module = __sv_fload_module;
+set_prop(variables,"207",__sv_fload_module);
+set_prop(variables,207,__sv_fload_module);
+set_prop(variables,num_to_bytestring(207),__sv_fload_module);
+
+variables.sv_new_module = __sv_new_module;
+set_prop(variables,"208",__sv_new_module);
+set_prop(variables,208,__sv_new_module);
+set_prop(variables,num_to_bytestring(208),__sv_new_module);
+
+variables.midi_open_client = __midi_open_client;
+set_prop(variables,"209",__midi_open_client);
+set_prop(variables,209,__midi_open_client);
+set_prop(variables,num_to_bytestring(209),__midi_open_client);
+
+variables.pack_frame = __pack_frame;
+set_prop(variables,"210",__pack_frame);
+set_prop(variables,210,__pack_frame);
+set_prop(variables,num_to_bytestring(210),__pack_frame);
+
+variables.str_to_num = __str_to_num;
+set_prop(variables,"211",__str_to_num);
+set_prop(variables,211,__str_to_num);
+set_prop(variables,num_to_bytestring(211),__str_to_num);
+
+variables.set_prop = __set_prop;
+set_prop(variables,"212",__set_prop);
+set_prop(variables,212,__set_prop);
+set_prop(variables,num_to_bytestring(212),__set_prop);
+
+variables.argv = __argv;
+set_prop(variables,"213",__argv);
+set_prop(variables,213,__argv);
+set_prop(variables,num_to_bytestring(213),__argv);
+
+variables.replace_values = __replace_values;
+set_prop(variables,"214",__replace_values);
+set_prop(variables,214,__replace_values);
+set_prop(variables,num_to_bytestring(214),__replace_values);
+
+variables.new_filter = __new_filter;
+set_prop(variables,"215",__new_filter);
+set_prop(variables,215,__new_filter);
+set_prop(variables,num_to_bytestring(215),__new_filter);
+
+variables.sin = __sin;
+set_prop(variables,"216",__sin);
+set_prop(variables,216,__sin);
+set_prop(variables,num_to_bytestring(216),__sin);
+
+variables.sv_get_pattern_lines = __sv_get_pattern_lines;
+set_prop(variables,"217",__sv_get_pattern_lines);
+set_prop(variables,217,__sv_get_pattern_lines);
+set_prop(variables,num_to_bytestring(217),__sv_get_pattern_lines);
+
+variables.sv_get_module_color = __sv_get_module_color;
+set_prop(variables,"218",__sv_get_module_color);
+set_prop(variables,218,__sv_get_module_color);
+set_prop(variables,num_to_bytestring(218),__sv_get_module_color);
+
+variables.create_anim = __create_anim;
+set_prop(variables,"219",__create_anim);
+set_prop(variables,219,__create_anim);
+set_prop(variables,num_to_bytestring(219),__create_anim);
+
+variables.zlib_pack = __zlib_pack;
+set_prop(variables,"220",__zlib_pack);
+set_prop(variables,220,__zlib_pack);
+set_prop(variables,num_to_bytestring(220),__zlib_pack);
+
+variables.asinh = __asinh;
+set_prop(variables,"221",__asinh);
+set_prop(variables,221,__asinh);
+set_prop(variables,num_to_bytestring(221),__asinh);
+
+variables.gl_bind_texture = __gl_bind_texture;
+set_prop(variables,"222",__gl_bind_texture);
+set_prop(variables,222,__gl_bind_texture);
+set_prop(variables,num_to_bytestring(222),__gl_bind_texture);
+
+variables.print = __print;
+set_prop(variables,"223",__print);
+set_prop(variables,223,__print);
+set_prop(variables,num_to_bytestring(223),__print);
+
+variables.clear_zbuf = __clear_zbuf;
+set_prop(variables,"224",__clear_zbuf);
+set_prop(variables,224,__clear_zbuf);
+set_prop(variables,num_to_bytestring(224),__clear_zbuf);
+
+variables.new_flist = __new_flist;
+set_prop(variables,"225",__new_flist);
+set_prop(variables,225,__new_flist);
+set_prop(variables,num_to_bytestring(225),__new_flist);
+
+variables.op_cc1 = __op_cc1;
+set_prop(variables,"226",__op_cc1);
+set_prop(variables,226,__op_cc1);
+set_prop(variables,num_to_bytestring(226),__op_cc1);
+
+variables.op_cn = __op_cn;
+set_prop(variables,"227",__op_cn);
+set_prop(variables,227,__op_cn);
+set_prop(variables,num_to_bytestring(227),__op_cn);
+
+variables.atan2 = __atan2;
+set_prop(variables,"228",__atan2);
+set_prop(variables,228,__atan2);
+set_prop(variables,num_to_bytestring(228),__atan2);
+
+variables.sv_set_module_ctl_value = __sv_set_module_ctl_value;
+set_prop(variables,"229",__sv_set_module_ctl_value);
+set_prop(variables,229,__sv_set_module_ctl_value);
+set_prop(variables,num_to_bytestring(229),__sv_set_module_ctl_value);
+
+variables.sv_fload = __sv_fload;
+set_prop(variables,"230",__sv_fload);
+set_prop(variables,230,__sv_fload);
+set_prop(variables,num_to_bytestring(230),__sv_fload);
+
+variables.gl_new_prog = __gl_new_prog;
+set_prop(variables,"231",__gl_new_prog);
+set_prop(variables,231,__gl_new_prog);
+set_prop(variables,num_to_bytestring(231),__gl_new_prog);
+
+variables.fopen = __fopen;
+set_prop(variables,"232",__fopen);
+set_prop(variables,232,__fopen);
+set_prop(variables,num_to_bytestring(232),__fopen);
+
+variables.reset_flags = __reset_flags;
+set_prop(variables,"233",__reset_flags);
+set_prop(variables,233,__reset_flags);
+set_prop(variables,num_to_bytestring(233),__reset_flags);
+
+variables.get_ysize = __get_ysize;
+set_prop(variables,"234",__get_ysize);
+set_prop(variables,234,__get_ysize);
+set_prop(variables,num_to_bytestring(234),__get_ysize);
+
+variables.generator = __generator;
+set_prop(variables,"235",__generator);
+set_prop(variables,235,__generator);
+set_prop(variables,num_to_bytestring(235),__generator);
+
+variables.op_cc2 = __op_cc2;
+set_prop(variables,"236",__op_cc2);
+set_prop(variables,236,__op_cc2);
+set_prop(variables,num_to_bytestring(236),__op_cc2);
+
+variables.atanh = __atanh;
+set_prop(variables,"237",__atanh);
+set_prop(variables,237,__atanh);
+set_prop(variables,num_to_bytestring(237),__atanh);
+
+variables.sv_get_pattern_tracks = __sv_get_pattern_tracks;
+set_prop(variables,"238",__sv_get_pattern_tracks);
+set_prop(variables,238,__sv_get_pattern_tracks);
+set_prop(variables,num_to_bytestring(238),__sv_get_pattern_tracks);
+
+variables.sv_get_module_ctl_group = __sv_get_module_ctl_group;
+set_prop(variables,"239",__sv_get_module_ctl_group);
+set_prop(variables,239,__sv_get_module_ctl_group);
+set_prop(variables,num_to_bytestring(239),__sv_get_module_ctl_group);
+
+variables.sv_get_module_ctl_max = __sv_get_module_ctl_max;
+set_prop(variables,"240",__sv_get_module_ctl_max);
+set_prop(variables,240,__sv_get_module_ctl_max);
+set_prop(variables,num_to_bytestring(240),__sv_get_module_ctl_max);
+
+variables.sv_set_module_finetune = __sv_set_module_finetune;
+set_prop(variables,"241",__sv_set_module_finetune);
+set_prop(variables,241,__sv_set_module_finetune);
+set_prop(variables,num_to_bytestring(241),__sv_set_module_finetune);
+
+variables.sv_get_module_xy = __sv_get_module_xy;
+set_prop(variables,"242",__sv_get_module_xy);
+set_prop(variables,242,__sv_get_module_xy);
+set_prop(variables,num_to_bytestring(242),__sv_get_module_xy);
+
+variables.sv_get_current_signal_level = __sv_get_current_signal_level;
+set_prop(variables,"243",__sv_get_current_signal_level);
+set_prop(variables,243,__sv_get_current_signal_level);
+set_prop(variables,num_to_bytestring(243),__sv_get_current_signal_level);
+
+variables.sv_get_current_line2 = __sv_get_current_line2;
+set_prop(variables,"244",__sv_get_current_line2);
+set_prop(variables,244,__sv_get_current_line2);
+set_prop(variables,num_to_bytestring(244),__sv_get_current_line2);
+
+variables.gl_get_float = __gl_get_float;
+set_prop(variables,"245",__gl_get_float);
+set_prop(variables,245,__gl_get_float);
+set_prop(variables,num_to_bytestring(245),__gl_get_float);
+
+variables.remove_gl_data = __remove_gl_data;
+set_prop(variables,"246",__remove_gl_data);
+set_prop(variables,246,__remove_gl_data);
+set_prop(variables,num_to_bytestring(246),__remove_gl_data);
+
+variables.sv_lock = __sv_lock;
+set_prop(variables,"247",__sv_lock);
+set_prop(variables,247,__sv_lock);
+set_prop(variables,num_to_bytestring(247),__sv_lock);
+
+variables.midi_send_event = __midi_send_event;
+set_prop(variables,"248",__midi_send_event);
+set_prop(variables,248,__midi_send_event);
+set_prop(variables,num_to_bytestring(248),__midi_send_event);
+
+variables.t_translate = __t_translate;
+set_prop(variables,"249",__t_translate);
+set_prop(variables,249,__t_translate);
+set_prop(variables,num_to_bytestring(249),__t_translate);
+
+variables.gl_blend_func = __gl_blend_func;
+set_prop(variables,"250",__gl_blend_func);
+set_prop(variables,250,__gl_blend_func);
+set_prop(variables,num_to_bytestring(250),__gl_blend_func);
+
+variables.fbox = __fbox;
+set_prop(variables,"251",__fbox);
+set_prop(variables,251,__fbox);
+set_prop(variables,num_to_bytestring(251),__fbox);
+
+variables.fwrite = __fwrite;
+set_prop(variables,"252",__fwrite);
+set_prop(variables,252,__fwrite);
+set_prop(variables,num_to_bytestring(252),__fwrite);
+
+variables.reset_filter = __reset_filter;
+set_prop(variables,"253",__reset_filter);
+set_prop(variables,253,__reset_filter);
+set_prop(variables,num_to_bytestring(253),__reset_filter);
+
+variables.mutex_lock = __mutex_lock;
+set_prop(variables,"254",__mutex_lock);
+set_prop(variables,254,__mutex_lock);
+set_prop(variables,num_to_bytestring(254),__mutex_lock);
+
+variables.get_note_freq = __get_note_freq;
+set_prop(variables,"255",__get_note_freq);
+set_prop(variables,255,__get_note_freq);
+set_prop(variables,num_to_bytestring(255),__get_note_freq);
+
+variables.fload = __fload;
+set_prop(variables,"256",__fload);
+set_prop(variables,256,__fload);
+set_prop(variables,num_to_bytestring(256),__fload);
+
+variables.show_memory_debug_messages = __show_memory_debug_messages;
+set_prop(variables,"257",__show_memory_debug_messages);
+set_prop(variables,257,__show_memory_debug_messages);
+set_prop(variables,num_to_bytestring(257),__show_memory_debug_messages);
+
+variables.rand = __rand;
+set_prop(variables,"258",__rand);
+set_prop(variables,258,__rand);
+set_prop(variables,num_to_bytestring(258),__rand);
+
+variables.get_hours = __get_hours;
+set_prop(variables,"259",__get_hours);
+set_prop(variables,259,__get_hours);
+set_prop(variables,num_to_bytestring(259),__get_hours);
+
+variables.sort_triangles3d = __sort_triangles3d;
+set_prop(variables,"260",__sort_triangles3d);
+set_prop(variables,260,__sort_triangles3d);
+set_prop(variables,num_to_bytestring(260),__sort_triangles3d);
+
+variables.ftell = __ftell;
+set_prop(variables,"261",__ftell);
+set_prop(variables,261,__ftell);
+set_prop(variables,num_to_bytestring(261),__ftell);
+
+variables.sprintf = __sprintf;
+set_prop(variables,"262",__sprintf);
+set_prop(variables,262,__sprintf);
+set_prop(variables,num_to_bytestring(262),__sprintf);
+
+variables.set_flags = __set_flags;
+set_prop(variables,"263",__set_flags);
+set_prop(variables,263,__set_flags);
+set_prop(variables,num_to_bytestring(263),__set_flags);
+
+variables.get_xsize = __get_xsize;
+set_prop(variables,"264",__get_xsize);
+set_prop(variables,264,__get_xsize);
+set_prop(variables,num_to_bytestring(264),__get_xsize);
+
+variables.copy = __copy;
+set_prop(variables,"265",__copy);
+set_prop(variables,265,__copy);
+set_prop(variables,num_to_bytestring(265),__copy);
+
+variables.open_url = __open_url;
+set_prop(variables,"266",__open_url);
+set_prop(variables,266,__open_url);
+set_prop(variables,num_to_bytestring(266),__open_url);
+
+variables.midi_get_event = __midi_get_event;
+set_prop(variables,"267",__midi_get_event);
+set_prop(variables,267,__midi_get_event);
+set_prop(variables,num_to_bytestring(267),__midi_get_event);
+
+variables.t_rotate = __t_rotate;
+set_prop(variables,"268",__t_rotate);
+set_prop(variables,268,__t_rotate);
+set_prop(variables,num_to_bytestring(268),__t_rotate);
+
+variables.t_reset = __t_reset;
+set_prop(variables,"269",__t_reset);
+set_prop(variables,269,__t_reset);
+set_prop(variables,num_to_bytestring(269),__t_reset);
+
+variables.set_font = __set_font;
+set_prop(variables,"270",__set_font);
+set_prop(variables,270,__set_font);
+set_prop(variables,num_to_bytestring(270),__set_font);
+
+variables.set_zbuf = __set_zbuf;
+set_prop(variables,"271",__set_zbuf);
+set_prop(variables,271,__set_zbuf);
+set_prop(variables,num_to_bytestring(271),__set_zbuf);
+
+variables.feof = __feof;
+set_prop(variables,"272",__feof);
+set_prop(variables,272,__feof);
+set_prop(variables,num_to_bytestring(272),__feof);
+
+variables.remove_file = __remove_file;
+set_prop(variables,"273",__remove_file);
+set_prop(variables,273,__remove_file);
+set_prop(variables,num_to_bytestring(273),__remove_file);
+
+variables.rand_seed = __rand_seed;
+set_prop(variables,"274",__rand_seed);
+set_prop(variables,274,__rand_seed);
+set_prop(variables,num_to_bytestring(274),__rand_seed);
+
+variables.exp2 = __exp2;
+set_prop(variables,"275",__exp2);
+set_prop(variables,275,__exp2);
+set_prop(variables,num_to_bytestring(275),__exp2);
+
+variables.asin = __asin;
+set_prop(variables,"276",__asin);
+set_prop(variables,276,__asin);
+set_prop(variables,num_to_bytestring(276),__asin);
+
+variables.mutex_unlock = __mutex_unlock;
+set_prop(variables,"277",__mutex_unlock);
+set_prop(variables,277,__mutex_unlock);
+set_prop(variables,num_to_bytestring(277),__mutex_unlock);
+
+variables.sv_play = __sv_play;
+set_prop(variables,"278",__sv_play);
+set_prop(variables,278,__sv_play);
+set_prop(variables,num_to_bytestring(278),__sv_play);
+
+variables.sv_fsave = __sv_fsave;
+set_prop(variables,"279",__sv_fsave);
+set_prop(variables,279,__sv_fsave);
+set_prop(variables,num_to_bytestring(279),__sv_fsave);
+
+variables.t_mul_matrix = __t_mul_matrix;
+set_prop(variables,"280",__t_mul_matrix);
+set_prop(variables,280,__t_mul_matrix);
+set_prop(variables,num_to_bytestring(280),__t_mul_matrix);
+
+variables.line3d = __line3d;
+set_prop(variables,"281",__line3d);
+set_prop(variables,281,__line3d);
+set_prop(variables,num_to_bytestring(281),__line3d);
+
+variables.get_dot3d = __get_dot3d;
+set_prop(variables,"282",__get_dot3d);
+set_prop(variables,282,__get_dot3d);
+set_prop(variables,num_to_bytestring(282),__get_dot3d);
+
+variables.fopen_mem = __fopen_mem;
+set_prop(variables,"283",__fopen_mem);
+set_prop(variables,283,__fopen_mem);
+set_prop(variables,num_to_bytestring(283),__fopen_mem);
+
+variables.sprintf2 = __sprintf2;
+set_prop(variables,"284",__sprintf2);
+set_prop(variables,284,__sprintf2);
+set_prop(variables,num_to_bytestring(284),__sprintf2);
+
+variables.get_tps = __get_tps;
+set_prop(variables,"285",__get_tps);
+set_prop(variables,285,__get_tps);
+set_prop(variables,num_to_bytestring(285),__get_tps);
+
+variables.get_ticks = __get_ticks;
+set_prop(variables,"286",__get_ticks);
+set_prop(variables,286,__get_ticks);
+set_prop(variables,num_to_bytestring(286),__get_ticks);
+
+variables.sv_get_length_frames = __sv_get_length_frames;
+set_prop(variables,"287",__sv_get_length_frames);
+set_prop(variables,287,__sv_get_length_frames);
+set_prop(variables,num_to_bytestring(287),__sv_get_length_frames);
+
+variables.sv_new = __sv_new;
+set_prop(variables,"288",__sv_new);
+set_prop(variables,288,__sv_new);
+set_prop(variables,num_to_bytestring(288),__sv_new);
+
+variables.t_point = __t_point;
+set_prop(variables,"289",__t_point);
+set_prop(variables,289,__t_point);
+set_prop(variables,num_to_bytestring(289),__t_point);
+
+variables.play = __play;
+set_prop(variables,"290",__play);
+set_prop(variables,290,__play);
+set_prop(variables,num_to_bytestring(290),__play);
+
+variables.copy_file = __copy_file;
+set_prop(variables,"291",__copy_file);
+set_prop(variables,291,__copy_file);
+set_prop(variables,num_to_bytestring(291),__copy_file);
+
+variables.get_file_size = __get_file_size;
+set_prop(variables,"292",__get_file_size);
+set_prop(variables,292,__get_file_size);
+set_prop(variables,num_to_bytestring(292),__get_file_size);
+
+variables.new = __new;
+set_prop(variables,"293",__new);
+set_prop(variables,293,__new);
+set_prop(variables,num_to_bytestring(293),__new);
+
+variables.op_ccn = __op_ccn;
+set_prop(variables,"294",__op_ccn);
+set_prop(variables,294,__op_ccn);
+set_prop(variables,num_to_bytestring(294),__op_ccn);
+
+variables.sv_get_name = __sv_get_name;
+set_prop(variables,"295",__sv_get_name);
+set_prop(variables,295,__sv_get_name);
+set_prop(variables,num_to_bytestring(295),__sv_get_name);
+
+variables.sv_sync_resume = __sv_sync_resume;
+set_prop(variables,"296",__sv_sync_resume);
+set_prop(variables,296,__sv_sync_resume);
+set_prop(variables,num_to_bytestring(296),__sv_sync_resume);
+
+variables.split_ycbcr = __split_ycbcr;
+set_prop(variables,"297",__split_ycbcr);
+set_prop(variables,297,__split_ycbcr);
+set_prop(variables,num_to_bytestring(297),__split_ycbcr);
+
+variables.get_red = __get_red;
+set_prop(variables,"298",__get_red);
+set_prop(variables,298,__get_red);
+set_prop(variables,num_to_bytestring(298),__get_red);
+
+variables.clean = __clean;
+set_prop(variables,"299",__clean);
+set_prop(variables,299,__clean);
+set_prop(variables,num_to_bytestring(299),__clean);
+
+variables.sv_get_module_inputs = __sv_get_module_inputs;
+set_prop(variables,"300",__sv_get_module_inputs);
+set_prop(variables,300,__sv_get_module_inputs);
+set_prop(variables,num_to_bytestring(300),__sv_get_module_inputs);
+
+variables.sv_get_length_lines = __sv_get_length_lines;
+set_prop(variables,"301",__sv_get_length_lines);
+set_prop(variables,301,__sv_get_length_lines);
+set_prop(variables,num_to_bytestring(301),__sv_get_length_lines);
+
+variables.get_key_color = __get_key_color;
+set_prop(variables,"302",__get_key_color);
+set_prop(variables,302,__get_key_color);
+set_prop(variables,num_to_bytestring(302),__get_key_color);
+
+variables.fsave = __fsave;
+set_prop(variables,"303",__fsave);
+set_prop(variables,303,__fsave);
+set_prop(variables,num_to_bytestring(303),__fsave);
+
+variables.strcmp = __strcmp;
+set_prop(variables,"304",__strcmp);
+set_prop(variables,304,__strcmp);
+set_prop(variables,num_to_bytestring(304),__strcmp);
+
+variables.get_proplist = __get_proplist;
+set_prop(variables,"305",__get_proplist);
+set_prop(variables,305,__get_proplist);
+set_prop(variables,num_to_bytestring(305),__get_proplist);
+
+variables.get_type = __get_type;
+set_prop(variables,"306",__get_type);
+set_prop(variables,306,__get_type);
+set_prop(variables,num_to_bytestring(306),__get_type);
+
+variables.file_dialog = __file_dialog;
+set_prop(variables,"307",__file_dialog);
+set_prop(variables,307,__file_dialog);
+set_prop(variables,num_to_bytestring(307),__file_dialog);
+
+variables.copy_and_resize = __copy_and_resize;
+set_prop(variables,"308",__copy_and_resize);
+set_prop(variables,308,__copy_and_resize);
+set_prop(variables,num_to_bytestring(308),__copy_and_resize);
+
+variables.acosh = __acosh;
+set_prop(variables,"309",__acosh);
+set_prop(variables,309,__acosh);
+set_prop(variables,num_to_bytestring(309),__acosh);
+
+variables.sv_get_bpm = __sv_get_bpm;
+set_prop(variables,"310",__sv_get_bpm);
+set_prop(variables,310,__sv_get_bpm);
+set_prop(variables,num_to_bytestring(310),__sv_get_bpm);
+
+variables.midi_get_device = __midi_get_device;
+set_prop(variables,"311",__midi_get_device);
+set_prop(variables,311,__midi_get_device);
+set_prop(variables,num_to_bytestring(311),__midi_get_device);
+
+variables.get_text_xysize = __get_text_xysize;
+set_prop(variables,"312",__get_text_xysize);
+set_prop(variables,312,__get_text_xysize);
+set_prop(variables,num_to_bytestring(312),__get_text_xysize);
+
+variables.fclose = __fclose;
+set_prop(variables,"313",__fclose);
+set_prop(variables,313,__fclose);
+set_prop(variables,num_to_bytestring(313),__fclose);
+
+variables.get_disk0 = __get_disk0;
+set_prop(variables,"314",__get_disk0);
+set_prop(variables,314,__get_disk0);
+set_prop(variables,num_to_bytestring(314),__get_disk0);
+
+variables.remove_prop = __remove_prop;
+set_prop(variables,"315",__remove_prop);
+set_prop(variables,315,__remove_prop);
+set_prop(variables,num_to_bytestring(315),__remove_prop);
+
+variables.sv_get_number_of_module_ctls = __sv_get_number_of_module_ctls;
+set_prop(variables,"316",__sv_get_number_of_module_ctls);
+set_prop(variables,316,__sv_get_number_of_module_ctls);
+set_prop(variables,num_to_bytestring(316),__sv_get_number_of_module_ctls);
+
+variables.sv_find_module = __sv_find_module;
+set_prop(variables,"317",__sv_find_module);
+set_prop(variables,317,__sv_find_module);
+set_prop(variables,num_to_bytestring(317),__sv_find_module);
+
+variables.get_pixel_size = __get_pixel_size;
+set_prop(variables,"318",__get_pixel_size);
+set_prop(variables,318,__get_pixel_size);
+set_prop(variables,num_to_bytestring(318),__get_pixel_size);
+
+variables.get_fformat_mime = __get_fformat_mime;
+set_prop(variables,"319",__get_fformat_mime);
+set_prop(variables,319,__get_fformat_mime);
+set_prop(variables,num_to_bytestring(319),__get_fformat_mime);
+
+variables.sv_get_module_type = __sv_get_module_type;
+set_prop(variables,"320",__sv_get_module_type);
+set_prop(variables,320,__sv_get_module_type);
+set_prop(variables,num_to_bytestring(320),__sv_get_module_type);
+
+variables.sv_connect_module = __sv_connect_module;
+set_prop(variables,"321",__sv_connect_module);
+set_prop(variables,321,__sv_connect_module);
+set_prop(variables,num_to_bytestring(321),__sv_connect_module);
+
+variables.remove_frame = __remove_frame;
+set_prop(variables,"322",__remove_frame);
+set_prop(variables,322,__remove_frame);
+set_prop(variables,num_to_bytestring(322),__remove_frame);
+
+variables.clear = __clear;
+set_prop(variables,"323",__clear);
+set_prop(variables,323,__clear);
+set_prop(variables,num_to_bytestring(323),__clear);
+
+variables.set_pixel_size = __set_pixel_size;
+set_prop(variables,"324",__set_pixel_size);
+set_prop(variables,324,__set_pixel_size);
+set_prop(variables,num_to_bytestring(324),__set_pixel_size);
+
+variables.get_flist_type = __get_flist_type;
+set_prop(variables,"325",__get_flist_type);
+set_prop(variables,325,__get_flist_type);
+set_prop(variables,num_to_bytestring(325),__get_flist_type);
+
+variables.strcat = __strcat;
+set_prop(variables,"326",__strcat);
+set_prop(variables,326,__strcat);
+set_prop(variables,num_to_bytestring(326),__strcat);
+
+variables.pow = __pow;
+set_prop(variables,"327",__pow);
+set_prop(variables,327,__pow);
+set_prop(variables,num_to_bytestring(327),__pow);
+
+variables.mutex_create = __mutex_create;
+set_prop(variables,"328",__mutex_create);
+set_prop(variables,328,__mutex_create);
+set_prop(variables,num_to_bytestring(328),__mutex_create);
+
+variables.sv_remove_pattern = __sv_remove_pattern;
+set_prop(variables,"329",__sv_remove_pattern);
+set_prop(variables,329,__sv_remove_pattern);
+set_prop(variables,num_to_bytestring(329),__sv_remove_pattern);
+
+variables.dot3d = __dot3d;
+set_prop(variables,"330",__dot3d);
+set_prop(variables,330,__dot3d);
+set_prop(variables,num_to_bytestring(330),__dot3d);
+
+variables.exit = __exit;
+set_prop(variables,"331",__exit);
+set_prop(variables,331,__exit);
+set_prop(variables,num_to_bytestring(331),__exit);
+
+variables.t_scale = __t_scale;
+set_prop(variables,"332",__t_scale);
+set_prop(variables,332,__t_scale);
+set_prop(variables,num_to_bytestring(332),__t_scale);
+
+variables.get_log = __get_log;
+set_prop(variables,"333",__get_log);
+set_prop(variables,333,__get_log);
+set_prop(variables,num_to_bytestring(333),__get_log);
+
+variables.print_fps = print_fps;
+set_prop(variables,"334",print_fps);
+set_prop(variables,334,print_fps);
+set_prop(variables,num_to_bytestring(334),print_fps);
+
+variables.print_fps_screen = print_fps_screen;
+set_prop(variables,"335",print_fps_screen);
+set_prop(variables,335,print_fps_screen);
+set_prop(variables,num_to_bytestring(335),print_fps_screen);
+
+variables.print_char = print_char;
+set_prop(variables,"336",print_char);
+set_prop(variables,336,print_char);
+set_prop(variables,num_to_bytestring(336),print_char);
+
+variables.print_int = print_int;
+set_prop(variables,"337",print_int);
+set_prop(variables,337,print_int);
+set_prop(variables,num_to_bytestring(337),print_int);
+
+variables.print_float = print_float;
+set_prop(variables,"338",print_float);
+set_prop(variables,338,print_float);
+set_prop(variables,num_to_bytestring(338),print_float);
+
+variables.print_string = print_string;
+set_prop(variables,"339",print_string);
+set_prop(variables,339,print_string);
+set_prop(variables,num_to_bytestring(339),print_string);
+
+variables.print_bool = print_bool;
+set_prop(variables,"340",print_bool);
+set_prop(variables,340,print_bool);
+set_prop(variables,num_to_bytestring(340),print_bool);
+
+variables.print_color = print_color;
+set_prop(variables,"341",print_color);
+set_prop(variables,341,print_color);
+set_prop(variables,num_to_bytestring(341),print_color);
+
+variables.print_array_int = print_array_int;
+set_prop(variables,"342",print_array_int);
+set_prop(variables,342,print_array_int);
+set_prop(variables,num_to_bytestring(342),print_array_int);
+
+variables.print_array_float = print_array_float;
+set_prop(variables,"343",print_array_float);
+set_prop(variables,343,print_array_float);
+set_prop(variables,num_to_bytestring(343),print_array_float);
+
+variables.print_array_string = print_array_string;
+set_prop(variables,"344",print_array_string);
+set_prop(variables,344,print_array_string);
+set_prop(variables,num_to_bytestring(344),print_array_string);
+
+variables.print_array_bool = print_array_bool;
+set_prop(variables,"345",print_array_bool);
+set_prop(variables,345,print_array_bool);
+set_prop(variables,num_to_bytestring(345),print_array_bool);
+
+variables.print_array_color = print_array_color;
+set_prop(variables,"346",print_array_color);
+set_prop(variables,346,print_array_color);
+set_prop(variables,num_to_bytestring(346),print_array_color);
+
+variables.print_array_array_int = print_array_array_int;
+set_prop(variables,"347",print_array_array_int);
+set_prop(variables,347,print_array_array_int);
+set_prop(variables,num_to_bytestring(347),print_array_array_int);
+
+variables.print_array_array_float = print_array_array_float;
+set_prop(variables,"348",print_array_array_float);
+set_prop(variables,348,print_array_array_float);
+set_prop(variables,num_to_bytestring(348),print_array_array_float);
+
+variables.print_array_array_string = print_array_array_string;
+set_prop(variables,"349",print_array_array_string);
+set_prop(variables,349,print_array_array_string);
+set_prop(variables,num_to_bytestring(349),print_array_array_string);
+
+variables.print_array_array_bool = print_array_array_bool;
+set_prop(variables,"350",print_array_array_bool);
+set_prop(variables,350,print_array_array_bool);
+set_prop(variables,num_to_bytestring(350),print_array_array_bool);
+
+variables.print_array_array_color = print_array_array_color;
+set_prop(variables,"351",print_array_array_color);
+set_prop(variables,351,print_array_array_color);
+set_prop(variables,num_to_bytestring(351),print_array_array_color);
+
+variables.print_frametime = print_frametime;
+set_prop(variables,"352",print_frametime);
+set_prop(variables,352,print_frametime);
+set_prop(variables,num_to_bytestring(352),print_frametime);

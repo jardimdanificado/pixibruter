@@ -151,13 +151,13 @@ fn dummy()
 {
     ret(0);
 }
-functions.dummy = dummy;
+variables.dummy = dummy;
 
 fn just_return($value)
 {
     ret($value);
 }
-functions.just_return = just_return;
+variables.just_return = just_return;
 
 fn set_all($array,$value)
 {
@@ -190,14 +190,14 @@ fn print_all()
     }
     printf("\n");
 }
-functions.print_all = print_all;
+variables.print_all = print_all;
 
 fn container_count()
 {
     $count = new();
     ret($count);
 }
-functions.container_count = container_count;
+variables.container_count = container_count;
 
 fn print_container_count()
 {
@@ -205,7 +205,7 @@ fn print_container_count()
     printf("Container count: %d\n", container_counter);
     remove(container_counter);
 }
-functions.print_container_count = print_container_count;
+variables.print_container_count = print_container_count;
 
 fn log_container_count()
 {
@@ -213,7 +213,7 @@ fn log_container_count()
     logf("Container count: %d\n", container_counter);
     remove(container_counter);
 }
-functions.log_container_count = log_container_count;
+variables.log_container_count = log_container_count;
 
 fn flex($object,$size)
 {
@@ -221,7 +221,7 @@ fn flex($object,$size)
     resize($object,$newsize);
     ret($newsize);
 }
-functions.flex = flex;
+variables.flex = flex;
 
 //error functions
 //error functions
@@ -232,7 +232,7 @@ fn error($message)
     printf("[Error]: %s\n", $message);
     halt;
 }
-functions.error = error;
+variables.error = error;
 
 fn errorf($message, $args)
 {
@@ -241,7 +241,7 @@ fn errorf($message, $args)
     printf("\n");
     halt;
 }
-functions.errorf = errorf;
+variables.errorf = errorf;
 
 fn errorf1($message, $arg1)
 {
@@ -250,7 +250,7 @@ fn errorf1($message, $arg1)
     printf("\n");
     halt;
 }
-functions.errorf1 = errorf1;
+variables.errorf1 = errorf1;
 
 fn errorf2($message, $arg1, $arg2)
 {
@@ -259,7 +259,7 @@ fn errorf2($message, $arg1, $arg2)
     printf("\n");
     halt;
 }
-functions.errorf2 = errorf2;
+variables.errorf2 = errorf2;
 
 fn errorf3($message, $arg1, $arg2, $arg3)
 {
@@ -268,7 +268,7 @@ fn errorf3($message, $arg1, $arg2, $arg3)
     printf("\n");
     halt;
 }
-functions.errorf3 = errorf3;
+variables.errorf3 = errorf3;
 
 fn errorf4($message, $arg1, $arg2, $arg3, $arg4)
 {
@@ -277,7 +277,7 @@ fn errorf4($message, $arg1, $arg2, $arg3, $arg4)
     printf("\n");
     halt;
 }
-functions.errorf4 = errorf4;
+variables.errorf4 = errorf4;
 
 fn errorf5($message, $arg1, $arg2, $arg3, $arg4, $arg5)
 {
@@ -286,7 +286,7 @@ fn errorf5($message, $arg1, $arg2, $arg3, $arg4, $arg5)
     printf("\n");
     halt;
 }
-functions.errorf5 = errorf5;
+variables.errorf5 = errorf5;
 
 fn errorf6($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
 {
@@ -295,7 +295,7 @@ fn errorf6($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
     printf("\n");
     halt;
 }
-functions.errorf6 = errorf6;
+variables.errorf6 = errorf6;
 
 fn errorf7($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
 {
@@ -304,7 +304,7 @@ fn errorf7($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
     printf("\n");
     halt;
 }
-functions.errorf7 = errorf7;
+variables.errorf7 = errorf7;
 
 fn errorf8($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
 {
@@ -313,13 +313,13 @@ fn errorf8($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
     printf("\n");
     halt;
 }
-functions.errorf8 = errorf8;
+variables.errorf8 = errorf8;
 
 fn warning($message)
 {
     printf("[Warning]: %s\n", $message);
 }
-functions.warning = warning;
+variables.warning = warning;
 
 fn warningf($message, $args)
 {
@@ -327,7 +327,7 @@ fn warningf($message, $args)
     printf($message, $args);
     printf("\n");
 }
-functions.warningf = warningf;
+variables.warningf = warningf;
 
 fn warningf1($message, $arg1)
 {
@@ -335,7 +335,7 @@ fn warningf1($message, $arg1)
     printf($message, $arg1);
     printf("\n");
 }
-functions.warningf1 = warningf1;
+variables.warningf1 = warningf1;
 
 fn warningf2($message, $arg1, $arg2)
 {
@@ -343,7 +343,7 @@ fn warningf2($message, $arg1, $arg2)
     printf($message, $arg1, $arg2);
     printf("\n");
 }
-functions.warningf2 = warningf2;
+variables.warningf2 = warningf2;
 
 fn warningf3($message, $arg1, $arg2, $arg3)
 {
@@ -351,7 +351,7 @@ fn warningf3($message, $arg1, $arg2, $arg3)
     printf($message, $arg1, $arg2, $arg3);
     printf("\n");
 }
-functions.warningf3 = warningf3;
+variables.warningf3 = warningf3;
 
 fn warningf4($message, $arg1, $arg2, $arg3, $arg4)
 {
@@ -359,7 +359,7 @@ fn warningf4($message, $arg1, $arg2, $arg3, $arg4)
     printf($message, $arg1, $arg2, $arg3, $arg4);
     printf("\n");
 }
-functions.warningf4 = warningf4;
+variables.warningf4 = warningf4;
 
 fn warningf5($message, $arg1, $arg2, $arg3, $arg4, $arg5)
 {
@@ -367,7 +367,7 @@ fn warningf5($message, $arg1, $arg2, $arg3, $arg4, $arg5)
     printf($message, $arg1, $arg2, $arg3, $arg4, $arg5);
     printf("\n");
 }
-functions.warningf5 = warningf5;
+variables.warningf5 = warningf5;
 
 fn warningf6($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
 {
@@ -375,7 +375,7 @@ fn warningf6($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
     printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
     printf("\n");
 }
-functions.warningf6 = warningf6;
+variables.warningf6 = warningf6;
 
 fn warningf7($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
 {
@@ -383,7 +383,7 @@ fn warningf7($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
     printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7);
     printf("\n");
 }
-functions.warningf7 = warningf7;
+variables.warningf7 = warningf7;
 
 fn warningf8($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
 {
@@ -391,14 +391,14 @@ fn warningf8($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
     printf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8);
     printf("\n");
 }
-functions.warningf8 = warningf8;
+variables.warningf8 = warningf8;
 
 fn error_log($message)
 {
     logf("[Error]: %s\n", $message);
     halt;
 }
-functions.error_log = error_log;
+variables.error_log = error_log;
 
 fn errorf_log($message, $args)
 {
@@ -407,7 +407,7 @@ fn errorf_log($message, $args)
     logf("\n");
     halt;
 }
-functions.errorf_log = errorf_log;
+variables.errorf_log = errorf_log;
 
 fn errorf1_log($message, $arg1)
 {
@@ -416,7 +416,7 @@ fn errorf1_log($message, $arg1)
     logf("\n");
     halt;
 }
-functions.errorf1_log = errorf1_log;
+variables.errorf1_log = errorf1_log;
 
 fn errorf2_log($message, $arg1, $arg2)
 {
@@ -425,7 +425,7 @@ fn errorf2_log($message, $arg1, $arg2)
     logf("\n");
     halt;
 }
-functions.errorf2_log = errorf2_log;
+variables.errorf2_log = errorf2_log;
 
 fn errorf3_log($message, $arg1, $arg2, $arg3)
 {
@@ -434,7 +434,7 @@ fn errorf3_log($message, $arg1, $arg2, $arg3)
     logf("\n");
     halt;
 }
-functions.errorf3_log = errorf3_log;
+variables.errorf3_log = errorf3_log;
 
 fn errorf4_log($message, $arg1, $arg2, $arg3, $arg4)
 {
@@ -443,7 +443,7 @@ fn errorf4_log($message, $arg1, $arg2, $arg3, $arg4)
     logf("\n");
     halt;
 }
-functions.errorf4_log = errorf4_log;
+variables.errorf4_log = errorf4_log;
 
 fn errorf5_log($message, $arg1, $arg2, $arg3, $arg4, $arg5)
 {
@@ -452,7 +452,7 @@ fn errorf5_log($message, $arg1, $arg2, $arg3, $arg4, $arg5)
     logf("\n");
     halt;
 }
-functions.errorf5_log = errorf5_log;
+variables.errorf5_log = errorf5_log;
 
 fn errorf6_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
 {
@@ -461,7 +461,7 @@ fn errorf6_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
     logf("\n");
     halt;
 }
-functions.errorf6_log = errorf6_log;
+variables.errorf6_log = errorf6_log;
 
 fn errorf7_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
 {
@@ -470,7 +470,7 @@ fn errorf7_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
     logf("\n");
     halt;
 }
-functions.errorf7_log = errorf7_log;
+variables.errorf7_log = errorf7_log;
 
 fn errorf8_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
 {
@@ -479,13 +479,13 @@ fn errorf8_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
     logf("\n");
     halt;
 }
-functions.errorf8_log = errorf8_log;
+variables.errorf8_log = errorf8_log;
 
 fn warning_log($message)
 {
     logf("[Warning]: %s\n", $message);
 }
-functions.warning_log = warning_log;
+variables.warning_log = warning_log;
 
 fn warningf_log($message, $args)
 {
@@ -493,7 +493,7 @@ fn warningf_log($message, $args)
     logf($message, $args);
     logf("\n");
 }
-functions.warningf_log = warningf_log;
+variables.warningf_log = warningf_log;
 
 fn warningf1_log($message, $arg1)
 {
@@ -501,7 +501,7 @@ fn warningf1_log($message, $arg1)
     logf($message, $arg1);
     logf("\n");
 }
-functions.warningf1_log = warningf1_log;
+variables.warningf1_log = warningf1_log;
 
 fn warningf2_log($message, $arg1, $arg2)
 {
@@ -509,7 +509,7 @@ fn warningf2_log($message, $arg1, $arg2)
     logf($message, $arg1, $arg2);
     logf("\n");
 }
-functions.warningf2_log = warningf2_log;
+variables.warningf2_log = warningf2_log;
 
 fn warningf3_log($message, $arg1, $arg2, $arg3)
 {
@@ -517,7 +517,7 @@ fn warningf3_log($message, $arg1, $arg2, $arg3)
     logf($message, $arg1, $arg2, $arg3);
     logf("\n");
 }
-functions.warningf3_log = warningf3_log;
+variables.warningf3_log = warningf3_log;
 
 fn warningf4_log($message, $arg1, $arg2, $arg3, $arg4)
 {
@@ -525,7 +525,7 @@ fn warningf4_log($message, $arg1, $arg2, $arg3, $arg4)
     logf($message, $arg1, $arg2, $arg3, $arg4);
     logf("\n");
 }
-functions.warningf4_log = warningf4_log;
+variables.warningf4_log = warningf4_log;
 
 fn warningf5_log($message, $arg1, $arg2, $arg3, $arg4, $arg5)
 {
@@ -533,7 +533,7 @@ fn warningf5_log($message, $arg1, $arg2, $arg3, $arg4, $arg5)
     logf($message, $arg1, $arg2, $arg3, $arg4, $arg5);
     logf("\n");
 }
-functions.warningf5_log = warningf5_log;
+variables.warningf5_log = warningf5_log;
 
 fn warningf6_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
 {
@@ -541,7 +541,7 @@ fn warningf6_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
     logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
     logf("\n");
 }
-functions.warningf6_log = warningf6_log;
+variables.warningf6_log = warningf6_log;
 
 fn warningf7_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
 {
@@ -549,7 +549,7 @@ fn warningf7_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)
     logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7);
     logf("\n");
 }
-functions.warningf7_log = warningf7_log;
+variables.warningf7_log = warningf7_log;
 
 fn warningf8_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
 {
@@ -557,7 +557,7 @@ fn warningf8_log($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg
     logf($message, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8);
     logf("\n");
 }
-functions.warningf8_log = warningf8_log;
+variables.warningf8_log = warningf8_log;
 
 //util functions
 //util functions
@@ -567,14 +567,14 @@ fn refresh_seed()
 {
     rand_seed( get_timer() + get_ticks() );
 }
-functions.refresh_seed = refresh_seed;
+variables.refresh_seed = refresh_seed;
 
 fn random($min,$max)
 {
     //considering that rand() returns a value between 0 and 32767
     ret((rand() % ($max - $min + 1)) + $min);
 }
-functions.random = random;
+variables.random = random;
 
 fn recursive_prop($obj, $prop)
 {
@@ -604,7 +604,7 @@ fn recursive_prop($obj, $prop)
         ret(get_prop($obj, $prop));
     }
 }
-functions.recursive_prop = recursive_prop;
+variables.recursive_prop = recursive_prop;
 
 fn recursive_set_prop($obj, $prop, $value)
 {
@@ -637,7 +637,7 @@ fn recursive_set_prop($obj, $prop, $value)
         set_prop($obj, $prop, $value);
     }
 }
-functions.recursive_set_prop = recursive_set_prop;
+variables.recursive_set_prop = recursive_set_prop;
 
 fn default($obj, $default)
 {
@@ -650,48 +650,48 @@ fn default($obj, $default)
         ret($obj);
     }
 }
-functions.default = default;
+variables.default = default;
 
 fn define ($name, $value)
 {
     $target = recursive_prop(variables, $name);
     $target = $value;
 }
-functions.define = define;
+variables.define = define;
 
 fn set($value)
 {
     ret($value);
 }
-functions.set = set;
+variables.set = set;
 
 //obsolete
 fn create($name, $value)
 {
     set_prop(variables, $name, $value);
 }
-functions.create = create;
+variables.create = create;
 
 //obsolete
 fn create_empty($name)
 {
     set_prop(variables, $name, new());
 }
-functions.create_empty = create_empty;
+variables.create_empty = create_empty;
 
 //obsolete
 fn create_array($name, $size)
 {
     set_prop(variables, $name, new($size));
 }
-functions.create_array = create_array;
+variables.create_array = create_array;
 
 //obsolete
 fn create_matrix($name, $xsize, $ysize)
 {
     set_prop(variables, $name, new($xsize, $ysize));
 }
-functions.create_matrix = create_matrix;
+variables.create_matrix = create_matrix;
 
 //threads functions
 //threads functions
@@ -701,7 +701,7 @@ fn manual_thread($function)
 {
     ret(thread_create($function,0))
 }
-functions.manual_thread = manual_thread;
+variables.manual_thread = manual_thread;
 
 fn auto_thread($function, $interval)
 {
@@ -712,7 +712,7 @@ fn auto_thread($function, $interval)
     }
     ret(thread_create($function,$interval,THREAD_FLAG_AUTO_DESTROY))
 }
-functions.auto_thread = auto_thread;
+variables.auto_thread = auto_thread;
 
 //list functions
 //list functions
@@ -722,13 +722,13 @@ fn list_push($list,$element)
 {
     $list[flex($list, 1)-1] = $element;
 }
-functions.list_push = list_push;
+variables.list_push = list_push;
 
 fn list_pop($list)
 {
     flex($list, -1);
 }
-functions.list_pop = list_pop;
+variables.list_pop = list_pop;
 
 fn list_insert($list,$element,$position)
 {
@@ -741,7 +741,7 @@ fn list_insert($list,$element,$position)
     $list[$position] = $element;
     remove($oldsize);
 }
-functions.list_insert = list_insert;
+variables.list_insert = list_insert;
 
 fn list_remove($list,$position)
 {
@@ -753,7 +753,7 @@ fn list_remove($list,$position)
     resize($list,$oldsize - 1);
     remove($oldsize);
 }
-functions.list_remove = list_remove;
+variables.list_remove = list_remove;
 
 fn list_find($list,$element)
 {
@@ -768,7 +768,7 @@ fn list_find($list,$element)
     remove($oldsize);
     ret(-1);
 }
-functions.list_find = list_find;
+variables.list_find = list_find;
 
 //strings functions
 //strings functions
@@ -780,7 +780,7 @@ fn string_new($size)
     $temp = new($size);
     ret($temp);
 }
-functions.string_new = string_new;
+variables.string_new = string_new;
 
 fn string_sub($string,$start,$end)
 {
@@ -794,7 +794,7 @@ fn string_sub($string,$start,$end)
     }
     ret($newstr);
 }
-functions.string_sub = string_sub;
+variables.string_sub = string_sub;
 
 //counting ocurrences using strstr
 fn string_ocurrences($str1,$str2)
@@ -815,7 +815,7 @@ fn string_ocurrences($str1,$str2)
     //remove($offset);
     ret($count);
 }
-functions.string_ocurrences = string_ocurrences;
+variables.string_ocurrences = string_ocurrences;
 
 //this string returns the positions of each ocurrence
 fn string_ocurrences_advanced($str1,$str2)
@@ -838,7 +838,7 @@ fn string_ocurrences_advanced($str1,$str2)
 
     ret($result);
 }
-functions.string_ocurrences_advanced = string_ocurrences_advanced;
+variables.string_ocurrences_advanced = string_ocurrences_advanced;
 
 fn string_split( $string, $separator )
 {
@@ -856,7 +856,7 @@ fn string_split( $string, $separator )
     remove($ocurrences);
     ret($result);
 }
-functions.string_split = string_split;
+variables.string_split = string_split;
 
 
 fn string_split2( $str, $separator )
@@ -928,7 +928,7 @@ fn string_replace( $str1, $str2, $str3 )//modified function, original can be fou
     }
     ret($str1);
 }
-functions.string_replace = string_replace;
+variables.string_replace = string_replace;
 
 fn string_replace_char($string,$oldchar,$newchar)
 {
@@ -945,7 +945,7 @@ fn string_replace_char($string,$oldchar,$newchar)
     }
     ret($string);
 }
-functions.string_replace_char = string_replace_char;
+variables.string_replace_char = string_replace_char;
 
 fn string_remove_char($string,$char)
 {
@@ -961,7 +961,7 @@ fn string_remove_char($string,$char)
     }
     ret($_result);
 }
-functions.string_remove_char = string_remove_char;
+variables.string_remove_char = string_remove_char;
 
 //basic constructors
 //basic constructors
@@ -974,7 +974,7 @@ fn vector2($x, $y)
     $temp.y = $y;
     ret($temp);
 }
-functions.vector2 = vector2;
+variables.vector2 = vector2;
 
 //file functions
 //file functions
@@ -993,7 +993,7 @@ fn read_file($filename)
     fclose($file);
     ret($result_);
 }
-functions.read_file = read_file;
+variables.read_file = read_file;
 
 fn read_file_by_char($filename)//for text files
 {
@@ -1012,10 +1012,10 @@ fn read_file_by_char($filename)//for text files
     fclose($file);
     ret($result_);
 }
-functions.read_file_by_char = read_file_by_char;
+variables.read_file_by_char = read_file_by_char;
 
 read_txt = read_file_by_char;
-functions.read_txt = read_txt;
+variables.read_txt = read_txt;
 
 fn read_file_safe($filepath)
 {
@@ -1025,7 +1025,7 @@ fn read_file_safe($filepath)
     remove($txt);
     ret($result);
 }
-functions.read_file_safe = read_file_safe;
+variables.read_file_safe = read_file_safe;
 
 fn write_file($filename,$content)
 {
@@ -1034,7 +1034,7 @@ fn write_file($filename,$content)
     fclose($file);
     //remove($file);
 }
-functions.write_file = write_file;
+variables.write_file = write_file;
 
 //ini functions
 //ini functions
@@ -1064,7 +1064,7 @@ fn ini_load($file)
     remove($file);
     ret($result);
 }
-functions.ini_load = ini_load;
+variables.ini_load = ini_load;
 
 fn ini_save($file,$ini)
 {
@@ -1087,7 +1087,7 @@ fn ini_save($file,$ini)
     remove($result);
     remove($keys);
 }
-functions.ini_save = ini_save;
+variables.ini_save = ini_save;
 
 //bytestring functions
 //bytestring functions
@@ -1251,7 +1251,7 @@ fn _if($a, $op, $b, $callback)
     }
     remove($temp);
 }
-set_prop(functions, "if", _if);
+set_prop(variables, "if", _if);
 
 fn _ifnot($a, $op, $b, $callback)
 {
@@ -1265,7 +1265,7 @@ fn _ifnot($a, $op, $b, $callback)
     }
     remove($temp);
 }
-set_prop(functions, "ifnot", _ifnot);
+set_prop(variables, "ifnot", _ifnot);
 
 fn _ifelse($a, $op, $b, $callback1, $callback2)
 {
@@ -1283,7 +1283,7 @@ fn _ifelse($a, $op, $b, $callback1, $callback2)
     }
     remove($temp);
 }
-set_prop(functions, "ifelse", _ifelse);
+set_prop(variables, "ifelse", _ifelse);
 
 fn _pif($a, $op, $b, $procedure)//procedure if
 {
@@ -1297,7 +1297,7 @@ fn _pif($a, $op, $b, $procedure)//procedure if
     }
     remove($temp);
 }
-set_prop(functions, "pif", _pif);
+set_prop(variables, "pif", _pif);
 
 fn _pifnot($a, $op, $b, $procedure)//procedure if not
 {
@@ -1311,7 +1311,7 @@ fn _pifnot($a, $op, $b, $procedure)//procedure if not
     }
     remove($temp);
 }
-set_prop(functions, "pifnot", _pifnot);
+set_prop(variables, "pifnot", _pifnot);
 
 fn _pifelse($a, $op, $b, $procedure1, $procedure2)//procedure if else
 {
@@ -1329,7 +1329,7 @@ fn _pifelse($a, $op, $b, $procedure1, $procedure2)//procedure if else
     }
     remove($temp);
 }
-set_prop(functions, "pifelse", _pifelse);
+set_prop(variables, "pifelse", _pifelse);
 
 //loop functions
 //loop functions
@@ -1369,18 +1369,18 @@ fn procedure_parse($text) //obsolete
     remove($result);
     ret($splited);
 }
-functions.procedure_parse = procedure_parse;
+variables.procedure_parse = procedure_parse;
 
 fn procedure_load($filepath,$name)
 {
     $result = read_txt($filepath);
     if($name != 0)
     {
-        set_prop(procedures, $name, $result);
+        set_prop(variables, $name, $result);
     }
     ret($result);
 }
-functions.procedure_load = procedure_load;
+variables.procedure_load = procedure_load;
 
 fn procedure_run($procedure) //just a safe eval
 {
@@ -1391,7 +1391,7 @@ fn procedure_run($procedure) //just a safe eval
     }
     eval($procedure);
 }
-functions.procedure_run = procedure_run;
+variables.procedure_run = procedure_run;
 
 fn procedure_repeat($procedure,$times)
 {
@@ -1404,7 +1404,7 @@ fn procedure_repeat($procedure,$times)
         eval($procedure);
     }
 }
-functions.procedure_repeat = procedure_repeat;
+variables.procedure_repeat = procedure_repeat;
 
 fn procedure_for($procedure,$start,$end)
 {
@@ -1417,7 +1417,7 @@ fn procedure_for($procedure,$start,$end)
         eval($procedure[$i]);  
     }
 }
-functions.procedure_for = procedure_for;
+variables.procedure_for = procedure_for;
 
 // image functions
 // image functions
@@ -1438,7 +1438,7 @@ fn img_to_txt($img)
     }
     ret($current);
 }
-functions.img_to_txt = img_to_txt;
+variables.img_to_txt = img_to_txt;
 
 //obsolete
 fn imgwa_to_txt($img)
@@ -1459,7 +1459,7 @@ fn imgwa_to_txt($img)
     }
     ret($result);
 }
-functions.imgwa_to_txt = imgwa_to_txt;
+variables.imgwa_to_txt = imgwa_to_txt;
 
 // layers functions
 // layers functions
@@ -1482,7 +1482,7 @@ fn layer($container,$x,$y,$width,$height)
     set_prop($temp, "position", vector2(0,0));
     ret($temp);
 }
-functions.layer = layer;
+variables.layer = layer;
 
 fn layers_merge($layers)// incomplete
 {
@@ -1499,7 +1499,7 @@ fn layers_merge($layers)// incomplete
     remove($temp_size);
     ret($result);
 }
-functions.layers_merge = layers_merge;
+variables.layers_merge = layers_merge;
 
 fn layers_render($layers)
 {
@@ -1509,7 +1509,7 @@ fn layers_render($layers)
         pixi($layers[$i],$layers[$i].position.x,$layers[$i].position.y);
     }
 }
-functions.layers_render = layers_render;
+variables.layers_render = layers_render;
 
 // input functions
 // input functions
@@ -1530,13 +1530,13 @@ fn keyboard_new()
     $temp.keys = new();
     ret($temp);
 }
-functions.keyboard_new = keyboard_new;
+variables.keyboard_new = keyboard_new;
 
 fn keyboard_add($keyboard,$keycode,$up,$callback,$arg)
 {
     list_push($keyboard.keys,key_new($keycode,$callback,$arg,$up));
 }
-functions.keyboard_add = keyboard_add;
+variables.keyboard_add = keyboard_add;
 
 fn eventor($system)
 {
@@ -1602,7 +1602,7 @@ fn eventor($system)
         }
     }
 }
-functions.eventor = eventor;
+variables.eventor = eventor;
 
 //startup functions
 //startup functions
@@ -1633,7 +1633,7 @@ fn system_new($configpath)
     refresh_seed();//required to get a different random number each time
     ret($system);
 }
-functions.system_new = system_new;
+variables.system_new = system_new;
 
 //pattern functions
 //pattern functions
@@ -1643,43 +1643,43 @@ fn ret_black()
 {
     ret(BLACK);
 }
-functions.ret_black = ret_black;
+variables.ret_black = ret_black;
 
 fn ret_white()
 {
     ret(WHITE);
 }
-functions.ret_white = ret_white;
+variables.ret_white = ret_white;
 
 fn ret_red()
 {
     ret(RED);
 }
-functions.ret_red = ret_red;
+variables.ret_red = ret_red;
 
 fn ret_green()
 {
     ret(GREEN);
 }
-functions.ret_green = ret_green;
+variables.ret_green = ret_green;
 
 fn ret_blue()
 {
     ret(BLUE);
 }
-functions.ret_blue = ret_blue;
+variables.ret_blue = ret_blue;
 
 fn retyellow()
 {
     ret(YELLOW);
 }
-functions.retyellow = retyellow;
+variables.retyellow = retyellow;
 
 fn ret_orange()
 {
     ret(ORANGE);
 }
-functions.ret_orange = ret_orange;
+variables.ret_orange = ret_orange;
 
 fn pattern($image,$functions)
 {
@@ -1728,50 +1728,29 @@ fn pattern($image,$functions)
 
 fn run_function($func,$args)
 {
-    ret(get_prop(functions,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
+    ret(get_prop(variables,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
 }
-functions.run_function = run_function;
+variables.run_function = run_function;
 
 fn treat_arg($arg)
 {
-    if($arg[0] == '#')//constant
-    {
-        ret(recursive_prop(constants, string_sub($arg, 1, get_size($arg))));
+    if($arg[0] == '$')//procedure
+    {                    
+        ret(recursive_prop(variables, string_sub($arg, 1, get_size($arg))));
     }
     else
     {
-        if($arg[0] == '$')//variable
+        if(($arg[0] > 47 && $arg[0] < 58) || $arg[0] == '-')//number
         {
-            ret(recursive_prop(variables, string_sub($arg, 1, get_size($arg))));
+            ret(str_to_num($arg));
         }
-        else
+        else//string
         {
-            if($arg[0] == '@')//function
-            {
-                ret(recursive_prop(functions, string_sub($arg, 1, get_size($arg))));
-            }
-            else
-            {
-                if($arg[0] == '!')//procedure
-                {                    
-                    ret(recursive_prop(procedures, string_sub($arg, 1, get_size($arg))));
-                }
-                else
-                {
-                    if(($arg[0] > 47 && $arg[0] < 58) || $arg[0] == '-')//number
-                    {
-                        ret(str_to_num($arg));
-                    }
-                    else//string
-                    {
-                        ret($arg);
-                    }
-                }
-            }
+            ret($arg);
         }
     }
 }
-functions.treat_arg = treat_arg;
+variables.treat_arg = treat_arg;
 
 fn treat_args($splited, $size)
 {
@@ -1782,7 +1761,7 @@ fn treat_args($splited, $size)
     }
     ret($args);
 }
-functions.treat_args = treat_args;
+variables.treat_args = treat_args;
 
 fn interpret($command)
 {
@@ -1793,35 +1772,7 @@ fn interpret($command)
     {
         $cloned = clone($splited[0]);
         $localsplited = string_split($cloned, ":");
-        if($localsplited[0][0] == '#')//constant
-        {
-            recursive_set_prop(constants, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
-        }
-        else
-        {
-            if($localsplited[0][0] == '$')//variable
-            {
-                recursive_set_prop(variables, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
-            }
-            else
-            {
-                if($localsplited[0][0] == '@')//function
-                {
-                    recursive_set_prop(functions, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
-                }
-                else
-                {
-                    if($localsplited[0][0] == '!')//procedure
-                    {
-                        recursive_set_prop(procedures, string_sub($localsplited[0], 1, get_size($localsplited[0])), run_function($localsplited[1], $args));
-                    }
-                    else
-                    {
-                        errorf1("interpret(): unknown command {%s}", $splited[0]);
-                    }
-                }
-            }
-        }
+        recursive_set_prop(variables, $localsplited[0], run_function($localsplited[1], $args));
         remove($cloned);
         remove($localsplited[0]);
         remove($localsplited[1]);
@@ -1839,7 +1790,7 @@ fn interpret($command)
     remove($splited);
     remove($args);
 }
-functions.interpret = interpret;
+variables.interpret = interpret;
 
 fn bulk_interpret($commands)
 {
@@ -1855,7 +1806,7 @@ fn bulk_interpret($commands)
     remove($splited);
     remove($cloned);
 }
-functions.bulk_interpret = bulk_interpret;
+variables.bulk_interpret = bulk_interpret;
 
 fn bulk_interpret2($commands)//use when parsing native code strings
 {
@@ -1869,9 +1820,9 @@ fn bulk_interpret2($commands)//use when parsing native code strings
     remove($splited);
     //remove($cloned);
 }
-functions.bulk_interpret2 = bulk_interpret2;
+variables.bulk_interpret2 = bulk_interpret2;
 
 eval = bulk_interpret;
 eval2 = bulk_interpret2;
-functions.eval = eval;
-functions.eval2 = eval2;
+variables.eval = eval;
+variables.eval2 = eval2;
