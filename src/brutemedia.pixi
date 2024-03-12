@@ -774,6 +774,120 @@ variables.list_find = list_find;
 //strings functions
 //strings functions
 
+fn string_concat99($str1,$str2,$str3,$str4,$str5,$str6,$str7,$str8,$str9,$str10,$str11,$str12,$str13,$str14,$str15,$str16,$str17,$str18,$str19,$str20,$str21,$str22,$str23,$str24,$str25,$str26,$str27,$str28,$str29,$str30,$str31,$str32,$str33,$str34,$str35,$str36,$str37,$str38,$str39,$str40,$str41,$str42,$str43,$str44,$str45,$str46,$str47,$str48,$str49,$str50,$str51,$str52,$str53,$str54,$str55,$str56,$str57,$str58,$str59,$str60,$str61,$str62,$str63,$str64,$str65,$str66,$str67,$str68,$str69,$str70,$str71,$str72,$str73,$str74,$str75,$str76,$str77,$str78,$str79,$str80,$str81,$str82,$str83,$str84,$str85,$str86,$str87,$str88,$str89,$str90,$str91,$str92,$str93,$str94,$str95,$str96,$str97,$str98,$str99)
+{
+    $result = "";
+    if ($str1 != 0) { $result = sprintf("%s%s", $result, $str1); }
+    if ($str2 != 0) { $result = sprintf("%s%s", $result, $str2); }
+    if ($str3 != 0) { $result = sprintf("%s%s", $result, $str3); }
+    if ($str4 != 0) { $result = sprintf("%s%s", $result, $str4); }
+    if ($str5 != 0) { $result = sprintf("%s%s", $result, $str5); }
+    if ($str6 != 0) { $result = sprintf("%s%s", $result, $str6); }
+    if ($str7 != 0) { $result = sprintf("%s%s", $result, $str7); }
+    if ($str8 != 0) { $result = sprintf("%s%s", $result, $str8); }
+    if ($str9 != 0) { $result = sprintf("%s%s", $result, $str9); }
+    
+    if ($str10 != 0) { $result = sprintf("%s%s", $result, $str10); }
+    if ($str11 != 0) { $result = sprintf("%s%s", $result, $str11); }
+    if ($str12 != 0) { $result = sprintf("%s%s", $result, $str12); }
+    if ($str13 != 0) { $result = sprintf("%s%s", $result, $str13); }
+    if ($str14 != 0) { $result = sprintf("%s%s", $result, $str14); }
+    if ($str15 != 0) { $result = sprintf("%s%s", $result, $str15); }
+    if ($str16 != 0) { $result = sprintf("%s%s", $result, $str16); }
+    if ($str17 != 0) { $result = sprintf("%s%s", $result, $str17); }
+    if ($str18 != 0) { $result = sprintf("%s%s", $result, $str18); }
+    if ($str19 != 0) { $result = sprintf("%s%s", $result, $str19); }
+
+    if ($str20 != 0) { $result = sprintf("%s%s", $result, $str20); }
+    if ($str21 != 0) { $result = sprintf("%s%s", $result, $str21); }
+    if ($str22 != 0) { $result = sprintf("%s%s", $result, $str22); }
+    if ($str23 != 0) { $result = sprintf("%s%s", $result, $str23); }
+    if ($str24 != 0) { $result = sprintf("%s%s", $result, $str24); }
+    if ($str25 != 0) { $result = sprintf("%s%s", $result, $str25); }
+    if ($str26 != 0) { $result = sprintf("%s%s", $result, $str26); }
+    if ($str27 != 0) { $result = sprintf("%s%s", $result, $str27); }
+    if ($str28 != 0) { $result = sprintf("%s%s", $result, $str28); }
+    if ($str29 != 0) { $result = sprintf("%s%s", $result, $str29); }
+    
+    if ($str30 != 0) { $result = sprintf("%s%s", $result, $str30); }
+    if ($str31 != 0) { $result = sprintf("%s%s", $result, $str31); }
+    if ($str32 != 0) { $result = sprintf("%s%s", $result, $str32); }
+    if ($str33 != 0) { $result = sprintf("%s%s", $result, $str33); }
+    if ($str34 != 0) { $result = sprintf("%s%s", $result, $str34); }
+    if ($str35 != 0) { $result = sprintf("%s%s", $result, $str35); }
+    if ($str36 != 0) { $result = sprintf("%s%s", $result, $str36); }
+    if ($str37 != 0) { $result = sprintf("%s%s", $result, $str37); }
+    if ($str38 != 0) { $result = sprintf("%s%s", $result, $str38); }
+    if ($str39 != 0) { $result = sprintf("%s%s", $result, $str39); }
+
+    if ($str40 != 0) { $result = sprintf("%s%s", $result, $str40); }
+    if ($str41 != 0) { $result = sprintf("%s%s", $result, $str41); }
+    if ($str42 != 0) { $result = sprintf("%s%s", $result, $str42); }
+    if ($str43 != 0) { $result = sprintf("%s%s", $result, $str43); }
+    if ($str44 != 0) { $result = sprintf("%s%s", $result, $str44); }
+    if ($str45 != 0) { $result = sprintf("%s%s", $result, $str45); }
+    if ($str46 != 0) { $result = sprintf("%s%s", $result, $str46); }
+    if ($str47 != 0) { $result = sprintf("%s%s", $result, $str47); }
+    if ($str48 != 0) { $result = sprintf("%s%s", $result, $str48); }
+    if ($str49 != 0) { $result = sprintf("%s%s", $result, $str49); }
+
+    if ($str50 != 0) { $result = sprintf("%s%s", $result, $str50); }
+    if ($str51 != 0) { $result = sprintf("%s%s", $result, $str51); }
+    if ($str52 != 0) { $result = sprintf("%s%s", $result, $str52); }
+    if ($str53 != 0) { $result = sprintf("%s%s", $result, $str53); }
+    if ($str54 != 0) { $result = sprintf("%s%s", $result, $str54); }
+    if ($str55 != 0) { $result = sprintf("%s%s", $result, $str55); }
+    if ($str56 != 0) { $result = sprintf("%s%s", $result, $str56); }
+    if ($str57 != 0) { $result = sprintf("%s%s", $result, $str57); }
+    if ($str58 != 0) { $result = sprintf("%s%s", $result, $str58); }
+    if ($str59 != 0) { $result = sprintf("%s%s", $result, $str59); }
+
+    if ($str60 != 0) { $result = sprintf("%s%s", $result, $str60); }
+    if ($str61 != 0) { $result = sprintf("%s%s", $result, $str61); }
+    if ($str62 != 0) { $result = sprintf("%s%s", $result, $str62); }
+    if ($str63 != 0) { $result = sprintf("%s%s", $result, $str63); }
+    if ($str64 != 0) { $result = sprintf("%s%s", $result, $str64); }
+    if ($str65 != 0) { $result = sprintf("%s%s", $result, $str65); }
+    if ($str66 != 0) { $result = sprintf("%s%s", $result, $str66); }
+    if ($str67 != 0) { $result = sprintf("%s%s", $result, $str67); }
+    if ($str68 != 0) { $result = sprintf("%s%s", $result, $str68); }
+    if ($str69 != 0) { $result = sprintf("%s%s", $result, $str69); }
+
+    if ($str70 != 0) { $result = sprintf("%s%s", $result, $str70); }
+    if ($str71 != 0) { $result = sprintf("%s%s", $result, $str71); }
+    if ($str72 != 0) { $result = sprintf("%s%s", $result, $str72); }
+    if ($str73 != 0) { $result = sprintf("%s%s", $result, $str73); }
+    if ($str74 != 0) { $result = sprintf("%s%s", $result, $str74); }
+    if ($str75 != 0) { $result = sprintf("%s%s", $result, $str75); }
+    if ($str76 != 0) { $result = sprintf("%s%s", $result, $str76); }
+    if ($str77 != 0) { $result = sprintf("%s%s", $result, $str77); }
+    if ($str78 != 0) { $result = sprintf("%s%s", $result, $str78); }
+    if ($str79 != 0) { $result = sprintf("%s%s", $result, $str79); }
+
+    if ($str80 != 0) { $result = sprintf("%s%s", $result, $str80); }
+    if ($str81 != 0) { $result = sprintf("%s%s", $result, $str81); }
+    if ($str82 != 0) { $result = sprintf("%s%s", $result, $str82); }
+    if ($str83 != 0) { $result = sprintf("%s%s", $result, $str83); }
+    if ($str84 != 0) { $result = sprintf("%s%s", $result, $str84); }
+    if ($str85 != 0) { $result = sprintf("%s%s", $result, $str85); }
+    if ($str86 != 0) { $result = sprintf("%s%s", $result, $str86); }
+    if ($str87 != 0) { $result = sprintf("%s%s", $result, $str87); }
+    if ($str88 != 0) { $result = sprintf("%s%s", $result, $str88); }
+    if ($str89 != 0) { $result = sprintf("%s%s", $result, $str89); }
+
+    if ($str90 != 0) { $result = sprintf("%s%s", $result, $str90); }
+    if ($str91 != 0) { $result = sprintf("%s%s", $result, $str91); }
+    if ($str92 != 0) { $result = sprintf("%s%s", $result, $str92); }
+    if ($str93 != 0) { $result = sprintf("%s%s", $result, $str93); }
+    if ($str94 != 0) { $result = sprintf("%s%s", $result, $str94); }
+    if ($str95 != 0) { $result = sprintf("%s%s", $result, $str95); }
+    if ($str96 != 0) { $result = sprintf("%s%s", $result, $str96); }
+    if ($str97 != 0) { $result = sprintf("%s%s", $result, $str97); }
+    if ($str98 != 0) { $result = sprintf("%s%s", $result, $str98); }
+    if ($str99 != 0) { $result = sprintf("%s%s", $result, $str99); }
+}
+variables.string_concat99 = string_concat99;
+
 fn string_new($size)
 {
     $temp = "";
