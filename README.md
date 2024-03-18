@@ -25,13 +25,7 @@ Global Objects: variables, functions, constants.
 
 ## Types
 
-- `#constant` = args that starts with #, take a look src/ffi.pixi to check avaliable constants, constants are stored in "constants"
-
 - `$variable` = args that starts with $, can be anything, variables are stored in "variables"
-
-- `@callback` = args that starts with @, default functions, those can only be defined before compiling and must be written in pixilang, all the functions avaliable are also avaliable as callback and they are stored under "functions"  
-
-- `!procedure` = args that starts with !, are always arrays of strings(array of INT8), procedures are pre-parsed brut scripts usually loaded from a file, procedures are stored in "procedures".
 
 - `number` = args that starts with 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 or -
 
@@ -66,19 +60,6 @@ take a look at pixilang docs and src/ffi.pixi to get better understanding of the
 
 `function $variable_1 $variable_2 ...;`
 
-
-- constants always starts with #:
-
-`function #constant_1 #constant_2 ...;`
-
-
-- callbacks always starts with @:
-
-`function @callback_1 @callback_2 ...;`
-
-- procedures always starts with !:
-
-`function !procedure_1 !procedure_2 ...;`
 
 ## Contributing
 
