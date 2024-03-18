@@ -1,11 +1,9 @@
-# brutemedia
+# pixibruter
 
 ## Description
 
-a pixilang based multimedia engine, for working with native back-end + pixilang front-end using brut. 
+a pixilang based multimedia engine, implements a bruter interpreter and a set of tools. 
 
-
-this implements a intermediary communication language called brut(.brut) that has it own syntax and allow to do dynamic importing, while you cannot declare functions in brut you can still declare `procedures` which work like functions, of course, there is a overhead, but might not be so noticiable as brut is very very simple to parse.
 
 ## Table of Contents
 
