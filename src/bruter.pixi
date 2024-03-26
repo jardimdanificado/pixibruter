@@ -923,8 +923,32 @@ fn string_ocurrences($str1,$str2)
         {
             break;
         }
-		$count = $count + 1;
-        $offset = $offset + $len;
+        $temp_str = string_sub($str1, 0, $offset);
+        if(strstr($temp_str, "`") != -1)
+        {
+            $temp_counter = 0;
+            for ($i = 0; $i < strlen($temp_str); $i+1)
+            {
+                if ($temp_str[$i] == '`')
+                {
+                    $temp_counter = $temp_counter + 1;
+                }
+            }
+            if ($temp_counter % 2 == 0)
+            {
+                $count = $count + 1;
+                $offset = $offset + $len;
+            }
+            else
+            {
+                $offset = $offset + $len;
+            }
+        }
+        else 
+        {
+            $count = $count + 1;
+            $offset = $offset + $len;
+        }
 	}
     //remove($offset);
     ret($count);
@@ -945,11 +969,34 @@ fn string_ocurrences_advanced($str1,$str2)
         {
             break;
         }
-        $result[$count] = $offset;
-        $count = $count + 1;
-        $offset = $offset + $len;
+        if (strstr(string_sub($str1, 0, $offset), "`") != -1)
+        {
+            $temp_counter = 0;
+            for ($i = 0; $i < strlen(string_sub($str1, 0, $offset)); $i+1)
+            {
+                if (string_sub($str1, 0, $offset)[$i] == '`')
+                {
+                    $temp_counter = $temp_counter + 1;
+                }
+            }
+            if ($temp_counter % 2 == 0)
+            {
+                $result[$count] = $offset;
+                $count = $count + 1;
+                $offset = $offset + $len;
+            }
+            else
+            {
+                $offset = $offset + $len;
+            }
+        }
+        else
+        {
+            $result[$count] = $offset;
+            $count = $count + 1;
+            $offset = $offset + $len;
+        }
     }
-
     ret($result);
 }
 variables.string_ocurrences_advanced = string_ocurrences_advanced;
@@ -1848,7 +1895,7 @@ variables.run_function = run_function;
 
 fn treat_arg($arg)
 {
-    if($arg[0] == '$')//procedure
+    if($arg[0] == '$')//variable
     {                    
         ret(recursive_prop(variables, string_sub($arg, 1, get_size($arg))));
     }
@@ -1858,9 +1905,24 @@ fn treat_arg($arg)
         {
             ret(str_to_num($arg));
         }
-        else//string
+        else
         {
-            ret($arg);
+            if(strcmp($arg, "true") == 0)
+            {
+                ret(true);
+            }
+            else
+            {
+                if(strcmp($arg, "false") == 0)
+                {
+                    ret(false);
+                }
+                else//string
+                {
+                    $temp_arg = string_replace($arg, "`", "");
+                    ret($temp_arg);
+                }
+            }
         }
     }
 }

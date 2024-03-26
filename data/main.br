@@ -1,4 +1,4 @@
-image0:load ./data/img/0.jpg;
+image0:load `./data/img/0.jpg`;
 image1:load ./data/img/1.jpg;
 image2:load ./data/img/2.jpeg;
 layer0:layer $image0;
@@ -11,4 +11,4 @@ system.layers.2.position:vector2 150 190;
 keyboard_add $system.keyboard $KEY_F2 0 $print_container_count;
 keyboard_add $system.keyboard $KEY_F3 0 $print_all;
 system.layers.1.position.x:set 500;
-mainloop:procedure_load ./data/loop.brut;
+mainloop:procedure_load ./data/loop.br;

@@ -1,4 +1,4 @@
-include "src/brutemedia.pixi"
+include "src/bruter.pixi"
 variables.system = system_new();
 list_remove(variables.system.layers,0);
 
@@ -39,7 +39,7 @@ fn pattern_examples()
 }
 
 dl = dlopen( "data/main.so" ) //Open the library
-if dl >= 0
+if (dl > 0)
 {
   //if the library could be opened, run the mainloop from the library
   //better for using pixilang as a library and the main program is written in C
@@ -69,7 +69,7 @@ else
   //better for image editing and using pixilang as the main program
   warning("Could not open the library, interpreting brut instead.");
 
-  $example = read_txt("data/main.brut");
+  $example = read_txt("data/main.br");
   eval($example);
 
   pattern_examples();
