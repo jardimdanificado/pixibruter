@@ -39,7 +39,7 @@ fn pattern_examples()
 }
 
 dl = dlopen( "data/main.so" ) //Open the library
-if (dl > 0)
+if (1)
 {
   //if the library could be opened, run the mainloop from the library
   //better for using pixilang as a library and the main program is written in C

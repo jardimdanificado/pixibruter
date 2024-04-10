@@ -31,20 +31,19 @@ tocstr = c.tocstr;
 terra startup():&int8
 
     var buffer:String = String.new();
-    buffer:concat(String.fromString("image0:load ./data/img/0.jpg;"));
-    buffer:concat(String.fromString("image1:load ./data/img/1.jpg;"));
-    buffer:concat(String.fromString("image2:load ./data/img/2.jpeg;"));
-    buffer:concat(String.fromString("layer0:layer $image0;"));
-    buffer:concat(String.fromString("layer1:layer $image1;"));
-    buffer:concat(String.fromString("layer2:layer $image2;"));
+    buffer:concat(String.fromString("set image0 from load ./data/img/0.jpg;"));
+    buffer:concat(String.fromString("set image1 from load ./data/img/1.jpg;"));
+    buffer:concat(String.fromString("set image2 from load ./data/img/2.jpeg;"));
+    buffer:concat(String.fromString("set layer0 from layer $image0;"));
+    buffer:concat(String.fromString("set layer1 from layer $image1;"));
+    buffer:concat(String.fromString("set layer2 from layer $image2;"));
     buffer:concat(String.fromString("list_push $system.layers $layer1;"));
     buffer:concat(String.fromString("list_push $system.layers $layer0;"));
     buffer:concat(String.fromString("list_push $system.layers $layer2;"));
-    buffer:concat(String.fromString("system.layers.2.position:vector2 150 190;"));
+    buffer:concat(String.fromString("set system.layers.2.position from vector2 150 190;"));
     buffer:concat(String.fromString("keyboard_add $system.keyboard $KEY_F2 0 $print_container_count;"));
     buffer:concat(String.fromString("keyboard_add $system.keyboard $KEY_F3 0 $print_all;"));
-    buffer:concat(String.fromString("system.layers.1.position.x:set 500;"));
-    --c.printf("buffer = %s\n",buffer.array);
+    buffer:concat(String.fromString("set system.layers.1.position.x 500;"));
     return(buffer.array);
 end
 

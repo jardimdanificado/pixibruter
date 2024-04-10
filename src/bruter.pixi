@@ -659,9 +659,26 @@ fn define ($name, $value)
 }
 variables.define = define;
 
-fn set($value)
+fn set($name, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8, $arg9, $arg10, $arg11, $arg12, $arg13, $arg14, $arg15, $arg16, $arg17, $arg18, $arg19, $arg20, $arg21, $arg22, $arg23, $arg24, $arg25, $arg26, $arg27, $arg28, $arg29, $arg30, $arg31, $arg32, $arg33, $arg34, $arg35, $arg36, $arg37, $arg38, $arg39, $arg40, $arg41, $arg42, $arg43, $arg44, $arg45, $arg46, $arg47, $arg48, $arg49, $arg50, $arg51, $arg52, $arg53, $arg54, $arg55, $arg56, $arg57, $arg58, $arg59, $arg60, $arg61, $arg62, $arg63, $arg64, $arg65, $arg66, $arg67, $arg68, $arg69, $arg70, $arg71, $arg72, $arg73, $arg74, $arg75, $arg76, $arg77, $arg78, $arg79, $arg80, $arg81, $arg82, $arg83, $arg84, $arg85, $arg86, $arg87, $arg88, $arg89, $arg90, $arg91, $arg92, $arg93, $arg94, $arg95, $arg96, $arg97, $arg98, $arg99)
 {
-    ret($value);
+    if (strcmp($arg1, "from") == 0)
+    {
+        $func = recursive_prop(variables, $arg2);
+        if ($func == 0)
+        {
+            warningf1("set: function %s not found", $arg2);
+        }
+        $result = $func($arg3, $arg4, $arg5, $arg6, $arg7, $arg8, $arg9, $arg10, $arg11, $arg12, $arg13, $arg14, $arg15, $arg16, $arg17, $arg18, $arg19, $arg20, $arg21, $arg22, $arg23, $arg24, $arg25, $arg26, $arg27, $arg28, $arg29, $arg30, $arg31, $arg32, $arg33, $arg34, $arg35, $arg36, $arg37, $arg38, $arg39, $arg40, $arg41, $arg42, $arg43, $arg44, $arg45, $arg46, $arg47, $arg48, $arg49, $arg50, $arg51, $arg52, $arg53, $arg54, $arg55, $arg56, $arg57, $arg58, $arg59, $arg60, $arg61, $arg62, $arg63, $arg64, $arg65, $arg66, $arg67, $arg68, $arg69, $arg70, $arg71, $arg72, $arg73, $arg74, $arg75, $arg76, $arg77, $arg78, $arg79, $arg80, $arg81, $arg82, $arg83, $arg84, $arg85, $arg86, $arg87, $arg88, $arg89, $arg90, $arg91, $arg92, $arg93, $arg94, $arg95, $arg96, $arg97, $arg98, $arg99);
+        if $result == 0
+        {
+            warningf1("set: function %s returned 0", $name);
+        }
+        recursive_set_prop(variables, $name, $result);
+    }
+    else
+    {
+        recursive_set_prop(variables, $name, $arg1);
+    }
 }
 variables.set = set;
 
@@ -1889,7 +1906,12 @@ fn pattern($image,$functions)
 
 fn run_function($func,$args)
 {
-    ret(get_prop(variables,$func)($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
+    $func = recursive_prop(variables,$func);
+    if $func == 0
+    {
+        errorf1("run_function: function %s not found", $func);
+    }
+    ret($func($args[0],$args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7],$args[8],$args[9],$args[10],$args[11],$args[12],$args[13],$args[14],$args[15],$args[16],$args[17],$args[18],$args[19],$args[20],$args[21],$args[22],$args[23],$args[24],$args[25],$args[26],$args[27],$args[28],$args[29],$args[30],$args[31],$args[32],$args[33],$args[34],$args[35],$args[36],$args[37],$args[38],$args[39],$args[40],$args[41],$args[42],$args[43],$args[44],$args[45],$args[46],$args[47],$args[48],$args[49],$args[50],$args[51],$args[52],$args[53],$args[54],$args[55],$args[56],$args[57],$args[58],$args[59],$args[60],$args[61],$args[62],$args[63],$args[64],$args[65],$args[66],$args[67],$args[68],$args[69],$args[70],$args[71],$args[72],$args[73],$args[74],$args[75],$args[76],$args[77],$args[78],$args[79],$args[80],$args[81],$args[82],$args[83],$args[84],$args[85],$args[86],$args[87],$args[88],$args[89],$args[90],$args[91],$args[92],$args[93],$args[94],$args[95],$args[96],$args[97],$args[98],$args[99]));
 }
 variables.run_function = run_function;
 
@@ -1944,20 +1966,7 @@ fn interpret($command)
     $splited = string_split($command, " ");
     $size = get_size($splited);
     $args = treat_args($splited,$size);
-    if(strstr($splited[0], 1, ":", 0) > 0)
-    {
-        $cloned = clone($splited[0]);
-        $localsplited = string_split($cloned, ":");
-        recursive_set_prop(variables, $localsplited[0], run_function($localsplited[1], $args));
-        remove($cloned);
-        remove($localsplited[0]);
-        remove($localsplited[1]);
-        remove($localsplited);
-    }
-    else
-    {
-        run_function($splited[0], $args);
-    }
+    run_function($splited[0], $args);
     
     for ($i = 0; $i < $size; $i+1)
     {

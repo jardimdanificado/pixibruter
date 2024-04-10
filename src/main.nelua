@@ -9,24 +9,24 @@ global function ucmd(input:string)
 end
 
 global function startup()<cexport, codename 'startup'>
-    ucmd("$image0:load ./data/img/0.jpg;");
-    ucmd("$image1:load ./data/img/1.jpg;");
-    ucmd("$image2:load ./data/img/2.jpeg;");
+    ucmd("set image0 from load ./data/img/0.jpg;");
+    ucmd("set image1 from load ./data/img/1.jpg;");
+    ucmd("set image2 from load ./data/img/2.jpeg;");
 
-    ucmd("$layer0:layer $image0;");
-    ucmd("$layer1:layer $image1;");
-    ucmd("$layer2:layer $image2;");
+    ucmd("set layer0 from layer $image0;");
+    ucmd("set layer1 from layer $image1;");
+    ucmd("set layer2 from layer $image2;");
 
     ucmd("list_push $system.layers $layer1;");
     ucmd("list_push $system.layers $layer0;");
     ucmd("list_push $system.layers $layer2;");
     
-    ucmd("$system.layers.2.position:vector2 150 190;");
+    ucmd("set system.layers.2.position from vector2 150 190;");
     
     ucmd("keyboard_add $system.keyboard #KEY_F2 0 @print_container_count;");
     ucmd("keyboard_add $system.keyboard #KEY_F3 0 @print_all;");
-    ucmd("$system.layers.1.position.x:set 500;");
-    --//ucmd("$imgtxt:img_to_txt $image2;");
+    ucmd("set system.layers.1.position.x 500;");
+    --//ucmd("set imgtxt from img_to_txt $image2;");
     return(output);
 end
 
